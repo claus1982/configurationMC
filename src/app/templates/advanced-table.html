@@ -1,0 +1,119 @@
+<md-toolbar class="md-table-toolbar md-default" >
+  <div class="md-toolbar-tools">
+    <md-button ng-hide="options.editMode" ng-show="!options.rowSelection || !selected.length" class="md-primary" ng-click="addItem($event)">aggiungi</md-button>
+    <md-button ng-hide="options.editMode" ng-show="!options.rowSelection || !selected.length" class="md-primary" ng-click="options.editMode=!options.editMode;options.rowSelection=false">modifica</md-button>
+    <div class="right-position">
+      <md-button class="md-icon-button">
+        <md-icon>search</md-icon>
+      </md-button>
+      <input class="input-search" type="text" placeholder="Search" ng-model="query.filter">
+      </div>
+  </div>
+</md-toolbar>
+
+<md-toolbar class="md-table-toolbar alternate" ng-show="options.editMode">
+  <div class="md-toolbar-tools">
+    <span class="label-modify">
+      Desideri salvare le modifiche effettuate?
+    </span>
+    <md-button class="md-button btn-secondary" ng-click="options.editMode=false;options.rowSelection=true">
+      annulla
+    </md-button>
+    <md-button class="md-button btn-primary">
+      salva
+    </md-button>
+  </div>
+</md-toolbar>
+
+<md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
+  <div class="md-toolbar-tools">
+    <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selezionato</span>
+    <div class="right-position">
+      <md-button class="md-icon-button" title="Selezionare max un record" ng-disabled="options.rowSelection && selected.length>1" ng-click="copyItem(event,selected)">
+        <md-icon>content_copy</md-icon>
+      </md-button>
+      <md-button class="md-icon-button">
+        <md-icon>delete</md-icon>
+      </md-button>
+    </div>
+
+  </div>
+</md-toolbar>
+
+<md-table-container>
+
+  <table ng-class="{'md-table-edit-mode':options.editMode}" data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" data-ng-model="selected" md-progress="promise">
+    <!--<thead ng-if="!options.decapitate" md-head data-md-order="query.order" md-on-reorder="onReorder">
+      <tr md-row>
+        <th md-column md:order:by="name"><span>item (100g serving)</span></th>
+        <th md-column md:order:by="type"><span>Type</span></th>
+        <th md-column data-md-numeric data-md-order-by="calories.value" data-md-desc><span>Calories</span></th>
+        <th md-column data-md-numeric data-md-order-by="fat.value"><span>Fat (g)</span></th>
+        <th md-column data-md-numeric data-md-order-by="protein.value"><span>Protein (g)</span></th>
+        <th md-column data-md-numeric data-md-order-by="iron.value" data-hide-sm><span>Iron (%)</span></th>
+        <th md-column data-md-order-by="comment">
+          <md-icon>comments</md-icon>
+          <span>Comments</span>
+        </th>
+      </tr>
+    </thead>-->
+    <thead md-head md-order="query.order">
+      <tr md-row>
+        <th md-column ng-repeat="column in columns" md-numeric="column.numeric" md-order-by="{{column.orderBy}}">
+          <span>{{column.name}}</span>
+          <span ng-if="column.unit">({{column.unit}})</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr   md-row
+            md-select="item"
+            md-select-id="name"
+            data-md-on-select="log"
+            md-on-deselect="deselect"
+            x-md-auto-select=""
+            ng-disabled=""
+            data-ng-repeat="item in items.data | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
+        <td md-cell
+            ng-click="editField(options.editMode,$event, item,'code','Codice promo','Codice promo')">
+          {{item.code}}
+        </td>
+        <td md-cell
+            ng-click="editField(options.editMode,$event, item,'description','Descrizione promo','Descrizione promo')">
+          {{item.description}}
+        </td>
+        <td md-cell
+            ng-click="editField(options.editMode,$event, item,'periodVal','Periodo validità','Periodo validità')">
+          {{item.periodVal}}
+        </td>
+        <!-- <td md-cell>{{item.carbs.value}}</td> -->
+        <td md-cell
+            ng-click="editField(options.editMode,$event, item,'periodGen','Periodo generazione','Periodo generazione')">
+          {{item.periodGen}}
+        </td>
+        <td md-cell hide-sm
+            ng-click="editField(options.editMode,$event, item,'codeTemplateSMS','Codice Template SMS','Codice Template SMS')">
+          {{item.codeTemplateSMS}}
+        </td>
+        <td md-cell
+            ng-click="editField(options.editMode,$event, item,'codeTemplateMail','Codice Template Mail','Codice Template Mail')">
+          {{item.codeTemplateMail}}
+        </td>
+        <td md-cell>
+          <span ng-if="!options.editMode">{{item.flagLinea}}</span>
+          <span ng-if="options.editMode" >
+            <md-select ng-model="item.flagLinea" placeholder="Other">
+              <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
+            </md-select>
+          </span>
+        </td>
+        <td md-cell
+            ng-click="editField(options.editMode,$event, item,'qtyRiusoCoupon','QtyRiusoCoupon','QtyRiusoCoupon')">
+          {{item.qtyRiusoCoupon}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+
+<data-md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{items.count}}" md-on-paginate="onPaginate" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks"></data-md-table-pagination>

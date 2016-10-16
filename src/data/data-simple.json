@@ -1,0 +1,45 @@
+{
+  "count": 9,
+  "payload":[{
+    "columns":[
+      {
+        "name": "promo",
+        "orderBy": "promo"
+      }, {
+        "name": "descrizione",
+        "orderBy": "description"
+      }    ],
+    "data": [
+      {
+        "promo":"PROMO ID1 Bene Fisico",
+        "description": "Promo che sconta, da canale Web ed in un determinato periodo, un Bene Fisico in vendita diretta con uno sconto a valore assoluto o in percentuale"
+      },
+	{
+        "promo":"PROMO ID2 Carta Servizi",
+        "description": "Promo che sconta, da canale Web ed in un determinato periodo, il costo a pagare (attivazione + 1° canone) di una Carta Servizi con uno sconto a valore assoluto o in percentuale"
+      },
+	{
+        "promo":"PROMO ID3 Combinazione Item",
+        "description": "Promo che aggiunge a carrello, da canale Web ed in un determinato periodo, una Carta Servizi se presente un'altra nel carrello"
+      },
+	{
+        "promo":"PROMO ID4 GiftWithPurchase",
+        "description": "Promo che sconta, da canale Web ed in un determinato periodo, un Bene Fisico in vendita diretta con uno sconto a valore assoluto o in percentuale"
+      },
+     	{
+        "promo":"PROMO ID5 SIM CARD",
+        "description": "Promo che sconta, da canale Web ed in un determinato periodo, la SIM Card con uno sconto a valore assoluto o a percentuale"
+      },
+	{
+        "promo":"PROMO ID6.1 Coupon",
+        "description": "Promo che fornisce in fase di vendita, da canale Web ed in un determinato periodo, un Coupon che elargirà uno sconto in una successiva post-vendita (su base BF/CS)"
+      },
+	{
+        "promo":"PROMO ID7 Ricarica",
+        "description": "Promo che fornisce in fase di vendita, da canale Web ed in un determinato periodo, un Coupon che elargirà un bonus aggiuntivo di ricarica alla prossima ricarica. Il coupon verrà erogato solo se la ricarica è effettuata in un determinato periodo e con un determinato taglio; il bonus sarà erogato solo se la successiva ricarica sarà effettuata in un determinato periodo e con un determinato taglio"
+      }
+
+    ]
+  }]
+  
+}

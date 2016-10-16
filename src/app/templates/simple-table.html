@@ -1,0 +1,27 @@
+
+
+<md-table-container>
+  <table data-md-table md-progress="promiseSimpleData" class="table-simple">
+    <thead md-head md-order="querySimpleData.order">
+      <tr md-row>
+        <th md-column ng-repeat="column in columnsSimpleData" md-numeric="column.numeric" md-order-by="{{column.orderBy}}">
+          <span>{{column.name}}</span>
+          <span ng-if="column.unit">({{column.unit}})</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr   md-row md-select-id="name"
+            data-ng-repeat="itemSimple in itemsSimpleData.data | filter: querySimpleData.filter | orderBy: querySimpleData.order | limitTo: querySimpleData.limit : (querySimpleData.page - 1) * querySimpleData.limit">
+      <td md-cell class="name-promo" style="width:30%;">
+          <a href="#">{{itemSimple.promo}}</a>
+        </td>
+        <td md-cell class="description-promo" style="width:70%;">
+          <a href="#">{{itemSimple.description}}</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+
+<data-md-table-pagination md-limit="querySimpleData.limit" md-limit-options="limitOptions" md-page="querySimpleData.page" md-total="{{itemsSimpleData.count}}" md-on-paginate="onPaginate" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks"></data-md-table-pagination>

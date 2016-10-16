@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="MyTim">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <title>TIM</title>
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  <link href="scripts/angular-material/angular-material.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="styles/custom-ama.css">
+</head>
+<body>
+<header>
+  <div class="header-wrap">
+    <div class="container">
+      <ul class="top-header">
+        <li><a href="#" class="ico-carrello"><i class="material-icons">person</i> Alessandra Rossi</a></li>
+        <li><a href="#" class="ico-mail"><i class="material-icons">exit_to_app</i> Log out</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="nav-wrap clearfix">
+    <div class="container"><a href="/" class="logo-tim"><img src="images/logo_tim_2016.png"></a>
+      <ul class="menu-nav clearfix js-menu-nav">
+        <li class="active"><a href="#">PROMO</a></li>
+        <li class=""><a href="#">PACK</a></li>
+        <li class="hover_open"><a href="#">ATTRIBUTI WEB</a>
+
+          <div class="sub-menu-nav">
+            <ul>
+              <li><a href="#">Attributi BF</a></li>
+              <li><a href="#">Attributi CS</a></li>
+              <li><a href="#">Attributi Ricarica</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="breadcrumb-container mb-10 mt-10 hidden-xs"><a href="#" class="active normal-text">Home</a> <a href="#"
+                                                                                                             class="active normal-text">Promozioni</a>
+    <span class="normal-text">PROMO ID1 Bene Fisico</span></div>
+</div>
+<div class="container"><h2 class="title-section">Ricerca</h2></div>
+<div class="container clearfix">
+  <form>
+    <div class="form-wrapper">
+      <div class="form-fieldset"><label class="form-label">Lorem ipsum</label><input type="text" class="form-control">
+      </div>
+      <div class="form-fieldset"><label class="form-label">Lorem ipsum</label><input type="text" class="form-control">
+      </div>
+      <div class="form-fieldset"><label class="form-label">Lorem ipsum</label><input type="text" class="form-control">
+      </div>
+      <div class="form-fieldset has-error"><label class="form-label">Lorem ipsum</label><input type="text"
+                                                                                               class="form-control"><label
+        class="text_error"><img src="https://img.tim.it:443/img/ico_info_red.png"> Il campo non può essere vuoto</label>
+      </div>
+      <div class="form-fieldset"><label class="form-label">Lorem ipsum</label><input type="text" class="form-control">
+      </div>
+      <div class="form-buttons"><input type="submit" class="btn-primary"></div>
+    </div>
+  </form>
+</div>
+<div class="container"><h2 class="title-section">Titolo</h2></div>
+<div class="container margin-bottom-40">
+  <div class="wrapper-app" ng-app="exampleApp">
+    <div class="datatable-wrap" layout="column" ng-controller="dataTableController">
+      <md-content laout="column">
+        <md-card ng-include="'templates/advanced-table.html'"></md-card>
+      </md-content>
+      <br><br><br>
+      <md-content laout="column">
+        <md-card ng-include="'templates/simple-table.html'"></md-card>
+      </md-content>
+    </div>
+  </div>
+</div>
+<footer class="js-footer-wrap">
+  <div class="footer-wrap">
+    <div class="container"></div>
+  </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="scripts/vendor/jquery.min.js"><\/script>')</script>
+<!-- angular scripts-->
+<script type="text/javascript" src="scripts/angular/angular.min.js"></script>
+<script type="text/javascript" src="scripts/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="scripts/angular-aria/angular-aria.min.js"></script>
+<script type="text/javascript" src="scripts/angular-resource/angular-resource.min.js"></script><!-- /angular scripts-->
+<script type="text/javascript" src="scripts/datatable-component/app.js"></script><!--tabella angular module scripts-->
+<script type="text/javascript" src="scripts/angular-material/angular-material.min.js"></script>
+<script type="text/javascript" src="scripts/datatable-component/md-data-table.min.js"></script>
+<!--/tabella angular module scripts--><!--tabella angular controller scripts-->
+<script type="text/javascript" src="scripts/datatable-component/dataTableResource.js"></script>
+<script type="text/javascript" src="scripts/datatable-component/dataTableController.js"></script>
+<!--tabella angular controller scripts-->
+<script src="scripts/custom-ama.js"></script>
+</body>
+</html>

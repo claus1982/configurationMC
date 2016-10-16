@@ -1,0 +1,65 @@
+{
+  "count": 9,
+  "payload":[{
+    "columns":[
+      {
+        "name": "Codice promo",
+        "orderBy": "code"
+      }, {
+        "name": "Descrizione promo",
+        "orderBy": "description"
+      }, {
+        "name": "Periodo validità",
+        "orderBy": "periodVal"
+      }, {
+        "name": "Periodo generazione",
+        "orderBy": "periodGen"
+      },  {
+        "name": "Codice Template SMS",
+        "orderBy": "codeTemplateSMS"
+      },  {
+        "name": "Codice Template Mail",
+        "orderBy": "codeTemplateMail"
+      }, {
+        "name":"FlagLinea",
+        "orderBy": "flagLinea"
+      }, {
+        "name":"QtyRiusoCoupon",
+        "orderBy": "qtyRiusoCoupon"
+      }
+    ],
+    "data": [
+      {
+        "code":"ID7-A124",
+        "description": "Promo sconto Ricarica nel mese di Dicembre",
+        "periodVal": "01/12/2016 – 31/12/2016",
+        "periodGen":"01/12/2016 – 31/12/2016",
+        "codeTemplateSMS": "SMS12",
+        "codeTemplateMail": "MAIL1",
+        "flagLinea":"no",
+        "qtyRiusoCoupon": 5
+      },
+      {
+        "code":"ID7-A126",
+        "description":"Promo sconto Ricarica nel mese di Dicembre",
+        "periodVal":"01/12/2016 – 31/12/2016",
+        "periodGen":"01/12/2016 – 31/12/2016",
+        "codeTemplateSMS":"SMS12",
+        "codeTemplateMail":"MAIL1",
+        "flagLinea":"no",
+        "qtyRiusoCoupon":150
+      },
+      {
+        "code":"ID7-A127",
+        "description":"Promo sconto Ricarica nel mese di Dicembre",
+        "periodVal":"01/12/2016 – 31/12/2016",
+        "periodGen":"01/12/2016 – 31/12/2016",
+        "codeTemplateSMS":"SMS12",
+        "codeTemplateMail":"MAIL1",
+        "flagLinea":"si",
+        "qtyRiusoCoupon":1000
+      }
+    ]
+  }]
+  
+}

@@ -1,0 +1,62 @@
+
+<md-dialog add-item-dialog>
+    <md-dialog-content class="md-dialog-content">
+
+        <h2 class="md-title">Aggiungi</h2>
+
+        <p ng-if="item.form.$submitted && item.form.$invalid" class="md-warn" layout="row" layout-align="start center">
+            <i class="material-icons">error_outline</i>
+            <span>&nbsp; All fields are required.</span>
+        </p>
+
+        <form name="item.form" ng-submit="ctrl.addItem()">
+            <div layout="row" class="input-row">
+                <md-input-container flex>
+                    <label>Codice Promo</label>
+                    <input name="code" ng-model="item.code" md-maxlength="20" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Descrizione promo</label>
+                    <input name="description" ng-model="item.description" required>
+                </md-input-container>
+            </div>
+            <div layout="row" class="input-row">
+                <md-input-container flex>
+                    <label>Periodo Validit%agrave;</label>
+                    <input name="periodVal" ng-model="item.periodVal" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Periodo Generazione</label>
+                    <input name="periodGen" ng-model="item.periodGen" required>
+                </md-input-container>
+            </div>
+            <div layout="row" class="input-row">
+                <md-input-container flex>
+                    <label>Codice Template SMS</label>
+                    <input name="codeTemplateSMS"  ng-model="item.codeTemplateSMS" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Codice Template Mail</label>
+                    <input name="codeTemplateMail" ng-model="item.codeTemplateMail" required>
+                </md-input-container>
+            </div>
+            <div layout="row" class="input-row">
+                <md-input-container flex>
+                    <label>FlagLinea</label>
+                    <input name="flagLinea"  ng-model="item.flagLinea" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>QtyRiusoCoupon</label>
+                    <input name="qtyRiusoCoupon" ng-model="item.qtyRiusoCoupon" required>
+                </md-input-container>
+            </div>
+        </form>
+
+    </md-dialog-content>
+
+    <div class="md-actions">
+        <md-button class="md-primary" ng-click="ctrl.addItem()" ng-disabled="item.form.$invalid">Add Item</md-button>
+        <md-button class="md-primary" ng-click="ctrl.cancel()">Cancel</md-button>
+    </div>
+
+</md-dialog>
