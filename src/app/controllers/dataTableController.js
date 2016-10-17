@@ -42,10 +42,24 @@ angular.module('app').controller('dataTableController',
     function success(res) {
         $scope.columns = res.payload[0].columns;
         $scope.items = res.payload[0];
+        $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
+
     }
     function successSimpleData(res) {
         $scope.columnsSimpleData = res.payload[0].columns;
         $scope.itemsSimpleData = res.payload[0];
+    }
+
+    $scope.resetItems = function(){
+      $scope.options.editMode=false;
+      $scope.options.rowSelection=true;
+      $scope.items = JSON.parse(JSON.stringify($scope.savedItems));
+    };
+
+    $scope.saveItems = function() {
+      $scope.options.editMode=false;
+      $scope.options.rowSelection=true;
+      $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
     }
 
     $scope.copyItem = function (event,dataItem) {
@@ -165,7 +179,9 @@ angular.module('app').controller('dataTableController',
 
 
     $scope.editField = function (isEditable, event, obj, model, title, placeholder, validators) {
-        event.stopPropagation();
+      // if auto selection is enabled you will want to stop the event
+      // from propagating and selecting the row
+      event.stopPropagation();
         if (isEditable) {
             model = model.split('.');
             var dialog = {

@@ -16,10 +16,10 @@
     <span class="label-modify">
       Desideri salvare le modifiche effettuate?
     </span>
-    <md-button class="md-button btn-secondary" ng-click="options.editMode=false;options.rowSelection=true">
+    <md-button class="md-button btn-secondary" ng-click="resetItems()">
       annulla
     </md-button>
-    <md-button class="md-button btn-primary">
+    <md-button class="md-button btn-primary" ng-click="saveItems()">
       salva
     </md-button>
   </div>
@@ -42,7 +42,9 @@
 
 <md-table-container>
 
-  <table ng-class="{'md-table-edit-mode':options.editMode}" data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" data-ng-model="selected" md-progress="promise">
+  <table ng-class="{'md-table-edit-mode':options.editMode}"
+         data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}"
+         data-ng-model="selected" md-progress="promise">
     <!--<thead ng-if="!options.decapitate" md-head data-md-order="query.order" md-on-reorder="onReorder">
       <tr md-row>
         <th md-column md:order:by="name"><span>item (100g serving)</span></th>
