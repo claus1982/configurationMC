@@ -1,0 +1,71 @@
+{
+  "count": 3,
+  "payload":[{
+    "columns":[
+      {"name":"ProductName","orderBy":"ProductName"},
+      {"name":"NMU","orderBy":"NMU"},
+      {"name":"Modello","orderBy":"Modello"},
+      {"name":"Marca","orderBy":"Marca"},
+      {"name":"NMUPadre","orderBy":"NMUPadre"},
+      {"name":"Price","orderBy":"Price"},
+      {"name":"webDescription","orderBy":"webDescription"},
+      {"name":"longDescriptionWeb","orderBy":"longDescriptionWeb"},
+      {"name":"joinedSeniorityConstraintWEB","orderBy":"joinedSeniorityConstraintWEB"},
+      {"name":"isWebSellable","orderBy":"isWebSellable"},
+      {"name":"paymentMethodWeb","orderBy":"paymentMethodWeb"},
+      {"name":"REGALABILE","orderBy":"REGALABILE"},
+      {"name":"pianoTariffarioWeb","orderBy":"pianoTariffarioWeb"},
+      {"name":"TIDweb","orderBy":"TIDweb"}
+    ],
+    "data": [
+      {
+        "ProductName"                  :  "ProductName1"                 ,
+        "NMU"                          :  "NMU1"                         ,
+        "Modello"                      :  "Modello1"                     ,
+        "Marca"                        :  "Marca1"                       ,
+        "NMUPadre"                     :  "NMUPadre1"                    ,
+        "Price"                        :  "Price1"                       ,
+        "webDescription"               :  "webDescription1"              ,
+        "longDescriptionWeb"           :  "longDescriptionWeb1"          ,
+        "joinedSeniorityConstraintWEB" :  "joinedSeniorityConstraintWEB1",
+        "isWebSellable"                :  "isWebSellable1"               ,
+        "paymentMethodWeb"             :  "paymentMethodWeb1"            ,
+        "REGALABILE"                   :  "REGALABILE1"                  ,
+        "pianoTariffarioWeb"           :  "pianoTariffarioWeb1"          ,
+        "TIDweb"                       :  "TIDweb1"
+      },
+      {
+        "ProductName"                  :  "ProductName2"                 ,
+        "NMU"                          :  "NMU2"                         ,
+        "Modello"                      :  "Modello2"                     ,
+        "Marca"                        :  "Marca2"                       ,
+        "NMUPadre"                     :  "NMUPadre2"                    ,
+        "Price"                        :  "Price2"                       ,
+        "webDescription"               :  "webDescription2"              ,
+        "longDescriptionWeb"           :  "longDescriptionWeb2"          ,
+        "joinedSeniorityConstraintWEB" :  "joinedSeniorityConstraintWEB2",
+        "isWebSellable"                :  "isWebSellable2"               ,
+        "paymentMethodWeb"             :  "paymentMethodWeb2"            ,
+        "REGALABILE"                   :  "REGALABILE2"                  ,
+        "pianoTariffarioWeb"           :  "pianoTariffarioWeb2"          ,
+        "TIDweb"                       :  "TIDweb2"
+      },
+      {
+        "ProductName"                  :  "ProductName3"                 ,
+        "NMU"                          :  "NMU3"                         ,
+        "Modello"                      :  "Modello3"                     ,
+        "Marca"                        :  "Marca3"                       ,
+        "NMUPadre"                     :  "NMUPadre3"                    ,
+        "Price"                        :  "Price3"                       ,
+        "webDescription"               :  "webDescription3"              ,
+        "longDescriptionWeb"           :  "longDescriptionWeb3"          ,
+        "joinedSeniorityConstraintWEB" :  "joinedSeniorityConstraintWEB3",
+        "isWebSellable"                :  "isWebSellable3"               ,
+        "paymentMethodWeb"             :  "paymentMethodWeb3"            ,
+        "REGALABILE"                   :  "REGALABILE3"                  ,
+        "pianoTariffarioWeb"           :  "pianoTariffarioWeb3"          ,
+        "TIDweb"                       :  "TIDweb3"
+      }
+    ]
+  }]
+}

@@ -1,0 +1,55 @@
+{
+  "count": 3,
+  "payload":[{
+    "columns":[
+      {"name":"Nome Offerta","orderBy":"Nome Offerta"},
+      {"name":"Nome prodotto ","orderBy":"Nome prodotto "},
+      {"name":"Codice Carta Servizi","orderBy":"Codice Carta Servizi"},
+      {"name":"defaultFlag","orderBy":"defaultFlag"},
+      {"name":"parentDisplayName","orderBy":"parentDisplayName"},
+      {"name":"webDescription","orderBy":"webDescription"},
+      {"name":"longDescriptionWeb","orderBy":"longDescriptionWeb"},
+      {"name":"joinedSeniorityConstraintWEB","orderBy":"joinedSeniorityConstraintWEB"},
+      {"name":"isWebSellable","orderBy":"isWebSellable"},
+      {"name":"paymentMethodWeb","orderBy":"paymentMethodWeb"}
+    ],
+    "data": [
+      {
+        "Nome Offerta"                 :  "Nome Offerta1"                ,
+        "Nome prodotto"                :  "Nome prodotto1"               ,
+        "Codice Carta Servizi"         :  "Codice Carta Servizi1"        ,
+        "defaultFlag"                  :  "defaultFlag1"                 ,
+        "parentDisplayName"            :  "parentDisplayName1"           ,
+        "webDescription"               :  "webDescription1"              ,
+        "longDescriptionWeb"           :  "longDescriptionWeb1"          ,
+        "joinedSeniorityConstraintWEB" :  "joinedSeniorityConstraintWEB1",
+        "isWebSellable"                :  "isWebSellable1"               ,
+        "paymentMethodWeb"             :  "paymentMethodWeb1"
+      },
+      {
+        "Nome Offerta"                 :  "Nome Offerta2"                ,
+        "Nome prodotto"                :  "Nome prodotto2"               ,
+        "Codice Carta Servizi"         :  "Codice Carta Servizi2"        ,
+        "defaultFlag"                  :  "defaultFlag2"                 ,
+        "parentDisplayName"            :  "parentDisplayName2"           ,
+        "webDescription"               :  "webDescription2"              ,
+        "longDescriptionWeb"           :  "longDescriptionWeb2"          ,
+        "joinedSeniorityConstraintWEB" :  "joinedSeniorityConstraintWEB2",
+        "isWebSellable"                :  "isWebSellable2"               ,
+        "paymentMethodWeb"             :  "paymentMethodWeb2"
+      },
+      {
+        "Nome Offerta"                 :  "Nome Offerta3"                ,
+        "Nome prodotto"                :  "Nome prodotto3"               ,
+        "Codice Carta Servizi"         :  "Codice Carta Servizi3"        ,
+        "defaultFlag"                  :  "defaultFlag3"                 ,
+        "parentDisplayName"            :  "parentDisplayName3"           ,
+        "webDescription"               :  "webDescription3"              ,
+        "longDescriptionWeb"           :  "longDescriptionWeb3"          ,
+        "joinedSeniorityConstraintWEB" :  "joinedSeniorityConstraintWEB3",
+        "isWebSellable"                :  "isWebSellable3"               ,
+        "paymentMethodWeb"             :  "paymentMethodWeb3"
+      }
+    ]
+  }]
+}

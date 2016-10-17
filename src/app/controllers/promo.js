@@ -1,6 +1,6 @@
 angular.module('app')
-  .controller('CSCtrl', function ($scope) {
+  .controller('promoCtrl', function ($scope) {
   $scope.model = $scope.model || {};
 
-})
+});
 

@@ -3,11 +3,11 @@
   <head>
     <base href="/">
     <meta charset="utf-8">
-    <title>FountainJS</title>
+    <title>Master Catalog Configurator</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
-  
+    <link rel="icon" type="image/png" href="images/logo_tim_2016_mini.png.png" />
+
     <!-- build:css({.tmp,src}) styles/vendor.css -->
     <!-- bower:css -->
     <!-- run `gulp inject` to automatically populate bower styles dependencies -->
@@ -23,7 +23,11 @@
 
 
   <body ng-app="app">
-    <ui-view></ui-view>
+    <div ui-view="header"></div>
+    <div ui-view="breadcrumb"></div>
+    <div ui-view="main"></div>
+    <div ui-view="footer"></div>
+    </body>
   </body>
 
   <!-- build:js({.tmp,src}) scripts/vendor.js -->
