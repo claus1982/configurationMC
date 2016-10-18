@@ -7,9 +7,11 @@
 
         <div class="sub-menu-nav">
           <ul>
-            <li><a href="#">Attributi BF</a></li>
-            <li><a href="#">Attributi CS</a></li>
-            <li><a href="#">Attributi Ricarica</a></li>
+            <li ng-repeat="item in model.attributes.menu">
+              <a href="#" ng-click="item.onClick()">
+                {{item.label}}
+              </a>
+            </li>
           </ul>
         </div>
       </li>

@@ -19,13 +19,17 @@
     </div>
   </form>
 </div>-->
-<div class="container"><h2 class="title-section">Titolo</h2></div>
+<div class="container"><h1 class="title-section">Attributi CS</h1></div>
 <div class="container margin-bottom-40">
   <div class="wrapper-app">
-    <div class="datatable-wrap" layout="column" ng-controller="dataTableController">
-      <md-content layout="column">
-        <div ng-include="'app/templates/partials/advanced-table.html'"></div>
-      </md-content>
+    <div class="datatable-wrap" layout="column">
+      <md-card>
+        <!--<div ng-include="'app/templates/partials/advanced-table.html'"></div>-->
+        <dbss-web-data-table
+        data = "CSTable"
+        >
+        </dbss-web-data-table>
+      </md-card>
      <!-- <br><br><br>
       <md-content layout="column">
         <div ng-include="'app/templates/partials/simple-table.html'"></div>

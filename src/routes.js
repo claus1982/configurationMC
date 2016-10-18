@@ -24,7 +24,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'breadcrumb': {
           templateUrl: 'app/templates/partials/breadcrumb.html',
-          controller: 'breadcrumbCtrl'
+          controller: 'headerCtrl'
         },
         'header': {
           templateUrl: 'app/templates/partials/header.html',
@@ -42,7 +42,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'breadcrumb': {
           templateUrl: 'app/templates/partials/breadcrumb.html',
-          controller: 'breadcrumbCtrl'
+          controller: 'headerCtrl'
         },
         'header': {
           templateUrl: 'app/templates/partials/header.html',
@@ -60,7 +60,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'breadcrumb': {
           templateUrl: 'app/templates/partials/breadcrumb.html',
-          controller: 'breadcrumbCtrl'
+          controller: 'headerCtrl'
         },
         'header': {
           templateUrl: 'app/templates/partials/header.html',

@@ -1,0 +1,94 @@
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <md-button ng-hide="options.editMode" ng-show="!options.rowSelection || !selected.length" class="md-primary" ng-click="addItem($event)">aggiungi</md-button>
+    <md-button ng-hide="options.editMode" ng-show="!options.rowSelection || !selected.length" class="md-primary" ng-click="options.editMode=!options.editMode;options.rowSelection=false">modifica</md-button>
+    <div class="right-position">
+      <md-button class="md-icon-button">
+        <md-icon>search</md-icon>
+      </md-button>
+      <input class="input-search" type="text" placeholder="Search" ng-model="query.filter">
+    </div>
+  </div>
+</md-toolbar>
+
+<md-toolbar class="md-table-toolbar alternate" ng-show="options.editMode">
+  <div class="md-toolbar-tools">
+    <span class="label-modify">
+      Desideri salvare le modifiche effettuate?
+    </span>
+    <md-button class="md-button btn-secondary" ng-click="resetItems()">
+      annulla
+    </md-button>
+    <md-button class="md-button btn-primary" ng-click="saveItems()">
+      salva
+    </md-button>
+  </div>
+</md-toolbar>
+
+<md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
+  <div class="md-toolbar-tools">
+    <span>{{selected.length}} {{selected.length > 1 ? 'record selezionati' : 'record selezionato'}}</span>
+    <div class="right-position">
+      <md-button class="md-icon-button" title="Selezionare max un record" ng-disabled="options.rowSelection && selected.length>1" ng-click="copyItem(event,selected)">
+        <md-icon>content_copy</md-icon>
+      </md-button>
+      <md-button class="md-icon-button">
+        <md-icon>delete</md-icon>
+      </md-button>
+    </div>
+
+  </div>
+</md-toolbar>
+
+<md-table-container>
+  <table ng-class="{'md-table-edit-mode':options.editMode}"
+         data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}"
+         data-ng-model="selected" md-progress="promise">
+    <thead md-head md-order="query.order">
+    <tr md-row>
+      <th md-column ng-repeat="column in columns" md-numeric="column.numeric" md-order-by="{{column.orderBy}}">
+        <span>{{column.name}}</span>
+        <span ng-if="column.unit">({{column.unit}})</span>
+      </th>
+    </tr>
+    </thead>
+    <tbody md-body>
+    <tr   md-row
+          md-select="item"
+          md-select-id="name"
+          data-md-on-select="log"
+          md-on-deselect="deselect"
+          x-md-auto-select=""
+          ng-disabled=""
+          data-ng-repeat="item in items.data | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
+
+
+          <td ng-repeat="column in data"
+              md-cell>
+            <span ng-if="!options.editMode">
+              {{item[column.model]}}
+            </span>
+            <span ng-if="options.editMode && column.type==='text'"
+              md-cell
+              ng-click="editField(options.editMode,$event, item,column.model,column.title,column.title)">
+              {{item[column.model]}}
+            </span>
+            <span ng-if="options.editMode && column.type==='options'">
+                  <md-select ng-model="item[column.model]" placeholder="Other">
+                    <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
+                  </md-select>
+            </span>
+          </td>
+    </tr>
+    </tbody>
+  </table>
+</md-table-container>
+
+<data-md-table-pagination md-limit="query.limit"
+                          md-limit-options="limitOptions"
+                          md-page="query.page"
+                          md-total="{{items.data.length}}"
+                          md-on-paginate="onPaginate"
+                          md-page-select="options.pageSelect"
+                          md-boundary-links="options.boundaryLinks">
+</data-md-table-pagination>

@@ -1,8 +1,16 @@
 angular.module('app')
-  .controller('headerCtrl', function ($scope) {
+  .controller('headerCtrl', function ($scope, $state) {
+
+
+    $scope.model = $scope.model || {};
+
+    $scope.model.currentState = $state.current.data.label;
+    $scope.model.goToHome = function()
+    {
+      $state.go("home");
+    };
 
     function init() {
-      $scope.model = $scope.model || {};
       $scope.model.promo = {};
       $scope.model.pack = {};
       $scope.model.attributes = {};

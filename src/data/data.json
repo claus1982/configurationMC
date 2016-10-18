@@ -1,63 +1,54 @@
 {
-  "count": 9,
+  "count": 3,
   "payload":[{
     "columns":[
-      {
-        "name": "Codice promo",
-        "orderBy": "code"
-      }, {
-        "name": "Descrizione promo",
-        "orderBy": "description"
-      }, {
-        "name": "Periodo validità",
-        "orderBy": "periodVal"
-      }, {
-        "name": "Periodo generazione",
-        "orderBy": "periodGen"
-      },  {
-        "name": "Codice Template SMS",
-        "orderBy": "codeTemplateSMS"
-      },  {
-        "name": "Codice Template Mail",
-        "orderBy": "codeTemplateMail"
-      }, {
-        "name":"FlagLinea",
-        "orderBy": "flagLinea"
-      }, {
-        "name":"QtyRiusoCoupon",
-        "orderBy": "qtyRiusoCoupon"
-      }
+      {"name":"nomeOfferta","orderBy":"Nome Offerta"},
+      {"name":"nomeProdotto ","orderBy":"Nome Prodotto "},
+      {"name":"codiceCartaServizi","orderBy":"codiceCartaServizi"},
+      {"name":"defaultFlag","orderBy":"defaultFlag"},
+      {"name":"parentDisplayName","orderBy":"parentDisplayName"},
+      {"name":"webDescription","orderBy":"webDescription"},
+      {"name":"longDescriptionWeb","orderBy":"longDescriptionWeb"},
+      {"name":"joinedSeniorityConstraintWEB","orderBy":"joinedSeniorityConstraintWEB"},
+      {"name":"isWebSellable","orderBy":"isWebSellable"},
+      {"name":"paymentMethodWeb","orderBy":"paymentMethodWeb"}
     ],
     "data": [
       {
-        "code":"ID7-A124",
-        "description": "Promo sconto Ricarica nel mese di Dicembre",
-        "periodVal": "01/12/2016 – 31/12/2016",
-        "periodGen":"01/12/2016 – 31/12/2016",
-        "codeTemplateSMS": "SMS12",
-        "codeTemplateMail": "MAIL1",
-        "flagLinea":"no",
-        "qtyRiusoCoupon": 5
+        "nomeOfferta"                 :  "nomeOfferta1"                ,
+        "nomeProdotto"                :  "nomeProdotto1"               ,
+        "codiceCartaServizi"         :  "codiceCartaServizi1"        ,
+        "defaultFlag"                  :  "defaultFlag1"                 ,
+        "parentDisplayName"            :  "parentDisplayName1"           ,
+        "webDescription"               :  "webDescription1"              ,
+        "longDescriptionWeb"           :  "longDescriptionWeb1"          ,
+        "joinedSeniorityConstraintWEB" :  "joinedSeniorityConstraintWEB1",
+        "isWebSellable"                :  "SI"               ,
+        "paymentMethodWeb"             :  "paymentMethodWeb1"
       },
       {
-        "code":"ID7-A126",
-        "description":"Promo sconto Ricarica nel mese di Dicembre",
-        "periodVal":"01/12/2016 – 31/12/2016",
-        "periodGen":"01/12/2016 – 31/12/2016",
-        "codeTemplateSMS":"SMS12",
-        "codeTemplateMail":"MAIL1",
-        "flagLinea":"no",
-        "qtyRiusoCoupon":150
+        "nomeOfferta"                 :  "nomeOfferta2"                ,
+        "nomeProdotto"                :  "nomeProdotto2"               ,
+        "codiceCartaServizi"         :  "codiceCartaServizi2"        ,
+        "defaultFlag"                  :  "defaultFlag2"                 ,
+        "parentDisplayName"            :  "parentDisplayName2"           ,
+        "webDescription"               :  "webDescription2"              ,
+        "longDescriptionWeb"           :  "longDescriptionWeb2"          ,
+        "joinedSeniorityConstraintWEB" :  "joinedSeniorityConstraintWEB2",
+        "isWebSellable"                :  "NO"               ,
+        "paymentMethodWeb"             :  "paymentMethodWeb2"
       },
       {
-        "code":"ID7-A127",
-        "description":"Promo sconto Ricarica nel mese di Dicembre",
-        "periodVal":"01/12/2016 – 31/12/2016",
-        "periodGen":"01/12/2016 – 31/12/2016",
-        "codeTemplateSMS":"SMS12",
-        "codeTemplateMail":"MAIL1",
-        "flagLinea":"si",
-        "qtyRiusoCoupon":1000
+        "nomeOfferta"                 :  "nomeOfferta3"                ,
+        "nomeProdotto"                :  "nomeProdotto3"               ,
+        "codiceCartaServizi"         :  "codiceCartaServizi3"        ,
+        "defaultFlag"                  :  "defaultFlag3"                 ,
+        "parentDisplayName"            :  "parentDisplayName3"           ,
+        "webDescription"               :  "webDescription3"              ,
+        "longDescriptionWeb"           :  "longDescriptionWeb3"          ,
+        "joinedSeniorityConstraintWEB" :  "joinedSeniorityConstraintWEB3",
+        "isWebSellable"                :  "SI"               ,
+        "paymentMethodWeb"             :  "paymentMethodWeb3"
       }
     ]
   }]
