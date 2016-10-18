@@ -6,7 +6,7 @@ angular.module('app').factory('$dataTableResources', ['$resource', function ($re
     {
       CS:
       {
-        items: $resource('data/CS.json')
+        items: $resource('/data/CS.json')
       },
       BF:
       {

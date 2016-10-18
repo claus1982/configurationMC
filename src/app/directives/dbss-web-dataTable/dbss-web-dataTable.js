@@ -91,7 +91,7 @@
                   $scope.item.form.$setSubmitted();
 
                   if ($scope.item.form.$valid) {
-                    $dataTableResources.items.save({item: $scope.item}, success);
+                    $dataTableResources.attribute.CS.items.save({item: $scope.item}, success);
                   }
                 };
               },
@@ -122,7 +122,7 @@
                   $scope.item.form.$setSubmitted();
 
                   if ($scope.item.form.$valid) {
-                    $dataTableResources.items.save({item: $scope.item}, success);
+                    $dataTableResources.attribute.CS.items.save({item: $scope.item}, success);
                   }
                 };
               },
