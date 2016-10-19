@@ -16,5 +16,9 @@ angular.module('app')
       {'model':'paymentMethodWeb','title':'paymentMethodWeb','type':'text'}
     ];
 
+    $scope.BFTable = [
+
+    ];
+
 });
 

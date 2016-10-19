@@ -14,19 +14,20 @@
         controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, $dataTableResources, $state) {
           'use strict';
 
-
-          $scope.options = {
-            editMode: false,
-            showFilter: false,
-            rowSelection: true,
-            multiSelect: true,
-            autoSelect: true,
-            decapitate: false,
-            largeEditDialog: false,
-            boundaryLinks: false,
-            limitSelect: true,
-            pageSelect: true
-          };
+          if (!$scope.options) {
+            $scope.options = {
+              editMode: false,
+              showFilter: false,
+              rowSelection: true,
+              multiSelect: true,
+              autoSelect: true,
+              decapitate: false,
+              largeEditDialog: false,
+              boundaryLinks: false,
+              limitSelect: true,
+              pageSelect: true
+            };
+          }
 
           $scope.selected = [];
           $scope.limitOptions = [5, 10, 15, {
@@ -150,7 +151,7 @@
 
           $scope.getItems = function () {
             console.log('$scope.query.filter', $scope.query.filter);
-            $scope.promise = $dataTableResources.attribute.CS.items.get($scope.query, success).$promise;
+            $scope.promise = $dataTableResources.attribute.CS.items.get("", success).$promise;
           };
      /*     $scope.getSimpleTableData = function () {
             console.log('$scope.query.filter', $scope.query.filter);

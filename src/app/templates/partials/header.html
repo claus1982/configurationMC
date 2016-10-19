@@ -1,9 +1,13 @@
 <div class="nav-wrap clearfix">
   <div class="container"><a href="/" class="logo-tim"><img src="../../../images/logo_tim_2016.png"></a>
     <ul class="menu-nav clearfix js-menu-nav">
-      <li class="active"><a href="#">PROMO</a></li>
-      <li class=""><a href="#">PACK</a></li>
-      <li class="hover_open"><a href="#">ATTRIBUTI WEB</a>
+      <li>
+        <a href="#">PROMO
+      </a>
+      </li>
+      <li><a href="#">PACK</a></li>
+      <li class="hover_open" ng-class="{ 'active': model.currentState === 'Attributi CS'}">
+        <a href="#">ATTRIBUTI WEB</a>
 
         <div class="sub-menu-nav">
           <ul>
