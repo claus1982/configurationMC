@@ -9,12 +9,14 @@
         </p>
 
         <form name="item.form" ng-submit="ctrl.addItem()">
-            <div class="input-row">
-                <md-input-container flex ng-repeat="column in table">
+
+              <div layout="column" ng-repeat="column in table">
+                <md-input-container flex>
                     <label>{{column.title}}</label>
                     <input name="{{column.model}}" ng-model="item[column.model]" required>
                 </md-input-container>
-            </div>
+              </div>
+
         </form>
 
     </md-dialog-content>

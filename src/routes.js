@@ -68,7 +68,61 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         'main': {
           templateUrl: 'app/templates/attributeCS.html',
-          controller: 'attributeCSCtrl'
+          controller: 'attributeCtrl'
+        }
+      }
+    })
+    .state('attributiBF', {
+      data: {label: 'Attributi BF'},
+      url: '/attributi/BF',
+      views: {
+        'breadcrumb': {
+          templateUrl: 'app/templates/partials/breadcrumb.html',
+          controller: 'headerCtrl'
+        },
+        'header': {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        },
+        'main': {
+          templateUrl: 'app/templates/attributeBF.html',
+          controller: 'attributeCtrl'
+        }
+      }
+    })
+    .state('attributiSIM', {
+      data: {label: 'Attributi SIM'},
+      url: '/attributi/SIM',
+      views: {
+        'breadcrumb': {
+          templateUrl: 'app/templates/partials/breadcrumb.html',
+          controller: 'headerCtrl'
+        },
+        'header': {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        },
+        'main': {
+          templateUrl: 'app/templates/attributeSIM.html',
+          controller: 'attributeCtrl'
+        }
+      }
+    })
+    .state('attributiRicarica', {
+      data: {label: 'Attributi Ricarica'},
+      url: '/attributi/ricarica',
+      views: {
+        'breadcrumb': {
+          templateUrl: 'app/templates/partials/breadcrumb.html',
+          controller: 'headerCtrl'
+        },
+        'header': {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        },
+        'main': {
+          templateUrl: 'app/templates/attributeRicarica.html',
+          controller: 'attributeCtrl'
         }
       }
     })
