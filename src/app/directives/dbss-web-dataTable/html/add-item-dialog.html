@@ -10,12 +10,23 @@
 
         <form name="item.form" ng-submit="ctrl.addItem()">
 
-              <div layout="column" ng-repeat="column in table">
-                <md-input-container flex>
+              <span ng-repeat="column in table" class="col-md-4">
+                <md-input-container flex ng-if="column.type==='text'">
                     <label>{{column.title}}</label>
                     <input name="{{column.model}}" ng-model="item[column.model]" required>
                 </md-input-container>
-              </div>
+
+                 <md-input-container flex   ng-if="column.type==='options'"
+                  <md-select ng-model="armor"
+
+                             placeholder="Armor">
+                    <md-option value="cloth">Cloth</md-option>
+                    <md-option value="leather">Leather</md-option>
+                    <md-option value="chain">Chainmail</md-option>
+                    <md-option value="plate">Plate</md-option>
+                  </md-select>
+                </md-input-container>
+              </span>
 
         </form>
 

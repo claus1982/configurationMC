@@ -1,20 +1,22 @@
 angular.module('app')
   .controller('attributeCtrl', function ($scope, $timeout) {
   $scope.model = $scope.model || {};
+    $scope.focusinControl = {};
 
 
     //todo qui va richiamato il servizio di GET
     $scope.submit = function()
     {
-      delete $scope.tableData;
+      //call getItems (GET SERVICE) from directive
+      $scope.focusinControl.getItems();
       console.log("form submitted...loading");
-      $scope.loading = true;
+
       //CS Attribute Table columns
-      $timeout(function() {
-        $scope.tableData = [
-          {'model':'nomeOfferta','title':'nomeOfferta','type':'text'},
-          {'model':'nomeProdotto','title':'nomeProdotto','type':'text'},
-          {'model':'codiceCartaServizi','title':'codiceCartaServizi','type':'text'},
+
+        $scope.columns = [
+          {'model':'nomeOfferta','title':'Nome Offerta','type':'text'},
+          {'model':'nomeProdotto','title':'Nome Prodotto','type':'text'},
+          {'model':'codiceCartaServizi','title':'Codice Carta Servizi','type':'text'},
           {'model':'defaultFlag','title':'defaultFlag','type':'options'},
           {'model':'parentDisplayName','title':'parentDisplayName','type':'text'},
           {'model':'webDescription','title':'webDescription','type':'text'},
@@ -23,8 +25,6 @@ angular.module('app')
           {'model':'isWebSellable','title':'isWebSellable','type':'options'},
           {'model':'paymentMethodWeb','title':'paymentMethodWeb','type':'text'}
         ];
-        $scope.loading = false;
-      }, 1500);
 
     };
 

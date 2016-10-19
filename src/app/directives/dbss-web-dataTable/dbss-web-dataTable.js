@@ -7,8 +7,8 @@
         templateUrl: 'app/directives/dbss-web-dataTable/html/advanced-table.html',
         scope: {
           'options': '=?',
-          'data': '=?',
-          'columns': '=?'
+          'columns': '=?',
+          'control': '='
         },
 
         controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, $dataTableResources, $state) {
@@ -50,10 +50,10 @@
           };
 
 
-          $scope.columns = [];
+             function success(res) {
+    /*        $scope.columns = res.payload[0].columns;*/
 
-          function success(res) {
-            $scope.columns = res.payload[0].columns;
+            $scope.loading = false;
             $scope.items = res.payload[0];
             $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
 
@@ -101,10 +101,10 @@
               targetEvent: event,
               templateUrl: 'app/directives/dbss-web-dataTable/html/copy-item-dialog.html',
               locals: {
-                table: $scope.data
+                table: $scope.columns
               }
 
-            }).then($scope.getItems);
+            }).then($scope.internalControl.getItems);
           };
 
           $scope.addItem = function (event) {
@@ -132,9 +132,9 @@
               targetEvent: event,
               templateUrl: 'app/directives/dbss-web-dataTable/html/add-item-dialog.html',
               locals: {
-                table: $scope.data
+                table: $scope.columns
               }
-            }).then($scope.getItems);
+            }).then($scope.internalControl.getItems);
           };
 
           $scope.delete = function (event) {
@@ -146,12 +146,25 @@
               targetEvent: event,
               locals: {items: $scope.selected},
               templateUrl: 'app/directives/dbss-web-dataTable/html/delete-dialog.html',
-            }).then($scope.getItems);
+            }).then($scope.internalControl.getItems);
           };
 
-          $scope.getItems = function () {
-            console.log('$scope.query.filter', $scope.query.filter);
-            $scope.promise = $dataTableResources.attribute.CS.items.get("", success).$promise;
+
+            $scope.internalControl = $scope.control || {};
+
+          $scope.internalControl.getItems = function () {
+
+            console.log('called getItems, $scope.query.filter', $scope.query.filter);
+            delete $scope.items;
+            $scope.loading = true;
+            //CS Attribute Table columns
+
+            //TODO da eliminare timeout che simula ritardo del servizio
+            $timeout(function() {
+
+              $scope.promise = $dataTableResources.attribute.CS.items.get("", success).$promise;
+            }, 1500);
+
           };
      /*     $scope.getSimpleTableData = function () {
             console.log('$scope.query.filter', $scope.query.filter);
@@ -179,7 +192,7 @@
             if (!newValue) {
               $scope.query.page = bookmark;
             }
-            $scope.getItems();
+           // $scope.internalControl.getItems();
             //$scope.getSimpleTableData();
 
           });
@@ -246,7 +259,7 @@
 
             $scope.promise = $timeout(function () {
 
-            }, 2000);
+            }, 300);
           };
 
           $scope.deselect = function (item) {
