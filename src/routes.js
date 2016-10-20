@@ -67,7 +67,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           controller: 'headerCtrl'
         },
         'main': {
-          templateUrl: 'app/templates/attributeCS.html',
+          templateUrl: 'app/templates/attribute.html',
           controller: 'attributeCtrl'
         }
       }
@@ -85,7 +85,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           controller: 'headerCtrl'
         },
         'main': {
-          templateUrl: 'app/templates/attributeBF.html',
+          templateUrl: 'app/templates/attribute.html',
           controller: 'attributeCtrl'
         }
       }
@@ -103,7 +103,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           controller: 'headerCtrl'
         },
         'main': {
-          templateUrl: 'app/templates/attributeSIM.html',
+          templateUrl: 'app/templates/attribute.html',
           controller: 'attributeCtrl'
         }
       }
@@ -121,7 +121,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           controller: 'headerCtrl'
         },
         'main': {
-          templateUrl: 'app/templates/attributeRicarica.html',
+          templateUrl: 'app/templates/attribute.html',
           controller: 'attributeCtrl'
         }
       }

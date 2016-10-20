@@ -8,7 +8,9 @@
         scope: {
           'options': '=?',
           'columns': '=?',
-          'control': '='
+          'searchParams': '=',
+          'control': '=',
+
         },
 
         controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, $dataTableResources, $state) {
@@ -29,6 +31,8 @@
             };
           }
 
+          console.log("columns:"+$scope.columns);
+        console.log("searchParams:"+$scope.searchParams);
           $scope.selected = [];
           $scope.limitOptions = [5, 10, 15, {
             label: 'All',
@@ -50,20 +54,23 @@
           };
 
 
-             function success(res) {
-    /*        $scope.columns = res.payload[0].columns;*/
+          //TODO qui va richiamato il servizio di GET
+          $scope.submit = function()
+          {
+            //call getItems (GET SERVICE) from directive
+            $scope.getItems();
+            console.log("form submitted...loading");
 
-            $scope.loading = false;
-            $scope.items = res.payload[0];
-            $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
 
-          }
+          };
 
-   /*       function successSimpleData(res) {
-            $scope.columnsSimpleData = res.payload[0].columns;
-            $scope.itemsSimpleData = res.payload[0];
-          }
-*/
+          //determines if the search field is required
+          $scope.isRequired = function(){
+            return !($scope.searchParams.filter(function(obj){
+              return (angular.isDefined(obj.model) && obj.model !== "");
+            }).length > 0);
+          };
+
           $scope.resetItems = function () {
             $scope.options.editMode = false;
             $scope.options.rowSelection = true;
@@ -80,9 +87,10 @@
 
             $mdDialog.show({
               clickOutsideToClose: true,
-              controller: function ($mdDialog, $dataTableResources, $scope, table) {
+              controller: function ($mdDialog, $dataTableResources, $scope, table, getTypes) {
                 this.cancel = $mdDialog.cancel;
                 $scope.table = table;
+                $scope.getTypes = getTypes;
                 $scope.item = dataItem[0];
                 function success(item) {
                   $mdDialog.hide(item);
@@ -101,19 +109,21 @@
               targetEvent: event,
               templateUrl: 'app/directives/dbss-web-dataTable/html/copy-item-dialog.html',
               locals: {
-                table: $scope.columns
+                table: $scope.columns,
+                getTypes: $scope.getTypes
               }
 
-            }).then($scope.internalControl.getItems);
+            }).then($scope.getItems);
           };
 
           $scope.addItem = function (event) {
 
             $mdDialog.show({
               clickOutsideToClose: true,
-              controller: function ($mdDialog, $dataTableResources, $scope, table) {
+              controller: function ($mdDialog, $dataTableResources, $scope, table, getTypes) {
                 this.cancel = $mdDialog.cancel;
                 $scope.table = table;
+                $scope.getTypes = getTypes;
 
                 function success(item) {
                   $mdDialog.hide(item);
@@ -132,9 +142,10 @@
               targetEvent: event,
               templateUrl: 'app/directives/dbss-web-dataTable/html/add-item-dialog.html',
               locals: {
-                table: $scope.columns
+                table: $scope.columns,
+                getTypes: $scope.getTypes
               }
-            }).then($scope.internalControl.getItems);
+            }).then($scope.getItems);
           };
 
           $scope.delete = function (event) {
@@ -146,25 +157,43 @@
               targetEvent: event,
               locals: {items: $scope.selected},
               templateUrl: 'app/directives/dbss-web-dataTable/html/delete-dialog.html',
-            }).then($scope.internalControl.getItems);
+            }).then($scope.getItems);
           };
 
 
+          //utilizzato per richiamare la funzione esterna dei servizi
             $scope.internalControl = $scope.control || {};
 
-          $scope.internalControl.getItems = function () {
+
+
+          function success(res) {
+
+            $scope.loading = false;
+            $scope.items = res.data.getWebResponse.payload;
+            $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
+
+          }
+          function reject(res) {
+
+            $scope.loading = false;
+
+          }
+
+
+          $scope.getItems = function () {
 
             console.log('called getItems, $scope.query.filter', $scope.query.filter);
-            delete $scope.items;
+            $scope.items = [];
+            $scope.selected = [];
             $scope.loading = true;
             //CS Attribute Table columns
+           $scope.internalControl.extGetItems().then(success, reject);
 
-            //TODO da eliminare timeout che simula ritardo del servizio
+     /*       //TODO da eliminare timeout che simula ritardo del servizio
             $timeout(function() {
 
               $scope.promise = $dataTableResources.attribute.CS.items.get("", success).$promise;
-            }, 1500);
-
+            }, 1500);*/
           };
      /*     $scope.getSimpleTableData = function () {
             console.log('$scope.query.filter', $scope.query.filter);
@@ -192,7 +221,7 @@
             if (!newValue) {
               $scope.query.page = bookmark;
             }
-           // $scope.internalControl.getItems();
+           // $scope.getItems();
             //$scope.getSimpleTableData();
 
           });
@@ -252,7 +281,7 @@
           };
 
           $scope.getTypes = function () {
-            return ['Si', 'No'];
+            return ['SI', 'NO'];
           };
 
           $scope.onPaginate = function (page, limit) {

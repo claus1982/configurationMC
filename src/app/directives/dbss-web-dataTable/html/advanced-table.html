@@ -1,3 +1,27 @@
+<div class="container"><h2 class="title-section">Ricerca</h2></div>
+<div class="container clearfix">
+  <form name="myForm" class="form-wrapper" ng-submit="submit()">
+
+    <div class="form-fieldset" ng-repeat = "param in searchParams"
+         ng-class="{'has-error':myForm[param.name].$error.required}"
+         ng-messages="myForm[param.name].$error">
+      <label class="form-label">{{param.title}}</label>
+      <input name="{{param.name}}"
+             ng-model="param.model"
+             type="text"
+             class="form-control"
+             ng-required="isRequired()">
+      <div ng-messages-include="app/templates/partials/messages.html"></div>
+    </div>
+
+    <div class="form-buttons">
+      <input type="submit"
+             class="btn-primary"
+             ng-disabled="myForm.$invalid">
+    </div>
+  </form>
+</div>
+
 <div ng-if="loading"
      layout="row"
      layout-sm="column"
@@ -5,7 +29,7 @@
   <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </div>
 
-<div ng-if="items.data" class="container"><h1 class="title-section">Attributi CS</h1>
+<div ng-if="items" class="container"><h1 class="title-section">Attributi CS</h1>
   <div class="container margin-bottom-40">
     <div class="wrapper-app">
       <div class="datatable-wrap" layout="column">
@@ -74,7 +98,7 @@
           md-on-deselect="deselect"
           x-md-auto-select=""
           ng-disabled=""
-          data-ng-repeat="item in items.data | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
+          data-ng-repeat="item in items | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
 
 
           <td ng-repeat="column in columns"
@@ -84,7 +108,7 @@
             </span>
             <span ng-if="options.editMode && column.type==='text'"
                   md-cell
-                  ng-click="editField(options.editMode,$event, item,column.model,column.title,column.title)">
+                  ng-click="editField(options.editMode && column.editable,$event, item,column.model,column.title,column.title)">
               {{item[column.model]}}
             </span>
             <span ng-if="options.editMode && column.type==='options'">
@@ -101,7 +125,7 @@
 <data-md-table-pagination md-limit="query.limit"
                           md-limit-options="limitOptions"
                           md-page="query.page"
-                          md-total="{{items.data.length}}"
+                          md-total="{{items.length}}"
                           md-on-paginate="onPaginate"
                           md-page-select="options.pageSelect"
                           md-boundary-links="options.boundaryLinks">
