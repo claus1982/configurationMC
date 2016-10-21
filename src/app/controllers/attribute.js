@@ -42,8 +42,7 @@ angular.module('app')
 
         },
         function (res) {
-          promise([]);
-          Notification.error({message: 'Error ' + res.status});
+          promise();
         }
       );
     };
@@ -78,9 +77,8 @@ angular.module('app')
 
           },
           function (res) {
-            promise([]);
+            promise();
             // Message with custom delay
-            Notification.error({message: 'Error ' + res.status});
           }
         );
 

@@ -1,6 +1,6 @@
 angular.module('app')
   .constant("myConfig", {
-    "baseUrl": "http://localhost:4730",
+    "baseUrl": "http://10.13.254.188:1212",
     //http services timeout
     "timeout": 10000
   })

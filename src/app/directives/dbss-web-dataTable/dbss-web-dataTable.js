@@ -106,18 +106,24 @@
           function setItemsClbkHandler(header) {
             console.log("setItemsClbkHandler called");
             console.log("header:",header);
-            $scope.header = header;
-
-            if ($scope.header && $scope.header.code == '0') {
-              $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
-              console.log("setWeb success");
-            }
-            else {
-              console.log("setWeb failed");
-              $scope.error = 'Errore '+header.code+": "+header.description;
+            if (!header) {
+              $scope.error = 'Timeout: Nessuna Risposta dal Server';
               Notification.error({message: $scope.error});
             }
-            resetOptions();
+            else {
+              $scope.header = header;
+
+              if ($scope.header && $scope.header.code == '0') {
+                $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
+                console.log("setWeb success");
+              }
+              else {
+                console.log("setWeb failed");
+                $scope.error = 'Errore ' + header.code + ": " + header.description;
+                Notification.error({message: $scope.error});
+              }
+              resetOptions();
+            }
             $scope.loading = false;
           }
 
@@ -230,15 +236,21 @@
             console.log("getItemsClbkHandler called");
             console.log("payload:",payload);
             console.log("header:",header);
-            $scope.header = header;
-
-            if ($scope.header && $scope.header.code === '0') {
-              $scope.items = payload;
-              $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
+            if (!header) {
+              $scope.error = 'Timeout: Nessuna Risposta dal Server';
+              Notification.error({message: $scope.error});
             }
             else {
-              $scope.error = 'Errore '+header.code+": "+header.description;
-              Notification.error({message: $scope.error});
+              $scope.header = header;
+
+              if ($scope.header && $scope.header.code === '0') {
+                $scope.items = payload;
+                $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
+              }
+              else {
+                $scope.error = 'Errore ' + header.code + ": " + header.description;
+                Notification.error({message: $scope.error});
+              }
             }
             $scope.loading = false;
 
