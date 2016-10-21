@@ -9,12 +9,23 @@
             <span>&nbsp; Tutti i campi sono obbligatori.</span>
         </p>
           <form name="item.form" ng-submit="ctrl.addItem()">
-            <div class="input-row">
-              <md-input-container flex ng-repeat="column in table">
-                <label>{{column.title}}</label>
-                <input name="{{column.model}}" ng-model="item[column.model]" required>
-              </md-input-container>
-            </div>
+             <span ng-repeat="column in columns">
+               <div layout="row" class="input-row">
+                <md-input-container flex ng-if="column.type==='text'">
+                  <label>{{column.title}}</label>
+                  <input name="{{column.model}}" ng-model="item[column.model]" required>
+                </md-input-container>
+
+                <md-input-container flex ng-if="column.type==='options'">
+                  <label>{{column.title}}</label>
+                  <md-select ng-model="column.model">
+                    <md-option ng-value="type" ng-repeat="type in getTypes()" ng-model="item[column.model]">
+                      {{type}}
+                    </md-option>
+                  </md-select>
+                </md-input-container>
+                 </div>
+              </span>
           </form>
     </md-dialog-content>
 

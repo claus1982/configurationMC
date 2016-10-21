@@ -1,5 +1,18 @@
 angular
   .module('app')
+  .config(function(NotificationProvider) {
+    NotificationProvider.setOptions({
+      delay: 100000,
+      startTop: 400,
+      startRight: 550,
+      verticalSpacing: 100,
+      horizontalSpacing: 20,
+      replaceMessage: true,
+      positionX: 'left',
+      closeOnClick: true,
+      positionY: 'top'
+    });
+  })
   .config(routesConfig);
 
 /** @ngInject */
@@ -55,7 +68,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('attributiCS', {
-      data: {label: 'Attributi CS'},
+      data: {label: 'Attributi CS', servicePath: "attribute"},
       url: '/attributi/CS',
       views: {
         'breadcrumb': {
@@ -67,8 +80,62 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           controller: 'headerCtrl'
         },
         'main': {
-          templateUrl: 'app/templates/attributeCS.html',
-          controller: 'attributeCSCtrl'
+          templateUrl: 'app/templates/attribute.html',
+          controller: 'attributeCtrl'
+        }
+      }
+    })
+    .state('attributiBF', {
+      data: {label: 'Attributi BF'},
+      url: '/attributi/BF',
+      views: {
+        'breadcrumb': {
+          templateUrl: 'app/templates/partials/breadcrumb.html',
+          controller: 'headerCtrl'
+        },
+        'header': {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        },
+        'main': {
+          templateUrl: 'app/templates/attribute.html',
+          controller: 'attributeCtrl'
+        }
+      }
+    })
+    .state('attributiSIM', {
+      data: {label: 'Attributi SIM'},
+      url: '/attributi/SIM',
+      views: {
+        'breadcrumb': {
+          templateUrl: 'app/templates/partials/breadcrumb.html',
+          controller: 'headerCtrl'
+        },
+        'header': {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        },
+        'main': {
+          templateUrl: 'app/templates/attribute.html',
+          controller: 'attributeCtrl'
+        }
+      }
+    })
+    .state('attributiRicarica', {
+      data: {label: 'Attributi Ricarica'},
+      url: '/attributi/ricarica',
+      views: {
+        'breadcrumb': {
+          templateUrl: 'app/templates/partials/breadcrumb.html',
+          controller: 'headerCtrl'
+        },
+        'header': {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        },
+        'main': {
+          templateUrl: 'app/templates/attribute.html',
+          controller: 'attributeCtrl'
         }
       }
     })

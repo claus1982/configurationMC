@@ -1,0 +1,35 @@
+{
+  "getWebResponse":{
+    "header":{
+      "result":"0",
+      "errorCode":"0",
+      "description":"operation completed"
+    },
+    "payload":[
+      {
+        "webDescription":"Tim Special",
+        "longDescriptionWeb":"Tim Special",
+        "joinedSeniorityConstraintWeb":"AL|MNP|CB",
+        "isWebSellable":"true",
+        "paymentMethodWeb":"Carta di Credito",
+        "nomeOfferta":"Tim Special",
+        "nomeProdotto":"ODE46 - Internet 7 giorni",
+        "codiceCartaServizi":"12345",
+        "defaultFlag":"true",
+        "parentDisplayName":"Tim Special"
+      },
+      {
+        "webDescription":"Tim Young",
+        "longDescriptionWeb":"Tim Young",
+        "joinedSeniorityConstraintWeb":"AL|MNP|CB",
+        "isWebSellable":"true",
+        "paymentMethodWeb":"Carta di Credito",
+        "nomeOfferta":"Tim Young",
+        "nomeProdotto":"ODE46 - Internet 7 giorni",
+        "codiceCartaServizi":"12345",
+        "defaultFlag":"true",
+        "parentDisplayName":"Tim Young"
+      }
+    ]
+  }
+}

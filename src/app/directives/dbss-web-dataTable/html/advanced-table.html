@@ -1,7 +1,45 @@
+<div class="container"><h2 class="title-section">Ricerca</h2></div>
+<div class="container clearfix">
+  <form name="myForm" class="form-wrapper" ng-submit="submit()">
+
+    <div class="form-fieldset" ng-repeat = "param in searchParams"
+         ng-class="{'has-error':myForm[param.name].$error.required}"
+         ng-messages="myForm[param.name].$error">
+      <label class="form-label">{{param.title}}</label>
+      <input name="{{param.name}}"
+             ng-model="param.model"
+             type="text"
+             class="form-control"
+             ng-required="isRequired()">
+      <div ng-messages-include="app/templates/partials/messages.html"></div>
+    </div>
+
+    <div class="form-buttons">
+      <input type="submit"
+             class="btn-primary"
+             ng-disabled="myForm.$invalid">
+    </div>
+  </form>
+</div>
+
+<div ng-if="loading"
+     layout="row"
+     layout-sm="column"
+     layout-align="space-around">
+  <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
+<div ng-if="items" class="container"><h1 class="title-section">Attributi CS</h1>
+  <div class="container margin-bottom-40">
+    <div class="wrapper-app">
+      <div class="datatable-wrap" layout="column">
+        <md-card>
+          <!--<div ng-include="'app/templates/partials/advanced-table.html'"></div>-->
+
 <md-toolbar class="md-table-toolbar md-default">
   <div class="md-toolbar-tools">
-    <md-button ng-hide="options.editMode" ng-show="!options.rowSelection || !selected.length" class="md-primary" ng-click="addItem($event)">aggiungi</md-button>
-    <md-button ng-hide="options.editMode" ng-show="!options.rowSelection || !selected.length" class="md-primary" ng-click="options.editMode=!options.editMode;options.rowSelection=false">modifica</md-button>
+    <md-button ng-if="options.addMode" ng-hide="options.editMode" ng-show="!options.rowSelection || !selected.length" class="md-primary" ng-click="addItem($event)">aggiungi</md-button>
+    <md-button ng-hide="options.editMode" ng-show="!options.rowSelection || !selected.length" class="md-primary" ng-click="enableEditMode()">modifica</md-button>
     <div class="right-position">
       <md-button class="md-icon-button">
         <md-icon>search</md-icon>
@@ -16,7 +54,7 @@
     <span class="label-modify">
       Desideri salvare le modifiche effettuate?
     </span>
-    <md-button class="md-button btn-secondary" ng-click="resetItems()">
+    <md-button class="md-button btn-secondary" ng-click="restoreSavedItems()">
       annulla
     </md-button>
     <md-button class="md-button btn-primary" ng-click="saveItems()">
@@ -25,18 +63,23 @@
   </div>
 </md-toolbar>
 
-<md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
+<md-toolbar class="md-table-toolbar alternate"
+            ng-show="options.rowSelection && selected.length">
   <div class="md-toolbar-tools">
     <span>{{selected.length}} {{selected.length > 1 ? 'record selezionati' : 'record selezionato'}}</span>
     <div class="right-position">
-      <md-button class="md-icon-button" title="Selezionare max un record" ng-disabled="options.rowSelection && selected.length>1" ng-click="copyItem(event,selected)">
+      <md-button ng-if="options.copyMode"
+                 class="md-icon-button"
+                 title="Selezionare max un record"
+                 ng-disabled="options.rowSelection && selected.length>1"
+                 ng-click="copyItem(event,selected)">
         <md-icon>content_copy</md-icon>
       </md-button>
-      <md-button class="md-icon-button">
+      <md-button class="md-icon-button"
+                 ng-if="options.deleteMode">
         <md-icon>delete</md-icon>
       </md-button>
     </div>
-
   </div>
 </md-toolbar>
 
@@ -46,9 +89,9 @@
          data-ng-model="selected" md-progress="promise">
     <thead md-head md-order="query.order">
     <tr md-row>
-      <th md-column ng-repeat="column in columns" md-numeric="column.numeric" md-order-by="{{column.orderBy}}">
-        <span>{{column.name}}</span>
-        <span ng-if="column.unit">({{column.unit}})</span>
+      <th md-column ng-repeat="column in columns" md-numeric="column.numeric" md-order-by="{{column.model}}">
+        <span>{{column.title}}</span>
+        <!--<span ng-if="column.unit">({{column.unit}})</span>-->
       </th>
     </tr>
     </thead>
@@ -60,25 +103,37 @@
           md-on-deselect="deselect"
           x-md-auto-select=""
           ng-disabled=""
-          data-ng-repeat="item in items.data | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
+          data-ng-repeat="item in items | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
 
 
-          <td ng-repeat="column in data"
-              md-cell>
-            <span ng-if="!options.editMode">
+          <td ng-repeat="column in columns"
+             md-cell>
+            <span ng-if="!options.editMode && !isArray(item[column.model])">
               {{item[column.model]}}
+            </span>
+             <span ng-if="!options.editMode && isArray(item[column.model])">
+             <span ng-repeat="value in item[column.model]">
+                 {{value + ($last ? '' : ',')}}
+             </span>
             </span>
             <span ng-if="options.editMode && column.type==='text'"
-              md-cell
-              ng-click="editField(options.editMode,$event, item,column.model,column.title,column.title)">
+                  md-cell
+                  ng-click="editTextField(options.editMode && column.editable,$event, item,column.model,column.title,column.title)">
               {{item[column.model]}}
             </span>
-            <span ng-if="options.editMode && column.type==='options'">
-                  <md-select ng-model="item[column.model]" placeholder="Other">
-                    <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
+            <span ng-if="options.editMode && column.type==='options' && !column.multiple">
+                  <md-select ng-model="item[column.model]" placeholder="Other"
+                  >
+                    <md-option ng-value="type" ng-repeat="type in column.options">{{type}}</md-option>
                   </md-select>
             </span>
-          </td>
+            <span ng-if="options.editMode && column.type==='options' && column.multiple">
+                  <md-select ng-model="item[column.model]" placeholder="Other" multiple
+                  >
+                    <md-option ng-value="type" ng-repeat="type in column.options">{{type}}</md-option>
+                  </md-select>
+            </span>
+    </td>
     </tr>
     </tbody>
   </table>
@@ -87,8 +142,19 @@
 <data-md-table-pagination md-limit="query.limit"
                           md-limit-options="limitOptions"
                           md-page="query.page"
-                          md-total="{{items.data.length}}"
+                          md-total="{{items.length}}"
                           md-on-paginate="onPaginate"
                           md-page-select="options.pageSelect"
                           md-boundary-links="options.boundaryLinks">
 </data-md-table-pagination>
+        </md-card>
+        <!-- <br><br><br>
+         <md-content layout="column">
+           <div ng-include="'app/templates/partials/simple-table.html'"></div>
+         </md-content>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
