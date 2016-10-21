@@ -10,25 +10,49 @@
           'columns': '=?',
           'searchParams': '=',
           'control': '=',
+          'getItemsClbk': '&',
+          'setItemsClbk': '&'
 
         },
 
-        controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, $dataTableResources, $state) {
+        controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, Notification) {
           'use strict';
 
+          $scope.isArray = angular.isArray;
+
+          var initialOptions = {},
+            defaultOptions = {
+            addMode: false,
+            editMode: false,
+            deleteMode: false,
+            copyMode: false,
+            showFilter: false,
+            rowSelection: true,
+            multiSelect: false,
+            autoSelect: false,
+            decapitate: false,
+            largeEditDialog: false,
+            boundaryLinks: false,
+            limitSelect: true,
+            pageSelect: true
+          };
+
           if (!$scope.options) {
-            $scope.options = {
-              editMode: false,
-              showFilter: false,
-              rowSelection: true,
-              multiSelect: true,
-              autoSelect: true,
-              decapitate: false,
-              largeEditDialog: false,
-              boundaryLinks: false,
-              limitSelect: true,
-              pageSelect: true
-            };
+            $scope.options = defaultOptions;
+          }
+
+          //save initial options in order to reset the options
+          initialOptions = JSON.parse(JSON.stringify($scope.options));
+
+          function resetOptions () {
+            $scope.options = JSON.parse(JSON.stringify(initialOptions));;
+          }
+
+          function resetTable(){
+            delete $scope.items;
+            delete $scope.savedItems;
+            $scope.selected = [];
+            delete $scope.error;
           }
 
           console.log("columns:"+$scope.columns);
@@ -54,12 +78,13 @@
           };
 
 
+
+
           //TODO qui va richiamato il servizio di GET
           $scope.submit = function()
           {
-            //call getItems (GET SERVICE) from directive
-            $scope.getItems();
             console.log("form submitted...loading");
+            $scope.getItems();
 
 
           };
@@ -71,26 +96,66 @@
             }).length > 0);
           };
 
-          $scope.resetItems = function () {
-            $scope.options.editMode = false;
-            $scope.options.rowSelection = true;
+          $scope.restoreSavedItems = function () {
+            resetOptions();
             $scope.items = JSON.parse(JSON.stringify($scope.savedItems));
           };
 
-          $scope.saveItems = function () {
-            $scope.options.editMode = false;
-            $scope.options.rowSelection = true;
-            $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
+
+
+          function setItemsClbkHandler(header) {
+            console.log("setItemsClbkHandler called");
+            console.log("header:",header);
+            $scope.header = header;
+
+            if ($scope.header && $scope.header.code == '0') {
+              $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
+              console.log("setWeb success");
+            }
+            else {
+              console.log("setWeb failed");
+              $scope.error = 'Errore '+header.code+": "+header.description;
+              Notification.error({message: $scope.error});
+            }
+            resetOptions();
+            $scope.loading = false;
           }
+
+          $scope.enableEditMode = function() {
+            $scope.options.editMode=!$scope.options.editMode;
+            $scope.options.rowSelection=false;
+          };
+
+          $scope.saveItems = function () {
+
+            //TODO gestione setWeb
+            var modifiedItems = [];
+
+              for (var i=0;i<$scope.items.length; i++)
+              {
+                if (!angular.equals($scope.items[i],$scope.savedItems[i]))
+                {
+                  modifiedItems.push($scope.items[i]);
+                  console.log($scope.items[i]);
+                }
+              }
+            console.log("modified items:");
+            console.log(modifiedItems);
+
+              $scope.setItemsClbk({
+              params: modifiedItems,
+              promise: setItemsClbkHandler
+            });
+
+          };
 
           $scope.copyItem = function (event, dataItem) {
 
             $mdDialog.show({
               clickOutsideToClose: true,
-              controller: function ($mdDialog, $dataTableResources, $scope, table, getTypes) {
+              controller: function ($mdDialog,  $scope, columns) {
                 this.cancel = $mdDialog.cancel;
-                $scope.table = table;
-                $scope.getTypes = getTypes;
+                $scope.columns = columns;
                 $scope.item = dataItem[0];
                 function success(item) {
                   $mdDialog.hide(item);
@@ -100,7 +165,7 @@
                   $scope.item.form.$setSubmitted();
 
                   if ($scope.item.form.$valid) {
-                    $dataTableResources.attribute.CS.items.save({item: $scope.item}, success);
+
                   }
                 };
               },
@@ -109,8 +174,7 @@
               targetEvent: event,
               templateUrl: 'app/directives/dbss-web-dataTable/html/copy-item-dialog.html',
               locals: {
-                table: $scope.columns,
-                getTypes: $scope.getTypes
+                columns: $scope.columns
               }
 
             }).then($scope.getItems);
@@ -120,10 +184,9 @@
 
             $mdDialog.show({
               clickOutsideToClose: true,
-              controller: function ($mdDialog, $dataTableResources, $scope, table, getTypes) {
+              controller: function ($mdDialog,  $scope, columns) {
                 this.cancel = $mdDialog.cancel;
-                $scope.table = table;
-                $scope.getTypes = getTypes;
+                $scope.columns = columns;
 
                 function success(item) {
                   $mdDialog.hide(item);
@@ -133,7 +196,7 @@
                   $scope.item.form.$setSubmitted();
 
                   if ($scope.item.form.$valid) {
-                    $dataTableResources.attribute.CS.items.save({item: $scope.item}, success);
+
                   }
                 };
               },
@@ -142,8 +205,7 @@
               targetEvent: event,
               templateUrl: 'app/directives/dbss-web-dataTable/html/add-item-dialog.html',
               locals: {
-                table: $scope.columns,
-                getTypes: $scope.getTypes
+                columns: $scope.columns
               }
             }).then($scope.getItems);
           };
@@ -161,44 +223,42 @@
           };
 
 
-          //utilizzato per richiamare la funzione esterna dei servizi
+          //TODO non utilizzato
             $scope.internalControl = $scope.control || {};
 
+          function getItemsClbkHandler(payload, header) {
+            console.log("getItemsClbkHandler called");
+            console.log("payload:",payload);
+            console.log("header:",header);
+            $scope.header = header;
 
-
-          function success(res) {
-
+            if ($scope.header && $scope.header.code === '0') {
+              $scope.items = payload;
+              $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
+            }
+            else {
+              $scope.error = 'Errore '+header.code+": "+header.description;
+              Notification.error({message: $scope.error});
+            }
             $scope.loading = false;
-            $scope.items = res.data.getWebResponse.payload;
-            $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
 
           }
-          function reject(res) {
-
-            $scope.loading = false;
-
-          }
-
 
           $scope.getItems = function () {
 
             console.log('called getItems, $scope.query.filter', $scope.query.filter);
-            $scope.items = [];
-            $scope.selected = [];
+            resetTable();
+            resetOptions();
             $scope.loading = true;
-            //CS Attribute Table columns
-           $scope.internalControl.extGetItems().then(success, reject);
 
-     /*       //TODO da eliminare timeout che simula ritardo del servizio
-            $timeout(function() {
-
-              $scope.promise = $dataTableResources.attribute.CS.items.get("", success).$promise;
-            }, 1500);*/
+            $scope.getItemsClbk({
+              params: $scope.searchParams,
+              promise: getItemsClbkHandler
+            });
           };
-     /*     $scope.getSimpleTableData = function () {
-            console.log('$scope.query.filter', $scope.query.filter);
-            $scope.promiseSimpleData = $dataTableResources.simpleData.get($scope.querySimpleData, successSimpleData).$promise;
-          };*/
+
+
+
           $scope.removeFilter = function () {
             $scope.filter.show = false;
             $scope.query.filter = '';
@@ -242,8 +302,7 @@
 
           });*/
 
-
-          $scope.editField = function (isEditable, event, obj, model, title, placeholder, validators) {
+          $scope.editTextField = function (isEditable, event, obj, model, title, placeholder, validators) {
             // if auto selection is enabled you will want to stop the event
             // from propagating and selecting the row
             event.stopPropagation();
@@ -258,6 +317,7 @@
                   } else {
                     obj[model[0]] = input.$modelValue;
                   }
+                  obj.modified = true;
                 },
                 targetEvent: event,
                 title: title,
@@ -280,9 +340,6 @@
             $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
           };
 
-          $scope.getTypes = function () {
-            return ['SI', 'NO'];
-          };
 
           $scope.onPaginate = function (page, limit) {
 

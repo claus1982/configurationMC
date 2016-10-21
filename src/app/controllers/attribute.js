@@ -1,64 +1,73 @@
 angular.module('app')
-  .controller('attributeCtrl', function ($scope, $timeout, $dataTableResources, getWebService) {
+  .controller('attributeCtrl', function ($scope, $state, dataTableResources, getWebService, setWebService) {
     $scope.model = $scope.model || {};
-    $scope.focusinControl = {};
+    //$scope.focusinControl = {};
 
 
-    function success(res) {
-      /*        $scope.columns = res.payload[0].columns;*/
+      $scope.params = dataTableResources[$state.$current.name].params;
 
-      $scope.loading = false;
-      $scope.items = res.payload[0];
-      $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
-
-    }
-
-    /*       function successSimpleData(res) {
-     $scope.columnsSimpleData = res.payload[0].columns;
-     $scope.itemsSimpleData = res.payload[0];
-     }
-     */
-
-    //CS Attribute Table columns
-
-    $scope.params = [
-      {'name': 'nomeOfferta', 'title': 'Nome Offerta', 'type': 'text'},
-      {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text'}
-    ];
-
-    $scope.columns = [
-      {'model': 'nomeOfferta', 'title': 'Nome Offerta', 'type': 'text'},
-      {'model': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text'},
-      {'model': 'codiceCartaServizi', 'title': 'Codice Carta Servizi', 'type': 'text'},
-      {'model': 'defaultFlag', 'title': 'defaultFlag', 'type': 'options','editable':"true"},
-      {'model': 'parentDisplayName', 'title': 'parentDisplayName', 'type': 'text','editable':"true"},
-      {'model': 'webDescription', 'title': 'webDescription', 'type': 'text','editable':"true"},
-      {'model': 'longDescriptionWeb', 'title': 'longDescriptionWeb', 'type': 'text','editable':"true"},
-      {'model': 'joinedSeniorityConstraintWEB', 'title': 'joinedSeniorityConstraintWEB', 'type': 'text','editable':"true"},
-      {'model': 'isWebSellable', 'title': 'isWebSellable', 'type': 'options','editable':"true"},
-      {'model': 'paymentMethodWeb', 'title': 'paymentMethodWeb', 'type': 'text','editable':"true"}
-    ];
+      $scope.columns = dataTableResources[$state.$current.name].columns;
 
 
-    $scope.focusinControl.extGetItems = function ()
-    {
-      //return $dataTableResources.attribute.CS.items.get("").$promise;
+    //callback richiamata nella direttiva
+    $scope.getWeb = function (params, promise) {
+      console.log("callback getItemsClbk called from directive");
+      console.log(params);
 
-      var input =
-      {
-       "operation": "",
-        "productName": ""
-      };
+      var input = {};
+      angular.forEach(params, function (param) {
+        input[param.name] = param.model;
+      });
+      input["operation"] = dataTableResources[$state.$current.name].getOperation;
 
-      var req = getWebService.getWebRequest(input);
-      return getWebService.getWeb(req);
+      getWebService.getWeb(getWebService.getWebRequest(input)).then(
+        function (res) {
+          var response = res.data.getWebResponse;
+          promise(response.payload, response.header);
 
-    }
-  }
+        },
+        function (res) {
+          promise([]);
+          Notification.error({message: 'Error '+res.status});
+        }
+      );
+    };
+
+    //callback richiamata nella direttiva
+    $scope.setWeb = function (params, promise) {
+      console.log("callback setItemsClbk called from directive");
+      console.log(params);
 
 
+      angular.forEach(params, function (item) {
+        setWebService.setWeb(setWebService.setWebRequest({
+          "operation": dataTableResources[$state.$current.name].setOperation,
+          "nomeOfferta": item.nomeOfferta,
+          "nomeProdotto": item.nomeProdotto,
+          "codiceCartaServizi": item.codiceCartaServizi,
+          "defaultFlag": item.defaultFlag,
+          "parentDisplayName": item.parentDisplayName,
+          "webDescription": item.webDescription,
+          "longDescriptionWeb": item.longDescriptionWeb,
+          "joinedSeniorityConstraintWeb": item.joinedSeniorityConstraintWeb,
+          "isWebSellable": item.isWebSellable,
+          "paymentMethodWeb": item.paymentMethodWeb
+        })).then(
+          function (res) {
+            var response = res.data.setWebResponse;
+            promise(response.header);
+
+          },
+          function (res) {
+            promise([]);
+            // Message with custom delay
+            Notification.error({message: 'Error '+res.status});
+          }
+        );
 
 
+      });
+    };
 
-);
+  });
 

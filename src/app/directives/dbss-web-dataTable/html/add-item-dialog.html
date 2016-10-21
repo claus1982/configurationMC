@@ -9,8 +9,8 @@
         </p>
 
         <form name="item.form" ng-submit="ctrl.addItem()">
-
-              <span ng-repeat="column in table">
+              <span ng-repeat="column in columns">
+                <div layout="row" class="input-row">
                 <md-input-container flex ng-if="column.type==='text'">
                     <label>{{column.title}}</label>
                     <input name="{{column.model}}" ng-model="item[column.model]" required>
@@ -22,8 +22,8 @@
                     <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
                   </md-select>
                 </md-input-container>
+                  </div>
               </span>
-
         </form>
 
     </md-dialog-content>

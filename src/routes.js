@@ -1,5 +1,18 @@
 angular
   .module('app')
+  .config(function(NotificationProvider) {
+    NotificationProvider.setOptions({
+      delay: 100000,
+      startTop: 400,
+      startRight: 550,
+      verticalSpacing: 100,
+      horizontalSpacing: 20,
+      replaceMessage: true,
+      positionX: 'left',
+      closeOnClick: true,
+      positionY: 'top'
+    });
+  })
   .config(routesConfig);
 
 /** @ngInject */
@@ -55,7 +68,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('attributiCS', {
-      data: {label: 'Attributi CS'},
+      data: {label: 'Attributi CS', servicePath: "attribute"},
       url: '/attributi/CS',
       views: {
         'breadcrumb': {

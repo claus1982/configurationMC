@@ -5,12 +5,14 @@
 
 
     this.getWebRequest = function (inputData) {
-      return {
-        "getWebRequest": {
-          "operation": inputData.operation || "",
-          "productName": inputData.productName || ""
-        }
+    var req = {
+      getWebRequest: {
+        operation: inputData.operation,
+        nomeOfferta: inputData.nomeOfferta,
+        nomeProdotto: inputData.nomeProdotto
       }
+    }
+      return req;
     };
 
     this.getWeb = function (request) {

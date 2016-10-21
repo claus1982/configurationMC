@@ -9,41 +9,63 @@ var json =
 {
   "getWebResponse":{
     "header":{
-      "result":"0",
-      "errorCode":"KO",
-      "description":"operation completed"
+      "result":"Fatal Error",
+      "code":"1",
+      "description":"operation failed"
     },
     "payload":[
       {
         "webDescription":"Tim Special",
         "longDescriptionWeb":"Tim Special",
-        "joinedSeniorityConstraintWeb":"AL|MNP|CB",
-        "isWebSellable":true,
+        "joinedSeniorityConstraintWeb":["AL", "MNP", "CB"],
+        "isWebSellable":"true",
         "paymentMethodWeb":"Carta di Credito",
         "nomeOfferta":"Tim Special",
         "nomeProdotto":"ODE46 - Internet 7 giorni",
-        "codiceCartaServizi":12345,
-        "defaultFlag":true,
+        "codiceCartaServizi":"12345",
+        "defaultFlag":"true",
         "parentDisplayName":"Tim Special"
       },
       {
         "webDescription":"Tim Young",
         "longDescriptionWeb":"Tim Young",
-        "joinedSeniorityConstraintWeb":"AL|MNP|CB",
-        "isWebSellable":true,
+        "joinedSeniorityConstraintWeb":["AL", "MNP", "CB"],
+        "isWebSellable":"true",
         "paymentMethodWeb":"Carta di Credito",
         "nomeOfferta":"Tim Young",
         "nomeProdotto":"ODE46 - Internet 7 giorni",
-        "codiceCartaServizi":12345,
-        "defaultFlag":true,
+        "codiceCartaServizi":"12345",
+        "defaultFlag":"true",
         "parentDisplayName":"Tim Young"
+      },
+      {
+        "webDescription":"Tim Tutto",
+        "longDescriptionWeb":"Tim Tutto",
+        "joinedSeniorityConstraintWeb":["AL", "MNP", "CB"],
+        "isWebSellable":"true",
+        "paymentMethodWeb":"Carta di Credito",
+        "nomeOfferta":"Tim Tutto",
+        "nomeProdotto":"ODE543 - Internet TUTTI i giorni",
+        "codiceCartaServizi":"12143",
+        "defaultFlag":"false",
+        "parentDisplayName":"Tim Tutto"
+      },
+      {
+        "webDescription":"Tim Niente",
+        "longDescriptionWeb":"Tim Niente",
+        "joinedSeniorityConstraintWeb":["AL", "MNP", "CB"],
+        "isWebSellable":"true",
+        "paymentMethodWeb":"Carta di Credito",
+        "nomeOfferta":"Tim Niente",
+        "nomeProdotto":"ODE133 - Internet MAI i giorni",
+        "codiceCartaServizi":"11123",
+        "defaultFlag":"false",
+        "parentDisplayName":"Tim Niente"
       }
     ]
   }
 };
 
-
-var quotes = json.getWebResponse.payload;
 
 app.post('/getWeb', function(req, res) {
 
@@ -51,40 +73,21 @@ app.post('/getWeb', function(req, res) {
 });
 
 
-app.get('/attribute/CS/:nomeOfferta', function(req, res) {
-  var q = quotes.filter(function(obj){
-    return obj.nomeOfferta === req.params.nomeOfferta;
-  });
+app.post('/setWeb', function(req, res) {
 
-  if(q.length === 0) {
-    res.statusCode = 404;
-    return res.send('Error 404: No Offer found');
-  }
-  res.json(res.statusCode);
+  var json = {
+    "setWebResponse":{
+      "header":{
+        "result":"Fatal Error",
+        "code":"1",
+        "description":"operation failed"
+      }
+    }
+  };
+
+  res.send(json);
 });
 
-app.get('/attribute/CS/:nomeProdotto', function(req, res) {
-  var q = quotes.filter(function(obj){
-    return obj.nomeProdotto === req.params.nomeProdotto;
-  });
 
-  if(q.length === 0) {
-    res.statusCode = 404;
-    return res.send('Error 404: No Offer found');
-  }
-  res.json(q);
-});
-
-app.get('/attribute/CS/:nomeOfferta/:nomeProdotto', function(req, res) {
-  var q = quotes.filter(function(obj){
-    return (obj.nomeOfferta === req.params.nomeOfferta &&  obj.nomeProdotto === req.params.nomeProdotto);
-  });
-
-  if(q.length === 0) {
-    res.statusCode = 404;
-    return res.send('Error 404: No Offer found');
-  }
-  res.json(q);
-});
 
 app.listen(process.env.PORT || 4730);
