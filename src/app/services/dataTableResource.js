@@ -5,7 +5,7 @@ angular.module('app').factory('dataTableResources', ['lovService', function (lov
       {
         getOperation: "getCSWeb",
         setOperation: "setCSWeb",
-        params : [
+        searchParams : [
         {'name': 'nomeOfferta', 'title': 'Nome Offerta', 'type': 'text'},
         {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text'}],
 
@@ -42,6 +42,7 @@ angular.module('app').factory('dataTableResources', ['lovService', function (lov
             'model': 'paymentMethodWeb',
             'title': 'paymentMethodWeb',
             'type': 'options',
+            'multiple': true,
             'options': lovService.getPaymentMethodType(),
             'editable': true
           }

@@ -10,14 +10,14 @@ var json =
   "getWebResponse":{
     "header":{
       "result":"Fatal Error",
-      "code":"1",
+      "code":"0",
       "description":"operation failed"
     },
     "payload":[
       {
         "webDescription":"Tim Special",
         "longDescriptionWeb":"Tim Special",
-        "joinedSeniorityConstraintWeb":["AL", "MNP", "CB"],
+        "joinedSeniorityConstraintWeb":"AL",
         "isWebSellable":"true",
         "paymentMethodWeb":"Carta di Credito",
         "nomeOfferta":"Tim Special",
@@ -29,7 +29,7 @@ var json =
       {
         "webDescription":"Tim Young",
         "longDescriptionWeb":"Tim Young",
-        "joinedSeniorityConstraintWeb":["AL", "MNP", "CB"],
+        "joinedSeniorityConstraintWeb":"AL|MNP",
         "isWebSellable":"true",
         "paymentMethodWeb":"Carta di Credito",
         "nomeOfferta":"Tim Young",
@@ -41,7 +41,7 @@ var json =
       {
         "webDescription":"Tim Tutto",
         "longDescriptionWeb":"Tim Tutto",
-        "joinedSeniorityConstraintWeb":["AL", "MNP", "CB"],
+        "joinedSeniorityConstraintWeb":"AL|MNP|CB",
         "isWebSellable":"true",
         "paymentMethodWeb":"Carta di Credito",
         "nomeOfferta":"Tim Tutto",
@@ -53,9 +53,9 @@ var json =
       {
         "webDescription":"Tim Niente",
         "longDescriptionWeb":"Tim Niente",
-        "joinedSeniorityConstraintWeb":["AL", "MNP", "CB"],
+        "joinedSeniorityConstraintWeb":"AL|MNP|CB",
         "isWebSellable":"true",
-        "paymentMethodWeb":"Carta di Credito",
+        "paymentMethodWeb":"Carta di Credito|Pay Pal",
         "nomeOfferta":"Tim Niente",
         "nomeProdotto":"ODE133 - Internet MAI i giorni",
         "codiceCartaServizi":"11123",
@@ -79,7 +79,7 @@ app.post('/setWeb', function(req, res) {
     "setWebResponse":{
       "header":{
         "result":"Fatal Error",
-        "code":"1",
+        "code":"0",
         "description":"operation failed"
       }
     }
