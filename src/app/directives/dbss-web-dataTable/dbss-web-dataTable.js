@@ -6,6 +6,7 @@
         restrict : 'E',
         templateUrl: 'app/directives/dbss-web-dataTable/html/advanced-table.html',
         scope: {
+          'title': '=?',
           'options': '=?',
           'columns': '=?',
           'searchParams': '=',

@@ -4,9 +4,12 @@ angular.module('app')
     //$scope.focusinControl = {};
 
 
+    $scope.title = dataTableResources[$state.$current.name].title;
+
     $scope.searchParams = dataTableResources[$state.$current.name].searchParams;
 
     $scope.columns = dataTableResources[$state.$current.name].columns;
+
 
 
     //callback richiamata nella direttiva

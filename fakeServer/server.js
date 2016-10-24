@@ -5,7 +5,8 @@
 var express = require('express');
 var app = express();
 
-var json =
+//attribute CS
+/*var json =
 {
   "getWebResponse":{
     "header":{
@@ -61,6 +62,185 @@ var json =
         "codiceCartaServizi":"11123",
         "defaultFlag":"false",
         "parentDisplayName":"Tim Niente"
+      }
+    ]
+  }
+};*/
+
+
+/*//Attributi SIM
+ var json =
+ {
+ "getWebResponse":{
+ "header":{
+ "result":"Fatal Error",
+ "code":"0",
+ "description":"operation failed"
+ },
+ "payload":[
+ {
+ "nomeProdotto": "nomeProdotto1",
+ "webDescription": "webDescription1",
+ "longDescriptionWeb": "longDescriptionWeb1",
+ "joinedSeniorityConstraintWeb": "SeniorityConstraintWeb1",
+ "isWebSellable": "true",
+ "paymentMethodWeb": "Carta di Credito",
+ "pianoTariffarioWeb": "pianoTariffarioWeb1",
+ "TIDweb": "TIDweb1"
+ },
+   {
+     "nomeProdotto": "nomeProdotto2",
+     "webDescription": "webDescription2",
+     "longDescriptionWeb": "longDescriptionWeb2",
+     "joinedSeniorityConstraintWeb": "SeniorityConstraintWeb2",
+     "isWebSellable": "true",
+     "paymentMethodWeb": "Carta di Credito",
+     "pianoTariffarioWeb": "pianoTariffarioWeb2",
+     "TIDweb": "TIDweb2"
+   },
+   {
+     "nomeProdotto": "nomeProdotto3",
+     "webDescription": "webDescription3",
+     "longDescriptionWeb": "longDescriptionWeb3",
+     "joinedSeniorityConstraintWeb": "SeniorityConstraintWeb3",
+     "isWebSellable": "true",
+     "paymentMethodWeb": "Carta di Credito",
+     "pianoTariffarioWeb": "pianoTariffarioWeb3",
+     "TIDweb": "TIDweb3"
+   },
+   {
+     "nomeProdotto": "nomeProdotto4",
+     "webDescription": "webDescription4",
+     "longDescriptionWeb": "longDescriptionWeb4",
+     "joinedSeniorityConstraintWeb": "SeniorityConstraintWeb4",
+     "isWebSellable": "true",
+     "paymentMethodWeb": "Carta di Credito",
+     "pianoTariffarioWeb": "pianoTariffarioWeb4",
+     "TIDweb": "TIDweb4"
+   }
+ ]
+ }
+};*/
+
+/*//Attributi BF
+ var json =
+ {
+ "getWebResponse":{
+ "header":{
+ "result":"Fatal Error",
+ "code":"0",
+ "description":"operation failed"
+ },
+ "payload":[
+ {
+ "nomeProdotto": "nomeProdotto1",
+ "NMU": "NMU1",
+ "descrizioneModello": "descrizioneModello1",
+ "price": "100",
+ "descrizioneBrand": "descrizioneBrand1",
+ "NMUPadre": "NMUPadre1",
+ "webDescription": "webDescription1",
+ "longDescriptionWeb": "longDescriptionWeb1",
+ "joinedSeniorityConstraintWeb": "SeniorityConstraintWeb1",
+ "isWebSellable": "true",
+ "paymentMethodWeb": "Carta di Credito",
+ "REGALABILE": "true",
+ "pianoTariffarioWeb": "pianoTariffarioWeb1",
+ "TIDweb": "TIDweb1"
+
+ },
+ {
+ "nomeProdotto": "nomeProdotto1",
+ "NMU": "NMU1",
+ "descrizioneModello": "descrizioneModello1",
+ "price": "100",
+ "descrizioneBrand": "descrizioneBrand1",
+ "NMUPadre": "NMUPadre1",
+ "webDescription": "webDescription1",
+ "longDescriptionWeb": "longDescriptionWeb1",
+ "joinedSeniorityConstraintWeb": "SeniorityConstraintWeb1",
+ "isWebSellable": "true",
+ "paymentMethodWeb": "Carta di Credito",
+ "REGALABILE": "true",
+ "pianoTariffarioWeb": "pianoTariffarioWeb1",
+ "TIDweb": "TIDweb1"
+
+ },
+ {
+ "nomeProdotto": "nomeProdotto1",
+ "NMU": "NMU1",
+ "descrizioneModello": "descrizioneModello1",
+ "price": "100",
+ "descrizioneBrand": "descrizioneBrand1",
+ "NMUPadre": "NMUPadre1",
+ "webDescription": "webDescription1",
+ "longDescriptionWeb": "longDescriptionWeb1",
+ "joinedSeniorityConstraintWeb": "SeniorityConstraintWeb1",
+ "isWebSellable": "true",
+ "paymentMethodWeb": "Carta di Credito",
+ "REGALABILE": "true",
+ "pianoTariffarioWeb": "pianoTariffarioWeb1",
+ "TIDweb": "TIDweb1"
+
+ },
+ {
+ "nomeProdotto": "nomeProdotto1",
+ "NMU": "NMU1",
+ "descrizioneModello": "descrizioneModello1",
+ "price": "100",
+ "descrizioneBrand": "descrizioneBrand1",
+ "NMUPadre": "NMUPadre1",
+ "webDescription": "webDescription1",
+ "longDescriptionWeb": "longDescriptionWeb1",
+ "joinedSeniorityConstraintWeb": "SeniorityConstraintWeb1",
+ "isWebSellable": "true",
+ "paymentMethodWeb": "Carta di Credito",
+ "REGALABILE": "true",
+ "pianoTariffarioWeb": "pianoTariffarioWeb1",
+ "TIDweb": "TIDweb1"
+
+ }
+ ]
+ }
+ };*/
+
+//Attributi Ricarica
+var json =
+{
+  "getWebResponse":{
+    "header":{
+      "result":"Fatal Error",
+      "code":"0",
+      "description":"operation failed"
+    },
+    "payload":[
+      {
+        "nomeProdotto": "nomeProdotto1",
+        "webDescription": "webDescription1",
+        "longDescriptionWeb": "longDescriptionWeb1",
+        "isWebSellable": "true",
+        "paymentMethodWeb": "Carta di Credito"
+      },
+      {
+        "nomeProdotto": "nomeProdotto2",
+        "webDescription": "webDescription2",
+        "longDescriptionWeb": "longDescriptionWeb2",
+        "isWebSellable": "true",
+        "paymentMethodWeb": "Carta di Credito"
+      },
+      {
+        "nomeProdotto": "nomeProdotto3",
+        "webDescription": "webDescription3",
+        "longDescriptionWeb": "longDescriptionWeb3",
+        "isWebSellable": "true",
+        "paymentMethodWeb": "Carta di Credito"
+      },
+      {
+        "nomeProdotto": "nomeProdotto4",
+        "webDescription": "webDescription4",
+        "longDescriptionWeb": "longDescriptionWeb4",
+        "isWebSellable": "true",
+        "paymentMethodWeb": "Carta di Credito"
       }
     ]
   }
