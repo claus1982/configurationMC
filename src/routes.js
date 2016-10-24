@@ -2,7 +2,7 @@ angular
   .module('app')
   .config(function(NotificationProvider) {
     NotificationProvider.setOptions({
-      delay: 100000,
+      delay: 5000,
       startTop: 400,
       startRight: 550,
       verticalSpacing: 100,
@@ -37,7 +37,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'breadcrumb': {
           templateUrl: 'app/templates/partials/breadcrumb.html',
-          controller: 'headerCtrl'
+          controller: 'breadcrumbCtrl'
         },
         'header': {
           templateUrl: 'app/templates/partials/header.html',
@@ -55,7 +55,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'breadcrumb': {
           templateUrl: 'app/templates/partials/breadcrumb.html',
-          controller: 'headerCtrl'
+          controller: 'breadcrumbCtrl'
         },
         'header': {
           templateUrl: 'app/templates/partials/header.html',
@@ -73,7 +73,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'breadcrumb': {
           templateUrl: 'app/templates/partials/breadcrumb.html',
-          controller: 'headerCtrl'
+          controller: 'breadcrumbCtrl'
         },
         'header': {
           templateUrl: 'app/templates/partials/header.html',
@@ -91,7 +91,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'breadcrumb': {
           templateUrl: 'app/templates/partials/breadcrumb.html',
-          controller: 'headerCtrl'
+          controller: 'breadcrumbCtrl'
         },
         'header': {
           templateUrl: 'app/templates/partials/header.html',
@@ -109,7 +109,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'breadcrumb': {
           templateUrl: 'app/templates/partials/breadcrumb.html',
-          controller: 'headerCtrl'
+          controller: 'breadcrumbCtrl'
         },
         'header': {
           templateUrl: 'app/templates/partials/header.html',
@@ -127,7 +127,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       views: {
         'breadcrumb': {
           templateUrl: 'app/templates/partials/breadcrumb.html',
-          controller: 'headerCtrl'
+          controller: 'breadcrumbCtrl'
         },
         'header': {
           templateUrl: 'app/templates/partials/header.html',

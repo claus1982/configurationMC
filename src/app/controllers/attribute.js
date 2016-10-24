@@ -4,9 +4,12 @@ angular.module('app')
     //$scope.focusinControl = {};
 
 
-      $scope.params = dataTableResources[$state.$current.name].params;
+    $scope.title = dataTableResources[$state.$current.name].title;
 
-      $scope.columns = dataTableResources[$state.$current.name].columns;
+    $scope.searchParams = dataTableResources[$state.$current.name].searchParams;
+
+    $scope.columns = dataTableResources[$state.$current.name].columns;
+
 
 
     //callback richiamata nella direttiva
@@ -23,12 +26,26 @@ angular.module('app')
       getWebService.getWeb(getWebService.getWebRequest(input)).then(
         function (res) {
           var response = res.data.getWebResponse;
+
+
+          /*inizio trasformazione pipe | to array*/
+        response.payload = response.payload.map(function (obj) {
+
+          angular.forEach($scope.columns, function(column){
+            if (column.type === "options" && column.multiple) {
+              obj[column.model] = obj[column.model].split("|");
+            }
+          });
+            return obj;
+          });
+
+          /*fine trasformazione*/
+
           promise(response.payload, response.header);
 
         },
         function (res) {
-          promise([]);
-          Notification.error({message: 'Error '+res.status});
+          promise();
         }
       );
     };
@@ -39,29 +56,32 @@ angular.module('app')
       console.log(params);
 
 
+
       angular.forEach(params, function (item) {
-        setWebService.setWeb(setWebService.setWebRequest({
-          "operation": dataTableResources[$state.$current.name].setOperation,
-          "nomeOfferta": item.nomeOfferta,
-          "nomeProdotto": item.nomeProdotto,
-          "codiceCartaServizi": item.codiceCartaServizi,
-          "defaultFlag": item.defaultFlag,
-          "parentDisplayName": item.parentDisplayName,
-          "webDescription": item.webDescription,
-          "longDescriptionWeb": item.longDescriptionWeb,
-          "joinedSeniorityConstraintWeb": item.joinedSeniorityConstraintWeb,
-          "isWebSellable": item.isWebSellable,
-          "paymentMethodWeb": item.paymentMethodWeb
-        })).then(
+        var input = {};
+        angular.forEach($scope.columns, function (column) {
+          /*inizio trasformazione array to pipe*/
+          if (angular.isArray(item[column.model])) {
+
+            input[column.model] = item[column.model].join('|');
+          }
+          /*fine trasformazione array to pipe*/
+          else {
+            input[column.model] = item[column.model];
+          }
+        });
+
+        input["operation"] = dataTableResources[$state.$current.name].getOperation;
+
+        setWebService.setWeb(setWebService.setWebRequest(input)).then(
           function (res) {
             var response = res.data.setWebResponse;
             promise(response.header);
 
           },
           function (res) {
-            promise([]);
+            promise();
             // Message with custom delay
-            Notification.error({message: 'Error '+res.status});
           }
         );
 

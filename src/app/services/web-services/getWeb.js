@@ -8,8 +8,12 @@
     var req = {
       getWebRequest: {
         operation: inputData.operation,
-        nomeOfferta: inputData.nomeOfferta,
-        nomeProdotto: inputData.nomeProdotto
+        nomeOfferta:  inputData.nomeOfferta,
+        nomeProdotto: inputData.nomeProdotto,
+        NMU:  inputData.NMU,
+        descrizioneModello: inputData.descrizioneModello,
+        descrizioneBrand: inputData.descrizioneBrand,
+        NMUPadre: inputData.NMUPadre
       }
     }
       return req;

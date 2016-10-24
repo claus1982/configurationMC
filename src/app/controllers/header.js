@@ -4,7 +4,7 @@ angular.module('app')
 
     $scope.model = $scope.model || {};
 
-    $scope.model.currentState = $state.current.data.label;
+    $scope.model.currentState = $state.$current.data.label;
     $scope.model.goToHome = function()
     {
       $state.go("home");
