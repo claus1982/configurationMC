@@ -18,7 +18,7 @@
         </tr>
         </thead>
         <tbody md-body>
-        <tr md-row md-select-id="name"
+        <tr md-row md-select-id="name" ng-click="simpleTableRowClick(item)"
             data-ng-repeat="item in items | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
           <td md-cell class="name-promo" style="width:30%;">
             <a href="#">{{item.promo}}</a>

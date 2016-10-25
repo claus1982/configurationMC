@@ -10,11 +10,13 @@ angular.module('app')
       $scope.model.promo.onClick = function()
         {
           console.log("promo selected");
+          $state.go('promo');
           };
 
       $scope.model.pack.onClick = function()
       {
         console.log("pack selected");
+        $state.go('pack');
       };
 
       //menu Attributi

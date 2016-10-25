@@ -13,7 +13,7 @@ angular.module('app')
 
 
     //callback richiamata nella direttiva
-    $scope.getWeb = function (params, promise) {
+    $scope.getWeb = function (promise, params) {
       console.log("callback getItemsClbk called from directive");
       console.log(params);
 
@@ -33,7 +33,8 @@ angular.module('app')
 
           angular.forEach($scope.columns, function(column){
             if (column.type === "options" && column.multiple) {
-              obj[column.model] = obj[column.model].split("|");
+              if (column.model && obj[column.model])
+              {obj[column.model] =  obj[column.model].split("|");}
             }
           });
             return obj;
@@ -51,7 +52,7 @@ angular.module('app')
     };
 
     //callback richiamata nella direttiva
-    $scope.setWeb = function (params, promise) {
+    $scope.setWeb = function (promise, params) {
       console.log("callback setItemsClbk called from directive");
       console.log(params);
 
@@ -63,7 +64,9 @@ angular.module('app')
           /*inizio trasformazione array to pipe*/
           if (angular.isArray(item[column.model])) {
 
-            input[column.model] = item[column.model].join('|');
+            if (column.model && item[column.model]) {
+              input[column.model] = item[column.model].join('|');
+            }
           }
           /*fine trasformazione array to pipe*/
           else {

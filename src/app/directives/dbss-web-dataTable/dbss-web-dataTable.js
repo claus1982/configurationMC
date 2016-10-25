@@ -4,15 +4,25 @@
     .directive('dbssWebDataTable', function () {
       return {
         restrict : 'E',
-        templateUrl: 'app/directives/dbss-web-dataTable/html/advanced-table.html',
+
+        templateUrl: function(element, attrs) {
+          var template = attrs.template || "advanced-table";
+          return "app/directives/dbss-web-dataTable/html/" + template + ".html";
+        },
         scope: {
+          'loadOnStart': '=?',
           'title': '=?',
           'options': '=?',
           'columns': '=?',
           'searchParams': '=',
           'control': '=',
           'getItemsClbk': '&',
-          'setItemsClbk': '&'
+          'items': '=?',  //per passare direttamente i campi da inserire in tabella
+          'setItemsClbk': '&',
+          'rowClickClbk': '&',
+          'goToDetailsClbk': '&',
+          'confirmSelectedClbk': '&',
+          'faToolbar': '=?'
 
         },
 
@@ -23,11 +33,14 @@
 
           var initialOptions = {},
             defaultOptions = {
-            addMode: false,
-            editMode: false,
+            addMode: false,  //add item with dialog
+            editMode: true,
+            forwardMode: false,
+            confirmSearchSelectionMode: false,
+            isEditing: false,
             deleteMode: false,
             copyMode: false,
-            showFilter: false,
+            showFilters: true,
             rowSelection: true,
             multiSelect: false,
             autoSelect: false,
@@ -74,11 +87,17 @@
           $scope.query = {
             filter: '',
             order: 'name',
-            limit: 5,
+            limit: 10,
             page: 1
           };
 
 
+          $scope.simpleTableRowClick = function(item){
+            console.log("simple table row clicked");
+            $scope.rowClickClbk({
+              params: item});
+
+          };
 
 
           //TODO qui va richiamato il servizio di GET
@@ -97,12 +116,22 @@
             }).length > 0);
           };
 
+
+          //restore last items saved
           $scope.restoreSavedItems = function () {
             resetOptions();
             $scope.items = JSON.parse(JSON.stringify($scope.savedItems));
           };
 
 
+
+         $scope.confirmSearchSelection = function(event,selected) {
+          console.log("confirm Search Selection selected",selected);
+           $scope.confirmSelectedClbk({
+             params: selected
+           });
+
+         }
 
           function setItemsClbkHandler(header) {
             console.log("setItemsClbkHandler called");
@@ -128,8 +157,8 @@
             $scope.loading = false;
           }
 
-          $scope.enableEditMode = function() {
-            $scope.options.editMode=!$scope.options.editMode;
+          $scope.enableisEditing = function() {
+            $scope.options.isEditing=!$scope.options.isEditing;
             $scope.options.rowSelection=false;
           };
 
@@ -150,11 +179,20 @@
             console.log(modifiedItems);
 
               $scope.setItemsClbk({
-              params: modifiedItems,
-              promise: setItemsClbkHandler
+                promise: setItemsClbkHandler,
+                params: modifiedItems
             });
 
           };
+
+          $scope.goToItemDetails = function(event, dataItem)
+          {
+            $scope.goToDetailsClbk({
+              params: dataItem
+            });
+
+          };
+
 
           $scope.copyItem = function (event, dataItem) {
 
@@ -264,10 +302,7 @@
             resetOptions();
             $scope.loading = true;
 
-            $scope.getItemsClbk({
-              params: $scope.searchParams,
-              promise: getItemsClbkHandler
-            });
+            $scope.getItemsClbk({promise: getItemsClbkHandler,params: $scope.searchParams});
           };
 
 
@@ -384,6 +419,16 @@
 
             }, 2000);
           };
+
+          function init ()
+          {
+            if ($scope.loadOnStart)
+            {
+              $scope.getItems();
+            }
+
+          }
+          init();
         }
       }
     })

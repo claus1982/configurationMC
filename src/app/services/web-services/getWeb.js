@@ -14,8 +14,8 @@
         descrizioneModello: inputData.descrizioneModello,
         descrizioneBrand: inputData.descrizioneBrand,
         NMUPadre: inputData.NMUPadre
-      }
     }
+  }
       return req;
     };
 

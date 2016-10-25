@@ -6,7 +6,7 @@ var express = require('express');
 var app = express();
 
 //attribute CS
-/*var json =
+var json =
 {
   "getWebResponse":{
     "header":{
@@ -65,7 +65,7 @@ var app = express();
       }
     ]
   }
-};*/
+};
 
 
 /*//Attributi SIM
@@ -204,7 +204,7 @@ var app = express();
  }
  };*/
 
-//Attributi Ricarica
+/*//Attributi Ricarica
 var json =
 {
   "getWebResponse":{
@@ -244,7 +244,7 @@ var json =
       }
     ]
   }
-};
+};*/
 
 
 app.post('/getWeb', function(req, res) {
@@ -266,6 +266,96 @@ app.post('/setWeb', function(req, res) {
   };
 
   res.send(json);
+});
+app.post('/getPromo', function(req, res) {
+
+  var json =
+  {
+    "getPromoResponse":{
+      "header":{
+        "result":"Fatal Error",
+        "code":"0",
+        "description":"operation failed"
+      },
+      "payload":[
+        {
+          "codicePromo": "Promo1",
+          "nomePromo": "NomePromo1",
+          "descrizionePromo": "DescrizionePromo1",
+          "periodoValidita": "10/07/2012 - 10/07/2020"
+        },
+        {
+          "codicePromo": "Promo2",
+          "nomePromo": "NomePromo2",
+          "descrizionePromo": "DescrizionePromo2",
+          "periodoValidita": "20/07/2022 - 20/07/2020"
+        },
+        {
+          "codicePromo": "Promo3",
+          "nomePromo": "NomePromo3",
+          "descrizionePromo": "DescrizionePromo3",
+          "periodoValidita": "30/07/2032 - 30/07/2020"
+        },
+        {
+          "codicePromo": "Promo4",
+          "nomePromo": "NomePromo4",
+          "descrizionePromo": "DescrizionePromo4",
+          "periodoValidita": "40/07/2042 - 40/07/2020"
+        }
+
+      ]
+    }
+  };
+
+  res.send(json); // send text response
+});
+
+
+app.post('/getCondition', function(req, res) {
+
+    var json =
+    {
+      "getConditionResponse":{
+        "header":{
+          "result":"Fatal Error",
+          "code":"0",
+          "description":"operation failed"
+        },
+        "payload":[
+          {
+            "NMU": "NMU1",
+            "isPadre": "true",
+            "price": "200",
+            "scontoValore": "100",
+            "scontoPercentuale": "50"
+          },
+          {
+            "NMU": "NMU1",
+            "isPadre": "true",
+            "price": "200",
+            "scontoValore": "100",
+            "scontoPercentuale": "50"
+          },
+          {
+            "NMU": "NMU1",
+            "isPadre": "true",
+            "price": "200",
+            "scontoValore": "100",
+            "scontoPercentuale": "50"
+          },
+          {
+            "NMU": "NMU1",
+            "isPadre": "true",
+            "price": "200",
+            "scontoValore": "100",
+            "scontoPercentuale": "50"
+          }
+
+        ]
+      }
+    };
+
+  res.send(json); // send text response
 });
 
 

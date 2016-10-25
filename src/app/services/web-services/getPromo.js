@@ -1,25 +1,19 @@
 ( function () {
   "use strict";
-  angular.module('app').service('getWebService', function (GenericHttpService) {
-    var serviceName = "getWeb";
+  angular.module('app').service('getPromoService', function (GenericHttpService) {
+    var serviceName = "getPromo";
 
 
-    this.getWebRequest = function (inputData) {
+    this.getPromoRequest = function (inputData) {
     var req = {
-      getWebRequest: {
-        operation: inputData.operation,
-        nomeOfferta:  inputData.nomeOfferta,
-        nomeProdotto: inputData.nomeProdotto,
-        NMU:  inputData.NMU,
-        descrizioneModello: inputData.descrizioneModello,
-        descrizioneBrand: inputData.descrizioneBrand,
-        NMUPadre: inputData.NMUPadre
+      getPromoRequest: {
+        tipoPromo: inputData.tipoPromo
       }
     }
       return req;
     };
 
-    this.getWeb = function (request) {
+    this.getPromo = function (request) {
       return GenericHttpService.doHttpRequest('/' + serviceName, request);
     };
 

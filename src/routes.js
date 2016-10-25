@@ -31,42 +31,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         }
       }
     })
-    .state('promo', {
-      data: {label: 'Promo'},
-      url: '/promo',
-      views: {
-        'breadcrumb': {
-          templateUrl: 'app/templates/partials/breadcrumb.html',
-          controller: 'breadcrumbCtrl'
-        },
-        'header': {
-          templateUrl: 'app/templates/partials/header.html',
-          controller: 'headerCtrl'
-        },
-        'main': {
-          templateUrl: 'app/templates/promo.html',
-          controller: 'promoCtrl'
-        }
-      }
-    })
-    .state('pack', {
-      data: {label: 'Pack'},
-      url: '/pack',
-      views: {
-        'breadcrumb': {
-          templateUrl: 'app/templates/partials/breadcrumb.html',
-          controller: 'breadcrumbCtrl'
-        },
-        'header': {
-          templateUrl: 'app/templates/partials/header.html',
-          controller: 'headerCtrl'
-        },
-        'main': {
-          templateUrl: 'app/templates/pack.html',
-          controller: 'packCtrl'
-        }
-      }
-    })
     .state('attributiCS', {
       data: {label: 'Attributi CS', servicePath: "attribute"},
       url: '/attributi/CS',
@@ -139,4 +103,117 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         }
       }
     })
+    .state('promo', {
+      data: {label: 'Promo'},
+      url: '/promo',
+      params: {
+        tipoPromo: null
+      },
+      views: {
+        "main": {
+          templateUrl     : 'app/templates/promo.html',
+          controller      : 'promoCtrl'
+        },
+        "breadcrumb" : {
+          templateUrl     : "app/templates/partials/breadcrumb.html",
+          controller      : "breadcrumbCtrl"
+        },
+        "header" : {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        }
+      }
+    })
+    .state('promoList', {
+      data: {label: 'Promo List'},
+      url: '/promo/list',
+      params:{
+        'tipoPromo' : null,
+        'codicePromo': null
+      },
+      views: {
+        "main": {
+          templateUrl     : 'app/templates/promo.list.html',
+          controller      : 'promoListCtrl'
+        },
+        "breadcrumb" : {
+          templateUrl     : "app/templates/partials/breadcrumb.html",
+          controller      : "breadcrumbCtrl"
+        },
+        "header" : {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        }
+      }
+    })
+    .state('promoListDetail', {
+      data: {label: 'Condition List'},
+      params:{
+        'tipoPromo' : null,
+        'codicePromo': null
+      },
+      url: '/promo/detail',
+      views: {
+        "main": {
+          templateUrl     : 'app/templates/promo.detail.html',
+          controller      : 'promoDetailCtrl'
+        },
+        "breadcrumb" : {
+          templateUrl     : "app/templates/partials/breadcrumb.html",
+          controller      : "breadcrumbCtrl"
+        },
+        "header" : {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        }
+      }
+    })
+    .state('promoSearch', {
+      data: {label: 'Search'},
+      params:{
+        'tipoPromo' : null,
+        'codicePromo': null,
+        'type': null,
+        'items': null
+      },
+      url: '/promo/detail/search',
+      views: {
+        "main": {
+          templateUrl     : 'app/templates/promo.search.html',
+          controller      : 'promoSearchCtrl'
+        },
+        "breadcrumb" : {
+          templateUrl     : "app/templates/partials/breadcrumb.html",
+          controller      : "breadcrumbCtrl"
+        },
+        "header" : {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        }
+      }
+    })
+    .state('promoConfirmed', {
+      data: {label: 'Conferma'},
+      params:{
+        'tipoPromo' : null,
+        'codicePromo': null,
+        'type': null,
+        'items': null
+      },
+      url: '/promo/detail/confirm',
+      views: {
+        "main": {
+          templateUrl     : 'app/templates/promo.confirmed.html',
+          controller      : 'promoConfirmedCtrl'
+        },
+        "breadcrumb" : {
+          templateUrl     : "app/templates/partials/breadcrumb.html",
+          controller      : "breadcrumbCtrl"
+        },
+        "header" : {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        }
+      }
+    });
 }
