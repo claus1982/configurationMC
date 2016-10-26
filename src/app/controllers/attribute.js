@@ -28,21 +28,31 @@ angular.module('app')
           var response = res.data.getWebResponse;
 
 
-          /*inizio trasformazione pipe | to array*/
-        response.payload = response.payload.map(function (obj) {
 
-          angular.forEach($scope.columns, function(column){
-            if (column.type === "options" && column.multiple) {
-              if (column.model && obj[column.model])
-              {obj[column.model] =  obj[column.model].split("|");}
-            }
-          });
-            return obj;
-          });
+          if (response && response.header && response.payload) {
 
-          /*fine trasformazione*/
+            /*inizio trasformazione pipe | to array*/
+            response.payload = response.payload.map(function (obj) {
 
-          promise(response.payload, response.header);
+              angular.forEach($scope.columns, function (column) {
+                if (column.multiple) {
+                  if (column.model && obj[column.model]) {
+                    obj[column.model] = obj[column.model].split("|");
+                  }
+                }
+              });
+              return obj;
+            });
+
+            /*fine trasformazione*/
+
+            promise(response.header, response.payload);
+          }
+
+          else if (response && response.header) {
+            promise(response.header);
+          }
+          else {promise();}
 
         },
         function (res) {

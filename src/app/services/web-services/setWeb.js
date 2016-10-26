@@ -15,7 +15,7 @@
           parentDisplayName: inputData.parentDisplayName,
           webDescription: inputData.webDescription,
           longDescriptionWeb: inputData.longDescriptionWeb,
-          joinedSeniorityConstraintWeb: inputData.joinedSeniorityConstraintWeb,
+          seniorityConstraintWeb: inputData.seniorityConstraintWeb,
           isWebSellable: inputData.isWebSellable,
           paymentMethodWeb: inputData.paymentMethodWeb,
           NMU: inputData.NMU,

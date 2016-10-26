@@ -7,7 +7,7 @@
     this.getPromoRequest = function (inputData) {
     var req = {
       getPromoRequest: {
-        tipoPromo: inputData.tipoPromo
+        tipoPromo: inputData.tipoPromoc
       }
     }
       return req;

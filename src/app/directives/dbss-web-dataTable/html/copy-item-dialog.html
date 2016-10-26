@@ -11,14 +11,18 @@
           <form name="item.form" ng-submit="ctrl.addItem()">
              <span ng-repeat="column in columns">
                 <div layout="row" ng-class-even="'input-row'" ng-if="$even">
-                  <md-input-container flex ng-if="columns[$index].type==='text'">
+                  <md-input-container flex ng-if="columns[$index].type==='text' || columns[$index].type==='number'">
                     <label>{{columns[$index].title}}</label>
-                    <input name="{{columns[$index].model}}" ng-model="item[columns[$index].model]" required>
+                    <input name="{{columns[$index].model}}"
+                           type="{{columns[$index].type}}"
+                           ng-model="item[columns[$index].model]" required>
                   </md-input-container>
 
-                  <md-input-container flex ng-if="columns[$index].type==='text'">
+                  <md-input-container flex ng-if="columns[$index].type==='text' || columns[$index].type==='number'">
                     <label>{{columns[$index+1].title}}</label>
-                    <input name="{{columns[$index+1].model}}" ng-model="item[columns[$index+1].model]" required>
+                    <input name="{{columns[$index+1].model}}"
+                           type="{{columns[$index].type}}"
+                           ng-model="item[columns[$index+1].model]" required>
                   </md-input-container>
 
                   <md-input-container flex ng-if="columns[$index].type==='options'">

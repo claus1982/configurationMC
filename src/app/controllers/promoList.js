@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('promoListCtrl', function ($scope, $state, dataTableResources, getPromoService) {
+  .controller('promoListCtrl', function ($scope, $state, dataTableResources, getPromoService,createPromoService) {
     $scope.model = $scope.model || {};
     //$scope.focusinControl = {};
 
@@ -44,6 +44,47 @@ angular.module('app')
       );
     };
 
+
+    //callback richiamata nella direttiva per aggiungere una nuova promo
+    $scope.addPromo = function (promise, params) {
+      console.log("callback addItemClbk called from directive");
+      console.log(params);
+
+
+
+      angular.forEach(params, function (item) {
+        var input = {};
+        angular.forEach($scope.columns, function (column) {
+          /*inizio trasformazione array to pipe*/
+          if (angular.isArray(item[column.model])) {
+
+            if (column.model && item[column.model]) {
+              input[column.model] = item[column.model].join('|');
+            }
+          }
+          /*fine trasformazione array to pipe*/
+          else {
+            input[column.model] = item[column.model];
+          }
+        });
+
+       // input["operation"] = dataTableResources[$state.$current.name].getOperation;
+
+        createPromoService.createPromo(createPromoService.createPromoRequest(input)).then(
+          function (res) {
+            var response = res.data.createPromoResponse;
+            promise(response.header);
+
+          },
+          function (res) {
+            promise();
+            // Message with custom delay
+          }
+        );
+      });
+    };
+
+    //move from list to Details
     $scope.promoSelected = function(params)
     {
       {
@@ -60,7 +101,7 @@ angular.module('app')
       $scope.currentState = $state.$current.name;
       console.log("current state:",$scope.currentState);
 
-      $scope.tipoPromo = $state.params.tipoPromo;
+      $scope.title = $scope.tipoPromo = $state.params.tipoPromo;
 
       $scope.columns = dataTableResources[$scope.currentState][$scope.tipoPromo].columns;
 

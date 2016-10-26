@@ -13,7 +13,12 @@ angular
       positionY: 'top'
     });
   })
-  .config(routesConfig);
+  .config(routesConfig)
+  .config(function($breadcrumbProvider) {
+  $breadcrumbProvider.setOptions({
+    templateUrl: 'app/templates/partials/breadcrumb-template.html'
+  });
+});
 
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -22,7 +27,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $stateProvider
     .state('home', {
-      data: {label: 'Home'},
+      ncyBreadcrumb: {
+        label: 'Home'
+      },
       url: '/home',
       views: {
         'main': {
@@ -32,7 +39,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('attributiCS', {
-      data: {label: 'Attributi CS', servicePath: "attribute"},
+      ncyBreadcrumb: {
+        label: 'Attributi CS'
+      },
       url: '/attributi/CS',
       views: {
         'breadcrumb': {
@@ -50,7 +59,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('attributiBF', {
-      data: {label: 'Attributi BF'},
+      data: {breadcrumb: 'Attributi BF'},
       url: '/attributi/BF',
       views: {
         'breadcrumb': {
@@ -68,7 +77,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('attributiSIM', {
-      data: {label: 'Attributi SIM'},
+      data: {breadcrumb: 'Attributi SIM'},
       url: '/attributi/SIM',
       views: {
         'breadcrumb': {
@@ -86,7 +95,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('attributiRicarica', {
-      data: {label: 'Attributi Ricarica'},
+      data: {breadcrumb: 'Attributi Ricarica'},
       url: '/attributi/ricarica',
       views: {
         'breadcrumb': {
@@ -104,7 +113,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('promo', {
-      data: {label: 'Promo'},
+      data: {breadcrumb: 'Promo'},
       url: '/promo',
       params: {
         tipoPromo: null
@@ -125,7 +134,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('promoList', {
-      data: {label: 'Promo List'},
+      data: {breadcrumb: 'Promo List'},
       url: '/promo/list',
       params:{
         'tipoPromo' : null,
@@ -147,7 +156,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('promoListDetail', {
-      data: {label: 'Condition List'},
+      data: {breadcrumb: 'Condition List'},
       params:{
         'tipoPromo' : null,
         'codicePromo': null
@@ -169,7 +178,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('promoSearch', {
-      data: {label: 'Search'},
+      data: {breadcrumb: 'Search'},
       params:{
         'tipoPromo' : null,
         'codicePromo': null,
@@ -193,7 +202,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('promoConfirmed', {
-      data: {label: 'Conferma'},
+      data: {breadcrumb: 'Confirm'},
       params:{
         'tipoPromo' : null,
         'codicePromo': null,

@@ -17,8 +17,10 @@
           'searchParams': '=',
           'control': '=',
           'getItemsClbk': '&',
-          'items': '=?',  //per passare direttamente i campi da inserire in tabella
+          'items': '=?',  //per passare direttamente i campi da visualizzare in tabella
           'setItemsClbk': '&',
+          'addItemClbk': '&', //aggiungere un nuovo item
+          'deleteItemClbk': '&', //cancellare un item
           'rowClickClbk': '&',
           'goToDetailsClbk': '&',
           'confirmSelectedClbk': '&',
@@ -225,6 +227,7 @@
             }).then($scope.getItems);
           };
 
+
           $scope.addItem = function (event) {
 
             $mdDialog.show({
@@ -241,8 +244,31 @@
                   $scope.item.form.$setSubmitted();
 
                   if ($scope.item.form.$valid) {
-
+                    //chiama funzione esterna che chiamerà il servizio di popolamento
+                    $scope.addItemClbk($scope.addItemClbkHandler);
                   }
+                };
+                this.addItemClbkHandler = function(header)
+                {
+                  console.log("addItemClbkHandler called");
+                  console.log("header:",header);
+                  if (!header) {
+                    console.log("addItem: no header");
+                  }
+                  else {
+                    $scope.header = header;
+
+                    if ($scope.header && $scope.header.code == '0') {
+
+                      console.log("addItem: success");
+                      $mdDialog.hide();
+                    }
+                    else {
+                      console.log("addItem: failed");
+
+                    }
+                  }
+                  $scope.loading = false;
                 };
               },
               controllerAs: 'ctrl',
@@ -271,12 +297,12 @@
           //TODO non utilizzato
             $scope.internalControl = $scope.control || {};
 
-          function getItemsClbkHandler(payload, header) {
+          function getItemsClbkHandler(header, payload) {
             console.log("getItemsClbkHandler called");
             console.log("payload:",payload);
             console.log("header:",header);
             if (!header) {
-              $scope.error = 'Timeout: Nessuna Risposta dal Server';
+              $scope.error = 'Nessuna isposta dal Server o risposta inattesa!';
               Notification.error({message: $scope.error});
             }
             else {

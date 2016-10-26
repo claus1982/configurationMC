@@ -55,7 +55,7 @@ angular.module('app')
 
       $scope.currentState = $state.$current.name;
       console.log("current state:",$scope.currentState);
-      $scope.title = $scope.codicePromo;
+      $scope.title = $scope.tipoPromo+" - "+$scope.codicePromo;
 
       $scope.columns = dataTableResources[$scope.currentState][$scope.tipoPromo].columns;
       $scope.buttons = dataTableResources[$scope.currentState][$scope.tipoPromo].buttons;

@@ -1,2 +1,10 @@
 angular
-  .module('app', ['ui.router', 'md.data.table', 'ngMaterial','ngResource','ngMessages','ui-notification']);
+  .module('app',
+    ['ui.router',
+      'md.data.table',
+      'ngMaterial',
+      'ngResource',
+      'ngMessages',
+      'ncy-angular-breadcrumb',
+      'ui-notification'
+    ]);

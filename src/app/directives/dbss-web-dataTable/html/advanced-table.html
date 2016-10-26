@@ -171,12 +171,23 @@
                   ng-click="editTextField(options.isEditing && column.editable,$event, item,column.model,column.title,column.title)">
               {{item[column.model] || '-'}}
             </span>
+
+                  <!-- picklist con selezione predefinita singola-->
             <span ng-if="options.isEditing && column.type==='options' && !column.multiple">
                   <md-select ng-model="item[column.model]" placeholder="Other"
                   >
                     <md-option ng-value="type" ng-repeat="type in column.options">{{type}}</md-option>
                   </md-select>
             </span>
+
+                  <!-- picklist in cui è selezionabile solo il contenuto arrivato-->
+             <span ng-if="options.isEditing && column.type==='selection' && column.multiple">
+                  <md-select ng-model="item[column.model]" placeholder="Other" multiple
+                  >
+                    <md-option ng-value="type" ng-repeat="type in item[column.model]">{{type}}</md-option>
+                  </md-select>
+            </span>
+                  <!-- picklist con selezione predefinita multipla-->
             <span ng-if="options.isEditing && column.type==='options' && column.multiple">
                   <md-select ng-model="item[column.model]" placeholder="Other" multiple
                   >

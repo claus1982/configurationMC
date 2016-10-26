@@ -17,11 +17,16 @@
         ng-class="{'has-error':myForm[column.name].$error.required}"
         ng-messages="myForm[column.name].$error">
 
-      
-        <md-input-container flex ng-if="column.type==='text'">
+
+        <md-input-container flex ng-if="column.type==='text' ||column.type==='number'">
           <label>{{column.title}}</label>
-          <input name="{{column.model}}" ng-model="item[column.model]"
+          <input name="{{column.model}}"
+                 type="{{column.type}}"
+                 ng-model="item[column.model]"
                  ng-disabled="isDisabled(column, item)"
+                 ng-pattern="column.pattern"
+                 step = "{{column.step}}"
+                 ng-maxlength = "column.maxlength"
                  ng-required="isRequired()">
         </md-input-container>
 
@@ -39,6 +44,7 @@
         <input type="submit"
                class="btn-primary"
                value="conferma"
+               ng-click="confirmed(item)"
                ng-disabled="myForm.$invalid">
       </div>
       </div>

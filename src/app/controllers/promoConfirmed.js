@@ -56,6 +56,14 @@ angular.module('app')
         }
       };
 
+      $scope.confirmed = function (item)
+      {
+        angular.forEach($scope.columns,function(column){
+          console.log("field name: ",column.model);
+          console.log("field value: ",item[column.model]);
+        });
+      };
+
     }
 
     init();

@@ -7,6 +7,16 @@
     this.createPromoRequest = function (inputData) {
       var req = {
         createPromoRequest: {
+          codicePromo:inputData.codicePromo,
+          nomePromo:inputData.nomePromo,
+          descrizionePromo:inputData.descrizionePromo,
+          periodoValidita: inputData.periodoValidita,
+          periodoGenerazione:inputData.periodoGenerazione,
+          codiceTemplateSMS:inputData.codiceTemplateSMS,
+          codiceTemplateMAIL:inputData.codiceTemplateMAIL,
+          flagLinea:inputData.flagLinea,
+          limiteUtilizzoCoupon:inputData.limiteUtilizzoCoupon,
+          sysdate:new Date()
         }
       }
       return req;

@@ -9,7 +9,7 @@
       {
         "webDescription":"Tim Special",
         "longDescriptionWeb":"Tim Special",
-        "joinedSeniorityConstraintWeb":"AL|MNP|CB",
+        "seniorityConstraintWeb":"AL|MNP|CB",
         "isWebSellable":"true",
         "paymentMethodWeb":"Carta di Credito",
         "nomeOfferta":"Tim Special",
@@ -21,7 +21,7 @@
       {
         "webDescription":"Tim Young",
         "longDescriptionWeb":"Tim Young",
-        "joinedSeniorityConstraintWeb":"AL|MNP|CB",
+        "seniorityConstraintWeb":"AL|MNP|CB",
         "isWebSellable":"true",
         "paymentMethodWeb":"Carta di Credito",
         "nomeOfferta":"Tim Young",

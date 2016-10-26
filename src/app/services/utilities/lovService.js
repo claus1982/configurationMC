@@ -8,14 +8,14 @@
       return ['true', 'false'];
     };
 
-    //paymentMethodType type
+    /*//paymentMethodType type
     factory.getPaymentMethodType = function () {
-      return ['Carta di Credito', 'Pay Pal', 'Contanti'];
+      return ['Carta di Credito',  'Contrassegno', 'Contanti','Credito Residuo','Passepartout Offerte', 'PAY PAL'];
     };
-
+*/
     //constraint type
 
-    factory.getjoinedSeniorityConstraintWebType = function () {
+    factory.getSeniorityConstraintWebType = function () {
       return ['AL', 'MNP', 'CB'];
     };
 

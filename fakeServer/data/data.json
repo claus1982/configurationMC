@@ -9,7 +9,7 @@
       {"name":"parentDisplayName","orderBy":"parentDisplayName"},
       {"name":"webDescription","orderBy":"webDescription"},
       {"name":"longDescriptionWeb","orderBy":"longDescriptionWeb"},
-      {"name":"joinedSeniorityConstraintWeb","orderBy":"joinedSeniorityConstraintWeb"},
+      {"name":"seniorityConstraintWeb","orderBy":"seniorityConstraintWeb"},
       {"name":"isWebSellable","orderBy":"isWebSellable"},
       {"name":"paymentMethodWeb","orderBy":"paymentMethodWeb"}
     ],
@@ -22,7 +22,7 @@
         "parentDisplayName"            :  "parentDisplayName1"           ,
         "webDescription"               :  "webDescription1"              ,
         "longDescriptionWeb"           :  "longDescriptionWeb1"          ,
-        "joinedSeniorityConstraintWeb" :  "joinedSeniorityConstraintWeb1",
+        "seniorityConstraintWeb" :  "seniorityConstraintWeb1",
         "isWebSellable"                :  "SI"               ,
         "paymentMethodWeb"             :  "paymentMethodWeb1"
       },
@@ -34,7 +34,7 @@
         "parentDisplayName"            :  "parentDisplayName2"           ,
         "webDescription"               :  "webDescription2"              ,
         "longDescriptionWeb"           :  "longDescriptionWeb2"          ,
-        "joinedSeniorityConstraintWeb" :  "joinedSeniorityConstraintWeb2",
+        "seniorityConstraintWeb" :  "seniorityConstraintWeb2",
         "isWebSellable"                :  "NO"               ,
         "paymentMethodWeb"             :  "paymentMethodWeb2"
       },
@@ -46,7 +46,7 @@
         "parentDisplayName"            :  "parentDisplayName3"           ,
         "webDescription"               :  "webDescription3"              ,
         "longDescriptionWeb"           :  "longDescriptionWeb3"          ,
-        "joinedSeniorityConstraintWeb" :  "joinedSeniorityConstraintWeb3",
+        "seniorityConstraintWeb" :  "seniorityConstraintWeb3",
         "isWebSellable"                :  "SI"               ,
         "paymentMethodWeb"             :  "paymentMethodWeb3"
       }
