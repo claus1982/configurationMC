@@ -1,6 +1,5 @@
 <div class="container">
   <div class="breadcrumb-container mb-10 mt-10 hidden-xs">
-    <a ng-click="model.goToHome()" href="#" class="active normal-text">Home</a>
     <span ng-repeat="step in steps"  ng-switch="$last || !!step.abstract">
     <a
        ng-class="{active: $last}"

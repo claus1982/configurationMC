@@ -10,7 +10,7 @@ angular.module('app')
       $scope.model.promo.onClick = function()
         {
           console.log("promo selected");
-          $state.go('promo');
+          $state.go('promo.categories');
           };
 
       $scope.model.pack.onClick = function()
@@ -25,28 +25,28 @@ angular.module('app')
           label: "BF",
           onClick: function () {
             console.log("BF attribute selected");
-            $state.go('attributiBF');
+            $state.go('attributi.BF');
           }
         },
         {
           label: "CS",
           onClick: function () {
             console.log("CS attribute selected");
-            $state.go('attributiCS');
+            $state.go('attributi.CS');
           }
         },
         {
           label: "SIM",
           onClick: function () {
             console.log("SIM attribute selected");
-            $state.go('attributiSIM');
+            $state.go('attributi.SIM');
           }
         },
         {
           label: "Ricarica",
           onClick: function () {
             console.log("Ricarica attribute selected");
-            $state.go('attributiRicarica');
+            $state.go('attributi.ricarica');
           }
         }
       ];

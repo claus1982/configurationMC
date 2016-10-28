@@ -10,10 +10,10 @@
         operation: inputData.operation,
         nomeOfferta:  inputData.nomeOfferta,
         nomeProdotto: inputData.nomeProdotto,
-        NMU:  inputData.NMU,
+        nmu:  inputData.nmu,
         descrizioneModello: inputData.descrizioneModello,
         descrizioneBrand: inputData.descrizioneBrand,
-        NMUPadre: inputData.NMUPadre
+        nmuPadre: inputData.nmuPadre
     }
   }
       return req;

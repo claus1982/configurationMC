@@ -14,24 +14,44 @@
           'title': '=?',
           'options': '=?',
           'columns': '=?',
-          'searchParams': '=',
-          'control': '=',
+          'searchParams': '=?',
+          'control': '=?',
           'getItemsClbk': '&',
           'items': '=?',  //per passare direttamente i campi da visualizzare in tabella
           'setItemsClbk': '&',
           'addItemClbk': '&', //aggiungere un nuovo item
+          'addModeType': '@', //determina il tipo di dialog da mostrare in "addMode": '0': simple dialog + callback
+                                                                      // '1' chiama dirrettamente external callback
           'deleteItemClbk': '&', //cancellare un item
           'rowClickClbk': '&',
           'goToDetailsClbk': '&',
           'confirmSelectedClbk': '&',
-          'faToolbar': '=?'
+          'addConditionClbk': '&',
+          'faToolbar': '=?',//aggiunge una nuova toolbar
+          'selected': '=?' //record selezionati
 
         },
 
         controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, Notification) {
           'use strict';
 
+
+          /*utilities*/
           $scope.isArray = angular.isArray;
+
+          $scope.angularCopy = function(item) {
+           var copiedItem = {};
+            angular.copy(item,copiedItem);
+            return copiedItem;
+          };
+
+          /*end utilties*/
+
+          if (!$scope.addModeType)
+          {
+            //simple dialog with columns copied from record
+            $scope.addModeType = "0";
+          }
 
           var initialOptions = {},
             defaultOptions = {
@@ -77,7 +97,7 @@
           $scope.limitOptions = [5, 10, 15, {
             label: 'All',
             value: function () {
-              return $scope.items && $scope.items.data ? $scope.items.data.length : 0;
+              return $scope.items && $scope.items ? $scope.items.length : 0;
             }
           }];
         /*  $scope.querySimpleData = {
@@ -196,7 +216,7 @@
           };
 
 
-          $scope.copyItem = function (event, dataItem) {
+          $scope.copyItem = function (event, columns, dataItem) {
 
             $mdDialog.show({
               clickOutsideToClose: true,
@@ -221,64 +241,70 @@
               targetEvent: event,
               templateUrl: 'app/directives/dbss-web-dataTable/html/copy-item-dialog.html',
               locals: {
-                columns: $scope.columns
+                columns: columns
               }
 
             }).then($scope.getItems);
           };
 
 
-          $scope.addItem = function (event) {
+          $scope.addItem = function (addModeType, event, columns) {
 
-            $mdDialog.show({
-              clickOutsideToClose: true,
-              controller: function ($mdDialog,  $scope, columns) {
-                this.cancel = $mdDialog.cancel;
-                $scope.columns = columns;
+            if (addModeType === "1")
+            {
+              $scope.addItemClbk();
+            }
+            else
+            {
+              $mdDialog.show({
+                clickOutsideToClose: true,
+                controller: function ($mdDialog, $scope, columns) {
+                  this.cancel = $mdDialog.cancel;
+                  $scope.columns = columns;
 
-                function success(item) {
-                  $mdDialog.hide(item);
-                }
-
-                this.addItem = function () {
-                  $scope.item.form.$setSubmitted();
-
-                  if ($scope.item.form.$valid) {
-                    //chiama funzione esterna che chiamerà il servizio di popolamento
-                    $scope.addItemClbk($scope.addItemClbkHandler);
+                  function success(item) {
+                    $mdDialog.hide(item);
                   }
-                };
-                this.addItemClbkHandler = function(header)
-                {
-                  console.log("addItemClbkHandler called");
-                  console.log("header:",header);
-                  if (!header) {
-                    console.log("addItem: no header");
-                  }
-                  else {
-                    $scope.header = header;
 
-                    if ($scope.header && $scope.header.code == '0') {
+                  this.addItem = function () {
+                    $scope.item.form.$setSubmitted();
 
-                      console.log("addItem: success");
-                      $mdDialog.hide();
+                    if ($scope.item.form.$valid) {
+                      //chiama funzione esterna che chiamerà il servizio di popolamento
+                      $scope.addItemClbk($scope.addItemClbkHandler);
+                    }
+                  };
+                  this.addItemClbkHandler = function (header) {
+                    console.log("addItemClbkHandler called");
+                    console.log("header:", header);
+                    if (!header) {
+                      console.log("addItem: no header");
                     }
                     else {
-                      console.log("addItem: failed");
+                      $scope.header = header;
 
+                      if ($scope.header && $scope.header.code == '0') {
+
+                        console.log("addItem: success");
+                        $mdDialog.hide();
+                      }
+                      else {
+                        console.log("addItem: failed");
+
+                      }
                     }
-                  }
-                  $scope.loading = false;
-                };
-              },
-              controllerAs: 'ctrl',
-              focusOnOpen: false,
-              targetEvent: event,
-              templateUrl: 'app/directives/dbss-web-dataTable/html/add-item-dialog.html',
-              locals: {
-                columns: $scope.columns
-              }
-            }).then($scope.getItems);
+                    $scope.loading = false;
+                  };
+                },
+                controllerAs: 'ctrl',
+                focusOnOpen: false,
+                targetEvent: event,
+                templateUrl: 'app/directives/dbss-web-dataTable/html/add-item-dialog.html',
+                locals: {
+                  columns: columns
+                }
+              }).then($scope.getItems);
+            }
           };
 
           $scope.delete = function (event) {
@@ -302,7 +328,7 @@
             console.log("payload:",payload);
             console.log("header:",header);
             if (!header) {
-              $scope.error = 'Nessuna isposta dal Server o risposta inattesa!';
+              $scope.error = 'Nessuna risposta dal Server o risposta inattesa!';
               Notification.error({message: $scope.error});
             }
             else {
@@ -386,12 +412,13 @@
                 modelValue: model[1] ? obj[model[0]][model[1]] : obj[model[0]],
                 placeholder: placeholder,
                 save: function (input) {
-                  if (model[1]) {
+                  if (model[1] && input.$modelValue.length) {
                     obj[model[0]][model[1]] = input.$modelValue;
-                  } else {
+                  } else
+                  if (model[0] && input.$modelValue.length)
+                  {
                     obj[model[0]] = input.$modelValue;
                   }
-                  obj.modified = true;
                 },
                 targetEvent: event,
                 title: title,

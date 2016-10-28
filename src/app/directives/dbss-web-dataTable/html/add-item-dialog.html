@@ -22,7 +22,7 @@
                 <md-input-container flex ng-if="columns[$index].type==='text' || columns[$index].type==='number'">
                     <label>{{columns[$index+1].title}}</label>
                     <input name="{{columns[$index+1].model}}"
-                           type="{{columns[$index].type}}"
+                           type="{{columns[$index+1].type}}"
                            ng-model="item[columns[$index+1].model]" required>
                 </md-input-container>
 

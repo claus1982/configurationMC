@@ -1,8 +1,7 @@
 angular.module('app')
   .controller('attributeCtrl', function ($scope, $state, dataTableResources, getWebService, setWebService) {
-    $scope.model = $scope.model || {};
+    $scope.attributeModel = $scope.attributeModel || {};
     //$scope.focusinControl = {};
-
 
     $scope.title = dataTableResources[$state.$current.name].title;
 
@@ -84,12 +83,15 @@ angular.module('app')
           }
         });
 
-        input["operation"] = dataTableResources[$state.$current.name].getOperation;
+        input["operation"] = dataTableResources[$state.$current.name].setOperation;
 
         setWebService.setWeb(setWebService.setWebRequest(input)).then(
           function (res) {
             var response = res.data.setWebResponse;
+
+          if (response && response.header) {
             promise(response.header);
+          }
 
           },
           function (res) {

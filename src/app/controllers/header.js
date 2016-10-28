@@ -4,6 +4,8 @@ angular.module('app')
 
     $scope.model = $scope.model || {};
 
+
+
     $scope.model.goToHome = function()
     {
       $state.go("home");
@@ -30,28 +32,28 @@ angular.module('app')
           label: "BF",
           onClick: function () {
             console.log("BF attribute selected");
-            $state.go('attributiBF');
+            $state.go('attributi.BF');
           }
         },
         {
           label: "CS",
           onClick: function () {
             console.log("CS attribute selected");
-            $state.go('attributiCS');
+            $state.go('attributi.CS');
           }
         },
         {
           label: "SIM",
           onClick: function () {
             console.log("SIM attribute selected");
-            $state.go('attributiSIM');
+            $state.go('attributi.SIM');
           }
         },
         {
           label: "Ricarica",
           onClick: function () {
             console.log("Ricarica attribute selected");
-            $state.go('attributiRicarica');
+            $state.go('attributi.ricarica');
           }
         }
       ];

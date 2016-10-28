@@ -18,9 +18,13 @@
         <label class="form-label">{{param.title}}</label>
         <input name="{{param.name}}"
                ng-model="param.model"
-               type="text"
+               ng-disabled="param.disabled"
+               type = "{{param.type}}"
                class="form-control"
-               ng-required="isRequired()">
+               ng-required="isRequired()"
+               minlength="{{param.minlength}}"
+               maxlength="{{param.maxlength}}"
+        >
 
         <div ng-messages-include="app/templates/partials/messages.html"></div>
       </div>
@@ -50,9 +54,10 @@
         <md-card>
           <md-toolbar class="md-table-toolbar md-default">
             <div class="md-toolbar-tools">
+              <!-- pulsante "AGGIUNGI" per aggiungere un nuovo item mediante pop-up-->
               <md-button ng-if="options.addMode" ng-hide="options.isEditing"
                          ng-show="!options.rowSelection || !selected.length" class="md-primary"
-                         ng-click="addItem($event)">aggiungi
+                         ng-click="addItem(addModeType,$event, columns)">aggiungi
               </md-button>
               <md-button
                 ng-if="options.editMode"
@@ -74,7 +79,7 @@
 
           <ng-include
             ng-if="faToolbar"
-            src="'app/directives/dbss-web-dataTable/html/toolbar.html'">
+            src="'app/directives/dbss-web-dataTable/html/faToolbar.html'">
           </ng-include>
 
           <md-toolbar class="md-table-toolbar alternate" ng-show="options.isEditing">
@@ -120,7 +125,7 @@
                            class="md-icon-button"
                            title="Copia"
                            ng-disabled="options.rowSelection && selected.length>1"
-                           ng-click="copyItem(event,selected)">
+                           ng-click="copyItem(event,columns, selected)">
                   <md-icon>content_copy</md-icon>
                 </md-button>
 
@@ -184,7 +189,7 @@
              <span ng-if="options.isEditing && column.type==='selection' && column.multiple">
                   <md-select ng-model="item[column.model]" placeholder="Other" multiple
                   >
-                    <md-option ng-value="type" ng-repeat="type in item[column.model]">{{type}}</md-option>
+                    <md-option ng-value="type" ng-repeat="type in (item[column.model])">{{type}}</md-option>
                   </md-select>
             </span>
                   <!-- picklist con selezione predefinita multipla-->

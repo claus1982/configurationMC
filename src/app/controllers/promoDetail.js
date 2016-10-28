@@ -3,8 +3,10 @@ angular.module('app')
     $scope.model = $scope.model || {};
     //$scope.focusinControl = {};
 
+
+
     $scope.options = {
-      addMode: false,
+      addMode: true,
       editMode: false,
       forwardMode: false,
       isEditing: false,
@@ -38,13 +40,23 @@ angular.module('app')
         function (res) {
           var response = res.data.getConditionResponse;
 
-          promise(response.payload, response.header);
+          promise(response.header,response.payload);
 
         },
         function (res) {
           promise();
         }
       );
+    };
+
+    $scope.addCondition = function(params)
+    {
+      console.log("params", params);
+      $state.go('promo.addDetail',{
+        'tipoPromo' : $scope.tipoPromo,
+        'codicePromo': $scope.codicePromo
+      });
+
     };
 
     function init() {
@@ -58,7 +70,6 @@ angular.module('app')
       $scope.title = $scope.tipoPromo+" - "+$scope.codicePromo;
 
       $scope.columns = dataTableResources[$scope.currentState][$scope.tipoPromo].columns;
-      $scope.buttons = dataTableResources[$scope.currentState][$scope.tipoPromo].buttons;
 
     }
 

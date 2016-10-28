@@ -1,172 +1,185 @@
 angular.module('app').factory('dataTableResources', ['lovService','$state', function (lovService, $state) {
   'use strict';
+  var attributi = {
+    "attributi.CS":
+    {
+      title: "Attributi CS",
+      getOperation: "getCSWeb",
+      setOperation: "setCSWeb",
+      searchParams : [
+        {'name': 'nomeOfferta', 'title': 'Nome Gamma', 'type': 'text', minlength:'4'},
+        {'name': 'nomeProdotto', 'title': 'Nome Carta Servizi', 'type': 'text',minlength:'4'}],
+
+      columns: [
+        {'model': 'nomeOfferta', 'title': 'Nome Gamma', 'type': 'text'},
+        {'model': 'nomeProdotto', 'title': 'Nome Carta Servizi', 'type': 'text'},
+        {'model': 'codiceCartaServizi', 'title': 'Codice Carta Servizi', 'type': 'text'},
+        {
+          'model': 'defaultFlag',
+          'title': 'defaultFlag',
+          'type': 'options',
+          'options': lovService.getBooleanTypes(),
+          'editable': true
+        },
+        {'model': 'parentDisplayName', 'title': 'parentDisplayName', 'type': 'text', 'editable': true},
+        {'model': 'webDescription', 'title': 'webDescription', 'type': 'text', 'editable': true},
+        {'model': 'longDescriptionWeb', 'title': 'longDescriptionWeb', 'type': 'text', 'editable': true},
+        {
+          'model': 'seniorityConstraintWeb',
+          'title': 'seniorityConstraintWeb',
+          'type': 'selection',
+          'multiple': true,
+
+          'editable': true
+        },
+        {
+          'model': 'isWebSellable',
+          'title': 'isWebSellable',
+          'type': 'options',
+          'options': lovService.getBooleanTypes(),
+          'editable': true
+        },
+        {
+          'model': 'paymentMethodWeb',
+          'title': 'paymentMethodWeb',
+          'type': 'selection',
+          'multiple': true,
+
+          'editable': true
+        }
+      ]
+    },
+    "attributi.BF":
+    {
+      title: "Attributi BF",
+      getOperation: "getBFWeb",
+      setOperation: "setBFWeb",
+      searchParams : [
+        {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text', minlength:'6'},
+        {'name': 'nmu', 'title': 'NMU', 'type': 'text', minlength:'6', maxlength:'6'},
+        {'name': 'descrizioneModello', 'title': 'Descrizione Modello', 'type': 'text', minlength:'2'},
+        {'name': 'descrizioneBrand', 'title': 'Descrizione Brand', 'type': 'text',minlength:'2'},
+        {'name': 'nmuPadre', 'title': 'NMU Padre', 'type': 'text', minlength:'6', maxlength:'6'}
+      ],
+      columns: [
+        {'model':'nomeProdotto','title':'Nome Prodotto','type':'text'},
+        {'model':'nmu','title':'NMU','type':'text'},
+        {'model':'descrizioneModello','title':'Descrizione Modello','type':'text'},
+        {'model':'prezzo','title':'Prezzo','type':'text'},
+        {'model':'descrizioneBrand','title':'Descrizione Brand','type':'text'},
+        {'model':'nmuPadre','title':'NMU Padre','type':'text'},
+        {'model':'webDescription','title':'webDescription','type':'text','editable': true},
+        {'model':'longDescriptionWeb','title':'longDescriptionWeb','type':'text','editable': true},
+        {'model': 'seniorityConstraintWeb',
+          'title': 'seniorityConstraintWeb',
+          'type': 'selection',
+          'multiple': true,
+
+          'editable': true},
+        {
+          'model': 'isWebSellable',
+          'title': 'isWebSellable',
+          'type': 'options',
+          'options': lovService.getBooleanTypes(),
+          'editable': true
+        },
+        {
+          'model': 'paymentMethodWeb',
+          'title': 'paymentMethodWeb',
+          'type': 'selection',
+          'multiple': true,
+
+          'editable': true
+        },
+        {'model':'REGALABILE','title':'REGALABILE','type':'options','editable': true,'options': lovService.getBooleanTypes()},
+        {'model':'pianoTariffarioWeb','title':'pianoTariffarioWeb','type':'text','editable': true},
+        {'model':'TIDweb','title':'TIDweb','type':'text','editable': true}
+      ]
+    },
+    "attributi.SIM":
+    {
+      title: "Attributi SIM",
+      getOperation: "getSIMWeb",
+      setOperation: "setSIMWeb",
+      searchParams : [
+        {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text', 'disabled': true, 'model':"SIM"}
+      ],
+
+
+      columns: [
+        {'model':'nomeProdotto','title':'Nome Prodotto','type':'text'},
+        {'model':'webDescription','title':'webDescription','type':'text','editable': true},
+        {'model':'longDescriptionWeb','title':'longDescriptionWeb','type':'text','editable': true},
+        {'model': 'seniorityConstraintWeb',
+          'title': 'seniorityConstraintWeb',
+          'type': 'selection',
+          'multiple': true,
+          'editable': true},
+        {
+          'model': 'isWebSellable',
+          'title': 'isWebSellable',
+          'type': 'options',
+          'options': lovService.getBooleanTypes(),
+          'editable': true
+        },
+        {
+          'model': 'paymentMethodWeb',
+          'title': 'paymentMethodWeb',
+          'type': 'selection',
+          'multiple': true,
+
+          'editable': true
+        },
+        {'model':'pianoTariffarioWeb','title':'pianoTariffarioWeb','type':'text','editable': true},
+        {'model':'TIDweb','title':'TIDweb','type':'text','editable': true}
+      ]
+    },
+    "attributi.ricarica":
+    {
+      title: "Attributi Ricarca",
+      getOperation: "getRicaricaWeb",
+      setOperation: "setRicaricaWeb",
+      searchParams : [
+        {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text','model':"Ricarica",minlength:'4'}
+      ],
+
+
+      columns: [
+        {'model':'nomeProdotto','title':'Nome Prodotto','type':'text'},
+        {'model':'webDescription','title':'webDescription','type':'text','editable': true},
+        {'model':'longDescriptionWeb','title':'longDescriptionWeb','type':'text','editable': true},
+        {
+          'model': 'isWebSellable',
+          'title': 'isWebSellable',
+          'type': 'options',
+          'options': lovService.getBooleanTypes(),
+          'editable': true
+        },
+        {
+          'model': 'paymentMethodWeb',
+          'title': 'paymentMethodWeb',
+          'type': 'selection',
+          'multiple': true,
+
+          'editable': true
+        },
+        {
+          'model': 'priorityRecharge',
+          'title': 'priorityRecharge',
+          'type': 'text',
+          'editable': true
+        }
+      ]
+    }
+
+  };
   return {
-      attributiCS:
-      {
-        title: "Attributi CS",
-        getOperation: "getCSWeb",
-        setOperation: "setCSWeb",
-        searchParams : [
-        {'name': 'nomeOfferta', 'title': 'Nome Offerta', 'type': 'text'},
-        {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text'}],
 
-        columns: [
-          {'model': 'nomeOfferta', 'title': 'Nome Offerta', 'type': 'text'},
-          {'model': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text'},
-          {'model': 'codiceCartaServizi', 'title': 'Codice Carta Servizi', 'type': 'text'},
-          {
-            'model': 'defaultFlag',
-            'title': 'defaultFlag',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
-            'editable': true
-          },
-          {'model': 'parentDisplayName', 'title': 'parentDisplayName', 'type': 'text', 'editable': true},
-          {'model': 'webDescription', 'title': 'webDescription', 'type': 'text', 'editable': true},
-          {'model': 'longDescriptionWeb', 'title': 'longDescriptionWeb', 'type': 'text', 'editable': true},
-          {
-            'model': 'seniorityConstraintWeb',
-            'title': 'seniorityConstraintWeb',
-            'type': 'selection',
-            'multiple': true,
-
-            'editable': true
-          },
-          {
-            'model': 'isWebSellable',
-            'title': 'isWebSellable',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
-            'editable': true
-          },
-          {
-            'model': 'paymentMethodWeb',
-            'title': 'paymentMethodWeb',
-            'type': 'selection',
-            'multiple': true,
-
-            'editable': true
-          }
-        ]
-      },
-      attributiBF:
-      {
-        title: "Attributi BF",
-        getOperation: "getBFWeb",
-        setOperation: "setBFWeb",
-        searchParams : [
-          {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text'},
-          {'name': 'NMU', 'title': 'NMU', 'type': 'text'},
-          {'name': 'descrizioneModello', 'title': 'Descrizione Modello', 'type': 'text'},
-          {'name': 'descrizioneBrand', 'title': 'Descrizione Brand', 'type': 'text'},
-          {'name': 'NMUPadre', 'title': 'NMU Padre', 'type': 'text'}
-        ],
-        columns: [
-          {'model':'nomeProdotto','title':'Nome Prodotto','type':'text'},
-          {'model':'NMU','title':'NMU','type':'text'},
-          {'model':'descrizioneModello','title':'Descrizione Modello','type':'text'},
-          {'model':'price','title':'Price','type':'text'},
-          {'model':'descrizioneBrand','title':'descrizioneBrand','type':'text'},
-          {'model':'NMUPadre','title':'NMUPadre','type':'text'},
-          {'model':'webDescription','title':'webDescription','type':'text','editable': true},
-          {'model':'longDescriptionWeb','title':'longDescriptionWeb','type':'text','editable': true},
-          {'model': 'seniorityConstraintWeb',
-            'title': 'seniorityConstraintWeb',
-            'type': 'selection',
-            'multiple': true,
-
-            'editable': true},
-          {
-            'model': 'isWebSellable',
-            'title': 'isWebSellable',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
-            'editable': true
-          },
-          {
-            'model': 'paymentMethodWeb',
-            'title': 'paymentMethodWeb',
-            'type': 'selection',
-            'multiple': true,
-
-            'editable': true
-          },
-          {'model':'REGALABILE','title':'REGALABILE','type':'options','editable': true,'options': lovService.getBooleanTypes()},
-          {'model':'pianoTariffarioWeb','title':'pianoTariffarioWeb','type':'text','editable': true},
-          {'model':'TIDweb','title':'TIDweb','type':'text','editable': true}
-        ]
-      },
-      attributiSIM:
-      {
-        title: "Attributi SIM",
-        getOperation: "getSIMWeb",
-        setOperation: "setSIMWeb",
-        searchParams : [
-          {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text'}
-        ],
-
-
-        columns: [
-          {'model':'nomeProdotto','title':'Nome Prodotto','type':'text'},
-          {'model':'webDescription','title':'webDescription','type':'text','editable': true},
-          {'model':'longDescriptionWeb','title':'longDescriptionWeb','type':'text','editable': true},
-          {'model': 'seniorityConstraintWeb',
-            'title': 'seniorityConstraintWeb',
-            'type': 'selection',
-            'multiple': true,
-
-            'editable': true},
-          {
-            'model': 'isWebSellable',
-            'title': 'isWebSellable',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
-            'editable': true
-          },
-          {
-            'model': 'paymentMethodWeb',
-            'title': 'paymentMethodWeb',
-            'type': 'selection',
-            'multiple': true,
-
-            'editable': true
-          },
-          {'model':'pianoTariffarioWeb','title':'pianoTariffarioWeb','type':'text','editable': true},
-          {'model':'TIDweb','title':'TIDweb','type':'text','editable': true}
-        ]
-      },
-      attributiRicarica:
-      {
-        title: "Attributi Ricarca",
-        getOperation: "getRicaricaWeb",
-        setOperation: "setRicaricaWeb",
-        searchParams : [
-          {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text'}
-        ],
-
-
-        columns: [
-          {'model':'nomeProdotto','title':'Nome Prodotto','type':'text'},
-          {'model':'webDescription','title':'webDescription','type':'text','editable': true},
-          {'model':'longDescriptionWeb','title':'longDescriptionWeb','type':'text','editable': true},
-          {
-            'model': 'isWebSellable',
-            'title': 'isWebSellable',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
-            'editable': true
-          },
-          {
-            'model': 'paymentMethodWeb',
-            'title': 'paymentMethodWeb',
-            'type': 'selection',
-            'multiple': true,
-
-            'editable': true
-          }
-        ]
-      },
-    promo:
+    "attributi.CS": attributi["attributi.CS"],
+    "attributi.BF":  attributi["attributi.BF"],
+    "attributi.SIM":  attributi["attributi.SIM"],
+    "attributi.ricarica":  attributi["attributi.ricarca"],
+    "promo.categories":
     {
       title: "Promo",
       columns: [
@@ -216,7 +229,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
         }
       ]
     },
-    "promoList": {
+    "promo.list": {
       title: "Promo List",
       PROMO_ID1: {
         columns: [
@@ -296,7 +309,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
       },
 
     },
-    "promoListDetail": {
+    "promo.detail": {
       title: "Condition List",
       PROMO_ID1:
       {
@@ -304,16 +317,10 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
         buttons:
           [
             {
-              'name': 'Ricerca BF',
-              clbk:function(){
-
-              console.log("called Ricerca BF");
-              $state.go("promoSearch",{
-                'type'      : 'attributiBF',
-                'tipoPromo' : $state.params.tipoPromo,
-                'codicePromo': $state.params.codicePromo
-              });
-            }
+              'label': 'Ricerca BF',
+              'name': 'BF',
+              'reference': 'attributi.BF',
+              'multiple': false
             }
           ],
         columns: [
@@ -330,16 +337,9 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
         buttons:
           [
             {
-              'name': 'Ricerca CS',
-               clbk:function(){
-              console.log("called Ricerca CS")
-              $state.go("promoSearch",{
-                'type'      : 'attributiCS',
-                'tipoPromo' : $state.params.tipoPromo,
-                'codicePromo': $state.params.codicePromo
-              });
-
-            }
+              'label': 'Ricerca CS',
+              'name': 'CS',
+              'multiple': false
             }
           ],
         columns: [
@@ -358,48 +358,33 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
         title: "PROMO ID3",
         buttons:
           [
-
             {
-              'name': 'Ricerca CS2P', clbk:function(params){
-              console.log("called Ricerca CS2P")
-              $state.go("promoSearch",{
-                'type'      : 'attributiCS',
-                'tipoPromo' : $state.params.tipoPromo,
-                'codicePromo': $state.params.codicePromo
-              });
-            }
+              'label': 'Ricerca CS2P',
+              'name': 'CS2P',
+              required: true,
+              'multiple': true,
+              'reference': 'attributi.CS'
             },
             {
-              'name': 'Ricerca BF2P', clbk:function(params){
-              console.log("called Ricerca BF2P")
-              $state.go("promoSearch",{
-                'type'      : 'attributiBF',
-                'tipoPromo' : $state.params.tipoPromo,
-                'codicePromo': $state.params.codicePromo
-              });
-            }
+              'label': 'Ricerca BF2P',
+              'name': 'BF2P',
+              required: true,
+              'multiple': true,
+              'reference': 'attributi.BF'
             },
-
             {
-              'name': 'Ricerca CSBonus', clbk:function(params){
-              console.log("called Ricerca CSBonus")
-              $state.go("promoSearch",{
-                'type'      : 'attributiCS',
-                'tipoPromo' : $state.params.tipoPromo,
-                'codicePromo': $state.params.codicePromo
-              });
-            }
+              'label': 'Ricerca CSBonus',
+              'name': 'CSBonus',
+              mutualExclusive: 'BFBonus',
+              'multiple': false,
+              'reference': 'attributi.CS'
             },
-
             {
-              'name': 'Ricerca BFBonus', clbk:function(params){
-              console.log("called Ricerca BFBonus")
-              $state.go("promoSearch",{
-                'type'      : 'attributiBF',
-                'tipoPromo' : $state.params.tipoPromo,
-                'codicePromo': $state.params.codicePromo
-              });
-            }
+              'label': 'Ricerca BFBonus',
+              'name': 'BFBonus',
+              mutualExclusive: 'CSBonus',
+              'multiple': false,
+              'reference': 'attributi.BF'
             }
           ],
         columns: [
@@ -409,17 +394,36 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           {'model':'CS2Purchase','title':'CS2Purchase','type':'text'},
           {'model':'BF2Purchase','title':'BF2Purchase','type':'text'},
           {'model':'isPadreBF2Purchase','title':'IsPadre','type':'text'},
-          {'model':'nomeOfferta2','title':'Offerta','type':'text'},
+          {'model':'nomeOfferta','title':'Offerta','type':'text'},
           {'model':'CSwithBonus','title':'CSwithBonus','type':'text'},
           {'model':'BFwithBonus','title':'BFwithBonus','type':'text'},
           {'model':'isPadreBFwithBonus','title':'IsPadre','type':'text'},
-          {'model':'scontoValore','title':'Sconto Valore','type':'number'},
-          {'model':'scontoPercentuale','title':'Sconto Percentuale','type':'number'}
+       -  {'model':'scontoValore','title':'Sconto a Valore',
+         'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
+         editable:true, mutualExclusive: 'scontoPercentuale'},
+          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
+            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
+            editable: true, mutualExclusive: 'scontoValore'}
         ]
       },
       PROMO_ID4:
       {
         title: "PROMO ID4",
+        buttons:
+          [
+            {
+              'label': 'Ricerca CS2P',
+              'name': 'CS2P',
+              required: true,
+              'multiple': false
+            },
+            {
+              'label': 'Ricerca CSBonus',
+              'name': 'CSBonus',
+              required: true,
+              'multiple': false
+            }
+          ],
         columns: [
           {'model':'nomeOfferta','title':'Offerta','type':'text'},
           {'model':'CS2Purchase','title':'CS2Purchase','type':'text'},
@@ -432,36 +436,103 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
         title: "PROMO ID5",
         columns: [
           {'model':'tipologiaVendita','title':'Tipologia Vendita','type':'text'},
-          {'model':'scontoValore','title':'Sconto Valore','type':'text'},
-          {'model':'scontoPercentuale','title':'Sconto Percentuale','type':'text'}
+          {'model':'scontoValore','title':'Sconto a Valore',
+            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
+            editable:true, mutualExclusive: 'scontoPercentuale'},
+          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
+            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
+            editable: true, mutualExclusive: 'scontoValore'}
         ]
       },
       PROMO_ID6_1:
       {
         title: "PROMO ID6_1",
+        buttons:
+          [
+            {
+              'label': 'Ricerca CS2P',
+              'name': 'CS2P',
+              required: true,
+              mutualExclusive: 'BF2P',
+              'multiple': true,
+              'reference': 'attributi.CS',
+              'columns': [
+                {name: 'nomeOfferta', compare: true}, //compare: in caso di selezioni multiple si verifica che abbiano tutti lo stesso campo
+                {name:'CS2Purchase'}]
+            },
+            {
+              'label': 'Ricerca BF2P',
+              'name': 'BF2P',
+              required: true,
+              mutualExclusive: 'CS2P',
+              'multiple': false,
+              'reference': 'attributi.BF',
+              'columns': ['BS2Purchase']
+            },
+            {
+              'label': 'Ricerca CSBonus',
+              'name': 'CSBonus',
+              'multiple': false,
+              'reference': 'attributi.CS',
+              'columns': [
+                {name: 'nomeOfferta', compare: true}, //compare: in caso di selezioni multiple si verifica che abbiano tutti lo stesso campo
+                {name:'CSWithBonus'}]
+            },
+            {
+              'label': 'Ricerca BFBonus',
+              'name': 'BFBonus',
+              'multiple': false,
+              'reference': 'attributi.BF',
+              'columns': ['BFwithBonus']
+            }
+          ],
         columns: [
-          {'model':'nomeOfferta','title':'Offerta','type':'text'},
-          {'model':'CS2Purchase','title':'CS2Purchase','type':'text'},
-          {'model':'BF2Purchase','title':'BF2Purchase','type':'text'},
-          {'model':'isPadreBF2Purchase','title':'IsPadre','type':'text'},
-          {'model':'nomeOfferta2','title':'Offerta','type':'text'},
-          {'model':'CSwithBonus','title':'CSwithBonus','type':'text'},
-          {'model':'BFwithBonus','title':'BFwithBonus','type':'text'},
-          {'model':'scontoValore','title':'Sconto Valore','type':'number'},
-          {'model':'scontoPercentuale','title':'Sconto Percentuale','type':'number'}
+          {'model':'nomeOfferta','title':'Offerta','type':'text','editable': true, required: true},
+          {'model':'CS2Purchase','title':'CS2Purchase','type':'text', 'editable': true, required: true},
+          {'model':'BF2Purchase','title':'BF2Purchase','type':'text','editable': true, required: true},
+          {'model':'isPadreBF2Purchase','title':'IsPadre','type':'text','editable': true, required: true},
+          {'model':'nomeOfferta','title':'Offerta','type':'text', 'editable': true, required: true},
+          {'model':'CSwithBonus','title':'CSwithBonus','type':'text', required: true,'editable': true, mutualExclusive: 'BFwithBonus'},
+          {'model':'BFwithBonus','title':'BFwithBonus','type':'text','editable': true,  required: true, mutualExclusive: 'CSwithBonus'},
+          {'model':'scontoValore','title':'Sconto a Valore',
+            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
+            required: true, editable:true, mutualExclusive: 'scontoPercentuale'},
+          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
+            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
+            required: true, editable: true, mutualExclusive: 'scontoValore'}
 
         ]
       },
       PROMO_ID6_2:
       {
         title: "PROMO ID6_2",
+        buttons:
+          [
+            {
+              'label': 'Ricerca CSBonus',
+              'name': 'CSBonus',
+              mutualExclusive: 'BFBonus',
+              'multiple': false
+
+            },
+            {
+              'label': 'Ricerca BFBonus',
+              'name': 'BFBonus',
+              mutualExclusive: 'CSBonus',
+              'multiple': false
+            }
+          ],
         columns: [
           {'model':'totaleCarrello','title':'Totale Carrello','type':'text'},
           {'model':'nomeOfferta','title':'Offerta','type':'text'},
           {'model':'CSwithBonus','title':'CSwithBonus','type':'text'},
           {'model':'BFwithBonus','title':'BFwithBonus','type':'text'},
-          {'model':'scontoValore','title':'Sconto Valore','type':'number'},
-          {'model':'scontoPercentuale','title':'Sconto Percentuale','type':'number'}
+          {'model':'scontoValore','title':'Sconto a Valore',
+            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
+            editable:true, mutualExclusive: 'scontoPercentuale'},
+          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
+            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
+            editable: true, mutualExclusive: 'scontoValore'}
         ]
       },
       PROMO_ID7:
@@ -474,7 +545,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
         ]
       }
     },
-    "promoSearch":
+    "promo.addCondition":
     {
 
     },

@@ -36,7 +36,7 @@ angular.module('app')
       console.log("current state:",$scope.currentState);
       $scope.title = $scope.codicePromo;
 
-      $scope.columns = dataTableResources["promoListDetail"][$scope.tipoPromo].columns;
+      $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns;
 
 
       $scope.submit = function()

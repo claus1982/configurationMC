@@ -1,0 +1,85 @@
+<div class="container">
+  <md-toolbar layout="row" class="md-table-toolbar alternate" layout-align="center center">
+    <!--The left side-->
+    <span ng-repeat="button in buttons">
+    <md-button name="{{button.name}}"
+                 class="md-primary md-hue-1"
+               aria-label="{{button.name}}"
+                ng-click="openDialog(button)"
+    > {{button.label}}
+
+    </md-button>
+    <!--The right side-->
+    </span>
+  </md-toolbar>
+
+
+  <form
+    name="myForm"
+    class="form-wrapper"
+    ng-submit="submit()">
+
+      <span ng-repeat="item in items">
+        <div
+          ng-repeat="column in columns"
+          ng-class="{'has-error':myForm[columns[$index].name].$error.required}"
+          ng-messages="myForm[columns[$index].name].$error">
+
+          <div layout="row"  ng-class-even="'input-row'" ng-if="$even">
+            <md-input-container  ng-if="columns[$index].type==='text' ||columns[$index].type==='number'">
+              <label>{{columns[$index].title}}</label>
+              <input name="{{columns[$index].model}}"
+                     type="{{columns[$index].type}}"
+                     ng-model="item[columns[$index].model]"
+                     ng-disabled="isDisabled(columns[$index], item)"
+                     ng-pattern="columns[$index].pattern"
+                     step="{{columns[$index].step}}"
+                     ng-maxlength="columns[$index].maxlength"
+                     ng-required="isRequired(columns[$index], item)">
+            </md-input-container>
+
+            <md-input-container  ng-if="columns[$index].type==='options'">
+              <label>{{columns[$index].title}}</label>
+              <md-select ng-model="item[columns[$index].model]">
+                <md-option ng-value="type" ng-repeat="type in columns[$index].options">{{type}}</md-option>
+              </md-select>
+            </md-input-container>
+
+            <div ng-messages-include="app/templates/partials/messages.html"></div>
+            <md-input-container  ng-if="columns[$index+1].type==='text' ||columns[$index+1].type==='number'">
+              <label>{{columns[$index+1].title}}</label>
+              <input name="{{columns[$index+1].model}}"
+                     type="{{columns[$index+1].type}}"
+                     ng-model="item[columns[$index+1].model]"
+                     ng-disabled="isDisabled(columns[$index+1], item)"
+                     ng-pattern="columns[$index+1].pattern"
+                     step="{{columns[$index+1].step}}"
+                     ng-maxlength="columns[$index+1].maxlength"
+                     ng-required="isRequired(columns[$index+1], item)">
+            </md-input-container>
+
+            <md-input-container  ng-if="columns[$index+1].type==='options'">
+              <label>{{columns[$index+1].title}}</label>
+              <md-select ng-model="item[columns[$index+1].model]">
+                <md-option ng-value="type" ng-repeat="type in columns[$index+1].options">{{type}}</md-option>
+              </md-select>
+            </md-input-container>
+
+            <div ng-messages-include="app/templates/partials/messages.html"></div>
+          </div>
+          </div>
+
+
+
+
+   </span>
+        <div layout="row" class="form-buttons">
+          <input type="submit"
+                 class="btn-primary"
+                 value="conferma"
+                 ng-click="confirmed(item)"
+                 ng-disabled="myForm.$invalid">
+        </div>
+
+  </form>
+</div>

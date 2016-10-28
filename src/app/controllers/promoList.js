@@ -35,7 +35,13 @@ angular.module('app')
         function (res) {
           var response = res.data.getPromoResponse;
 
-          promise(response.payload, response.header);
+          if (response && response.header) {
+            promise(response.header, response.payload);
+          }
+          else
+          {
+            promise();
+          }
 
         },
         function (res) {
@@ -87,13 +93,11 @@ angular.module('app')
     //move from list to Details
     $scope.promoSelected = function(params)
     {
-      {
         console.log("params", params);
-        $state.go('promoListDetail',{
+        $state.go('promo.detail',{
           'tipoPromo' : $scope.tipoPromo,
           'codicePromo': params[0].codicePromo
         });
-      }
     };
 
     function init() {
@@ -105,7 +109,7 @@ angular.module('app')
 
       $scope.columns = dataTableResources[$scope.currentState][$scope.tipoPromo].columns;
 
-      console.log("tipoPromo (PromoList)", $scope.tipoPromo);
+      console.log("tipoPromo (promo.list)", $scope.tipoPromo);
     }
 
     init();

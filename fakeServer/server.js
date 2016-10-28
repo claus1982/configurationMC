@@ -25,19 +25,35 @@ var json =
         "nomeProdotto":"ODE46 - Internet 7 giorni",
         "codiceCartaServizi":"12345",
         "defaultFlag":"true",
-        "parentDisplayName":"Tim Special"
+        "parentDisplayName":"Tim Special",
+        "NMU": "NMU1",
+        "descrizioneModello": "descrizioneModello1",
+        "price": "100",
+        "descrizioneBrand": "descrizioneBrand1",
+        "nmuPadre": "nmuPadre1",
+        "REGALABILE": "true",
+        "pianoTariffarioWeb": "pianoTariffarioWeb1",
+        "TIDweb": "TIDweb1"
       },
       {
-        "webDescription":"Tim Young",
-        "longDescriptionWeb":"Tim Young",
+        "webDescription":"Tim Special",
+        "longDescriptionWeb":"Tim Special",
         "seniorityConstraintWeb":"AL|MNP",
         "isWebSellable":"true",
         "paymentMethodWeb":"Carta di Credito",
-        "nomeOfferta":"Tim Young",
+        "nomeOfferta":"Tim Special",
         "nomeProdotto":"ODE46 - Internet 7 giorni",
         "codiceCartaServizi":"12345",
         "defaultFlag":"true",
-        "parentDisplayName":"Tim Young"
+        "parentDisplayName":"Tim Special",
+        "nmu": "nmu2",
+        "descrizioneModello": "descrizioneModello2",
+        "prezzo": "100",
+        "descrizioneBrand": "descrizioneBrand2",
+        "nmuPadre": "nmuPadre1",
+        "REGALABILE": "true",
+        "pianoTariffarioWeb": "pianoTariffarioWeb2",
+        "TIDweb": "TIDweb2"
       },
       {
         "webDescription":"Tim Tutto",
@@ -49,7 +65,16 @@ var json =
         "nomeProdotto":"ODE543 - Internet TUTTI i giorni",
         "codiceCartaServizi":"12143",
         "defaultFlag":"false",
-        "parentDisplayName":"Tim Tutto"
+        "parentDisplayName":"Tim Tutto",
+        "nmu": "nmu3",
+        "descrizioneModello": "descrizioneModello3",
+        "prezzo": "100",
+        "descrizioneBrand": "descrizioneBrand3",
+        "nmuPadre": "nmuPadre1",
+        "REGALABILE": "true",
+        "pianoTariffarioWeb": "pianoTariffarioWeb3",
+        "TIDweb": "TIDweb3"
+
       },
       {
         "webDescription":"Tim Niente",
@@ -61,7 +86,15 @@ var json =
         "nomeProdotto":"ODE133 - Internet MAI i giorni",
         "codiceCartaServizi":"11123",
         "defaultFlag":"false",
-        "parentDisplayName":"Tim Niente"
+        "parentDisplayName":"Tim Niente",
+        "nmu": "nmu4",
+        "descrizioneModello": "descrizioneModello4",
+        "prezzo": "100",
+        "descrizioneBrand": "descrizioneBrand4",
+        "nmuPadre": "nmuPadre1",
+        "REGALABILE": "true",
+        "pianoTariffarioWeb": "pianoTariffarioWeb4",
+        "TIDweb": "TIDweb4"
       }
     ]
   }
@@ -134,11 +167,11 @@ var json =
  "payload":[
  {
  "nomeProdotto": "nomeProdotto1",
- "NMU": "NMU1",
+ "nmu": "nmu1",
  "descrizioneModello": "descrizioneModello1",
- "price": "100",
+ "prezzo": "100",
  "descrizioneBrand": "descrizioneBrand1",
- "NMUPadre": "NMUPadre1",
+ "nmuPadre": "nmuPadre1",
  "webDescription": "webDescription1",
  "longDescriptionWeb": "longDescriptionWeb1",
  "seniorityConstraintWeb": "SeniorityConstraintWeb1",
@@ -151,11 +184,11 @@ var json =
  },
  {
  "nomeProdotto": "nomeProdotto1",
- "NMU": "NMU1",
+ "nmu": "nmu1",
  "descrizioneModello": "descrizioneModello1",
- "price": "100",
+ "prezzo": "100",
  "descrizioneBrand": "descrizioneBrand1",
- "NMUPadre": "NMUPadre1",
+ "nmuPadre": "nmuPadre1",
  "webDescription": "webDescription1",
  "longDescriptionWeb": "longDescriptionWeb1",
  "seniorityConstraintWeb": "SeniorityConstraintWeb1",
@@ -168,11 +201,11 @@ var json =
  },
  {
  "nomeProdotto": "nomeProdotto1",
- "NMU": "NMU1",
+ "nmu": "nmu1",
  "descrizioneModello": "descrizioneModello1",
- "price": "100",
+ "prezzo": "100",
  "descrizioneBrand": "descrizioneBrand1",
- "NMUPadre": "NMUPadre1",
+ "nmuPadre": "nmuPadre1",
  "webDescription": "webDescription1",
  "longDescriptionWeb": "longDescriptionWeb1",
  "seniorityConstraintWeb": "SeniorityConstraintWeb1",
@@ -185,11 +218,11 @@ var json =
  },
  {
  "nomeProdotto": "nomeProdotto1",
- "NMU": "NMU1",
+ "nmu": "nmu1",
  "descrizioneModello": "descrizioneModello1",
- "price": "100",
+ "prezzo": "100",
  "descrizioneBrand": "descrizioneBrand1",
- "NMUPadre": "NMUPadre1",
+ "nmuPadre": "nmuPadre1",
  "webDescription": "webDescription1",
  "longDescriptionWeb": "longDescriptionWeb1",
  "seniorityConstraintWeb": "SeniorityConstraintWeb1",
@@ -363,7 +396,7 @@ app.post('/getCondition', function(req, res) {
         },
         "payload":[
           {
-            "offerta":"offerta1",
+            "nomeOfferta":"offerta1",
             "scontoValore":"scontoValore1",
             "scontoPercentuale":"scontoPercentuale1",
             "cartaServizi":"cartaServizi1",
@@ -382,7 +415,7 @@ app.post('/getCondition', function(req, res) {
 
           },
           {
-            "offerta":"offerta2",
+            "nomeOfferta":"offerta2",
             "scontoValore":"scontoValore2",
             "scontoPercentuale":"scontoPercentuale2",
             "cartaServizi":"cartaServizi2",
@@ -400,7 +433,7 @@ app.post('/getCondition', function(req, res) {
             "codicePromo":"codicePromo2"
 
           }, {
-            "offerta":"offerta3",
+            "nomeOfferta":"offerta3",
             "scontoValore":"scontoValore3",
             "scontoPercentuale":"scontoPercentuale3",
             "cartaServizi":"cartaServizi3",
@@ -417,7 +450,7 @@ app.post('/getCondition', function(req, res) {
             "sysdate":"sysdate",
             "codicePromo":"codicePromo3"
           }, {
-            "offerta":"offerta4",
+            "nomeOfferta":"offerta4",
             "scontoValore":"scontoValore4",
             "scontoPercentuale":"scontoPercentuale4",
             "cartaServizi":"cartaServizi4",

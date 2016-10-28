@@ -4,6 +4,7 @@ angular.module('app')
     //$scope.focusinControl = {};
 
 
+
     $scope.currentState = $state.$current.name;
     console.log("current state:",$scope.currentState);
     $scope.title = dataTableResources[$scope.currentState].title;
@@ -16,7 +17,7 @@ angular.module('app')
     $scope.promoTypeSelected = function(params)
     {
       console.log("params", params);
-      $state.go('promoList',{
+      $state.go('promo.list',{
         'tipoPromo' : params.tipoPromo
       });
     }
