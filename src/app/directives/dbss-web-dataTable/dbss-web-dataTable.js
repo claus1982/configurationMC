@@ -145,15 +145,23 @@
             $scope.items = JSON.parse(JSON.stringify($scope.savedItems));
           };
 
-
-
          $scope.confirmSearchSelection = function(event,selected) {
           console.log("confirm Search Selection selected",selected);
            $scope.confirmSelectedClbk({
              params: selected
            });
+         };
 
-         }
+          $scope.isItemsModified = function(){
+            for (var i=0;i<$scope.items.length; i++)
+            {
+              if (!angular.equals($scope.items[i],$scope.savedItems[i]))
+              {
+                return true;
+              }
+            }
+            return false;
+          };
 
           function setItemsClbkHandler(header) {
             console.log("setItemsClbkHandler called");
@@ -161,6 +169,7 @@
             if (!header) {
               $scope.error = 'Timeout: Nessuna Risposta dal Server';
               Notification.error({message: $scope.error});
+              resetTable();
             }
             else {
               $scope.header = header;
@@ -173,10 +182,11 @@
                 console.log("setWeb failed");
                 $scope.error = 'Errore ' + header.code + ": " + header.description;
                 Notification.error({message: $scope.error});
+                resetTable();
               }
               resetOptions();
             }
-            $scope.loading = false;
+            $scope.searchLoading = false;
           }
 
           $scope.enableisEditing = function() {
@@ -184,8 +194,9 @@
             $scope.options.rowSelection=false;
           };
 
-          $scope.saveItems = function () {
+            $scope.saveItems = function () {
 
+              $scope.searchLoading = true;
             //TODO gestione setWeb
             var modifiedItems = [];
 
@@ -193,18 +204,27 @@
               {
                 if (!angular.equals($scope.items[i],$scope.savedItems[i]))
                 {
-                  modifiedItems.push($scope.items[i]);
-                  console.log($scope.items[i]);
+                  modifiedItems[i] = [];
+                  angular.forEach($scope.items[i], function(value,key){
+                    if (!angular.equals(value,$scope.savedItems[i][key]) && key != "$$hashKey") {
+                      modifiedItems[i][key] = {
+                          value    : value,
+                          modified : true
+                        };
+                    }
+                    else if (key != "$$hashKey") {
+                      modifiedItems[i][key] = {value: value};
+                    }
+                  })
+
                 }
               }
             console.log("modified items:");
             console.log(modifiedItems);
-
               $scope.setItemsClbk({
                 promise: setItemsClbkHandler,
                 params: modifiedItems
             });
-
           };
 
           $scope.goToItemDetails = function(event, dataItem)
@@ -293,7 +313,7 @@
 
                       }
                     }
-                    $scope.loading = false;
+                    $scope.searchLoading = false;
                   };
                 },
                 controllerAs: 'ctrl',
@@ -343,7 +363,7 @@
                 Notification.error({message: $scope.error});
               }
             }
-            $scope.loading = false;
+            $scope.searchLoading = false;
 
           }
 
@@ -352,7 +372,7 @@
             console.log('called getItems, $scope.query.filter', $scope.query.filter);
             resetTable();
             resetOptions();
-            $scope.loading = true;
+            $scope.searchLoading = true;
 
             $scope.getItemsClbk({promise: getItemsClbkHandler,params: $scope.searchParams});
           };
@@ -412,10 +432,10 @@
                 modelValue: model[1] ? obj[model[0]][model[1]] : obj[model[0]],
                 placeholder: placeholder,
                 save: function (input) {
-                  if (model[1] && input.$modelValue.length) {
+                  if (model[1] && input.$modelValue.length && obj[model[0]][model[1]] !== input.$modelValue) {
                     obj[model[0]][model[1]] = input.$modelValue;
                   } else
-                  if (model[0] && input.$modelValue.length)
+                  if (model[0] && input.$modelValue.length && obj[model[0]] !== input.$modelValue)
                   {
                     obj[model[0]] = input.$modelValue;
                   }

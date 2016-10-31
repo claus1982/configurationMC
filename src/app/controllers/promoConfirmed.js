@@ -50,9 +50,9 @@ angular.module('app')
       {
         if (!col.editable)
         return true;
-        if (col.mutualExclusive)
+        if (col.mutuallyExclusive)
         {
-          return item[col.mutualExclusive]
+          return item[col.mutuallyExclusive]
         }
       };
 

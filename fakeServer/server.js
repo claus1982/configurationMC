@@ -28,12 +28,12 @@ var json =
         "parentDisplayName":"Tim Special",
         "NMU": "NMU1",
         "descrizioneModello": "descrizioneModello1",
-        "price": "100",
+        "prezzo": "100",
         "descrizioneBrand": "descrizioneBrand1",
         "nmuPadre": "nmuPadre1",
-        "REGALABILE": "true",
+        "regalabile": "true",
         "pianoTariffarioWeb": "pianoTariffarioWeb1",
-        "TIDweb": "TIDweb1"
+        "tidWeb": "tidWeb1"
       },
       {
         "webDescription":"Tim Special",
@@ -51,9 +51,9 @@ var json =
         "prezzo": "100",
         "descrizioneBrand": "descrizioneBrand2",
         "nmuPadre": "nmuPadre1",
-        "REGALABILE": "true",
+        "regalabile": "true",
         "pianoTariffarioWeb": "pianoTariffarioWeb2",
-        "TIDweb": "TIDweb2"
+        "tidWeb": "tidWeb2"
       },
       {
         "webDescription":"Tim Tutto",
@@ -71,9 +71,9 @@ var json =
         "prezzo": "100",
         "descrizioneBrand": "descrizioneBrand3",
         "nmuPadre": "nmuPadre1",
-        "REGALABILE": "true",
+        "regalabile": "true",
         "pianoTariffarioWeb": "pianoTariffarioWeb3",
-        "TIDweb": "TIDweb3"
+        "tidWeb": "tidWeb3"
 
       },
       {
@@ -92,9 +92,9 @@ var json =
         "prezzo": "100",
         "descrizioneBrand": "descrizioneBrand4",
         "nmuPadre": "nmuPadre1",
-        "REGALABILE": "true",
+        "regalabile": "true",
         "pianoTariffarioWeb": "pianoTariffarioWeb4",
-        "TIDweb": "TIDweb4"
+        "tidWeb": "tidWeb4"
       }
     ]
   }
@@ -115,41 +115,41 @@ var json =
  "nomeProdotto": "nomeProdotto1",
  "webDescription": "webDescription1",
  "longDescriptionWeb": "longDescriptionWeb1",
- "seniorityConstraintWeb": "SeniorityConstraintWeb1",
+ "seniorityConstraintWeb": "seniorityConstraintWeb1",
  "isWebSellable": "true",
  "paymentMethodWeb": "Carta di Credito",
  "pianoTariffarioWeb": "pianoTariffarioWeb1",
- "TIDweb": "TIDweb1"
+ "tidWeb": "tidWeb1"
  },
    {
      "nomeProdotto": "nomeProdotto2",
      "webDescription": "webDescription2",
      "longDescriptionWeb": "longDescriptionWeb2",
-     "seniorityConstraintWeb": "SeniorityConstraintWeb2",
+     "seniorityConstraintWeb": "seniorityConstraintWeb2",
      "isWebSellable": "true",
      "paymentMethodWeb": "Carta di Credito",
      "pianoTariffarioWeb": "pianoTariffarioWeb2",
-     "TIDweb": "TIDweb2"
+     "tidWeb": "tidWeb2"
    },
    {
      "nomeProdotto": "nomeProdotto3",
      "webDescription": "webDescription3",
      "longDescriptionWeb": "longDescriptionWeb3",
-     "seniorityConstraintWeb": "SeniorityConstraintWeb3",
+     "seniorityConstraintWeb": "seniorityConstraintWeb3",
      "isWebSellable": "true",
      "paymentMethodWeb": "Carta di Credito",
      "pianoTariffarioWeb": "pianoTariffarioWeb3",
-     "TIDweb": "TIDweb3"
+     "tidWeb": "tidWeb3"
    },
    {
      "nomeProdotto": "nomeProdotto4",
      "webDescription": "webDescription4",
      "longDescriptionWeb": "longDescriptionWeb4",
-     "seniorityConstraintWeb": "SeniorityConstraintWeb4",
+     "seniorityConstraintWeb": "seniorityConstraintWeb4",
      "isWebSellable": "true",
      "paymentMethodWeb": "Carta di Credito",
      "pianoTariffarioWeb": "pianoTariffarioWeb4",
-     "TIDweb": "TIDweb4"
+     "tidWeb": "tidWeb4"
    }
  ]
  }
@@ -174,12 +174,12 @@ var json =
  "nmuPadre": "nmuPadre1",
  "webDescription": "webDescription1",
  "longDescriptionWeb": "longDescriptionWeb1",
- "seniorityConstraintWeb": "SeniorityConstraintWeb1",
+ "seniorityConstraintWeb": "seniorityConstraintWeb1",
  "isWebSellable": "true",
  "paymentMethodWeb": "Carta di Credito",
- "REGALABILE": "true",
+ "regalabile": "true",
  "pianoTariffarioWeb": "pianoTariffarioWeb1",
- "TIDweb": "TIDweb1"
+ "tidWeb": "tidWeb1"
 
  },
  {
@@ -191,12 +191,12 @@ var json =
  "nmuPadre": "nmuPadre1",
  "webDescription": "webDescription1",
  "longDescriptionWeb": "longDescriptionWeb1",
- "seniorityConstraintWeb": "SeniorityConstraintWeb1",
+ "seniorityConstraintWeb": "seniorityConstraintWeb1",
  "isWebSellable": "true",
  "paymentMethodWeb": "Carta di Credito",
- "REGALABILE": "true",
+ "regalabile": "true",
  "pianoTariffarioWeb": "pianoTariffarioWeb1",
- "TIDweb": "TIDweb1"
+ "tidWeb": "tidWeb1"
 
  },
  {
@@ -208,12 +208,12 @@ var json =
  "nmuPadre": "nmuPadre1",
  "webDescription": "webDescription1",
  "longDescriptionWeb": "longDescriptionWeb1",
- "seniorityConstraintWeb": "SeniorityConstraintWeb1",
+ "seniorityConstraintWeb": "seniorityConstraintWeb1",
  "isWebSellable": "true",
  "paymentMethodWeb": "Carta di Credito",
- "REGALABILE": "true",
+ "regalabile": "true",
  "pianoTariffarioWeb": "pianoTariffarioWeb1",
- "TIDweb": "TIDweb1"
+ "tidWeb": "tidWeb1"
 
  },
  {
@@ -225,12 +225,12 @@ var json =
  "nmuPadre": "nmuPadre1",
  "webDescription": "webDescription1",
  "longDescriptionWeb": "longDescriptionWeb1",
- "seniorityConstraintWeb": "SeniorityConstraintWeb1",
+ "seniorityConstraintWeb": "seniorityConstraintWeb1",
  "isWebSellable": "true",
  "paymentMethodWeb": "Carta di Credito",
- "REGALABILE": "true",
+ "regalabile": "true",
  "pianoTariffarioWeb": "pianoTariffarioWeb1",
- "TIDweb": "TIDweb1"
+ "tidWeb": "tidWeb1"
 
  }
  ]

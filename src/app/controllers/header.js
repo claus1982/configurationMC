@@ -11,6 +11,14 @@ angular.module('app')
       $state.go("home");
     };
 
+
+    var originatorEv;
+
+    $scope.openMenu = function($mdOpenMenu, ev) {
+      originatorEv = ev;
+      $mdOpenMenu(ev);
+    };
+
     function init() {
       $scope.model.promo = {};
       $scope.model.pack = {};

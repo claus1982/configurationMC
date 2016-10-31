@@ -12,7 +12,7 @@ function inject() {
   const injectStyles = gulp.src(conf.path.src('**/*.css'), {read: false});
   const injectScripts = gulp.src([
     conf.path.tmp('**/*.js'),
-    `!${conf.path.tmp('**/*.spec.js')}`
+    `!${conf.path.tmp('**/config/config.js')}`
   ])
   .pipe(angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
 

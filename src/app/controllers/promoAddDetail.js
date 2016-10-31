@@ -1,6 +1,7 @@
 angular.module('app')
   .controller('promoAddDetailCtrl', function ($scope, $state, dataTableResources, $mdDialog, getWebService) {
     $scope.model = $scope.model || {};
+    $scope.forms = {};
 
 
 
@@ -24,15 +25,24 @@ angular.module('app')
     };
 
 
+    //per resettare i campi
+    $scope.reset = function()
+    {
+      reset();
+    }
 
     //funzione per gestire la disibilitazione dei campi da popolare
     $scope.isRequired = function(col, item)
     {
-      if (!col.required)
-        return false;
-      if (col.mutualExclusive)
+      if (col.required)
+        return true;
+      if (col.orRequired)
       {
-        return !item[col.mutualExclusive]
+        return (!$scope.forms.myForm[col.orRequired].$viewValue)
+      }
+      if (col.mutuallyExclusive)
+      {
+        return (!$scope.forms.myForm[col.mutuallyExclusive].$viewValue)
       }
     };
     //funzione per gestire la disibilitazione dei campi da popolare
@@ -40,9 +50,9 @@ angular.module('app')
     {
       if (!col.editable)
         return true;
-      if (col.mutualExclusive)
+      if (col.mutuallyExclusive)
       {
-        return !!item[col.mutualExclusive]
+        return (!!$scope.forms.myForm[col.mutuallyExclusive].$viewValue)
       }
     };
 
@@ -89,25 +99,37 @@ angular.module('app')
 
           function success(items) {
             var length =  items.length;
+
+            //determina se abilitare il pulsante "AGGIUNGI" verificando che tutte le righe selezionate abbiano
+            //la stessa offerta
             if (length > 1)
             {
               var comparingColumn = button.columns.find(function(column){
                 return column.compare === true;
-              }).name;
+              }).model;
               var comparingItem = items[0][comparingColumn];
             }
             if (items.filter(function(item){
                 return item[comparingColumn] === comparingItem;
               }).length===items.length)
             {
-            $mdDialog.hide(items);}
+              //item con le sole colonne da popolare in newItem
+              var filteredItems = items.map(function(item){
+                var filteredItem = {};
+                angular.forEach(button.columns, function(column)
+                {
+                  if (item[column.refModel])
+                  {filteredItem[column.model] = item[column.refModel];}
+                });
+                return filteredItem;
+              });
+            $mdDialog.hide(filteredItems);}
             else
             {console.log("selezione errata");}
           }
 
           this.addItem = function (items) {
-          success(items);
-            console.log("selected",items);
+              success(items);
 
           };
           //callback richiamata nella direttiva
@@ -165,7 +187,17 @@ angular.module('app')
           params: params
         }
 
-      }).then($scope.getItems);
+      }).then(function(filteredItems){
+        console.log("$dialog closed, filteredItems:",filteredItems);
+        angular.forEach(filteredItems, function(fItem){
+
+          angular.forEach(fItem, function(value,key){
+            $scope.newItem[key] = value;
+          });
+
+        });
+
+      });
 
     };
 
@@ -190,11 +222,18 @@ angular.module('app')
 
 
       //nuovo item
-      $scope.items = []
+      $scope.items = [];
       $scope.newItem = {};
       $scope.items.push($scope.newItem);
-
     }
+
+    function reset()
+    {
+      $scope.items = [];
+      $scope.newItem = {};
+      $scope.items.push($scope.newItem);
+    }
+
 
     init();
 

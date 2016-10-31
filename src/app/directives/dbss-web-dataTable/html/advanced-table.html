@@ -39,14 +39,14 @@
   </div>
 </div>
 
-<div ng-if="loading"
+<div ng-if="searchLoading"
      layout="row"
      layout-sm="column"
      layout-align="space-around">
   <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </div>
 
-<div ng-if="items" class="container"><h1 class="title-section">{{title}}</h1>
+<div ng-if="items" ng-hide="searchLoading" class="container"><h1 class="title-section">{{title}}</h1>
 
   <div class="container margin-bottom-40">
     <div class="wrapper-app">
@@ -90,7 +90,7 @@
               <md-button class="md-button btn-secondary" ng-click="restoreSavedItems()">
                 annulla
               </md-button>
-              <md-button class="md-button btn-primary" ng-click="saveItems()">
+              <md-button class="md-button btn-primary" ng-click="saveItems()" ng-disabled="!isItemsModified()">
                 salva
               </md-button>
             </div>
@@ -179,7 +179,7 @@
 
                   <!-- picklist con selezione predefinita singola-->
             <span ng-if="options.isEditing && column.type==='options' && !column.multiple">
-                  <md-select ng-model="item[column.model]" placeholder="Other"
+                  <md-select ng-model="item[column.model]" placeholder="Select"
                   >
                     <md-option ng-value="type" ng-repeat="type in column.options">{{type}}</md-option>
                   </md-select>
@@ -187,16 +187,20 @@
 
                   <!-- picklist in cui è selezionabile solo il contenuto arrivato-->
              <span ng-if="options.isEditing && column.type==='selection' && column.multiple">
-                  <md-select ng-model="item[column.model]" placeholder="Other" multiple
-                  >
-                    <md-option ng-value="type" ng-repeat="type in (item[column.model])">{{type}}</md-option>
+                  <md-select ng-model="item[column.model]"
+                             placeholder="Select"
+                             ng-change="recordChange()"
+                             multiple>
+                    <md-option ng-repeat="type in savedItems[$parent.$parent.$index][column.model]" ng-value="type">{{ type }}</md-option>
                   </md-select>
             </span>
                   <!-- picklist con selezione predefinita multipla-->
             <span ng-if="options.isEditing && column.type==='options' && column.multiple">
-                  <md-select ng-model="item[column.model]" placeholder="Other" multiple
-                  >
-                    <md-option ng-value="type" ng-repeat="type in column.options">{{type}}</md-option>
+                  <md-select ng-model="item[column.model]"
+                             placeholder="Select"
+                             ng-change="recordChange()"
+                             multiple>
+                  <md-option ng-repeat="type in column.options" ng-value="type">{{ type }}</md-option>
                   </md-select>
             </span>
                 </td>

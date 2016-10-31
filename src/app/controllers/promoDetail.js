@@ -27,7 +27,7 @@ angular.module('app')
 
     //callback richiamata nella direttiva per recupero dati
     $scope.getCondition = function (promise, params) {
-      console.log("callback getItemsClbk called from directive");
+      console.log("callback getItemsItemsClbk called from directive");
       console.log(params);
 
       var input = {

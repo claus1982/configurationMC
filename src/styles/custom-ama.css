@@ -198,13 +198,13 @@ ul {
   float: right
 }
 
-.nav-wrap .menu-nav > li {
+.nav-wrap .menu-nav > md-menu {
   height: 63px;
   float: left;
   position: relative
 }
 
-.nav-wrap .menu-nav > li > a {
+.nav-wrap .menu-nav > md-menu > button {
   display: block;
   font-size: 15px;
   font-weight: 700;
@@ -219,11 +219,11 @@ ul {
   transition: all .3s ease .15s
 }
 
-.nav-wrap .menu-nav > li.hover_open > a {
+.nav-wrap .menu-nav > md-menu.hover_open > a {
   background: url(https://img.tim.it/img/ico_freccia_dx.png) 90% 25px no-repeat
 }
 
-.nav-wrap .menu-nav > li.active > a {
+.nav-wrap .menu-nav > md-menu.active > a {
   background: url(https://img.tim.it/img/ico_freccia_bottom.png) 90% 25px no-repeat #fff;
   position: relative;
   z-index: 101;
@@ -233,7 +233,7 @@ ul {
   border-top: none
 }
 
-.nav-wrap .menu-nav > li .sub-menu-nav {
+.nav-wrap .menu-nav > md-menu .sub-menu-nav {
   height: 0;
   overflow: hidden;
   opacity: 0;
@@ -246,7 +246,7 @@ ul {
   transition: all .3s ease .15s
 }
 
-.nav-wrap .menu-nav > li .sub-menu-nav.opened {
+.nav-wrap .menu-nav > md-menu .sub-menu-nav.opened {
   transition: all .3s ease .15s;
   top: 0;
   overflow: hidden;
@@ -255,24 +255,24 @@ ul {
   transform: translate(0, 63px)
 }
 
-.nav-wrap .menu-nav > li .sub-menu-nav ul {
+.nav-wrap .menu-nav > md-menu .sub-menu-nav md-menu-content {
   padding: 15px;
   border: 1px solid #d8d8d8;
   border-top: 0;
   width: 100%
 }
 
-.nav-wrap .menu-nav > li .sub-menu-nav ul > li {
+.nav-wrap .menu-nav > md-menu .sub-menu-nav  > md-menu-item {
   margin-bottom: 10px
 }
 
-.nav-wrap .menu-nav > li .sub-menu-nav ul > li > a {
+.nav-wrap .menu-nav > md-menu .sub-menu-nav > md-menu-item > a {
   color: #004d91;
-  font-size: 14px
+  font-size: 30px
 }
 
-.nav-wrap .menu-nav > li .sub-menu-nav ul > li > a:hover {
-  color: #0078c1
+.nav-wrap .menu-nav > md-menu .sub-menu-nav > md-menu-item > a:hover {
+  color: #66CC44
 }
 
 footer .footer-wrap {

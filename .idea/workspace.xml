@@ -2,46 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4bb53196-3b0e-428d-8b4a-ef47065abfbc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/controllers/promoAddDetail.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/services/utilities/toolsService.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/templates/attribute/attribute-main.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/templates/promo/partials/add-detail-dialog.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/templates/promo/promo.detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/templates/promo/promo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/styles/custom-dev.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/templates/promo.detail.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/toolbar.html" afterPath="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/faToolbar.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/templates/attribute.html" afterPath="$PROJECT_DIR$/src/app/templates/attribute/attribute.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/templates/promo.confirmed.html" afterPath="$PROJECT_DIR$/src/app/templates/promo/promo.confirmed.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/templates/promo.html" afterPath="$PROJECT_DIR$/src/app/templates/promo/promo.categories.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/templates/promo.list.html" afterPath="$PROJECT_DIR$/src/app/templates/promo/promo.list.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/templates/promo.search.html" afterPath="$PROJECT_DIR$/src/app/templates/promo/promo.search.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/services/utilities/arrayService.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/scripts/joinWith.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/constants/app.config.js" afterPath="$PROJECT_DIR$/src/app/config/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fakeServer/data/BF.json" afterPath="$PROJECT_DIR$/fakeServer/data/BF.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fakeServer/server.js" afterPath="$PROJECT_DIR$/fakeServer/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/constants/app.config.js" afterPath="$PROJECT_DIR$/src/app/constants/app.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulp_tasks/inject.js" afterPath="$PROJECT_DIR$/gulp_tasks/inject.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controllers/attribute.js" afterPath="$PROJECT_DIR$/src/app/controllers/attribute.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controllers/header.js" afterPath="$PROJECT_DIR$/src/app/controllers/header.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controllers/home.js" afterPath="$PROJECT_DIR$/src/app/controllers/home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controllers/promo.js" afterPath="$PROJECT_DIR$/src/app/controllers/promo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controllers/promoAddDetail.js" afterPath="$PROJECT_DIR$/src/app/controllers/promoAddDetail.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controllers/promoConfirmed.js" afterPath="$PROJECT_DIR$/src/app/controllers/promoConfirmed.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controllers/promoDetail.js" afterPath="$PROJECT_DIR$/src/app/controllers/promoDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controllers/promoList.js" afterPath="$PROJECT_DIR$/src/app/controllers/promoList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/controllers/promoSearch.js" afterPath="$PROJECT_DIR$/src/app/controllers/promoSearch.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/dbss-web-dataTable.js" afterPath="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/dbss-web-dataTable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/add-item-dialog.html" afterPath="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/add-item-dialog.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/advanced-table.html" afterPath="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/advanced-table.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/copy-item-dialog.html" afterPath="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/copy-item-dialog.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/services/commons/genericMCServices.js" afterPath="$PROJECT_DIR$/src/app/services/commons/genericMCServices.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/services/dataTableResource.js" afterPath="$PROJECT_DIR$/src/app/services/dataTableResource.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/services/web-services/getWeb.js" afterPath="$PROJECT_DIR$/src/app/services/web-services/getWeb.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/services/web-services/setWeb.js" afterPath="$PROJECT_DIR$/src/app/services/web-services/setWeb.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/templates/home.html" afterPath="$PROJECT_DIR$/src/app/templates/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/templates/partials/breadcrumb-template.html" afterPath="$PROJECT_DIR$/src/app/templates/partials/breadcrumb-template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/templates/partials/breadcrumb.html" afterPath="$PROJECT_DIR$/src/app/templates/partials/breadcrumb.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/templates/partials/messages.html" afterPath="$PROJECT_DIR$/src/app/templates/partials/messages.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/templates/partials/header.html" afterPath="$PROJECT_DIR$/src/app/templates/partials/header.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/templates/promo/promo.addDetail.html" afterPath="$PROJECT_DIR$/src/app/templates/promo/promo.addDetail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes.js" afterPath="$PROJECT_DIR$/src/routes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/custom-ama.css" afterPath="$PROJECT_DIR$/src/styles/custom-ama.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/custom-dev.css" afterPath="$PROJECT_DIR$/src/styles/custom-dev.css" />
     </list>
     <ignored path="myapp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,93 +47,23 @@
       <file leaf-file-name="dataTableResource.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/services/dataTableResource.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.022727">
-              <caret line="478" column="16" selection-start-line="478" selection-start-column="16" selection-end-line="478" selection-end-column="16" />
+            <state vertical-scroll-proportion="-9.090909">
+              <caret line="178" column="47" selection-start-line="178" selection-start-column="47" selection-end-line="178" selection-end-column="47" />
               <folding>
+                <element signature="e#168#1832#0" expanded="false" />
+                <element signature="e#1858#3961#0" expanded="false" />
                 <element signature="e#3988#5260#0" expanded="false" />
+                <element signature="e#5292#6377#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="promoAddDetail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/controllers/promoAddDetail.js">
+      <file leaf-file-name="setWeb.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/services/web-services/setWeb.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.340909">
-              <caret line="95" column="21" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/fakeServer/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.649789">
-              <caret line="43" column="34" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="attribute.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/controllers/attribute.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.681818">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="e#536#1823#0" expanded="false" />
-                <element signature="e#1915#3015#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="promo.addDetail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/templates/promo/promo.addDetail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.2058825">
-              <caret line="77" column="31" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="promo.detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/templates/promo/promo.detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.088235">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add-detail-dialog.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/templates/promo/partials/add-detail-dialog.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.6764705">
-              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom-ama.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/custom-ama.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.948718">
-              <caret line="108" column="20" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="advanced-table.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/advanced-table.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.0641026">
-              <caret line="143" column="42" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.011494253">
+              <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -160,8 +72,78 @@
       <file leaf-file-name="dbss-web-dataTable.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/dbss-web-dataTable.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.022727">
-              <caret line="316" column="45" selection-start-line="316" selection-start-column="30" selection-end-line="316" selection-end-column="45" />
+            <state vertical-scroll-proportion="-9.477273">
+              <caret line="200" column="35" selection-start-line="200" selection-start-column="35" selection-end-line="200" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="attribute.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/controllers/attribute.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.090909">
+              <caret line="15" column="35" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/controllers/header.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.5227273">
+              <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/templates/partials/header.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.32051283">
+              <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom-ama.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/styles/custom-ama.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.3205128">
+              <caret line="270" column="15" selection-start-line="270" selection-start-column="15" selection-end-line="270" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/config/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.23584905">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../originalAMA/dist/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.470589">
+              <caret line="37" column="26" selection-start-line="31" selection-start-column="18" selection-end-line="37" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom-dev.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/styles/custom-dev.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.5289257">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -172,9 +154,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
+        <option value="TypeScript File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -184,57 +167,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/app/controllers/header.js" />
-        <option value="$PROJECT_DIR$/src/app/templates/partials/breadcrumb.html" />
-        <option value="$PROJECT_DIR$/.tmp/app/controllers/promoSearch.js" />
-        <option value="$PROJECT_DIR$/src/app/controllers/promoSearch.js" />
-        <option value="$PROJECT_DIR$/src/app/templates/promo.html" />
-        <option value="$PROJECT_DIR$/.tmp/app/controllers/home.js" />
-        <option value="$PROJECT_DIR$/src/app/controllers/home.js" />
-        <option value="$PROJECT_DIR$/src/app/templates/promo/promo.list.html" />
-        <option value="$PROJECT_DIR$/src/app/templates/promo/promo.html" />
-        <option value="$PROJECT_DIR$/.tmp/app/controllers/promo.js" />
-        <option value="$PROJECT_DIR$/src/app/controllers/promo.js" />
-        <option value="$PROJECT_DIR$/src/app/templates/partials/breadcrumb-template.html" />
-        <option value="$PROJECT_DIR$/src/app/templates/promo/promo-main.html" />
-        <option value="$PROJECT_DIR$/src/app/templates/attribute/attribute-main.html" />
-        <option value="$PROJECT_DIR$/src/index.html" />
-        <option value="$PROJECT_DIR$/.tmp/app/controllers/promoConfirmed.js" />
-        <option value="$PROJECT_DIR$/.tmp/app/controllers/promoList.js" />
-        <option value="$PROJECT_DIR$/.tmp/app/services/dataTableResource.js" />
-        <option value="$PROJECT_DIR$/src/app/controllers/promoConfirmed.js" />
-        <option value="$PROJECT_DIR$/src/app/controllers/promoList.js" />
-        <option value="$PROJECT_DIR$/src/app/templates/promo/promo.detail.add.html" />
-        <option value="$PROJECT_DIR$/.tmp/app/controllers/promoDetail.js" />
-        <option value="$PROJECT_DIR$/dist/maps/scripts/app-521431bcb2.js.map" />
-        <option value="$PROJECT_DIR$/dist/scripts/app-521431bcb2.js" />
-        <option value="$PROJECT_DIR$/.tmp/routes.js" />
-        <option value="$PROJECT_DIR$/.tmp/templateCacheHtml.js" />
-        <option value="$PROJECT_DIR$/src/app/templates/promo/promo.detail.html" />
-        <option value="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/copy-item-dialog.html" />
-        <option value="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/add-item-dialog.html" />
-        <option value="$PROJECT_DIR$/src/app/templates/home.html" />
-        <option value="$PROJECT_DIR$/src/app/templates/partials/messages.html" />
-        <option value="$PROJECT_DIR$/src/app/services/web-services/getWeb.js" />
-        <option value="$PROJECT_DIR$/src/app/services/web-services/setWeb.js" />
-        <option value="$PROJECT_DIR$/src/app/services/utilities/toolsService.js" />
-        <option value="$PROJECT_DIR$/src/app/services/commons/genericMCServices.js" />
-        <option value="$PROJECT_DIR$/src/app/templates/promo/promo.addCondition.html" />
         <option value="$PROJECT_DIR$/src/routes.js" />
-        <option value="$PROJECT_DIR$/src/app/controllers/promoDetail.js" />
-        <option value="$PROJECT_DIR$/src/styles/custom-dev.css" />
-        <option value="$PROJECT_DIR$/src/styles/custom-ama.css" />
         <option value="$PROJECT_DIR$/src/app/templates/promo/partials/add-item-dialog.html" />
-        <option value="$PROJECT_DIR$/src/app/constants/app.config.js" />
-        <option value="$PROJECT_DIR$/src/app/controllers/attribute.js" />
         <option value="$PROJECT_DIR$/src/app/templates/attribute/attribute.html" />
-        <option value="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/advanced-table.html" />
-        <option value="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/dbss-web-dataTable.js" />
         <option value="$PROJECT_DIR$/src/app/templates/promo/partials/add-detail-dialog.html" />
-        <option value="$PROJECT_DIR$/src/app/services/dataTableResource.js" />
+        <option value="$PROJECT_DIR$/src/app/controllers/promoDetail.js" />
+        <option value="$PROJECT_DIR$/.tmp/app/controllers/promoAddDetail.js" />
+        <option value="$PROJECT_DIR$/.tmp/app/controllers/promoConfirmed.js" />
+        <option value="$PROJECT_DIR$/src/app/controllers/promoConfirmed.js" />
         <option value="$PROJECT_DIR$/src/app/controllers/promoAddDetail.js" />
+        <option value="$PROJECT_DIR$/src/app/templates/promo/promo.addDetail.html" />
+        <option value="$PROJECT_DIR$/src/app/services/utilities/arrayService.js" />
+        <option value="$PROJECT_DIR$/bower_components/angular-material/modules/js/select/select.js" />
+        <option value="$PROJECT_DIR$/src/app/config/config.json.ts" />
+        <option value="$PROJECT_DIR$/src/app/services/config.js" />
+        <option value="$PROJECT_DIR$/src/app/constants/app.config.js" />
+        <option value="$PROJECT_DIR$/.tmp/app/services/commons/genericMCServices.js" />
+        <option value="$PROJECT_DIR$/src/app/config/config.json" />
+        <option value="$PROJECT_DIR$/src/app/config/config.js" />
+        <option value="$PROJECT_DIR$/src/app/services/commons/genericMCServices.js" />
+        <option value="$PROJECT_DIR$/src/app/config/app.config.js" />
+        <option value="$PROJECT_DIR$/dist/scripts/app.js" />
+        <option value="$PROJECT_DIR$/dist/scripts/app-dcf8782012.js" />
+        <option value="$PROJECT_DIR$/dist/scripts/vendor-318dafee0e.js" />
+        <option value="$PROJECT_DIR$/gulp_tasks/scripts.js" />
+        <option value="$PROJECT_DIR$/gulp_tasks/config.js" />
+        <option value="$PROJECT_DIR$/gulp_tasks/build.js" />
+        <option value="$PROJECT_DIR$/gulp_tasks/injectConfig.js" />
+        <option value="$PROJECT_DIR$/conf/gulp.conf.js" />
+        <option value="$PROJECT_DIR$/dist/scripts/config-bcb5dcc3ae.js" />
+        <option value="$PROJECT_DIR$/src/index.html" />
+        <option value="$PROJECT_DIR$/dist/index.html" />
+        <option value="$PROJECT_DIR$/dist/scripts/app-43ee02652b.js" />
+        <option value="$PROJECT_DIR$/gulp_tasks/inject.js" />
+        <option value="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/dbss-web-loader/html.html" />
+        <option value="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/dbss-web-loader/dbss-web-loader.js" />
+        <option value="$PROJECT_DIR$/.tmp/app/services/utilities/lovService.js" />
+        <option value="$PROJECT_DIR$/.tmp/app/services/web-services/setWeb.js" />
+        <option value="$PROJECT_DIR$/fakeServer/data/BF.json" />
+        <option value="$PROJECT_DIR$/.tmp/app/services/dataTableResource.js" />
+        <option value="$PROJECT_DIR$/dist/maps/scripts/app-db77854660.js.map" />
+        <option value="$PROJECT_DIR$/dist/scripts/app-db77854660.js" />
         <option value="$PROJECT_DIR$/fakeServer/server.js" />
+        <option value="$PROJECT_DIR$/src/app/services/web-services/setWeb.js" />
+        <option value="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/advanced-table.html" />
+        <option value="$PROJECT_DIR$/src/app/services/dataTableResource.js" />
+        <option value="$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/dbss-web-dataTable.js" />
+        <option value="$PROJECT_DIR$/src/app/controllers/attribute.js" />
+        <option value="$PROJECT_DIR$/src/styles/custom-dev.css" />
+        <option value="$PROJECT_DIR$/src/app/controllers/header.js" />
+        <option value="$PROJECT_DIR$/src/app/templates/partials/header.html" />
+        <option value="$PROJECT_DIR$/src/styles/custom-ama.css" />
       </list>
     </option>
   </component>
@@ -346,85 +329,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configurationMC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configurationMC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="promo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configurationMC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="promo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -499,84 +408,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configurationMC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configurationMC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utilities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configurationMC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -676,7 +507,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="constants" />
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -690,7 +521,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="fakeServer" />
+              <option name="myItemId" value="conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -700,7 +531,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Sviluppo/progetto DBSS" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Sviluppo" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="editor.config.accepted" value="true" />
@@ -712,11 +543,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\claudio.a.visco\Desktop\configurationMC\src\app" />
+      <recent name="C:\Users\claudio.a.visco\Desktop\configurationMC\src\app\config" />
       <recent name="C:\Users\claudio.a.visco\Desktop\configurationMC\src\app\templates\attribute" />
       <recent name="C:\Users\claudio.a.visco\Desktop\configurationMC\src\app\templates\promo" />
       <recent name="C:\Users\claudio.a.visco\Desktop\configurationMC\src\app\directives\dbss-web-dataTable\html" />
-      <recent name="C:\Users\claudio.a.visco\Desktop\configurationMC\src\app\directives\dbss-web-promo\html" />
-      <recent name="C:\Users\claudio.a.visco\Desktop\configurationMC\fakeServer" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\claudio.a.visco\Desktop\configurationMC\src\app\templates\promo\partials" />
@@ -794,10 +625,10 @@
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24583334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3242938" sideWeight="0.5125" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3242938" sideWeight="0.4875" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4655367" sideWeight="0.5125" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3242938" sideWeight="0.4875" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -832,251 +663,162 @@
           <line>23</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/services/web-services/setWeb.js</url>
+          <line>20</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/services/dataTableResource.js</url>
+          <line>137</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dist/data/data-simple.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.6764708">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fakeServer/data/data-simple.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.6764708">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/bower/lib/node_modules/tough-cookie/lib/pubsuffix.js">
+    <entry file="file://$PROJECT_DIR$/src/app/services/commons/genericMCServices.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="95" column="128371" selection-start-line="95" selection-start-column="128371" selection-end-line="95" selection-end-column="128371" />
+          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/phantomjs-prebuilt/node_modules/tough-cookie/lib/pubsuffix.js">
+    <entry file="file://$PROJECT_DIR$/src/scripts/custom-ama.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="95" column="128371" selection-start-line="95" selection-start-column="128371" selection-end-line="95" selection-end-column="128371" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/tough-cookie/lib/pubsuffix.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="95" column="128371" selection-start-line="95" selection-start-column="128371" selection-end-line="95" selection-end-column="128371" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.tmp/app/controllers/promo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/controllers/promo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/partials/breadcrumb-template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7352941">
-          <caret line="1" column="58" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        <state vertical-scroll-proportion="-5.681818">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/attribute/attribute-main.html">
+    <entry file="file://$PROJECT_DIR$/src/.eslintrc.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/simple-table.html">
+    <entry file="file://$PROJECT_DIR$/gulp_tasks/browsersync.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.705882">
-          <caret line="20" column="68" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="68" />
+        <state vertical-scroll-proportion="-5.1136365">
+          <caret line="9" column="41" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.tmp/app/controllers/promoConfirmed.js">
+    <entry file="file://$PROJECT_DIR$/conf/browsersync-dist.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.tmp/app/controllers/promoList.js">
+    <entry file="file://$PROJECT_DIR$/conf/browsersync.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="96" column="19" selection-start-line="96" selection-start-column="19" selection-end-line="96" selection-end-column="19" />
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.tmp/app/services/dataTableResource.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/useref/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="297" column="5" selection-start-line="297" selection-start-column="5" selection-end-line="297" selection-end-column="5" />
+          <caret line="47" column="2" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/controllers/promoList.js">
+    <entry file="file://$PROJECT_DIR$/gulp_tasks/partials.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.25">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulp_tasks/styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.522727">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulp_tasks/scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.3863635">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7039312">
+          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulp_tasks/build.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.818182">
+          <caret line="12" column="0" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulp_tasks/karma.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="96" column="19" selection-start-line="96" selection-start-column="19" selection-end-line="96" selection-end-column="19" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/gulp.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.318182">
+          <caret line="48" column="13" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulp_tasks/inject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4353234">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/scripts/config-7ea21be7c4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8235292">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/faToolbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.352941">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.tmp/app/controllers/promoDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="17" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/promo/promo.list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/maps/scripts/app-521431bcb2.js.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="86.125">
-          <caret line="0" column="30450" selection-start-line="0" selection-start-column="30450" selection-end-line="0" selection-end-column="30450" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/scripts/app-521431bcb2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="845" selection-start-line="0" selection-start-column="845" selection-end-line="0" selection-end-column="845" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.tmp/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.26737967">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/promo/promo.categories.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.147059">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/promo/promo.search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.352941">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/promo/promo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2058823">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/promo/promo.confirmed.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5597723">
-          <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/controllers/promoConfirmed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="64" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/copy-item-dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.088235">
-          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5">
-          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/partials/messages.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9411764">
-          <caret line="4" column="28" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="28" />
+        <state vertical-scroll-proportion="-6.6666665">
+          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1089,34 +831,133 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/web-services/setWeb.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="26" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/utilities/lovService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="22" selection-start-column="3" selection-end-line="25" selection-end-column="0" />
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/utilities/toolsService.js">
+    <entry file="file://$PROJECT_DIR$/.tmp/app/services/utilities/lovService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="18" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="18" />
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/services/commons/genericMCServices.js">
+    <entry file="file://$PROJECT_DIR$/.tmp/app/services/web-services/setWeb.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="64" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
+          <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/maps/scripts/app-db77854660.js.map">
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="248.77777">
+          <caret line="0" column="84225" selection-start-line="0" selection-start-column="84225" selection-end-line="0" selection-end-column="84225" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/scripts/app-db77854660.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="24364" selection-start-line="0" selection-start-column="24364" selection-end-line="0" selection-end-column="24364" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fakeServer/data/BF.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.147059">
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fakeServer/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.tmp/app/services/dataTableResource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="328" column="20" selection-start-line="328" selection-start-column="20" selection-end-line="328" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/jquery/AUTHORS.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="199" column="13" selection-start-line="199" selection-start-column="13" selection-end-line="199" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/bower/lib/node_modules/cliui/node_modules/wordwrap/test/idleness.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="514" selection-start-line="26" selection-start-column="514" selection-end-line="26" selection-end-column="514" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/bower/lib/node_modules/json-schema/draft-zyp-json-schema-03.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.147059">
+          <caret line="164" column="49" selection-start-line="164" selection-start-column="49" selection-end-line="164" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/bower/lib/node_modules/json-schema/draft-zyp-json-schema-04.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.147059">
+          <caret line="174" column="49" selection-start-line="174" selection-start-column="49" selection-end-line="174" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/bower/lib/node_modules/wordwrap/test/idleness.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="514" selection-start-line="26" selection-start-column="514" selection-end-line="26" selection-end-column="514" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/json-schema/draft-zyp-json-schema-03.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.147059">
+          <caret line="164" column="49" selection-start-line="164" selection-start-column="49" selection-end-line="164" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/json-schema/draft-zyp-json-schema-04.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.147059">
+          <caret line="174" column="49" selection-start-line="174" selection-start-column="49" selection-end-line="174" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/advanced-table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.230769">
+          <caret line="202" column="87" selection-start-line="202" selection-start-column="87" selection-end-line="202" selection-end-column="87" />
           <folding />
         </state>
       </provider>
@@ -1124,132 +965,132 @@
     <entry file="file://$PROJECT_DIR$/src/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.090909">
-          <caret line="249" column="28" selection-start-line="249" selection-start-column="16" selection-end-line="249" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/controllers/promoDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/custom-dev.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.147059">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/constants/app.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/add-item-dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15356265">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/attribute/attribute.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/promo/promo.detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.088235">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/dbss-web-dataTable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.022727">
-          <caret line="316" column="45" selection-start-line="316" selection-start-column="30" selection-end-line="316" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/custom-ama.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.948718">
-          <caret line="108" column="20" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/controllers/attribute.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.681818">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#536#1823#0" expanded="false" />
-            <element signature="e#1915#3015#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/promo/partials/add-detail-dialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.6764705">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/html/advanced-table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0641026">
-          <caret line="143" column="42" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="42" />
+          <caret line="175" column="12" selection-start-line="175" selection-start-column="12" selection-end-line="175" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/dataTableResource.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.022727">
-          <caret line="478" column="16" selection-start-line="478" selection-start-column="16" selection-end-line="478" selection-end-column="16" />
+        <state vertical-scroll-proportion="-9.090909">
+          <caret line="178" column="47" selection-start-line="178" selection-start-column="47" selection-end-line="178" selection-end-column="47" />
           <folding>
+            <element signature="e#168#1832#0" expanded="false" />
+            <element signature="e#1858#3961#0" expanded="false" />
             <element signature="e#3988#5260#0" expanded="false" />
+            <element signature="e#5292#6377#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/templates/promo/promo.addDetail.html">
+    <entry file="file://$PROJECT_DIR$/src/app/services/web-services/setWeb.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.2058825">
-          <caret line="77" column="31" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.011494253">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/controllers/promoAddDetail.js">
+    <entry file="file://$PROJECT_DIR$/src/app/directives/dbss-web-dataTable/dbss-web-dataTable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.340909">
-          <caret line="95" column="21" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
+        <state vertical-scroll-proportion="-9.477273">
+          <caret line="200" column="35" selection-start-line="200" selection-start-column="35" selection-end-line="200" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fakeServer/server.js">
+    <entry file="file://$PROJECT_DIR$/src/app/controllers/attribute.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.649789">
-          <caret line="43" column="34" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+        <state vertical-scroll-proportion="-6.090909">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/angular-material/modules/closure/menu/menu-default-theme.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15356265">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/custom-dev.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.5289257">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../originalAMA/dist/scripts/datatable-component/templates/templates.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../originalAMA/dist/scripts/datatable-component/dataTableController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.075472">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../originalAMA/dist/templates/advanced-table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../originalAMA/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3820639">
+          <caret line="45" column="32" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/controllers/header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5227273">
+          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../originalAMA/dist/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.470589">
+          <caret line="37" column="26" selection-start-line="31" selection-start-column="18" selection-end-line="37" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/templates/partials/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.32051283">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/custom-ama.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3205128">
+          <caret line="270" column="15" selection-start-line="270" selection-start-column="15" selection-end-line="270" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/config/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23584905">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding />
         </state>
       </provider>

@@ -91,9 +91,9 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
 
           'editable': true
         },
-        {'model':'REGALABILE','title':'REGALABILE','type':'options','editable': true,'options': lovService.getBooleanTypes()},
+        {'model':'regalabile','title':'regalabile','type':'options','editable': true,'options': lovService.getBooleanTypes()},
         {'model':'pianoTariffarioWeb','title':'pianoTariffarioWeb','type':'text','editable': true},
-        {'model':'TIDweb','title':'TIDweb','type':'text','editable': true}
+        {'model':'tidWeb','title':'tidWeb','type':'text','editable': true}
       ]
     },
     "attributi.SIM":
@@ -131,7 +131,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           'editable': true
         },
         {'model':'pianoTariffarioWeb','title':'pianoTariffarioWeb','type':'text','editable': true},
-        {'model':'TIDweb','title':'TIDweb','type':'text','editable': true}
+        {'model':'tidWeb','title':'tidWeb','type':'text','editable': true}
       ]
     },
     "attributi.ricarica":
@@ -178,7 +178,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
     "attributi.CS": attributi["attributi.CS"],
     "attributi.BF":  attributi["attributi.BF"],
     "attributi.SIM":  attributi["attributi.SIM"],
-    "attributi.ricarica":  attributi["attributi.ricarca"],
+    "attributi.ricarica":  attributi["attributi.ricarica"],
     "promo.categories":
     {
       title: "Promo",
@@ -318,7 +318,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           [
             {
               'label': 'Ricerca BF',
-              'name': 'BF',
+              'model': 'BF',
               'reference': 'attributi.BF',
               'multiple': false
             }
@@ -326,7 +326,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
         columns: [
           {'model':'BF2Purchase','title':'NMU','type':'number'},
           {'model':'isPadreBF2Purchase','title':'isPadre','type':'boolean'},
-          {'model':'price','title':'Prezzo','type':'number'},
+          {'model':'prezzo','title':'Prezzo','type':'number'},
           {'model':'scontoValore','title':'Sconto Valore','type':'number'},
           {'model':'scontoPercentuale','title':'Sconto Percentuale','type':'number'}
         ]
@@ -338,7 +338,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           [
             {
               'label': 'Ricerca CS',
-              'name': 'CS',
+              'model': 'CS',
               'multiple': false
             }
           ],
@@ -347,10 +347,10 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           {'model':'cartaServizi','title':'Carta Servizi','type':'text'},
           {'model':'scontoValore','title':'Sconto a Valore',
             'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
-            editable:true, mutualExclusive: 'scontoPercentuale'},
+            editable:true, mutuallyExclusive: 'scontoPercentuale'},
           {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
             'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
-            editable: true, mutualExclusive: 'scontoValore'}
+            editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
       PROMO_ID3:
@@ -360,29 +360,29 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           [
             {
               'label': 'Ricerca CS2P',
-              'name': 'CS2P',
+              'model': 'CS2P',
               required: true,
               'multiple': true,
               'reference': 'attributi.CS'
             },
             {
               'label': 'Ricerca BF2P',
-              'name': 'BF2P',
+              'model': 'BF2P',
               required: true,
               'multiple': true,
               'reference': 'attributi.BF'
             },
             {
               'label': 'Ricerca CSBonus',
-              'name': 'CSBonus',
-              mutualExclusive: 'BFBonus',
+              'model': 'CSBonus',
+              mutuallyExclusive: 'BFBonus',
               'multiple': false,
               'reference': 'attributi.CS'
             },
             {
               'label': 'Ricerca BFBonus',
-              'name': 'BFBonus',
-              mutualExclusive: 'CSBonus',
+              'model': 'BFBonus',
+              mutuallyExclusive: 'CSBonus',
               'multiple': false,
               'reference': 'attributi.BF'
             }
@@ -400,10 +400,10 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           {'model':'isPadreBFwithBonus','title':'IsPadre','type':'text'},
        -  {'model':'scontoValore','title':'Sconto a Valore',
          'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
-         editable:true, mutualExclusive: 'scontoPercentuale'},
+         editable:true, mutuallyExclusive: 'scontoPercentuale'},
           {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
             'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
-            editable: true, mutualExclusive: 'scontoValore'}
+            editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
       PROMO_ID4:
@@ -413,13 +413,13 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           [
             {
               'label': 'Ricerca CS2P',
-              'name': 'CS2P',
+              'model': 'CS2P',
               required: true,
               'multiple': false
             },
             {
               'label': 'Ricerca CSBonus',
-              'name': 'CSBonus',
+              'model': 'CSBonus',
               required: true,
               'multiple': false
             }
@@ -438,10 +438,10 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           {'model':'tipologiaVendita','title':'Tipologia Vendita','type':'text'},
           {'model':'scontoValore','title':'Sconto a Valore',
             'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
-            editable:true, mutualExclusive: 'scontoPercentuale'},
+            editable:true, mutuallyExclusive: 'scontoPercentuale'},
           {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
             'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
-            editable: true, mutualExclusive: 'scontoValore'}
+            editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
       PROMO_ID6_1:
@@ -451,55 +451,57 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           [
             {
               'label': 'Ricerca CS2P',
-              'name': 'CS2P',
-              required: true,
-              mutualExclusive: 'BF2P',
+              'model': 'CS2P',
+              orRequired: 'BF2P',
+              mutuallyExclusive: 'BF2P',
               'multiple': true,
               'reference': 'attributi.CS',
               'columns': [
-                {name: 'nomeOfferta', compare: true}, //compare: in caso di selezioni multiple si verifica che abbiano tutti lo stesso campo
-                {name:'CS2Purchase'}]
+                {model: 'nomeOfferta2P', 'refModel': 'nomeOfferta', compare: true}, //compare: in caso di selezioni multiple si verifica che abbiano tutti lo stesso campo
+                {model:'CS2Purchase', 'refModel': 'codiceCartaServizi'}]
             },
             {
               'label': 'Ricerca BF2P',
-              'name': 'BF2P',
-              required: true,
-              mutualExclusive: 'CS2P',
+              'model': 'BF2P',
+              orRequired: 'CS2P',
+              mutuallyExclusive: 'CS2P',
               'multiple': false,
               'reference': 'attributi.BF',
-              'columns': ['BS2Purchase']
+              'columns': [{model:'BF2Purchase', 'refModel': 'nmu'}]
             },
             {
               'label': 'Ricerca CSBonus',
-              'name': 'CSBonus',
+              'model': 'CSBonus',
+              mutuallyExclusive: 'BFBonus',
               'multiple': false,
               'reference': 'attributi.CS',
               'columns': [
-                {name: 'nomeOfferta', compare: true}, //compare: in caso di selezioni multiple si verifica che abbiano tutti lo stesso campo
-                {name:'CSWithBonus'}]
+                {model: 'nomeOffertaBonus', 'refModel': 'nomeOfferta',compare: true}, //compare: in caso di selezioni multiple si verifica che abbiano tutti lo stesso campo
+                {model:'CSWithBonus','refModel': 'codiceCartaServizi'}]
             },
             {
               'label': 'Ricerca BFBonus',
-              'name': 'BFBonus',
+              'model': 'BFBonus',
+              mutuallyExclusive: 'CSBonus',
               'multiple': false,
               'reference': 'attributi.BF',
-              'columns': ['BFwithBonus']
+              'columns': [{model:'BFWithBonus', 'refModel': 'nmu'}]
             }
           ],
         columns: [
-          {'model':'nomeOfferta','title':'Offerta','type':'text','editable': true, required: true},
-          {'model':'CS2Purchase','title':'CS2Purchase','type':'text', 'editable': true, required: true},
-          {'model':'BF2Purchase','title':'BF2Purchase','type':'text','editable': true, required: true},
-          {'model':'isPadreBF2Purchase','title':'IsPadre','type':'text','editable': true, required: true},
-          {'model':'nomeOfferta','title':'Offerta','type':'text', 'editable': true, required: true},
-          {'model':'CSwithBonus','title':'CSwithBonus','type':'text', required: true,'editable': true, mutualExclusive: 'BFwithBonus'},
-          {'model':'BFwithBonus','title':'BFwithBonus','type':'text','editable': true,  required: true, mutualExclusive: 'CSwithBonus'},
+          {'model':'nomeOfferta2P','title':'Offerta','type':'text', required: true},
+          {'model':'CS2Purchase','title':'CS2Purchase','type':'text', orRequired:'BF2Purchase'},
+          {'model':'BF2Purchase','title':'BF2Purchase','type':'text', orRequired:'CS2Purchase'},
+          {'model':'isPadre','title':'IsPadre','type':'text','editable': true, required: true},
+          {'model':'nomeOffertaBonus','title':'Offerta','type':'text'},
+          {'model':'CSWithBonus','title':'CSwithBonus','type':'text',  mutuallyExclusive: 'BFwithBonus'},
+          {'model':'BFWithBonus','title':'BFwithBonus','type':'text', mutuallyExclusive: 'CSwithBonus'},
           {'model':'scontoValore','title':'Sconto a Valore',
             'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
-            required: true, editable:true, mutualExclusive: 'scontoPercentuale'},
+            editable:true, mutuallyExclusive: 'scontoPercentuale'},
           {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
             'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
-            required: true, editable: true, mutualExclusive: 'scontoValore'}
+           editable: true, mutuallyExclusive: 'scontoValore'}
 
         ]
       },
@@ -510,15 +512,15 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           [
             {
               'label': 'Ricerca CSBonus',
-              'name': 'CSBonus',
-              mutualExclusive: 'BFBonus',
+              'model': 'CSBonus',
+              mutuallyExclusive: 'BFBonus',
               'multiple': false
 
             },
             {
               'label': 'Ricerca BFBonus',
-              'name': 'BFBonus',
-              mutualExclusive: 'CSBonus',
+              'model': 'BFBonus',
+              mutuallyExclusive: 'CSBonus',
               'multiple': false
             }
           ],
@@ -529,10 +531,10 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           {'model':'BFwithBonus','title':'BFwithBonus','type':'text'},
           {'model':'scontoValore','title':'Sconto a Valore',
             'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
-            editable:true, mutualExclusive: 'scontoPercentuale'},
+            editable:true, mutuallyExclusive: 'scontoPercentuale'},
           {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
             'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
-            editable: true, mutualExclusive: 'scontoValore'}
+            editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
       PROMO_ID7:

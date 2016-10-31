@@ -71,18 +71,20 @@ angular.module('app')
         var input = {};
         angular.forEach($scope.columns, function (column) {
           /*inizio trasformazione array to pipe*/
-          if (angular.isArray(item[column.model])) {
-
-            if (column.model && item[column.model]) {
-              input[column.model] = item[column.model].join('|');
-            }
+          if (column.model && item[column.model] && angular.isArray(item[column.model].value)
+            && item[column.model].value.length && item[column.model].modified) {
+            input[column.model] = item[column.model].value.join('|');
           }
           /*fine trasformazione array to pipe*/
-          else {
-            input[column.model] = item[column.model];
+          else if (column.model && item[column.model] && item[column.model].value && item[column.model].modified){
+            input[column.model] = item[column.model].value;
           }
         });
 
+        if (item["nomeProdotto"].value)
+        input["nomeProdotto"] = item["nomeProdotto"].value;
+        if (item["nomeOfferta"].value)
+        input["nomeOfferta"] = item["nomeOfferta"].value;
         input["operation"] = dataTableResources[$state.$current.name].setOperation;
 
         setWebService.setWeb(setWebService.setWebRequest(input)).then(

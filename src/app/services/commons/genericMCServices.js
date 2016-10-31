@@ -2,12 +2,11 @@
   "use strict";
   angular.module('app').service('GenericHttpService', function
     ($http,
-     myConfig,
-     toolsService) {
+     myConfig) {
 
     this.doHttpRequest = function (urlEndpoint, data) {
 
-      data = angular.copy(toolsService.cleanObject(data)) || {};
+      data = angular.copy(data) || {};
 
       //Request
       var req = {
