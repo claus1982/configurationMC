@@ -91,7 +91,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
 
           'editable': true
         },
-        {'model':'regalabile','title':'regalabile','type':'options','editable': true,'options': lovService.getBooleanTypes()},
+        {'model':'regalabile','title':'regalabile','type':'options','editable': true,'options': lovService.getBooleanTypes(2)},
         {'model':'pianoTariffarioWeb','title':'pianoTariffarioWeb','type':'text','editable': true},
         {'model':'tidWeb','title':'tidWeb','type':'text','editable': true}
       ]
@@ -449,6 +449,13 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
         title: "PROMO ID6_1",
         buttons:
           [
+            //label: nome del pulsante da mostrare
+            //model: identificativo del button
+            //orRequired: indica se è obbligatorio in alternativa ad un altro pulsante
+            //mutuallyEsclusive: indica un pulsante per cui c'è mutua esclusività
+            //multiple: indica se è possibile una selezione multipla di record
+            //reference: indica quale ricerca di attributi deve essere richiamata quando si clicca il pulsante
+
             {
               'label': 'Ricerca CS2P',
               'model': 'CS2P',
@@ -456,9 +463,11 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               mutuallyExclusive: 'BF2P',
               'multiple': true,
               'reference': 'attributi.CS',
+              //compare: in caso di selezioni multiple si verifica che abbiano tutti lo stesso campo
+              //append: indica se il campo va aggiunto al contenuto esistente
               'columns': [
-                {model: 'nomeOfferta2P', 'refModel': 'nomeOfferta', compare: true}, //compare: in caso di selezioni multiple si verifica che abbiano tutti lo stesso campo
-                {model:'CS2Purchase', 'refModel': 'codiceCartaServizi'}]
+                {model: 'nomeOfferta2P', 'refModel': 'nomeOfferta', compare: true},
+                {model:'CS2Purchase', 'refModel': 'codiceCartaServizi', append:true}]
             },
             {
               'label': 'Ricerca BF2P',
@@ -476,8 +485,8 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               'multiple': false,
               'reference': 'attributi.CS',
               'columns': [
-                {model: 'nomeOffertaBonus', 'refModel': 'nomeOfferta',compare: true}, //compare: in caso di selezioni multiple si verifica che abbiano tutti lo stesso campo
-                {model:'CSWithBonus','refModel': 'codiceCartaServizi'}]
+                {model: 'nomeOffertaBonus', 'refModel': 'nomeOfferta',compare: true},
+                {model:'CSwithBonus','refModel': 'codiceCartaServizi', append:true}]
             },
             {
               'label': 'Ricerca BFBonus',
@@ -485,17 +494,17 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               mutuallyExclusive: 'CSBonus',
               'multiple': false,
               'reference': 'attributi.BF',
-              'columns': [{model:'BFWithBonus', 'refModel': 'nmu'}]
+              'columns': [{model:'BFwithBonus', 'refModel': 'nmu'}]
             }
           ],
         columns: [
           {'model':'nomeOfferta2P','title':'Offerta','type':'text', required: true},
           {'model':'CS2Purchase','title':'CS2Purchase','type':'text', orRequired:'BF2Purchase'},
           {'model':'BF2Purchase','title':'BF2Purchase','type':'text', orRequired:'CS2Purchase'},
-          {'model':'isPadre','title':'IsPadre','type':'text','editable': true, required: true},
+          {'model':'isPadreBF2Purchase','title':'IsPadre','type':'text','editable': true, required: true},
           {'model':'nomeOffertaBonus','title':'Offerta','type':'text'},
-          {'model':'CSWithBonus','title':'CSwithBonus','type':'text',  mutuallyExclusive: 'BFwithBonus'},
-          {'model':'BFWithBonus','title':'BFwithBonus','type':'text', mutuallyExclusive: 'CSwithBonus'},
+          {'model':'CSwithBonus','title':'CSwithBonus','type':'text',  mutuallyExclusive: 'BFwithBonus'},
+          {'model':'BFwithBonus','title':'BFwithBonus','type':'text', mutuallyExclusive: 'CSwithBonus'},
           {'model':'scontoValore','title':'Sconto a Valore',
             'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
             editable:true, mutuallyExclusive: 'scontoPercentuale'},
@@ -514,19 +523,29 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               'label': 'Ricerca CSBonus',
               'model': 'CSBonus',
               mutuallyExclusive: 'BFBonus',
-              'multiple': false
+              orRequired: 'BFBonus',
+              'reference': 'attributi.CS',
+              'columns': [
+                {model: 'nomeOffertaBonus', 'refModel': 'nomeOfferta',compare: true},
+                {model:'CSwithBonus','refModel': 'codiceCartaServizi', append:true}]
 
             },
             {
               'label': 'Ricerca BFBonus',
               'model': 'BFBonus',
               mutuallyExclusive: 'CSBonus',
-              'multiple': false
+              orRequired: 'CSBonus',
+              'reference': 'attributi.BF',
+              'columns': [
+                {model: 'nomeOffertaBonus', 'refModel': 'nomeOfferta',compare: true},
+                {model:'BFwithBonus','refModel': 'codiceCartaServizi', append:true}]
+
             }
           ],
         columns: [
-          {'model':'totaleCarrello','title':'Totale Carrello','type':'text'},
-          {'model':'nomeOfferta','title':'Offerta','type':'text'},
+          {'model':'totaleCarrello','title':'Totale Carrello','type':'number',
+            maxlength:"10", editable:true, required:true},
+          {'model':'nomeOffertaBonus','title':'Offerta','type':'text'},
           {'model':'CSwithBonus','title':'CSwithBonus','type':'text'},
           {'model':'BFwithBonus','title':'BFwithBonus','type':'text'},
           {'model':'scontoValore','title':'Sconto a Valore',
@@ -541,9 +560,12 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
       {
         title: "PROMO ID7",
         columns: [
-          {'model':'taglioRicaricaGenerazione','title':'Taglio Ricarica Generazione','type':'text'},
-          {'model':'importoRicaricaBonus','title':'Bonus','type':'text'},
-          {'model':'taglioRicaricaBonus','title':'Taglio Ricarica Bonus','type':'text'}
+          {'model':'ricaricaMinGenerazione','title':'Taglio Ricarica Min Generazione','type':'number', editable:true, required:true},
+          {'model':'ricaricaMaxGenerazione','title':'Taglio Ricarica Max Generazione','type':'number', editable:true},
+          {'model':'ricaricaTipoGenerazione','title':'Tipo Ricarica Generazione','type':'number', editable:true},
+          {'model':'ricaricaMinApplicazione','title':'Bonus','type':'number', editable:true},
+          {'model':'importoRicaricaBonus','title':'Taglio Ricarica Bonus','type':'number', editable:true},
+          {'model':'ricaricaTipoApplicazione','title':'Taglio Ricarica Bonus','type':'text', editable:true}
         ]
       }
     },

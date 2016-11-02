@@ -5,7 +5,8 @@
     <md-button name="{{button.model}}"
                  class="md-primary md-hue-1"
                aria-label="{{button.model}}"
-                ng-click="openDialog(button)"
+               ng-click="openDialog(button)"
+               ng-disabled="buttonDisabled(button)"
     > {{button.label}}
 
     </md-button>

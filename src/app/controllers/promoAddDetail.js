@@ -36,11 +36,11 @@ angular.module('app')
     {
       if (col.required)
         return true;
-      if (col.orRequired)
+      if (col.orRequired && $scope.forms.myForm[col.orRequired])
       {
         return (!$scope.forms.myForm[col.orRequired].$viewValue)
       }
-      if (col.mutuallyExclusive)
+      if (col.mutuallyExclusive && $scope.forms.myForm && $scope.forms.myForm[col.mutuallyExclusive])
       {
         return (!$scope.forms.myForm[col.mutuallyExclusive].$viewValue)
       }
@@ -50,10 +50,35 @@ angular.module('app')
     {
       if (!col.editable)
         return true;
-      if (col.mutuallyExclusive)
+      if (col.mutuallyExclusive && $scope.forms.myForm && $scope.forms.myForm[col.mutuallyExclusive])
       {
         return (!!$scope.forms.myForm[col.mutuallyExclusive].$viewValue)
       }
+      return false;
+    };
+
+    $scope.buttonDisabled = function(button)
+    {
+      var disable = true;
+      if (button.columns)
+      {
+        angular.forEach(button.columns, function(column){
+        disable = disable && $scope.newItem[column.model];
+        });
+        if (disable) return true;
+      }
+      disable = true;
+      if (button.mutuallyExclusive)
+      {
+       var mutualButton =  $scope.buttons.find(function(mbutton){
+         return mbutton.model === button.mutuallyExclusive;
+       });
+        angular.forEach(mutualButton.columns, function(column){
+          disable = disable && $scope.newItem[column.model];
+        });
+        if (disable) return true;
+      }
+     return false;
     };
 
     //TODO funzione di conferma aggiunta condizione
@@ -106,7 +131,7 @@ angular.module('app')
             {
               var comparingColumn = button.columns.find(function(column){
                 return column.compare === true;
-              }).model;
+              }).refModel;
               var comparingItem = items[0][comparingColumn];
             }
             if (items.filter(function(item){

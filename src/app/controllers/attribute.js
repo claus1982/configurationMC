@@ -81,9 +81,9 @@ angular.module('app')
           }
         });
 
-        if (item["nomeProdotto"].value)
+        if (item["nomeProdotto"] && item["nomeProdotto"].value)
         input["nomeProdotto"] = item["nomeProdotto"].value;
-        if (item["nomeOfferta"].value)
+        if (item["nomeOfferta"] && item["nomeOfferta"].value)
         input["nomeOfferta"] = item["nomeOfferta"].value;
         input["operation"] = dataTableResources[$state.$current.name].setOperation;
 

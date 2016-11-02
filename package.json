@@ -64,9 +64,5 @@
     "extends": [
       "xo-space"
     ]
-  },
-  "dependencies": {
-    "angular-material-data-table": "^0.10.9",
-    "express": "^4.14.0"
   }
 }

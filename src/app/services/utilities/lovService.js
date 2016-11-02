@@ -4,8 +4,15 @@
 
     var factory = {};
 
-    factory.getBooleanTypes = function () {
+    factory.getBooleanTypes = function (type) {
+      if (type===1)
+      return ['Y', 'N'];
+
+      else if (type===2)
+        return ['yes', 'no'];
+
       return ['true', 'false'];
+
     };
 
     /*//paymentMethodType type

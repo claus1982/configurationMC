@@ -2,7 +2,8 @@
   "use strict";
   angular.module('app').service('GenericHttpService', function
     ($http,
-     myConfig) {
+     myConfig,
+    toolsService) {
 
     this.doHttpRequest = function (urlEndpoint, data) {
 
@@ -11,7 +12,7 @@
       //Request
       var req = {
         "url": (myConfig.baseUrl || '') + urlEndpoint,
-        "data": data,
+        "data": toolsService.cleanObject(data),
         "timeout": myConfig.timeout
       };
 
