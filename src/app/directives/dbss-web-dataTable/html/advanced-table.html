@@ -162,7 +162,9 @@
 
 
                 <td ng-repeat="column in columns"
-                    md-cell>
+                    md-cell
+                    ng-class="{'md-placeholder': !item[column.model]}"
+                >
             <span ng-if="!options.isEditing && !isArray(item[column.model])">
               {{item[column.model]}}
             </span>
@@ -173,8 +175,8 @@
             </span>
             <span ng-if="options.isEditing && column.type==='text'"
                   md-cell
-                  ng-click="editTextField(options.isEditing && column.editable,$event, item,column.model,column.title,column.title)">
-              {{item[column.model] || '-'}}
+                  ng-click="editTextField(options.isEditing && column.editable,$event, item,column.model,column.title,column.title, column.validators)">
+               {{item[column.model] || "-"}}
             </span>
 
                   <!-- picklist con selezione predefinita singola-->

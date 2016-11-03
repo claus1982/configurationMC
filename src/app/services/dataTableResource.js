@@ -91,7 +91,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
 
           'editable': true
         },
-        {'model':'regalabile','title':'regalabile','type':'options','editable': true,'options': lovService.getBooleanTypes(2)},
+        {'model':'regalabile','title':'regalabile','type':'options','editable': true,'options': lovService.getBooleanTypes()},
         {'model':'pianoTariffarioWeb','title':'pianoTariffarioWeb','type':'text','editable': true},
         {'model':'tidWeb','title':'tidWeb','type':'text','editable': true}
       ]
@@ -501,7 +501,8 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           {'model':'nomeOfferta2P','title':'Offerta','type':'text', required: true},
           {'model':'CS2Purchase','title':'CS2Purchase','type':'text', orRequired:'BF2Purchase'},
           {'model':'BF2Purchase','title':'BF2Purchase','type':'text', orRequired:'CS2Purchase'},
-          {'model':'isPadreBF2Purchase','title':'IsPadre','type':'text','editable': true, required: true},
+          {'model':'isPadreBF2Purchase','title':'IsPadre','type':'options',
+            'options': lovService.getBooleanTypes(),  editable:true,required:true},
           {'model':'nomeOffertaBonus','title':'Offerta','type':'text'},
           {'model':'CSwithBonus','title':'CSwithBonus','type':'text',  mutuallyExclusive: 'BFwithBonus'},
           {'model':'BFwithBonus','title':'BFwithBonus','type':'text', mutuallyExclusive: 'CSwithBonus'},
@@ -560,18 +561,20 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
       {
         title: "PROMO ID7",
         columns: [
-          {'model':'ricaricaMinGenerazione','title':'Taglio Ricarica Min Generazione','type':'number', editable:true, required:true},
-          {'model':'ricaricaMaxGenerazione','title':'Taglio Ricarica Max Generazione','type':'number', editable:true},
-          {'model':'ricaricaTipoGenerazione','title':'Tipo Ricarica Generazione','type':'number', editable:true},
-          {'model':'ricaricaMinApplicazione','title':'Bonus','type':'number', editable:true},
-          {'model':'importoRicaricaBonus','title':'Taglio Ricarica Bonus','type':'number', editable:true},
-          {'model':'ricaricaTipoApplicazione','title':'Taglio Ricarica Bonus','type':'text', editable:true}
+          {'model':'ricaricaMinGenerazione','title':'Taglio Ricarica Min Generazione','type':'number',
+            editable:true, required:true, maxlength:"10"},
+          {'model':'ricaricaMaxGenerazione','title':'Taglio Ricarica Max Generazione','type':'number',
+            editable:true, required:true,maxlength:"10"},
+          {'model':'ricaricaTipoGenerazione','title':'Tipo Ricarica Generazione','type':'options',
+            'options': lovService.getRicaricaTypes(),  editable:true,required:true},
+          {'model':'ricaricaMinApplicazione','title':'Bonus','type':'number',
+            editable:true,required:true,maxlength:"10"},
+          {'model':'importoRicaricaBonus','title':'Taglio Ricarica Bonus','type':'number',
+            editable:true,required:true,maxlength:"10"},
+          {'model':'ricaricaTipoApplicazione','title':'Tipo Ricarica Bonus','type':'options',
+            'options': lovService.getRicaricaTypes(), editable:true,required:true}
         ]
       }
-    },
-    "promo.addCondition":
-    {
-
     },
     pack:
     {

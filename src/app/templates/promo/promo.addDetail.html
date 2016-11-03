@@ -1,5 +1,9 @@
 <div class="container">
-  <md-toolbar layout="row" class="md-table-toolbar alternate" layout-align="center center">
+  <md-toolbar layout="row"
+              class="md-table-toolbar alternate"
+              layout-align="center center"
+              ng-if="buttons.length"
+  >
     <!--The left side-->
     <span ng-repeat="button in buttons">
     <md-button name="{{button.model}}"
@@ -19,15 +23,10 @@
     name="forms.myForm"
     class="form-wrapper"
     ng-submit="submit()">
-
-      <div ng-repeat="item in items" class="container">
-        <span
-          flex
-          class="container"
-          ng-repeat="column in columns"
-          ng-class="{'has-error':myForm[columns[$index].name].$error.required}"
-          ng-messages="myForm[columns[$index].name].$error">
-            <md-input-container
+      <div class="container" ng-repeat="item in items">
+        <div class="container clearfix">
+        <div layout="row" class="input-row" ng-repeat="column in columns" ng-if="$index%2===0">
+            <md-input-container flex
               ng-if="columns[$index].type==='text' ||columns[$index].type==='number'">
               <label>{{columns[$index].title}}</label>
               <input name="{{columns[$index].model}}"
@@ -36,18 +35,43 @@
                      ng-disabled="isDisabled(columns[$index], item)"
                      ng-pattern="columns[$index].pattern"
                      step="{{columns[$index].step}}"
-                     ng-maxlength="columns[$index].maxlength"
+                     ng-maxlength="columns[$index].maxlength" maxlength-block
                      ng-required="isRequired(columns[$index], item)">
             </md-input-container>
+          <md-input-container flex
+                              ng-if="columns[$index+1].type==='text' ||columns[$index+1].type==='number'">
+            <label>{{columns[$index+1].title}}</label>
+            <input name="{{columns[$index+1].model}}"
+                   type="{{columns[$index+1].type}}"
+                   ng-model="item[columns[$index+1].model]"
+                   ng-disabled="isDisabled(columns[$index+1], item)"
+                   ng-pattern="columns[$index+1].pattern"
+                   step="{{columns[$index+1].step}}"
+                   ng-maxlength="columns[$index+1].maxlength" maxlength-block
+                   ng-required="isRequired(columns[$index+1], item)">
+          </md-input-container>
 
-            <md-input-container class="md-block" flex ng-if="columns[$index].type==='options'">
-              <label>{{columns[$index].title}}</label>
-              <md-select ng-model="item[columns[$index].model]">
-                <md-option ng-value="type" ng-repeat="type in columns[$index].options">{{type}}</md-option>
-              </md-select>
-            </md-input-container>
-            <div ng-messages-include="app/templates/partials/messages.html"></div>
-          </span>
+          <md-input-container flex ng-if="columns[$index].type==='options'">
+            <label>{{columns[$index].title}}</label>
+            <md-select
+              ng-disabled="isDisabled(columns[$index], item)"
+              ng-required="isRequired(columns[$index], item)"
+              ng-model="item[columns[$index].model]">
+              <md-option ng-value="type" ng-repeat="type in columns[$index].options">{{type}}</md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container flex ng-if="columns[$index+1].type==='options'">
+            <label>{{columns[$index+1].title}}</label>
+            <md-select
+              ng-disabled="isDisabled(columns[$index+1], item)"
+              ng-required="isRequired(columns[$index+1], item)"
+              ng-model="item[columns[$index+1].model]">
+              <md-option ng-value="type" ng-repeat="type in columns[$index+1].options">{{type}}</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        </div>
    </div>
 
 <md-content layout-padding>

@@ -64,5 +64,8 @@
     "extends": [
       "xo-space"
     ]
+  },
+  "dependencies": {
+    "express": "^4.14.0"
   }
 }
