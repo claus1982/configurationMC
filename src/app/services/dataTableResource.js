@@ -485,7 +485,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               'multiple': false,
               'reference': 'attributi.CS',
               'columns': [
-                {model: 'nomeOffertaBonus', 'refModel': 'nomeOfferta',compare: true},
+                {model: 'nomeOfferta2P', 'refModel': 'nomeOfferta',compare: true},
                 {model:'CSwithBonus','refModel': 'codiceCartaServizi', append:true}]
             },
             {
@@ -503,7 +503,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
           {'model':'BF2Purchase','title':'BF2Purchase','type':'text', orRequired:'CS2Purchase'},
           {'model':'isPadreBF2Purchase','title':'IsPadre','type':'options',
             'options': lovService.getBooleanTypes(),  editable:true,required:true},
-          {'model':'nomeOffertaBonus','title':'Offerta','type':'text'},
+          {'model':'nomeOfferta2P','title':'Offerta','type':'text'},
           {'model':'CSwithBonus','title':'CSwithBonus','type':'text',  mutuallyExclusive: 'BFwithBonus'},
           {'model':'BFwithBonus','title':'BFwithBonus','type':'text', mutuallyExclusive: 'CSwithBonus'},
           {'model':'scontoValore','title':'Sconto a Valore',
@@ -527,7 +527,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               orRequired: 'BFBonus',
               'reference': 'attributi.CS',
               'columns': [
-                {model: 'nomeOffertaBonus', 'refModel': 'nomeOfferta',compare: true},
+                {model: 'nomeOfferta2P', 'refModel': 'nomeOfferta',compare: true},
                 {model:'CSwithBonus','refModel': 'codiceCartaServizi', append:true}]
 
             },
@@ -538,7 +538,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               orRequired: 'CSBonus',
               'reference': 'attributi.BF',
               'columns': [
-                {model: 'nomeOffertaBonus', 'refModel': 'nomeOfferta',compare: true},
+                {model: 'nomeOfferta2P', 'refModel': 'nomeOfferta',compare: true},
                 {model:'BFwithBonus','refModel': 'codiceCartaServizi', append:true}]
 
             }
@@ -546,7 +546,7 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
         columns: [
           {'model':'totaleCarrello','title':'Totale Carrello','type':'number',
             maxlength:"10", editable:true, required:true},
-          {'model':'nomeOffertaBonus','title':'Offerta','type':'text'},
+          {'model':'nomeOfferta2P','title':'Offerta','type':'text'},
           {'model':'CSwithBonus','title':'CSwithBonus','type':'text'},
           {'model':'BFwithBonus','title':'BFwithBonus','type':'text'},
           {'model':'scontoValore','title':'Sconto a Valore',

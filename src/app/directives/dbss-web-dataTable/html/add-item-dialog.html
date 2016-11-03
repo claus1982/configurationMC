@@ -9,40 +9,38 @@
         </p>
 
         <form name="item.form" ng-submit="ctrl.addItem()">
-              <span ng-repeat="column in columns">
-
-                <div layout="row" ng-class-even="'input-row'" ng-if="$even">
-                <md-input-container flex ng-if="columns[$index].type==='text' || columns[$index].type==='number'">
+                <div ng-repeat="column in columns" layout="row" ng-class-even="'input-row'" ng-if="$even">
+                <md-input-container flex>
                     <label>{{columns[$index].title}}</label>
-                    <input name="{{columns[$index].model}}"
+                    <input
+                      ng-if="columns[$index].type==='text' || columns[$index].type==='number'"
+                           name="{{columns[$index].model}}"
                            type="{{columns[$index].type}}"
                            ng-model="item[columns[$index].model]" required>
+
+                  <md-select
+                    ng-if="columns[$index].type==='options'"
+                    ng-model="item[columns[$index].model]">
+                    <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
+                  </md-select>
                 </md-input-container>
 
-                <md-input-container flex ng-if="columns[$index].type==='text' || columns[$index].type==='number'">
+                  <md-input-container flex>
                     <label>{{columns[$index+1].title}}</label>
-                    <input name="{{columns[$index+1].model}}"
-                           type="{{columns[$index+1].type}}"
-                           ng-model="item[columns[$index+1].model]" required>
-                </md-input-container>
+                    <input
+                      ng-if="columns[$index+1].type==='text' || columns[$index+1].type==='number'"
+                      name="{{columns[$index+1].model}}"
+                      type="{{columns[$index+1].type}}"
+                      ng-model="item[columns[$index+1].model]" required>
 
-                  <md-input-container flex ng-if="columns[$index].type==='options'">
-                    <label>{{columns[$index].title}}</label>
-                    <md-select ng-model="item[columns[$index].model]">
-                      <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
-                    </md-select>
-                </md-input-container>
-
-                  <md-input-container flex ng-if="columns[$index+1].type==='options'">
-                    <label>{{columns[$index+1].title}}</label>
-                    <md-select ng-model="item[columns[$index+1].model]">
+                    <md-select
+                      ng-if="columns[$index+1].type==='options'"
+                      ng-model="item[columns[$index+1].model]">
                       <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
                     </md-select>
                   </md-input-container>
                 </div>
-              </span>
         </form>
-
     </md-dialog-content>
 
     <div class="md-actions">

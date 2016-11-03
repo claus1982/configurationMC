@@ -26,10 +26,13 @@
       <div class="container" ng-repeat="item in items">
         <div class="container clearfix">
         <div layout="row" class="input-row" ng-repeat="column in columns" ng-if="$index%2===0">
-            <md-input-container flex
-              ng-if="columns[$index].type==='text' ||columns[$index].type==='number'">
+
+            <md-input-container flex>
               <label>{{columns[$index].title}}</label>
-              <input name="{{columns[$index].model}}"
+
+              <input
+                   ng-if="columns[$index].type==='text' ||columns[$index].type==='number'"
+                    name="{{columns[$index].model}}"
                      type="{{columns[$index].type}}"
                      ng-model="item[columns[$index].model]"
                      ng-disabled="isDisabled(columns[$index], item)"
@@ -37,11 +40,23 @@
                      step="{{columns[$index].step}}"
                      ng-maxlength="columns[$index].maxlength" maxlength-block
                      ng-required="isRequired(columns[$index], item)">
+
+              <md-select
+                ng-if="columns[$index].type==='options'"
+                ng-disabled="isDisabled(columns[$index], item)"
+                ng-required="isRequired(columns[$index], item)"
+                ng-model="item[columns[$index].model]">
+                <md-option ng-value="type" ng-repeat="type in columns[$index].options">{{type}}</md-option>
+              </md-select>
             </md-input-container>
-          <md-input-container flex
-                              ng-if="columns[$index+1].type==='text' ||columns[$index+1].type==='number'">
+
+
+          <md-input-container flex>
             <label>{{columns[$index+1].title}}</label>
-            <input name="{{columns[$index+1].model}}"
+
+            <input
+                   ng-if="columns[$index+1].type==='text' ||columns[$index+1].type==='number'"
+                   name="{{columns[$index+1].model}}"
                    type="{{columns[$index+1].type}}"
                    ng-model="item[columns[$index+1].model]"
                    ng-disabled="isDisabled(columns[$index+1], item)"
@@ -49,27 +64,17 @@
                    step="{{columns[$index+1].step}}"
                    ng-maxlength="columns[$index+1].maxlength" maxlength-block
                    ng-required="isRequired(columns[$index+1], item)">
-          </md-input-container>
 
-          <md-input-container flex ng-if="columns[$index].type==='options'">
-            <label>{{columns[$index].title}}</label>
             <md-select
-              ng-disabled="isDisabled(columns[$index], item)"
-              ng-required="isRequired(columns[$index], item)"
-              ng-model="item[columns[$index].model]">
-              <md-option ng-value="type" ng-repeat="type in columns[$index].options">{{type}}</md-option>
-            </md-select>
-          </md-input-container>
-
-          <md-input-container flex ng-if="columns[$index+1].type==='options'">
-            <label>{{columns[$index+1].title}}</label>
-            <md-select
+              ng-if="columns[$index+1].type==='options'"
               ng-disabled="isDisabled(columns[$index+1], item)"
               ng-required="isRequired(columns[$index+1], item)"
               ng-model="item[columns[$index+1].model]">
               <md-option ng-value="type" ng-repeat="type in columns[$index+1].options">{{type}}</md-option>
             </md-select>
           </md-input-container>
+
+
         </div>
         </div>
    </div>

@@ -4,7 +4,6 @@ angular.module('app')
     $scope.forms = {};
 
 
-
     $scope.options = {
       addMode: false,
       editMode: false,
@@ -26,77 +25,82 @@ angular.module('app')
 
 
     //per resettare i campi
-    $scope.reset = function()
-    {
+    $scope.reset = function () {
       reset();
     }
 
     //funzione per gestire la disibilitazione dei campi da popolare
-    $scope.isRequired = function(col, item)
-    {
+    $scope.isRequired = function (col, item) {
       if (col.required)
         return true;
-      if (col.orRequired && $scope.forms.myForm[col.orRequired])
-      {
+      if (col.orRequired && $scope.forms.myForm[col.orRequired]) {
         return (!$scope.forms.myForm[col.orRequired].$viewValue)
       }
-      if (col.mutuallyExclusive && $scope.forms.myForm && $scope.forms.myForm[col.mutuallyExclusive])
-      {
+      if (col.mutuallyExclusive && $scope.forms.myForm && $scope.forms.myForm[col.mutuallyExclusive]) {
         return (!$scope.forms.myForm[col.mutuallyExclusive].$viewValue)
       }
     };
     //funzione per gestire la disibilitazione dei campi da popolare
-    $scope.isDisabled = function(col, item)
-    {
+    $scope.isDisabled = function (col, item) {
       if (!col.editable)
         return true;
-      if (col.mutuallyExclusive && $scope.forms.myForm && $scope.forms.myForm[col.mutuallyExclusive])
-      {
+      if (col.mutuallyExclusive && $scope.forms.myForm && $scope.forms.myForm[col.mutuallyExclusive]) {
         return (!!$scope.forms.myForm[col.mutuallyExclusive].$viewValue)
       }
       return false;
     };
 
-    $scope.buttonDisabled = function(button)
-    {
+    $scope.buttonDisabled = function (button) {
       var disable = true;
-      if (button.columns)
-      {
-        angular.forEach(button.columns, function(column){
-        disable = disable && $scope.newItem[column.model];
-        });
-        if (disable) return true;
-      }
-      disable = true;
-      if (button.mutuallyExclusive)
-      {
-       var mutualButton =  $scope.buttons.find(function(mbutton){
-         return mbutton.model === button.mutuallyExclusive;
-       });
-        angular.forEach(mutualButton.columns, function(column){
+      if (button.columns) {
+        angular.forEach(button.columns, function (column) {
           disable = disable && $scope.newItem[column.model];
         });
         if (disable) return true;
       }
-     return false;
+      disable = true;
+      if (button.mutuallyExclusive) {
+        var mutualButton = $scope.buttons.find(function (mbutton) {
+          return mbutton.model === button.mutuallyExclusive;
+        });
+        angular.forEach(mutualButton.columns, function (column) {
+          disable = disable && $scope.newItem[column.model];
+        });
+        if (disable) return true;
+      }
+      return false;
     };
 
     //TODO funzione di conferma aggiunta condizione
-    $scope.confirmed = function (item)
-    {
-      angular.forEach($scope.columns,function(column){
-        console.log("field name: ",column.model);
-        console.log("field value: ",item[column.model]);
+    $scope.confirmed = function (item) {
+      angular.forEach($scope.columns, function (column) {
+        console.log("field name: ", column.model);
+        console.log("field value: ", item[column.model]);
       });
     };
 
-    $scope.openDialog = function(button)
-    {
+    $scope.openDialog = function (button) {
 
-      params = {};
+      var params = {};
       params.title = dataTableResources[button.reference].title;
       params.searchParams = dataTableResources[button.reference].searchParams;
       params.columns = dataTableResources[button.reference].columns;
+
+
+      //verifica se c'è un campo su cui è necessario un confronto
+      var compareColumn = button.columns.find(function (column) {
+          return column.compare
+        });
+
+      //in caso ci sia setta il nome e il valore del campo (value eventualmente undefined)
+      if (compareColumn && compareColumn.refModel) {
+        params.comparingField = {
+          model: compareColumn.refModel,
+          value: $scope.newItem[compareColumn.model]
+        };
+      }
+
+
       params.options = {
         addMode: false,  //add item with dialog
         editMode: false,
@@ -107,7 +111,7 @@ angular.module('app')
         copyMode: false,
         showFilters: true,
         rowSelection: true,
-        multiSelect: button.multiple ? true: false,
+        multiSelect: button.multiple ? true : false,
         autoSelect: false,
         decapitate: false,
         largeEditDialog: false,
@@ -118,43 +122,71 @@ angular.module('app')
 
       $mdDialog.show({
         clickOutsideToClose: true,
-        controller: function ($mdDialog,  $scope, params) {
+        controller: function ($mdDialog, $scope, Notification,dataTableResources, params) {
           this.cancel = $mdDialog.cancel;
           $scope.params = params;
+          var isAlreadyComparingFieldValued = params.comparingField && params.comparingField.value ? true: false;
 
           function success(items) {
-            var length =  items.length;
+
+            //variabile che determina se all'accesso alla pop-up vi era già un campo di paragone con un valore definito
+
 
             //determina se abilitare il pulsante "AGGIUNGI" verificando che tutte le righe selezionate abbiano
-            //la stessa offerta
-            if (length > 1)
-            {
-              var comparingColumn = button.columns.find(function(column){
-                return column.compare === true;
-              }).refModel;
-              var comparingItem = items[0][comparingColumn];
+            //1)lo stesso campo di paragone in comune se esiste ma non ancora valorizzato
+            //2) siano coerenti con l'eventuale campo di paragone se esiste e già valorizzato
+
+            //a) se il campo di paragone esiste ma non è stato ancora valorizzato
+
+            if (params.comparingField && !params.comparingField.value) {
+             //a.1)recupera il primo record selezionato che abbia quel campo valorizzato facendolo diventare il riferimento
+              params.comparingField.value = items.find
+              (function(item){return !!item[params.comparingField.model]})[params.comparingField.model];
+
+            console.log("comparingField", params.comparingField.model);
+            console.log("comparingField Value", params.comparingField.value);
             }
-            if (items.filter(function(item){
-                return item[comparingColumn] === comparingItem;
-              }).length===items.length)
-            {
-              //item con le sole colonne da popolare in newItem
-              var filteredItems = items.map(function(item){
-                var filteredItem = {};
-                angular.forEach(button.columns, function(column)
-                {
-                  if (item[column.refModel])
-                  {filteredItem[column.model] = item[column.refModel];}
+              if (
+                //se non c'è alcun campo su cui effettuare paragoni
+                  !params.comparingField
+                     ||
+                    //oppure il campo di paragone c'è e tutti i record che sono stati selezionati hanno quel valore
+                (params.comparingField.value  &&
+                items.filter(function (item) {
+                  return item[params.comparingField.model] === params.comparingField.value;
+                }).length === items.length)
+              ) {
+                //filtra il contenuto dei record selezionati per inviare alla pagina le sole colonne
+                // che sono necessarie per popolare il newItem
+                var filteredItems = items.map(function (item) {
+                  var filteredItem = {};
+                  angular.forEach(button.columns, function (column) {
+                    if (item[column.refModel]) {
+                      filteredItem[column.model] = item[column.refModel];
+                    }
+                  });
+                  return filteredItem;
                 });
-                return filteredItem;
-              });
-            $mdDialog.hide(filteredItems);}
-            else
-            {console.log("selezione errata");}
+               $mdDialog.hide(filteredItems);
+              }
+              //se non tutti i record selezionati hanno il campo di paragone coincidente con quello atteso
+              else {
+                console.log("selezione errata");
+                var error;
+                error = (isAlreadyComparingFieldValued)
+                  ? "Attenzione: sono selezionabili solo i record che hanno "
+                    +dataTableResources[button.reference].columns.find(function(column){return column.model ===params.comparingField.model}).title+
+                    " pari a \""+params.comparingField.value+"\""
+                  : "Attenzione: i record selezionati devono avere lo stesso "
+                    +dataTableResources[button.reference].columns.find(function(column){return column.model ===params.comparingField.model}).title;
+                Notification.error({message: error});
+
+              }
+
           }
 
           this.addItem = function (items) {
-              success(items);
+            success(items);
 
           };
           //callback richiamata nella direttiva
@@ -195,7 +227,9 @@ angular.module('app')
                 else if (response && response.header) {
                   promise(response.header);
                 }
-                else {promise();}
+                else {
+                  promise();
+                }
 
               },
               function (res) {
@@ -205,18 +239,18 @@ angular.module('app')
           };
         },
         controllerAs: 'ctrl',
-        focusOnOpen: false,
+        focusOnOpen: true,
         targetEvent: event,
         templateUrl: 'app/templates/promo/partials/add-detail-dialog.html',
         locals: {
           params: params
         }
 
-      }).then(function(filteredItems){
-        console.log("$dialog closed, filteredItems:",filteredItems);
-        angular.forEach(filteredItems, function(fItem){
+      }).then(function (filteredItems) {
+        console.log("$dialog closed, filteredItems:", filteredItems);
+        angular.forEach(filteredItems, function (fItem) {
 
-          angular.forEach(fItem, function(value,key){
+          angular.forEach(fItem, function (value, key) {
             $scope.newItem[key] = value;
           });
 
@@ -227,8 +261,6 @@ angular.module('app')
     };
 
 
-
-
     function init() {
       console.log("promoAddDetail started");
       $scope.tipoPromo = $state.params.tipoPromo;
@@ -237,13 +269,12 @@ angular.module('app')
       console.log("codicePromo", $scope.codicePromo);
 
       $scope.currentState = $state.$current.name;
-      console.log("current state:",$scope.currentState);
+      console.log("current state:", $scope.currentState);
 
-      $scope.title = $scope.tipoPromo+" - "+$scope.codicePromo+":Add Condition";
+      $scope.title = $scope.tipoPromo + " - " + $scope.codicePromo + ":Add Condition";
 
       $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns;
       $scope.buttons = dataTableResources["promo.detail"][$scope.tipoPromo].buttons;
-
 
 
       //nuovo item
@@ -252,8 +283,7 @@ angular.module('app')
       $scope.items.push($scope.newItem);
     }
 
-    function reset()
-    {
+    function reset() {
       $scope.items = [];
       $scope.newItem = {};
       $scope.items.push($scope.newItem);
