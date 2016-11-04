@@ -6,5 +6,7 @@ angular
       'ngResource',
       'ngMessages',
       'ncy-angular-breadcrumb',
-      'ui-notification'
+      'ui-notification',
+      'sticky',
+      'perfect_scrollbar'
     ]);
