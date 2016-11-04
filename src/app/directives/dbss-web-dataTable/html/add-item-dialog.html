@@ -16,28 +16,59 @@
                       ng-if="columns[$index].type==='text' || columns[$index].type==='number'"
                            name="{{columns[$index].model}}"
                            type="{{columns[$index].type}}"
-                           ng-model="item[columns[$index].model]" required>
-
+                           ng-model="item[columns[$index].model]"
+                           ng-disabled="columns[$index].disabled"
+                           ng-pattern="columns[$index].pattern"
+                           step="{{columns[$index].step}}"
+                           ng-maxlength="columns[$index].maxlength" maxlength-block
+                           ng-required="columns[$index].required"
+                    >
                   <md-select
                     ng-if="columns[$index].type==='options'"
-                    ng-model="item[columns[$index].model]">
-                    <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
+                    ng-model="item[columns[$index].model]"
+                    ng-disabled="columns[$index].disabled"
+                    ng-required="columns[$index].required"
+                    >
+                    <md-option ng-value="type"
+                               ng-repeat="type in getTypes()">{{type}}
+                    </md-option>
                   </md-select>
+
+                  <input
+                    ng-if="columns[$index].type==='datepicker'"
+                    type="daterange" ng-model="item[columns[$index].model]">
                 </md-input-container>
 
                   <md-input-container flex>
                     <label>{{columns[$index+1].title}}</label>
                     <input
-                      ng-if="columns[$index+1].type==='text' || columns[$index+1].type==='number'"
+                      ng-if="
+                      columns[$index+1].type==='text'
+                      || columns[$index+1].type==='number'"
                       name="{{columns[$index+1].model}}"
                       type="{{columns[$index+1].type}}"
-                      ng-model="item[columns[$index+1].model]" required>
-
+                      ng-model="item[columns[$index+1].model]"
+                      ng-disabled="columns[$index+1].disabled"
+                      ng-pattern="columns[$index+1].pattern"
+                      step="{{columns[$index+1].step}}"
+                      ng-maxlength="columns[$index+1].maxlength" maxlength-block
+                      ng-required="columns[$index+1].required"
+                    >
                     <md-select
                       ng-if="columns[$index+1].type==='options'"
-                      ng-model="item[columns[$index+1].model]">
-                      <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
+                      ng-model="item[columns[$index+1].model]"
+                      ng-disabled="columns[$index+1].disabled"
+                      ng-required="columns[$index+1].required"
+                    >
+                      <md-option ng-value="type"
+                                 ng-repeat="type in getTypes()">{{type}}
+                      </md-option>
                     </md-select>
+
+                    <input
+                      ng-if="columns[$index+1].type==='datepicker'"
+                      type="daterange" ng-model="item[columns[$index+1].model]">
+
                   </md-input-container>
                 </div>
         </form>

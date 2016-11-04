@@ -236,14 +236,37 @@
           };
 
 
-          $scope.copyItem = function (event, columns, dataItem) {
+          $scope.copyItem = function (event, columns, dataItems) {
 
             $mdDialog.show({
               clickOutsideToClose: true,
-              controller: function ($mdDialog,  $scope, columns) {
+              controller: function ($mdDialog,  $scope, columns,regexService) {
                 this.cancel = $mdDialog.cancel;
                 $scope.columns = columns;
-                $scope.item = dataItem[0];
+               var formattedDataItems = dataItems.map(function(item){
+                 var nItem = {};
+                    angular.forEach(item,function(field,key){
+                   if (field.match(regexService.dateRange))
+                   {
+                       var startDate =  moment(field.split("-")[0].trim(), 'DD/MM/YYYY').utc().format("YYYY-MM-DD"),
+                         endDate = moment(field.split("-")[1].trim(), 'DD/MM/YYYY').utc().format("YYYY-MM-DD");
+                     nItem[key] = {
+                       startDate: startDate.toString()+"T00:00:00.000Z",
+                       endDate:  endDate.toString()+"T00:00:00.000Z"
+                     };
+                   }
+                      else {
+                     nItem[key] = field;
+                   }
+                 });
+                 console.log("nItem",nItem);
+
+                 return nItem;
+
+
+               });
+
+                $scope.item = formattedDataItems[0];
                 function success(item) {
                   $mdDialog.hide(item);
                 }
@@ -279,6 +302,7 @@
               $mdDialog.show({
                 clickOutsideToClose: true,
                 controller: function ($mdDialog, $scope, columns) {
+
                   this.cancel = $mdDialog.cancel;
                   $scope.columns = columns;
 

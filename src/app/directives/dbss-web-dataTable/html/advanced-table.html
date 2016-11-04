@@ -1,4 +1,5 @@
-<div ng-if="options.showFilters && searchParams">
+<div
+  ng-if="options.showFilters && searchParams">
   <div
     class="container">
     <h2 class="title-section">Ricerca
@@ -46,6 +47,7 @@
   <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </div>
 
+<perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10" min-scrollbar-length="20">
 <div ng-if="items" ng-hide="searchLoading" class="container"><h1 class="title-section">{{title}}</h1>
 
   <div class="container margin-bottom-40">
@@ -224,5 +226,6 @@
     </div>
   </div>
 </div>
+</perfect-scrollbar>
 
 
