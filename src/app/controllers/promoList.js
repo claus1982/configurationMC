@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('promoListCtrl', function ($scope, $state, dataTableResources, getPromoService,createPromoService) {
+  .controller('promoListCtrl', function ($scope, $state, dataTableResources, getPromoService, createPromoService) {
     $scope.model = $scope.model || {};
     //$scope.focusinControl = {};
 
@@ -23,13 +23,12 @@ angular.module('app')
     };
 
 
-
     //callback richiamata nella direttiva per recupero dati
     $scope.getPromo = function (promise, params) {
       console.log("callback getItemsClbk called from directive");
       console.log(params);
 
-      var input = {tipoPromo:  $scope.tipoPromo};
+      var input = {tipoPromo: $scope.tipoPromo};
 
       getPromoService.getPromo(getPromoService.getPromoRequest(input)).then(
         function (res) {
@@ -38,8 +37,7 @@ angular.module('app')
           if (response && response.header) {
             promise(response.header, response.payload);
           }
-          else
-          {
+          else {
             promise();
           }
 
@@ -54,56 +52,54 @@ angular.module('app')
     //callback richiamata nella direttiva per aggiungere una nuova promo
     $scope.addPromo = function (promise, params) {
       console.log("callback addItemClbk called from directive");
+      console.log(promise);
       console.log(params);
 
-
-
-      angular.forEach(params, function (item) {
-        var input = {};
-        angular.forEach($scope.columns, function (column) {
+      var input = {},
+        items = params.items;
+      angular.forEach(params.columns, function (column) {
+     
           /*inizio trasformazione array to pipe*/
-          if (angular.isArray(item[column.model])) {
-
-            if (column.model && item[column.model]) {
-              input[column.model] = item[column.model].join('|');
+          if (angular.isArray(items[column.model])) {
+            if (column.model && items[column.model]) {
+              input[column.model] = items[column.model].join('|');
             }
           }
           /*fine trasformazione array to pipe*/
-          else {
-            input[column.model] = item[column.model];
+          else if (items[column.model]) {
+            input[column.model] = items[column.model];
           }
-        });
 
-       // input["operation"] = dataTableResources[$state.$current.name].getOperation;
-
-        createPromoService.createPromo(createPromoService.createPromoRequest(input)).then(
-          function (res) {
-            var response = res.data.createPromoResponse;
-            promise(response.header);
-
-          },
-          function (res) {
-            promise();
-            // Message with custom delay
-          }
-        );
       });
+
+      // input["operation"] = dataTableResources[$state.$current.name].getOperation;
+
+      createPromoService.createPromo(createPromoService.createPromoRequest(input)).then(
+        function (res) {
+          var response = res.data.createPromoResponse;
+          promise(response);
+
+        },
+        function (res) {
+          promise();
+          // Message with custom delay
+        }
+      );
     };
 
     //move from list to Details
-    $scope.promoSelected = function(params)
-    {
-        console.log("params", params);
-        $state.go('promo.detail',{
-          'tipoPromo' : $scope.tipoPromo,
-          'codicePromo': params[0].codicePromo
-        });
+    $scope.promoSelected = function (params) {
+      console.log("params", params);
+      $state.go('promo.detail', {
+        'tipoPromo': $scope.tipoPromo,
+        'codicePromo': params[0].codicePromo
+      });
     };
 
     function init() {
 
       $scope.currentState = $state.$current.name;
-      console.log("current state:",$scope.currentState);
+      console.log("current state:", $scope.currentState);
 
       $scope.title = $scope.tipoPromo = $state.params.tipoPromo;
 

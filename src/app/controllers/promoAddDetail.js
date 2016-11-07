@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('promoAddDetailCtrl', function ($scope, $state, dataTableResources, $mdDialog, getWebService) {
+  .controller('promoAddDetailCtrl', function ($scope, $state, dataTableResources, $mdDialog, getWebService,createConditionService) {
     $scope.model = $scope.model || {};
     $scope.forms = {};
 
@@ -72,11 +72,43 @@ angular.module('app')
     };
 
     //TODO funzione di conferma aggiunta condizione
-    $scope.confirmed = function (item) {
+    $scope.addCondition = function (item) {
       angular.forEach($scope.columns, function (column) {
         console.log("field name: ", column.model);
         console.log("field value: ", item[column.model]);
       });
+      var input = {};
+      angular.forEach($scope.columns, function (column) {
+
+        /*inizio trasformazione array to pipe*/
+        if (angular.isArray($scope.newItem[column.model])) {
+          if (column.model && $scope.newItem[column.model]) {
+            input[column.model] = $scope.newItem[column.model].join('|');
+          }
+        }
+        /*fine trasformazione array to pipe*/
+        else if ($scope.newItem[column.model]) {
+          input[column.model] = $scope.newItem[column.model];
+        }
+
+      });
+
+      // input["operation"] = dataTableResources[$state.$current.name].getOperation;
+
+      createConditionService.createCondition(createConditionService.createConditionRequest(input)).then(
+        function (res) {
+          var response = res.data.createConditionResponse;
+          $state.go('promo.detail', {
+            'tipoPromo': $scope.tipoPromo,
+            'codicePromo': $scope.codicePromo
+          });
+
+        },
+        function (res) {
+         console.log("Errore su createCondition");
+          // Message with custom delay
+        }
+      );
     };
 
     $scope.openDialog = function (button) {

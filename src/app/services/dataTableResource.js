@@ -273,14 +273,14 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
       },
       PROMO_ID6_1: {
         columns: [
-          {'model':'codicePromo','title':'Codice promo','type':'text', 'disabled': true},
-          {'model':'descrizionePromo','title':'Descrizione promo','type':'text', required:true},
-          {'model':'periodoValidita','title':'Periodo Validita','type':'datepicker',required:true},
-          {'model':'periodoGenerazione','title':'Periodo Generazione','type':'text',required:true},
-          {'model':'codiceTemplateSMS','title':'Codice Template SMS','type':'text', required:true },
-          {'model':'codiceTemplateMAIL','title':'Codice Template Mail','type':'text',required:true},
-          {'model':'flagLinea','title':'FlagLinea','type':'text',required:true},
-          {'model':'limiteUtilizzoCoupon','title':'Limite Utilizzo Coupon','type':'text',required:true}
+          {'model':'codicePromo','title':'Codice promo','type':'text'},
+          {'model':'descrizionePromo','title':'Descrizione promo','type':'text',editable:true, required:true},
+          {'model':'periodoValidita','title':'Periodo Validita','type':'datepicker',editable:true,required:true},
+          {'model':'periodoGenerazione','title':'Periodo Generazione','type':'text',editable:true,required:true},
+          {'model':'codiceTemplateSMS','title':'Codice Template SMS','type':'text', editable:true,required:true },
+          {'model':'codiceTemplateMAIL','title':'Codice Template Mail','type':'text',editable:true,required:true},
+          {'model':'flagLinea','title':'FlagLinea','type':'text',editable:true,required:true},
+          {'model':'limiteUtilizzoCoupon','title':'Limite Utilizzo Coupon','type':'text',editable:true,required:true}
         ]
       },
       PROMO_ID6_2: {

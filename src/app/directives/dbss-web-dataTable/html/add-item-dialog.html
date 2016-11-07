@@ -9,15 +9,18 @@
         </p>
 
         <form name="item.form" ng-submit="ctrl.addItem()">
-                <div ng-repeat="column in columns" layout="row" ng-class-even="'input-row'" ng-if="$even">
+                <div ng-repeat="column in columns"
+                     layout="row" ng-class-even="'input-row'"
+                     ng-if="$even">
                 <md-input-container flex>
                     <label>{{columns[$index].title}}</label>
                     <input
                       ng-if="columns[$index].type==='text' || columns[$index].type==='number'"
                            name="{{columns[$index].model}}"
                            type="{{columns[$index].type}}"
-                           ng-model="item[columns[$index].model]"
-                           ng-disabled="columns[$index].disabled"
+                           ng-model="items[columns[$index].model]"
+                           ng-hide="!columns[$index].editable"
+                           ng-disabled="!columns[$index].editable"
                            ng-pattern="columns[$index].pattern"
                            step="{{columns[$index].step}}"
                            ng-maxlength="columns[$index].maxlength" maxlength-block
@@ -25,8 +28,9 @@
                     >
                   <md-select
                     ng-if="columns[$index].type==='options'"
-                    ng-model="item[columns[$index].model]"
-                    ng-disabled="columns[$index].disabled"
+                    ng-model="items[columns[$index].model]"
+                    ng-hide="!columns[$index].editable"
+                    ng-disabled="!columns[$index].editable"
                     ng-required="columns[$index].required"
                     >
                     <md-option ng-value="type"
@@ -36,7 +40,7 @@
 
                   <input
                     ng-if="columns[$index].type==='datepicker'"
-                    type="daterange" ng-model="item[columns[$index].model]">
+                    type="daterange" ng-model="items[columns[$index].model]">
                 </md-input-container>
 
                   <md-input-container flex>
@@ -47,8 +51,9 @@
                       || columns[$index+1].type==='number'"
                       name="{{columns[$index+1].model}}"
                       type="{{columns[$index+1].type}}"
-                      ng-model="item[columns[$index+1].model]"
-                      ng-disabled="columns[$index+1].disabled"
+                      ng-model="items[columns[$index+1].model]"
+                      ng-hide="!columns[$index+1].editable"
+                      ng-disabled= !columns[$index+1].editable"
                       ng-pattern="columns[$index+1].pattern"
                       step="{{columns[$index+1].step}}"
                       ng-maxlength="columns[$index+1].maxlength" maxlength-block
@@ -56,8 +61,9 @@
                     >
                     <md-select
                       ng-if="columns[$index+1].type==='options'"
-                      ng-model="item[columns[$index+1].model]"
-                      ng-disabled="columns[$index+1].disabled"
+                      ng-model="items[columns[$index+1].model]"
+                      ng-hide="!columns[$index+1].editable"
+                      ng-disabled= !columns[$index+1].editable"
                       ng-required="columns[$index+1].required"
                     >
                       <md-option ng-value="type"
@@ -67,14 +73,22 @@
 
                     <input
                       ng-if="columns[$index+1].type==='datepicker'"
-                      type="daterange" ng-model="item[columns[$index+1].model]">
+                      type="daterange" ng-model="items[columns[$index+1].model]">
 
                   </md-input-container>
                 </div>
         </form>
+      <div ng-if="addLoading"
+           class="overlay"
+           layout="row"
+           layout-sm="column"
+           layout-align="center center">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
     </md-dialog-content>
 
-    <div class="md-actions">
+
+  <div class="md-actions">
         <md-button class="md-primary" ng-click="ctrl.addItem()" ng-disabled="item.form.$invalid">Aggiungi</md-button>
         <md-button class="md-primary" ng-click="ctrl.cancel()">Annulla</md-button>
     </div>

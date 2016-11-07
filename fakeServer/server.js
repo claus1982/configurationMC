@@ -614,12 +614,17 @@ app.post('/createPromo', function(req, res) {
 
   var json =
   {
-    "getPromoResponse":{
+    "createPromoResponse":{
       "header":{
         "result":"Fatal Error",
         "code":"0",
         "description":"operation failed"
-      }
+      },
+      "payload":
+        {
+          "codicePromo": "cod_001"
+
+        }
     }
   };
 
@@ -731,6 +736,26 @@ app.post('/getCondition', function(req, res) {
     };
 
   res.send(json); // send text response
+})
+
+
+
+app.post('/createCondition', function(req, res) {
+
+  var json =
+  {
+    "createConditionResponse": {
+      "header": {
+        "result": "Fatal Error",
+        "code": "0",
+        "description": "operation failed"
+      },
+      "payload": {
+        "idCondition": "id_cod_001"
+
+      }
+    }
+  };
 });
 
 

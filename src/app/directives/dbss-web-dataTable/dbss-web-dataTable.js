@@ -35,7 +35,6 @@
         controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, Notification) {
           'use strict';
 
-
           /*utilities*/
           $scope.isArray = angular.isArray;
 
@@ -235,76 +234,24 @@
 
           };
 
+          $scope.addItem = function (addModeType, event, columns, dataItems) {
 
-          $scope.copyItem = function (event, columns, dataItems) {
-
-            $mdDialog.show({
-              clickOutsideToClose: true,
-              controller: function ($mdDialog,  $scope, columns,regexService) {
-                this.cancel = $mdDialog.cancel;
-                $scope.columns = columns;
-               var formattedDataItems = dataItems.map(function(item){
-                 var nItem = {};
-                    angular.forEach(item,function(field,key){
-                   if (field.match(regexService.dateRange))
-                   {
-                       var startDate =  moment(field.split("-")[0].trim(), 'DD/MM/YYYY').utc().format("YYYY-MM-DD"),
-                         endDate = moment(field.split("-")[1].trim(), 'DD/MM/YYYY').utc().format("YYYY-MM-DD");
-                     nItem[key] = {
-                       startDate: startDate.toString()+"T00:00:00.000Z",
-                       endDate:  endDate.toString()+"T00:00:00.000Z"
-                     };
-                   }
-                      else {
-                     nItem[key] = field;
-                   }
-                 });
-                 console.log("nItem",nItem);
-
-                 return nItem;
-
-
-               });
-
-                $scope.item = formattedDataItems[0];
-                function success(item) {
-                  $mdDialog.hide(item);
-                }
-
-                this.addItem = function () {
-                  $scope.item.form.$setSubmitted();
-
-                  if ($scope.item.form.$valid) {
-
-                  }
-                };
-              },
-              controllerAs: 'ctrl',
-              focusOnOpen: false,
-              targetEvent: event,
-              templateUrl: 'app/directives/dbss-web-dataTable/html/copy-item-dialog.html',
-              locals: {
-                columns: columns
-              }
-
-            }).then($scope.getItems);
-          };
-
-
-          $scope.addItem = function (addModeType, event, columns) {
-
+            //modeType 1 non apre la modale ma determina un operazione in funzione della clbk
             if (addModeType === "1")
             {
               $scope.addItemClbk();
             }
+            //operazione di default: apre la modale
             else
             {
               $mdDialog.show({
                 clickOutsideToClose: true,
-                controller: function ($mdDialog, $scope, columns) {
+                controller: function ($mdDialog, $scope, columns, addItemClbk) {
 
+                  $scope.items = dataItems[0] || {};
                   this.cancel = $mdDialog.cancel;
-                  $scope.columns = columns;
+                  $scope.columns = columns.filter(function(column){return !!column.editable});
+                  $scope.addItemClbk = addItemClbk;
 
                   function success(item) {
                     $mdDialog.hide(item);
@@ -314,30 +261,38 @@
                     $scope.item.form.$setSubmitted();
 
                     if ($scope.item.form.$valid) {
+                      $scope.addLoading = true;
                       //chiama funzione esterna che chiamerà il servizio di popolamento
-                      $scope.addItemClbk($scope.addItemClbkHandler);
+                      $scope.addItemClbk(
+                        {promise: this.addItemClbkHandler,
+                         params: {columns:$scope.columns, items: $scope.items}
+                        });
                     }
                   };
-                  this.addItemClbkHandler = function (header) {
+
+                  this.addItemClbkHandler = function (response) {
                     console.log("addItemClbkHandler called");
-                    console.log("header:", header);
-                    if (!header) {
+                    console.log("header:", response.header);
+                    if (!response.header) {
                       console.log("addItem: no header");
                     }
                     else {
-                      $scope.header = header;
+                      $scope.header = response.header;
 
                       if ($scope.header && $scope.header.code == '0') {
 
-                        console.log("addItem: success");
-                        $mdDialog.hide();
+                        $timeout(function(){
+                          console.log("addItem: success");
+                          $mdDialog.hide();
+                        },5000);
+
                       }
                       else {
                         console.log("addItem: failed");
+                        $scope.addLoading = false;
 
                       }
                     }
-                    $scope.searchLoading = false;
                   };
                 },
                 controllerAs: 'ctrl',
@@ -345,10 +300,16 @@
                 targetEvent: event,
                 templateUrl: 'app/directives/dbss-web-dataTable/html/add-item-dialog.html',
                 locals: {
-                  columns: columns
+                  columns: columns,
+                  addItemClbk: $scope.addItemClbk
                 }
               }).then($scope.getItems);
             }
+          };
+
+          $scope.copyItem = function (event, columns, dataItems) {
+
+            $scope.addItem(null, event,columns, dataItems)
           };
 
           $scope.delete = function (event) {

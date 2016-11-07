@@ -29,6 +29,6 @@
     "angular-ui-notification": "^0.2.0",
     "angular-breadcrumb": "^0.4.1",
     "ngSticky": "^1.8.13",
-    "angular-perfect-scrollbar": "^0.0.4"
+    "angular-loading": "^0.1.4"
   }
 }

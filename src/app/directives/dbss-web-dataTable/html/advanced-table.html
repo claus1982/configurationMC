@@ -49,6 +49,7 @@
 </div>
 
 
+
 <div ng-if="items" ng-hide="searchLoading" class="container"><h1 class="title-section">{{title}}</h1>
 
   <div class="container margin-bottom-40">
@@ -60,7 +61,7 @@
               <!-- pulsante "AGGIUNGI" per aggiungere un nuovo item mediante pop-up-->
               <md-button ng-if="options.addMode" ng-hide="options.isEditing"
                          ng-show="!options.rowSelection || !selected.length" class="md-primary"
-                         ng-click="addItem(addModeType,$event, columns)">aggiungi
+                         ng-click="addItem(addModeType,$event,columns, addItemClbk)">aggiungi
               </md-button>
               <md-button
                 ng-if="options.editMode"
@@ -128,7 +129,7 @@
                            class="md-icon-button"
                            title="Copia"
                            ng-disabled="options.rowSelection && selected.length>1"
-                           ng-click="copyItem(event,columns, selected)">
+                           ng-click="copyItem(event, columns, selected)">
                   <md-icon>content_copy</md-icon>
                 </md-button>
 

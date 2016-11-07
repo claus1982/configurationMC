@@ -2,6 +2,7 @@ angular.module('app')
   .controller('homeCtrl', function ($scope, $state) {
 
     function init() {
+      $scope.birthday = new Date();
       $scope.model = $scope.model || {};
       $scope.model.promo = {};
       $scope.model.pack = {};

@@ -1,12 +1,12 @@
 angular
   .module('app',
     ['ui.router',
-      'md.data.table',
       'ngMaterial',
+      'md.data.table',
       'ngResource',
       'ngMessages',
       'ncy-angular-breadcrumb',
       'ui-notification',
       'sticky',
-      'perfect_scrollbar'
+      'darthwade.dwLoading'
     ]);
