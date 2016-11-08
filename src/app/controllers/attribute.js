@@ -9,8 +9,25 @@ angular.module('app')
 
     $scope.columns = dataTableResources[$state.$current.name].columns;
 
-
-
+    $scope.options = {
+      addMode: false,  //add item with dialog
+      editMode: true,
+      forwardMode: false,
+      confirmSearchSelectionMode: false,
+      isEditing: false,
+      editColor: true,  //determina se colorare o meno l'intestazione della tabella se il campo è editabile
+      deleteMode: false,
+      copyMode: false,
+      showFilters: true,
+      rowSelection: true,
+      multiSelect: false,
+      autoSelect: false,
+      decapitate: false,
+      largeEditDialog: false,
+      boundaryLinks: false,
+      limitSelect: true,
+      pageSelect: true
+    };
     //callback richiamata nella direttiva
     $scope.getWeb = function (promise, params) {
       console.log("callback getItemsClbk called from directive");
@@ -23,13 +40,9 @@ angular.module('app')
       input["operation"] = dataTableResources[$state.$current.name].getOperation;
 
       getWebService.getWeb(getWebService.getWebRequest(input)).then(
-        function (res) {
-          var response = res.data.getWebResponse;
+        function (response) {
 
-
-
-          if (response && response.header && response.payload) {
-
+          if (response && response.payload) {
             /*inizio trasformazione pipe | to array*/
             response.payload = response.payload.map(function (obj) {
 
@@ -42,20 +55,12 @@ angular.module('app')
               });
               return obj;
             });
-
             /*fine trasformazione*/
-
-            promise(response.header, response.payload);
           }
-
-          else if (response && response.header) {
-            promise(response.header);
-          }
-          else {promise();}
-
+          promise(response);
         },
-        function (res) {
-          promise();
+        function (response) {
+          promise(response);
         }
       );
     };
@@ -88,16 +93,11 @@ angular.module('app')
         input["operation"] = dataTableResources[$state.$current.name].setOperation;
 
         setWebService.setWeb(setWebService.setWebRequest(input)).then(
-          function (res) {
-            var response = res.data.setWebResponse;
-
-          if (response && response.header) {
-            promise(response.header);
-          }
-
+          function (response) {
+            promise(response);
           },
-          function (res) {
-            promise();
+          function (response) {
+            promise(response);
             // Message with custom delay
           }
         );

@@ -20,9 +20,9 @@
           'items': '=?',  //per passare direttamente i campi da visualizzare in tabella
           'setItemsClbk': '&',
           'addItemClbk': '&', //aggiungere un nuovo item
+          'deleteItemsClbk': '&', //rimuovere uno o più items
           'addModeType': '@', //determina il tipo di dialog da mostrare in "addMode": '0': simple dialog + callback
                                                                       // '1' chiama dirrettamente external callback
-          'deleteItemClbk': '&', //cancellare un item
           'rowClickClbk': '&',
           'goToDetailsClbk': '&',
           'confirmSelectedClbk': '&',
@@ -55,10 +55,11 @@
           var initialOptions = {},
             defaultOptions = {
             addMode: false,  //add item with dialog
-            editMode: true,
-            forwardMode: false,
+            editMode: true, //abilita la modalità di modifica
+            forwardMode: false, //abilita il pulsante --> di avanzamento dopo aver selezionato un record
             confirmSearchSelectionMode: false,
             isEditing: false,
+            editColor: false,  //determina se colorare o meno l'intestazione della tabella se il campo è editabile
             deleteMode: false,
             copyMode: false,
             showFilters: true,
@@ -162,29 +163,21 @@
             return false;
           };
 
-          function setItemsClbkHandler(header) {
+          function setItemsClbkHandler(response) {
             console.log("setItemsClbkHandler called");
-            console.log("header:",header);
-            if (!header) {
-              $scope.error = 'Timeout: Nessuna Risposta dal Server';
+            console.log("header:",response.header);
+            if (response.error) {
+              $scope.error = response.error;
               Notification.error({message: $scope.error});
               resetTable();
             }
             else {
-              $scope.header = header;
-
-              if ($scope.header && $scope.header.code == '0') {
+              $scope.header = response.header;
                 $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
                 console.log("setWeb success");
               }
-              else {
-                console.log("setWeb failed");
-                $scope.error = 'Errore ' + header.code + ": " + header.description;
-                Notification.error({message: $scope.error});
-                resetTable();
-              }
-              resetOptions();
-            }
+
+            resetOptions();
             $scope.searchLoading = false;
           }
 
@@ -247,8 +240,12 @@
               $mdDialog.show({
                 clickOutsideToClose: true,
                 controller: function ($mdDialog, $scope, columns, addItemClbk) {
-
-                  $scope.items = dataItems[0] || {};
+                  $scope.items = {};
+                  //se si sta copiando un altro item
+                  if (dataItems[0])
+                  {
+                    angular.copy(dataItems[0],$scope.items);
+                  }
                   this.cancel = $mdDialog.cancel;
                   $scope.columns = columns.filter(function(column){return !!column.editable});
                   $scope.addItemClbk = addItemClbk;
@@ -273,27 +270,37 @@
                   this.addItemClbkHandler = function (response) {
                     console.log("addItemClbkHandler called");
                     console.log("header:", response.header);
-                    if (!response.header) {
-                      console.log("addItem: no header");
+                    if (response.error) {
+                      console.log("addItem: failed");
+                      Notification.error({message: response.error});
                     }
                     else {
-                      $scope.header = response.header;
-
-                      if ($scope.header && $scope.header.code == '0') {
-
-                        $timeout(function(){
-                          console.log("addItem: success");
+                      console.log("addItem: success");
                           $mdDialog.hide();
-                        },5000);
-
                       }
-                      else {
-                        console.log("addItem: failed");
-                        $scope.addLoading = false;
+                    $scope.addLoading = false;
+                  };
 
-                      }
+                  this.isDisabled = function(column){
+                    return !column.editable ||
+                      (column["batchDisabled"] && $scope.items[
+                        $scope.columns.find(function(col){return col.batchEnabler}).model
+                        ]==='Y');
+                  };
+                  this.isChanged = function(column){
+                    if (column["batchEnabler"]) {
+                      angular.forEach($scope.columns, function (col) {
+                        if (col.batchDisabled)
+                          delete $scope.items[col.model];
+                      });
                     }
                   };
+
+                  this.isRequired = function(column){
+                    return column.required && !this.isDisabled(column);
+
+                  };
+
                 },
                 controllerAs: 'ctrl',
                 focusOnOpen: false,
@@ -312,40 +319,61 @@
             $scope.addItem(null, event,columns, dataItems)
           };
 
-          $scope.delete = function (event) {
-            $mdDialog.show({
-              clickOutsideToClose: true,
-              controller: 'deleteController',
-              controllerAs: 'ctrl',
-              focusOnOpen: false,
-              targetEvent: event,
-              locals: {items: $scope.selected},
-              templateUrl: 'app/directives/dbss-web-dataTable/html/delete-dialog.html',
-            }).then($scope.getItems);
+          $scope.deleteItem = function (event, selected) {
+            if ($scope.deleteItemsClbk) {
+              // Appending dialog to document.body to cover sidenav in docs app
+              $mdDialog.show({
+                clickOutsideToClose: true,
+                controller: function ($mdDialog, $scope, deleteItemsClbk) {
+                  this.loading = false;
+                  this.deleteItemsClbk = deleteItemsClbk;
+                  this.cancel = $mdDialog.cancel;
+                  this.confirm = function () {
+                    console.log("calling deleteItemClbk");
+                    this.loading = true;
+                    this.deleteItemsClbk({promise: deleteItemsClbkHandler, params: selected});
+                  };
+                },
+                controllerAs: 'ctrl',
+                focusOnOpen: false,
+                targetEvent: event,
+                locals: {deleteItemsClbk: $scope.deleteItemsClbk},
+                templateUrl: 'app/directives/dbss-web-dataTable/html/delete-dialog.html',
+              }).then(
+                $scope.getItems);
+            }
           };
 
+          function deleteItemsClbkHandler(response) {
+            console.log("deleteItemsClbkHandler called");
+            $timeout(function(){
+              if (response.error) {
+                Notification.error({message: response.error});
+              }
+              $mdDialog.hide();
+            },5000);
+
+          }
 
           //TODO non utilizzato
             $scope.internalControl = $scope.control || {};
 
-          function getItemsClbkHandler(header, payload) {
+          function getItemsClbkHandler(response) {
             console.log("getItemsClbkHandler called");
-            console.log("payload:",payload);
-            console.log("header:",header);
-            if (!header) {
-              $scope.error = 'Nessuna risposta dal Server o risposta inattesa!';
-              Notification.error({message: $scope.error});
+            console.log("payload:",response.payload);
+            console.log("header:",response.header);
+            if (response.error) {
+              Notification.error({message: response.error});
             }
             else {
-              $scope.header = header;
+              $scope.header = response.header;
 
-              if ($scope.header && $scope.header.code === '0') {
-                $scope.items = payload;
+              if (response.payload) {
+                $scope.items = response.payload;
                 $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
               }
               else {
-                $scope.error = 'Errore ' + header.code + ": " + header.description;
-                Notification.error({message: $scope.error});
+                Notification.error({message: "Risposta vuota dal server..."});
               }
             }
             $scope.searchLoading = false;

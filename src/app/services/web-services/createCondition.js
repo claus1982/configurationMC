@@ -25,14 +25,13 @@
           ricaricaMinApplicazione   :   inputData["ricaricaMinApplicazione"],
           importoRicaricaBonus      :   inputData["importoRicaricaBonus"],
           ricaricaTipoApplicazione  :   inputData["ricaricaTipoApplicazione"],
-          codicePromo               :   inputData["codicePromo"],
-          IdCondition               :   inputData["IdCondition"]
+          codicePromo               :   inputData["codicePromo"]
         }
       };
     };
 
     this.createCondition = function (request) {
-      return GenericHttpService.doHttpRequest('/' + serviceName, request);
+      return GenericHttpService.doHttpRequest(serviceName, request);
     };
 
   })

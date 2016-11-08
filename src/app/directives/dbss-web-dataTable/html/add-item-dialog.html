@@ -14,29 +14,30 @@
                      ng-if="$even">
                 <md-input-container flex>
                     <label>{{columns[$index].title}}</label>
+                  <md-select
+                    ng-if="columns[$index].type==='options'"
+                    ng-model="items[columns[$index].model]"
+                    ng-hide="!columns[$index].editable"
+                    ng-disabled="ctrl.isDisabled(columns[$index])"
+                    ng-required="ctrl.isRequired(columns[$index])"
+                    ng-change = "ctrl.isChanged(columns[$index])"
+                  >
+                    <md-option ng-value="type" ng-repeat="type in columns[$index].options">{{type}}</md-option>
+                  </md-select>
                     <input
                       ng-if="columns[$index].type==='text' || columns[$index].type==='number'"
                            name="{{columns[$index].model}}"
                            type="{{columns[$index].type}}"
                            ng-model="items[columns[$index].model]"
                            ng-hide="!columns[$index].editable"
-                           ng-disabled="!columns[$index].editable"
+                           ng-disabled="ctrl.isDisabled(columns[$index])"
                            ng-pattern="columns[$index].pattern"
                            step="{{columns[$index].step}}"
                            ng-maxlength="columns[$index].maxlength" maxlength-block
-                           ng-required="columns[$index].required"
+                           ng-required="ctrl.isRequired(columns[$index])"
+                           ng-change = "ctrl.isChanged(columns[$index])"
                     >
-                  <md-select
-                    ng-if="columns[$index].type==='options'"
-                    ng-model="items[columns[$index].model]"
-                    ng-hide="!columns[$index].editable"
-                    ng-disabled="!columns[$index].editable"
-                    ng-required="columns[$index].required"
-                    >
-                    <md-option ng-value="type"
-                               ng-repeat="type in getTypes()">{{type}}
-                    </md-option>
-                  </md-select>
+
 
                   <input
                     ng-if="columns[$index].type==='datepicker'"
@@ -45,6 +46,16 @@
 
                   <md-input-container flex>
                     <label>{{columns[$index+1].title}}</label>
+                    <md-select
+                      ng-if="columns[$index+1].type==='options'"
+                      ng-model="items[columns[$index+1].model]"
+                      ng-hide="!columns[$index+1].editable"
+                      ng-disabled="ctrl.isDisabled(columns[$index+1])"
+                      ng-required="ctrl.isRequired(columns[$index+1])"
+                      ng-change = "ctrl.isChanged(columns[$index+1])"
+                    >
+                      <md-option ng-value="type" ng-repeat="type in columns[$index+1].options">{{type}}</md-option>
+                    </md-select>
                     <input
                       ng-if="
                       columns[$index+1].type==='text'
@@ -53,23 +64,14 @@
                       type="{{columns[$index+1].type}}"
                       ng-model="items[columns[$index+1].model]"
                       ng-hide="!columns[$index+1].editable"
-                      ng-disabled= !columns[$index+1].editable"
+                      ng-disabled="ctrl.isDisabled(columns[$index+1])"
                       ng-pattern="columns[$index+1].pattern"
                       step="{{columns[$index+1].step}}"
                       ng-maxlength="columns[$index+1].maxlength" maxlength-block
-                      ng-required="columns[$index+1].required"
+                      ng-required="ctrl.isRequired(columns[$index+1])"
+                      ng-change = "ctrl.isChanged(columns[$index+1])"
                     >
-                    <md-select
-                      ng-if="columns[$index+1].type==='options'"
-                      ng-model="items[columns[$index+1].model]"
-                      ng-hide="!columns[$index+1].editable"
-                      ng-disabled= !columns[$index+1].editable"
-                      ng-required="columns[$index+1].required"
-                    >
-                      <md-option ng-value="type"
-                                 ng-repeat="type in getTypes()">{{type}}
-                      </md-option>
-                    </md-select>
+
 
                     <input
                       ng-if="columns[$index+1].type==='datepicker'"

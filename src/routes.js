@@ -227,22 +227,24 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
    },
    params:{
    'tipoPromo' : null,
-   'codicePromo': null
+   'codicePromo': null,
+   'isBatch': null,
    },
-   url: '/promo/:tipoPromo/:codicePromo',
+   url: '/promo/:tipoPromo/:isBatch/:codicePromo',
    templateUrl     : 'app/templates/promo/promo.detail.html',
    controller      : 'promoDetailCtrl'
    })
     .state('promo.addDetail', {
       ncyBreadcrumb: {
-        label: 'Add',
+        label: 'Aggiungi',
         parent: 'promo.detail'
       },
       params:{
         'tipoPromo' : null,
-        'codicePromo': null
+        'codicePromo': null,
+        'isBatch': null
       },
-      url: '/promo/:tipoPromo/:codicePromo/add',
+      url: '/promo/:tipoPromo/:isBatch/:codicePromo/add',
       templateUrl     : 'app/templates/promo/promo.addDetail.html',
       controller      : 'promoAddDetailCtrl'
     })

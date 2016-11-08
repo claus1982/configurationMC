@@ -151,6 +151,25 @@ ul {
   margin-bottom: 40px
 }
 
+.field-editable {
+  border-bottom: 1px solid #0177c1;
+  width: 100%;
+  display: block;
+  padding-bottom: 2px
+}
+
+.field-disabled {
+  color: #999
+}
+
+.text-green {
+  color: #248900 !important
+}
+
+.text-orange {
+  color: #F39D17 !important
+}
+
 .header-wrap {
   background: #004990;
   height: 40px
@@ -198,13 +217,13 @@ ul {
   float: right
 }
 
-.nav-wrap .menu-nav > md-menu {
+.nav-wrap .menu-nav > li {
   height: 63px;
   float: left;
   position: relative
 }
 
-.nav-wrap .menu-nav > md-menu > button {
+.nav-wrap .menu-nav > li > a {
   display: block;
   font-size: 15px;
   font-weight: 700;
@@ -219,11 +238,11 @@ ul {
   transition: all .3s ease .15s
 }
 
-.nav-wrap .menu-nav > md-menu.hover_open > a {
+.nav-wrap .menu-nav > li.hover_open > a {
   background: url(https://img.tim.it/img/ico_freccia_dx.png) 90% 25px no-repeat
 }
 
-.nav-wrap .menu-nav > md-menu.active > a {
+.nav-wrap .menu-nav > li.active > a {
   background: url(https://img.tim.it/img/ico_freccia_bottom.png) 90% 25px no-repeat #fff;
   position: relative;
   z-index: 101;
@@ -233,7 +252,7 @@ ul {
   border-top: none
 }
 
-.nav-wrap .menu-nav > md-menu .sub-menu-nav {
+.nav-wrap .menu-nav > li .sub-menu-nav {
   height: 0;
   overflow: hidden;
   opacity: 0;
@@ -246,7 +265,7 @@ ul {
   transition: all .3s ease .15s
 }
 
-.nav-wrap .menu-nav > md-menu .sub-menu-nav.opened {
+.nav-wrap .menu-nav > li .sub-menu-nav.opened {
   transition: all .3s ease .15s;
   top: 0;
   overflow: hidden;
@@ -255,24 +274,24 @@ ul {
   transform: translate(0, 63px)
 }
 
-.nav-wrap .menu-nav > md-menu .sub-menu-nav md-menu-content {
+.nav-wrap .menu-nav > li .sub-menu-nav ul {
   padding: 15px;
   border: 1px solid #d8d8d8;
   border-top: 0;
   width: 100%
 }
 
-.nav-wrap .menu-nav > md-menu .sub-menu-nav  > md-menu-item {
+.nav-wrap .menu-nav > li .sub-menu-nav ul > li {
   margin-bottom: 10px
 }
 
-.nav-wrap .menu-nav > md-menu .sub-menu-nav > md-menu-item > a {
+.nav-wrap .menu-nav > li .sub-menu-nav ul > li > a {
   color: #004d91;
-  font-size: 30px
+  font-size: 14px
 }
 
-.nav-wrap .menu-nav > md-menu .sub-menu-nav > md-menu-item > a:hover {
-  color: #66CC44
+.nav-wrap .menu-nav > li .sub-menu-nav ul > li > a:hover {
+  color: #0078c1
 }
 
 footer .footer-wrap {

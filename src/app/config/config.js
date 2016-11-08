@@ -6,7 +6,7 @@ angular.module('app')
   // local
   "baseUrl": "http://localhost:4730",
     //http services timeout
-    "timeout": 300000
+    "timeout": 5000
   });
 
 

@@ -33,7 +33,7 @@
       ;
 
     this.setWeb = function (request) {
-      return GenericHttpService.doHttpRequest('/' + serviceName, request);
+      return GenericHttpService.doHttpRequest(serviceName, request);
     };
 
   })

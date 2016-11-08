@@ -61,7 +61,8 @@
               <!-- pulsante "AGGIUNGI" per aggiungere un nuovo item mediante pop-up-->
               <md-button ng-if="options.addMode" ng-hide="options.isEditing"
                          ng-show="!options.rowSelection || !selected.length" class="md-primary"
-                         ng-click="addItem(addModeType,$event,columns, addItemClbk)">aggiungi
+                         ng-click="addItem(addModeType,$event,columns, addItemClbk)"
+              >aggiungi
               </md-button>
               <md-button
                 ng-if="options.editMode"
@@ -133,9 +134,12 @@
                   <md-icon>content_copy</md-icon>
                 </md-button>
 
-                <md-button class="md-icon-button"
-                           title="Elimina"
-                           ng-if="options.deleteMode">
+                <md-button
+                  ng-if="options.deleteMode"
+                  class="md-icon-button"
+                  title="Elimina"
+                  ng-click="deleteItem(event, selected)"
+                >
                   <md-icon>delete</md-icon>
                 </md-button>
             </div>
@@ -148,7 +152,13 @@
                    data-ng-model="selected" md-progress="promise">
               <thead md-head md-order="query.order">
               <tr md-row>
-                <th md-column ng-repeat="column in columns" md-numeric="column.numeric" md-order-by="{{column.model}}">
+                <th md-column ng-repeat="column in columns"
+                    md-numeric="column.numeric"
+                    md-order-by="{{column.model}}"
+                    ng-class="{'text-green': options.editColor && !column.editable,
+                               'text-orange': options.editColor && column.editable
+                             }"
+                >
                   <span>{{column.title}}</span>
                   <!--<span ng-if="column.unit">({{column.unit}})</span>-->
                 </th>
@@ -179,12 +189,15 @@
             </span>
             <span ng-if="options.isEditing && column.type==='text'"
                   md-cell
+                  ng-class="column.editable ? 'field-editable' : 'field-disabled'"
                   ng-click="editTextField(options.isEditing && column.editable,$event, item,column.model,column.title,column.title, column.validators)">
                {{item[column.model] || "-"}}
             </span>
 
                   <!-- picklist con selezione predefinita singola-->
-            <span ng-if="options.isEditing && column.type==='options' && !column.multiple">
+            <span ng-if="options.isEditing && column.type==='options' && !column.multiple"
+                  ng-class="column.editable ? 'field-editable' : 'field-disabled'"
+            >
                   <md-select ng-model="item[column.model]" placeholder="Select"
                   >
                     <md-option ng-value="type" ng-repeat="type in column.options">{{type}}</md-option>
@@ -192,7 +205,9 @@
             </span>
 
                   <!-- picklist in cui è selezionabile solo il contenuto arrivato-->
-             <span ng-if="options.isEditing && column.type==='selection' && column.multiple">
+             <span ng-if="options.isEditing && column.type==='selection' && column.multiple"
+                   ng-class="column.editable ? 'field-editable' : 'field-disabled'"
+             >
                   <md-select ng-model="item[column.model]"
                              placeholder="Select"
                              ng-change="recordChange()"
@@ -201,7 +216,8 @@
                   </md-select>
             </span>
                   <!-- picklist con selezione predefinita multipla-->
-            <span ng-if="options.isEditing && column.type==='options' && column.multiple">
+            <span ng-if="options.isEditing && column.type==='options' && column.multiple"
+                  ng-class="column.editable ? 'field-editable' : 'field-disabled'">
                   <md-select ng-model="item[column.model]"
                              placeholder="Select"
                              ng-change="recordChange()"

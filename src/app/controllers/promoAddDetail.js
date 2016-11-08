@@ -1,5 +1,6 @@
 angular.module('app')
-  .controller('promoAddDetailCtrl', function ($scope, $state, dataTableResources, $mdDialog, getWebService,createConditionService) {
+  .controller('promoAddDetailCtrl',
+    function ($scope, $state, dataTableResources, $mdDialog, getWebService,createConditionService, Notification) {
     $scope.model = $scope.model || {};
     $scope.forms = {};
 
@@ -50,6 +51,11 @@ angular.module('app')
       return false;
     };
 
+      $scope.isMultiple = function(col)
+      {
+        return col.multiple;
+      };
+
     $scope.buttonDisabled = function (button) {
       var disable = true;
       if (button.columns) {
@@ -73,6 +79,8 @@ angular.module('app')
 
     //TODO funzione di conferma aggiunta condizione
     $scope.addCondition = function (item) {
+      $scope.loading = true;
+
       angular.forEach($scope.columns, function (column) {
         console.log("field name: ", column.model);
         console.log("field value: ", item[column.model]);
@@ -93,20 +101,22 @@ angular.module('app')
 
       });
 
-      // input["operation"] = dataTableResources[$state.$current.name].getOperation;
+      //aggiunge il codice Promo
+      input["codicePromo"] = $scope.codicePromo;
 
       createConditionService.createCondition(createConditionService.createConditionRequest(input)).then(
-        function (res) {
-          var response = res.data.createConditionResponse;
+        function (response) {
           $state.go('promo.detail', {
             'tipoPromo': $scope.tipoPromo,
-            'codicePromo': $scope.codicePromo
+            'codicePromo': $scope.codicePromo,
+            'isBatch':   $scope.isBatch
           });
+          $scope.loading = false;
 
         },
-        function (res) {
-         console.log("Errore su createCondition");
-          // Message with custom delay
+        function (response) {
+          Notification.error({message: response.error});
+          $scope.loading = false;
         }
       );
     };
@@ -191,10 +201,16 @@ angular.module('app')
                 //filtra il contenuto dei record selezionati per inviare alla pagina le sole colonne
                 // che sono necessarie per popolare il newItem
                 var filteredItems = items.map(function (item) {
-                  var filteredItem = {};
+                  var filteredItem = [];
                   angular.forEach(button.columns, function (column) {
                     if (item[column.refModel]) {
-                      filteredItem[column.model] = item[column.refModel];
+                        filteredItem.push(
+                          {
+                            model: column.model,
+                            value: item[column.refModel],
+                            append: column.append ? true: false
+                          }
+                        );
                     }
                   });
                   return filteredItem;
@@ -233,11 +249,9 @@ angular.module('app')
             input["operation"] = dataTableResources[button.reference].getOperation;
 
             getWebService.getWeb(getWebService.getWebRequest(input)).then(
-              function (res) {
-                var response = res.data.getWebResponse;
+              function (response) {
 
-                if (response && response.header && response.payload) {
-
+                if (response && response.payload) {
                   /*inizio trasformazione pipe | to array*/
                   response.payload = response.payload.map(function (obj) {
 
@@ -250,25 +264,16 @@ angular.module('app')
                     });
                     return obj;
                   });
-
                   /*fine trasformazione*/
-
-                  promise(response.header, response.payload);
                 }
-
-                else if (response && response.header) {
-                  promise(response.header);
-                }
-                else {
-                  promise();
-                }
-
+                promise(response);
               },
-              function (res) {
-                promise();
+              function (response) {
+                promise(response);
               }
             );
           };
+
         },
         controllerAs: 'ctrl',
         focusOnOpen: true,
@@ -282,21 +287,32 @@ angular.module('app')
         console.log("$dialog closed, filteredItems:", filteredItems);
         angular.forEach(filteredItems, function (fItem) {
 
-          angular.forEach(fItem, function (value, key) {
-            $scope.newItem[key] = value;
+          angular.forEach(fItem, function (field) {
+            if (!field.append) {
+              $scope.newItem[field.model] = field.value;
+            }
+            else
+            {
+              if($scope.newItem[field.model])
+              $scope.newItem[field.model] += " AND "+field.value;
+              else
+                $scope.newItem[field.model] = field.value;
+            }
           });
 
         });
 
       });
 
-    };
+    };//fine dialog
 
 
     function init() {
+      $scope.loading = false;
       console.log("promoAddDetail started");
       $scope.tipoPromo = $state.params.tipoPromo;
       $scope.codicePromo = $state.params.codicePromo;
+      $scope.isBatch = $state.params.isBatch;
       console.log("tipoPromo", $scope.tipoPromo);
       console.log("codicePromo", $scope.codicePromo);
 
@@ -305,8 +321,23 @@ angular.module('app')
 
       $scope.title = $scope.tipoPromo + " - " + $scope.codicePromo + ":Add Condition";
 
-      $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns;
-      $scope.buttons = dataTableResources["promo.detail"][$scope.tipoPromo].buttons;
+
+
+      if ($scope.isBatch == "false")
+      {
+        $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns;
+        $scope.buttons = dataTableResources["promo.detail"][$scope.tipoPromo].buttons;
+      }
+      //in caso sia batch esclude alcune colonne e pulsanti come da configurazione
+      else
+      {
+        $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns.filter(function(col){
+         return !col.batchDisabled;
+        });
+        $scope.buttons = dataTableResources["promo.detail"][$scope.tipoPromo].buttons.filter(function(col){
+          return !col.batchDisabled;
+        });
+      }
 
 
       //nuovo item
@@ -320,7 +351,6 @@ angular.module('app')
       $scope.newItem = {};
       $scope.items.push($scope.newItem);
     }
-
 
     init();
 

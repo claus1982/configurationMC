@@ -15,7 +15,7 @@
     };
 
     this.getCondition = function (request) {
-      return GenericHttpService.doHttpRequest('/' + serviceName, request);
+      return GenericHttpService.doHttpRequest(serviceName, request);
     };
 
   })

@@ -7,14 +7,14 @@
     this.getPromoRequest = function (inputData) {
     var req = {
       getPromoRequest: {
-        tipoPromo: inputData.tipoPromoc
+        tipoPromo: inputData.tipoPromo
       }
     }
       return req;
     };
 
     this.getPromo = function (request) {
-      return GenericHttpService.doHttpRequest('/' + serviceName, request);
+      return GenericHttpService.doHttpRequest(serviceName, request);
     };
 
   })

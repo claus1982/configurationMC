@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('promoListCtrl', function ($scope, $state, dataTableResources, getPromoService, createPromoService) {
+  .controller('promoListCtrl', function ($scope, $state, dataTableResources, getPromoService, createPromoService,deletePromoService) {
     $scope.model = $scope.model || {};
     //$scope.focusinControl = {};
 
@@ -13,7 +13,7 @@ angular.module('app')
       copyMode: true,
       showFilters: false,
       rowSelection: true,
-      multiSelect: false,
+      multiSelect: true,
       autoSelect: false,
       decapitate: false,
       largeEditDialog: false,
@@ -31,19 +31,11 @@ angular.module('app')
       var input = {tipoPromo: $scope.tipoPromo};
 
       getPromoService.getPromo(getPromoService.getPromoRequest(input)).then(
-        function (res) {
-          var response = res.data.getPromoResponse;
-
-          if (response && response.header) {
-            promise(response.header, response.payload);
-          }
-          else {
-            promise();
-          }
-
+        function (response) {
+          promise(response);
         },
-        function (res) {
-          promise();
+        function (response) {
+          promise(response);
         }
       );
     };
@@ -58,7 +50,7 @@ angular.module('app')
       var input = {},
         items = params.items;
       angular.forEach(params.columns, function (column) {
-     
+
           /*inizio trasformazione array to pipe*/
           if (angular.isArray(items[column.model])) {
             if (column.model && items[column.model]) {
@@ -75,26 +67,53 @@ angular.module('app')
       // input["operation"] = dataTableResources[$state.$current.name].getOperation;
 
       createPromoService.createPromo(createPromoService.createPromoRequest(input)).then(
-        function (res) {
-          var response = res.data.createPromoResponse;
+        function (response) {
           promise(response);
-
         },
-        function (res) {
-          promise();
-          // Message with custom delay
+        function (response) {
+          promise(response);
+          $scope.error = response.error;
+          Notification.error({message: $scope.error});
+   y
         }
       );
     };
 
+
     //move from list to Details
     $scope.promoSelected = function (params) {
       console.log("params", params);
+
+
+      var isBatchField = $scope.columns.find(function(col){return col.batchEnabler}),
+        isBatch = isBatchField && isBatchField.model && params[0][isBatchField.model] === 'Y' ? true: false;
+
       $state.go('promo.detail', {
         'tipoPromo': $scope.tipoPromo,
-        'codicePromo': params[0].codicePromo
+        'codicePromo': params[0].codicePromo,
+        'isBatch':isBatch
       });
     };
+
+    $scope.deletePromo = function(promise,params) {
+      console.log("callback deleteItemsClbk called from directive");
+      console.log(params);
+
+      angular.forEach(params, function (item) {
+        var input = {
+          codicePromo: item.codicePromo
+        };
+
+        deletePromoService.deletePromo(deletePromoService.deletePromoRequest(input)).then(
+          function (response) {
+            promise(response);
+          },
+          function (response) {
+            promise(response);
+          }
+        );
+      });
+    }
 
     function init() {
 

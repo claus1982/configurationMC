@@ -1,4 +1,4 @@
-angular.module('app').factory('dataTableResources', ['lovService','$state', function (lovService, $state) {
+angular.module('app').factory('dataTableResources', ['lovService','regexService', function (lovService, regexService) {
   'use strict';
   var attributi = {
     "attributi.CS":
@@ -234,80 +234,106 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
       PROMO_ID1: {
         columns: [
           {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text'},
-          {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text'},
-          {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text'},
-          {'model': 'periodoValidita', 'title': 'Periodo Validita', 'type': 'text'}
+          {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text',editable:true, required:true},
+          {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text',editable:true, required:true},
+          {'model': 'periodoValidita', 'title': 'Periodo Validita', 'type': 'text',editable:true, required:true}
         ]
       },
       PROMO_ID2: {
         columns: [
           {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text'},
-          {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text'},
-          {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text'},
-          {'model': 'periodoValidita', 'title': 'Periodo Validita', 'type': 'text'}
+          {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text',editable:true, required:true},
+          {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text',editable:true, required:true},
+          {'model': 'periodoValidita', 'title': 'Periodo Validita', 'type': 'text',editable:true, required:true}
         ]
       },
       PROMO_ID3: {
         columns: [
           {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text'},
-          {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text'},
-          {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text'},
-          {'model': 'periodoValidita', 'title': 'Periodo Validita', 'type': 'text'}
+          {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text',editable:true, required:true},
+          {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text',editable:true, required:true},
+          {'model': 'periodoValidita', 'title': 'Periodo Validita', 'type': 'text',editable:true, required:true}
         ]
       },
       PROMO_ID4: {
         columns: [
           {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text'},
-          {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text'},
-          {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text'},
-          {'model': 'periodoValidita', 'title': 'Periodo Validita', 'type': 'text'}
+          {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text',editable:true, required:true},
+          {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text',editable:true, required:true},
+          {'model': 'periodoValidita', 'title': 'Periodo Validita', 'type': 'text',editable:true, required:true}
         ]
       },
       PROMO_ID5: {
         columns: [
           {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text'},
-          {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text'},
-          {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text'},
-          {'model': 'periodoValidita', 'title': 'Periodo Validita', 'type': 'text'}
+          {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text',editable:true, required:true},
+          {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text',editable:true, required:true},
+          {'model': 'periodoValidita', 'title': 'Periodo Validita', 'type': 'text',editable:true, required:true}
         ]
       },
       PROMO_ID6_1: {
         columns: [
           {'model':'codicePromo','title':'Codice promo','type':'text'},
-          {'model':'descrizionePromo','title':'Descrizione promo','type':'text',editable:true, required:true},
-          {'model':'periodoValidita','title':'Periodo Validita','type':'datepicker',editable:true,required:true},
-          {'model':'periodoGenerazione','title':'Periodo Generazione','type':'text',editable:true,required:true},
-          {'model':'codiceTemplateSMS','title':'Codice Template SMS','type':'text', editable:true,required:true },
-          {'model':'codiceTemplateMAIL','title':'Codice Template Mail','type':'text',editable:true,required:true},
-          {'model':'flagLinea','title':'FlagLinea','type':'text',editable:true,required:true},
-          {'model':'limiteUtilizzoCoupon','title':'Limite Utilizzo Coupon','type':'text',editable:true,required:true}
+          {'model':'promoBatch','title':'Promo Batch','type':'options',
+            'options': lovService.getBooleanTypes(), editable:true,required:true, 'batchEnabler': true},
+          {'model':'descrizionePromo','title':'Descrizione promo','type':'text',editable:true, required:true,
+            'batchDisabled':true},
+          {'model':'periodoGenerazione','title':'Periodo Generazione','type':'text',editable:true,required:true,
+            'batchDisabled':true},
+          {'model':'periodoValidita','title':'Periodo Validita','type':'text',editable:true,required:true,
+            'batchDisabled':true},
+          {'model':'codiceTemplateSMS','title':'Codice Template SMS','type':'text', editable:true,required:true,
+            'batchDisabled':true},
+          {'model':'codiceTemplateMAIL','title':'Codice Template Mail','type':'text',editable:true,required:true,
+            'batchDisabled':true},
+          {'model':'flagLinea','title':'FlagLinea','type':'options',
+            'options': lovService.getBooleanTypes(), editable:true,required:true, 'batchDisabled':true},
+          {'model':'limiteUtilizzoCoupon','title':'Limite Utilizzo Coupon','type':'text',editable:true,required:true,
+            'batchDisabled':true}
         ]
       },
       PROMO_ID6_2: {
         columns: [
           {'model':'codicePromo','title':'Codice promo','type':'text'},
-          {'model':'descrizionePromo','title':'Descrizione promo','type':'text'},
-          {'model':'periodoValidita','title':'Periodo Validita','type':'text'},
-          {'model':'periodoGenerazione','title':'Periodo Generazione','type':'text'},
-          {'model':'codiceTemplateSMS','title':'Codice Template SMS','type':'text'},
-          {'model':'codiceTemplateMAIL','title':'Codice Template Mail','type':'text'},
-          {'model':'flagLinea','title':'FlagLinea','type':'text'},
-          {'model':'limiteUtilizzoCoupon','title':'Limite Utilizzo Coupon','type':'text'}
+          {'model':'promoBatch','title':'Promo Batch','type':'options',
+            'options': lovService.getBooleanTypes(), editable:true,required:true,'batchEnabler': true},
+          {'model':'descrizionePromo','title':'Descrizione promo','type':'text',editable:true, required:true,
+            'batchDisabled':true},
+          {'model':'periodoGenerazione','title':'Periodo Generazione','type':'text',editable:true, required:true,
+            'batchDisabled':true},
+          {'model':'periodoValidita','title':'Periodo Validita','type':'text',editable:true,required:true,
+            'batchDisabled':true},
+          {'model':'codiceTemplateSMS','title':'Codice Template SMS','type':'text',editable:true, required:true,
+            'batchDisabled':true},
+          {'model':'codiceTemplateMAIL','title':'Codice Template Mail','type':'text',editable:true, required:true,
+            'batchDisabled':true},
+          {'model':'flagLinea','title':'FlagLinea','type':'options', 'options': lovService.getBooleanTypes()
+            ,editable:true, required:true,'batchDisabled':true},
+          {'model':'limiteUtilizzoCoupon','title':'Limite Utilizzo Coupon','type':'text',editable:true, required:true,
+            'batchDisabled':true}
         ]
       },
       PROMO_ID7: {
         columns: [
           {'model':'codicePromo','title':'Codice promo','type':'text'},
-          {'model':'descrizionePromo','title':'Descrizione promo','type':'text'},
-          {'model':'periodoValidita','title':'Periodo Validita','type':'text'},
-          {'model':'periodoGenerazione','title':'Periodo Generazione','type':'text'},
-          {'model':'codiceTemplateSMS','title':'Codice Template SMS','type':'text'},
-          {'model':'codiceTemplateMAIL','title':'Codice Template Mail','type':'text'},
-          {'model':'flagLinea','title':'FlagLinea','type':'text'},
-          {'model':'limiteUtilizzoCoupon','title':'Limite Utilizzo Coupon','type':'text'}
+          {'model':'promoBatch','title':'Promo Batch','type':'options',
+            'options': lovService.getBooleanTypes(), editable:true,required:true,'batchEnabler': true},
+          {'model':'descrizionePromo','title':'Descrizione promo','type':'text',editable:true, required:true,
+            'batchDisabled':true},
+          {'model':'periodoGenerazione','title':'Periodo Generazione','type':'text',editable:true, required:true,
+            'batchDisabled':true},
+          {'model':'periodoValidita','title':'Periodo Validita','type':'text',editable:true,required:true,
+            'batchDisabled':true},
+          {'model':'codiceTemplateSMS','title':'Codice Template SMS','type':'text',editable:true, required:true,
+            'batchDisabled':true},
+          {'model':'codiceTemplateMAIL','title':'Codice Template Mail','type':'text',editable:true, required:true,
+            'batchDisabled':true},
+          {'model':'flagLinea','title':'FlagLinea','type':'options', 'options': lovService.getBooleanTypes()
+            ,editable:true, required:true,'batchDisabled':true},
+          {'model':'limiteUtilizzoCoupon','title':'Limite Utilizzo Coupon','type':'text',editable:true, required:true,
+            'batchDisabled':true}
         ]
-      },
-
+      }
     },
     "promo.detail": {
       title: "Condition List",
@@ -320,15 +346,20 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               'label': 'Ricerca BF',
               'model': 'BF',
               'reference': 'attributi.BF',
-              'multiple': false
+              'columns': [{model:'BF2Purchase', 'refModel': 'nmu'}]
             }
           ],
         columns: [
-          {'model':'BF2Purchase','title':'NMU','type':'number'},
-          {'model':'isPadreBF2Purchase','title':'isPadre','type':'boolean'},
-          {'model':'prezzo','title':'Prezzo','type':'number'},
-          {'model':'scontoValore','title':'Sconto Valore','type':'number'},
-          {'model':'scontoPercentuale','title':'Sconto Percentuale','type':'number'}
+          {'model':'BF2Purchase','title':'NMU','type':'text',required:true},
+          {'model':'isPadreBF2Purchase','title':'IsPadre','type':'options',
+            'options': lovService.getBooleanTypes(),  editable:true,required:true},
+          {'model':'priceActivation','title':'Prezzo','type':'number', editable:true, required:true},
+          {'model':'scontoValore','title':'Sconto a Valore',
+            'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
+            editable:true, mutuallyExclusive: 'scontoPercentuale'},
+          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
+            'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
+            editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
       PROMO_ID2:
@@ -339,17 +370,20 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
             {
               'label': 'Ricerca CS',
               'model': 'CS',
-              'multiple': false
+              'reference': 'attributi.CS',
+              'columns': [
+                {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
+                {model:'CS2Purchase', 'refModel': 'codiceCartaServizi'}]
             }
           ],
         columns: [
-          {'model':'nomeOfferta','title':'Offerta','type':'text'},
-          {'model':'cartaServizi','title':'Carta Servizi','type':'text'},
+          {'model':'offerta','title':'Offerta','type':'text'},
+          {'model':'CS2Purchase','title':'Carta Servizi','type':'text'},
           {'model':'scontoValore','title':'Sconto a Valore',
-            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
+            'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
             editable:true, mutuallyExclusive: 'scontoPercentuale'},
           {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
-            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
+            'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
             editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
@@ -363,46 +397,55 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               'model': 'CS2P',
               required: true,
               'multiple': true,
-              'reference': 'attributi.CS'
+              'reference': 'attributi.CS',
+              'columns': [
+                {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
+                {model:'CS2Purchase', 'refModel': 'codiceCartaServizi', append: true}]
             },
             {
               'label': 'Ricerca BF2P',
               'model': 'BF2P',
               required: true,
               'multiple': true,
-              'reference': 'attributi.BF'
+              'reference': 'attributi.BF',
+              'columns': [
+                {model:'BF2Purchase', 'refModel': 'nmu',append: true}]
             },
             {
               'label': 'Ricerca CSBonus',
               'model': 'CSBonus',
               mutuallyExclusive: 'BFBonus',
-              'multiple': false,
-              'reference': 'attributi.CS'
+              'reference': 'attributi.CS',
+              'columns': [
+                {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
+                {model:'CSwithBonus', 'refModel': 'codiceCartaServizi'}]
             },
             {
               'label': 'Ricerca BFBonus',
               'model': 'BFBonus',
               mutuallyExclusive: 'CSBonus',
-              'multiple': false,
-              'reference': 'attributi.BF'
+              'reference': 'attributi.BF',
+              'columns': [
+                {model:'BFwithBonus', 'refModel': 'nmu'}]
             }
           ],
         columns: [
-          {'model':'tipologiaVendita','title':'Tipologia Vendita','type':'text'},
-          {'model':'taglioRicarica','title':'Taglio Ricarica','type':'text'},
-          {'model':'nomeOfferta','title':'Offerta','type':'text'},
-          {'model':'CS2Purchase','title':'CS2Purchase','type':'text'},
-          {'model':'BF2Purchase','title':'BF2Purchase','type':'text'},
-          {'model':'isPadreBF2Purchase','title':'IsPadre','type':'text'},
-          {'model':'nomeOfferta','title':'Offerta','type':'text'},
-          {'model':'CSwithBonus','title':'CSwithBonus','type':'text'},
-          {'model':'BFwithBonus','title':'BFwithBonus','type':'text'},
-          {'model':'isPadreBFwithBonus','title':'IsPadre','type':'text'},
-       -  {'model':'scontoValore','title':'Sconto a Valore',
-         'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
-         editable:true, mutuallyExclusive: 'scontoPercentuale'},
+          {'model':'tipologiaVendita','title':'Tipologia Vendita','type':'options',
+            'options': lovService.getSeniorityConstraintWebType(), multiple: true, editable:true,required:true},
+          {'model':'taglioRicarica','title':'Taglio Ricarica','type':'number',editable:true,required:true},
+          {'model':'offerta','title':'Offerta','type':'text'},
+          {'model':'CS2Purchase','title':'CS2Purchase','type':'text', orRequired:'BF2Purchase'},
+          {'model':'BF2Purchase','title':'BF2Purchase','type':'text', orRequired:'CS2Purchase'},
+          {'model':'isPadreBF2Purchase','title':'IsPadre','type':'options',
+            'options': lovService.getBooleanTypes(), editable:true,required:true},
+          {'model':'offerta','title':'Offerta','type':'text'},
+          {'model':'CSwithBonus','title':'CSwithBonus','type':'text', mutuallyExclusive: 'BFwithBonus'},
+          {'model':'BFwithBonus','title':'BFwithBonus','type':'text', mutuallyExclusive: 'CSwithBonus'},
+          {'model':'scontoValore','title':'Sconto a Valore',
+            'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
+            editable:true, mutuallyExclusive: 'scontoPercentuale'},
           {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
-            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
+            'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
             editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
@@ -415,32 +458,39 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               'label': 'Ricerca CS2P',
               'model': 'CS2P',
               required: true,
-              'multiple': false
+              'reference': 'attributi.CS',
+              'columns': [
+                {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
+                {model:'CS2Purchase', 'refModel': 'codiceCartaServizi'}]
             },
             {
               'label': 'Ricerca CSBonus',
               'model': 'CSBonus',
               required: true,
-              'multiple': false
+              'reference': 'attributi.CS',
+              'columns': [
+                {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
+                {model:'CSwithBonus', 'refModel': 'codiceCartaServizi'}]
             }
           ],
         columns: [
-          {'model':'nomeOfferta','title':'Offerta','type':'text'},
-          {'model':'CS2Purchase','title':'CS2Purchase','type':'text'},
-          {'model':'nomeOfferta2','title':'Offerta','type':'text'},
-          {'model':'CSwithBonus','title':'CSwithBonus','type':'text'}
+          {'model':'offerta','title':'Offerta','type':'text', required: true},
+          {'model':'CS2Purchase','title':'CS2Purchase','type':'text',required: true},
+          {'model':'offerta','title':'Offerta','type':'text', required: true},
+          {'model':'CSwithBonus','title':'CSwithBonus','type':'text',required: true}
         ]
       },
       PROMO_ID5:
       {
         title: "PROMO ID5",
         columns: [
-          {'model':'tipologiaVendita','title':'Tipologia Vendita','type':'text'},
+          {'model':'tipologiaVendita','title':'Tipologia Vendita','type':'options',
+            'options': lovService.getSeniorityConstraintWebType(), multiple: true, editable:true,required:true},
           {'model':'scontoValore','title':'Sconto a Valore',
-            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
+            'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
             editable:true, mutuallyExclusive: 'scontoPercentuale'},
           {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
-            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
+            'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
             editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
@@ -455,63 +505,64 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
             //mutuallyEsclusive: indica un pulsante per cui c'è mutua esclusività
             //multiple: indica se è possibile una selezione multipla di record
             //reference: indica quale ricerca di attributi deve essere richiamata quando si clicca il pulsante
+            //batchDisabled: indica se il pulsante va disabilitato in caso di promoBatch
 
             {
               'label': 'Ricerca CS2P',
               'model': 'CS2P',
               orRequired: 'BF2P',
               mutuallyExclusive: 'BF2P',
-              'multiple': true,
               'reference': 'attributi.CS',
               //compare: in caso di selezioni multiple si verifica che abbiano tutti lo stesso campo
-              //append: indica se il campo va aggiunto al contenuto esistente
+              //append: indica se il campo va aggiunto in append al contenuto esistente
+              //model: indica il nome del campo così come viene recuperato dagli attributi
+              //refModel: indica il nome del campo mappato sulla condition
               'columns': [
-                {model: 'nomeOfferta2P', 'refModel': 'nomeOfferta', compare: true},
-                {model:'CS2Purchase', 'refModel': 'codiceCartaServizi', append:true}]
+                {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
+                {model:'CS2Purchase', 'refModel': 'codiceCartaServizi'}],
+              'batchDisabled':true
             },
             {
               'label': 'Ricerca BF2P',
               'model': 'BF2P',
               orRequired: 'CS2P',
               mutuallyExclusive: 'CS2P',
-              'multiple': false,
               'reference': 'attributi.BF',
-              'columns': [{model:'BF2Purchase', 'refModel': 'nmu'}]
+              'columns': [{model:'BF2Purchase', 'refModel': 'nmu'}],
+              'batchDisabled':true
             },
             {
               'label': 'Ricerca CSBonus',
               'model': 'CSBonus',
               mutuallyExclusive: 'BFBonus',
-              'multiple': false,
               'reference': 'attributi.CS',
               'columns': [
-                {model: 'nomeOfferta2P', 'refModel': 'nomeOfferta',compare: true},
-                {model:'CSwithBonus','refModel': 'codiceCartaServizi', append:true}]
+                {model: 'offerta', 'refModel': 'nomeOfferta',compare: true},
+                {model:'CSwithBonus','refModel': 'codiceCartaServizi'}]
             },
             {
               'label': 'Ricerca BFBonus',
               'model': 'BFBonus',
               mutuallyExclusive: 'CSBonus',
-              'multiple': false,
               'reference': 'attributi.BF',
               'columns': [{model:'BFwithBonus', 'refModel': 'nmu'}]
             }
           ],
         columns: [
-          {'model':'nomeOfferta2P','title':'Offerta','type':'text', required: true},
-          {'model':'CS2Purchase','title':'CS2Purchase','type':'text', orRequired:'BF2Purchase'},
-          {'model':'BF2Purchase','title':'BF2Purchase','type':'text', orRequired:'CS2Purchase'},
+          {'model':'offerta','title':'Offerta','type':'text', required: true, 'batchDisabled':true},
+          {'model':'CS2Purchase','title':'CS2Purchase','type':'text', orRequired:'BF2Purchase', 'batchDisabled':true},
+          {'model':'BF2Purchase','title':'BF2Purchase','type':'text', orRequired:'CS2Purchase', 'batchDisabled':true},
           {'model':'isPadreBF2Purchase','title':'IsPadre','type':'options',
-            'options': lovService.getBooleanTypes(),  editable:true,required:true},
-          {'model':'nomeOfferta2P','title':'Offerta','type':'text'},
+            'options': lovService.getBooleanTypes(),  editable:true,required:true, 'batchDisabled':true},
+          {'model':'offerta','title':'Offerta','type':'text'},
           {'model':'CSwithBonus','title':'CSwithBonus','type':'text',  mutuallyExclusive: 'BFwithBonus'},
           {'model':'BFwithBonus','title':'BFwithBonus','type':'text', mutuallyExclusive: 'CSwithBonus'},
           {'model':'scontoValore','title':'Sconto a Valore',
-            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
+            'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
             editable:true, mutuallyExclusive: 'scontoPercentuale'},
           {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
-            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
-           editable: true, mutuallyExclusive: 'scontoValore'}
+            'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
+            editable: true, mutuallyExclusive: 'scontoValore'}
 
         ]
       },
@@ -527,8 +578,8 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               orRequired: 'BFBonus',
               'reference': 'attributi.CS',
               'columns': [
-                {model: 'nomeOfferta2P', 'refModel': 'nomeOfferta',compare: true},
-                {model:'CSwithBonus','refModel': 'codiceCartaServizi', append:true}]
+                {model: 'offerta', 'refModel': 'nomeOfferta',compare: true},
+                {model:'CSwithBonus','refModel': 'codiceCartaServizi'}]
 
             },
             {
@@ -538,28 +589,29 @@ angular.module('app').factory('dataTableResources', ['lovService','$state', func
               orRequired: 'CSBonus',
               'reference': 'attributi.BF',
               'columns': [
-                {model: 'nomeOfferta2P', 'refModel': 'nomeOfferta',compare: true},
-                {model:'BFwithBonus','refModel': 'codiceCartaServizi', append:true}]
+                {model: 'offerta', 'refModel': 'nomeOfferta',compare: true},
+                {model:'BFwithBonus','refModel': 'codiceCartaServizi'}]
 
             }
           ],
         columns: [
           {'model':'totaleCarrello','title':'Totale Carrello','type':'number',
-            maxlength:"10", editable:true, required:true},
-          {'model':'nomeOfferta2P','title':'Offerta','type':'text'},
+            maxlength:"10", editable:true, required:true, 'batchDisabled':true},
+          {'model':'offerta','title':'Offerta','type':'text'},
           {'model':'CSwithBonus','title':'CSwithBonus','type':'text'},
           {'model':'BFwithBonus','title':'BFwithBonus','type':'text'},
           {'model':'scontoValore','title':'Sconto a Valore',
-            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/,maxlength:"10",
+            'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
             editable:true, mutuallyExclusive: 'scontoPercentuale'},
           {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
-            'type':'number', 'step':'0.01', pattern:/^[0-9]+(\.[0-9]{1,2})?$/, maxlength:"5",
+            'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
             editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
       PROMO_ID7:
       {
         title: "PROMO ID7",
+        addDisabledIfBatch:true,
         columns: [
           {'model':'ricaricaMinGenerazione','title':'Taglio Ricarica Min Generazione','type':'number',
             editable:true, required:true, maxlength:"10"},

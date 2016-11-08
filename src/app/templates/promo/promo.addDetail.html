@@ -1,4 +1,12 @@
 <div class="container">
+  <div ng-if="loading"
+       class="overlay"
+       layout="row"
+       layout-sm="column"
+       layout-align="center center">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+
   <md-toolbar layout="row"
               class="md-table-toolbar alternate"
               layout-align="center center"
@@ -29,7 +37,6 @@
 
             <md-input-container flex>
               <label>{{columns[$index].title}}</label>
-
               <input
                    ng-if="columns[$index].type==='text' ||columns[$index].type==='number'"
                     name="{{columns[$index].model}}"
@@ -42,10 +49,21 @@
                      ng-required="isRequired(columns[$index], item)">
 
               <md-select
-                ng-if="columns[$index].type==='options'"
+                ng-if="columns[$index].type==='options' && !columns[$index].multiple"
                 ng-disabled="isDisabled(columns[$index], item)"
                 ng-required="isRequired(columns[$index], item)"
-                ng-model="item[columns[$index].model]">
+                ng-model="item[columns[$index].model]"
+              >
+                <md-option ng-value="type" ng-repeat="type in columns[$index].options">{{type}}</md-option>
+              </md-select>
+
+              <md-select
+                ng-if="columns[$index].type==='options' && columns[$index].multiple"
+                ng-disabled="isDisabled(columns[$index], item)"
+                ng-required="isRequired(columns[$index], item)"
+                ng-model="item[columns[$index].model]"
+                multiple
+              >
                 <md-option ng-value="type" ng-repeat="type in columns[$index].options">{{type}}</md-option>
               </md-select>
             </md-input-container>
@@ -55,7 +73,7 @@
             <label>{{columns[$index+1].title}}</label>
 
             <input
-                   ng-if="columns[$index+1].type==='text' ||columns[$index+1].type==='number'"
+                   ng-if="columns[$index+1].type==='text' || columns[$index+1].type==='number'"
                    name="{{columns[$index+1].model}}"
                    type="{{columns[$index+1].type}}"
                    ng-model="item[columns[$index+1].model]"
@@ -66,10 +84,21 @@
                    ng-required="isRequired(columns[$index+1], item)">
 
             <md-select
-              ng-if="columns[$index+1].type==='options'"
+              ng-if="columns[$index+1].type==='options' && !columns[$index+1].multiple"
               ng-disabled="isDisabled(columns[$index+1], item)"
               ng-required="isRequired(columns[$index+1], item)"
-              ng-model="item[columns[$index+1].model]">
+              ng-model="item[columns[$index+1].model]"
+            >
+              <md-option ng-value="type" ng-repeat="type in columns[$index+1].options">{{type}}</md-option>
+            </md-select>
+
+            <md-select
+              ng-if="columns[$index+1].type==='options' && columns[$index+1].multiple"
+              ng-disabled="isDisabled(columns[$index+1], item)"
+              ng-required="isRequired(columns[$index+1], item)"
+              ng-model="item[columns[$index+1].model]"
+              multiple
+            >
               <md-option ng-value="type" ng-repeat="type in columns[$index+1].options">{{type}}</md-option>
             </md-select>
           </md-input-container>
