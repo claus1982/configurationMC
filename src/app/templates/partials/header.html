@@ -1,31 +1,37 @@
 <div class="nav-wrap clearfix">
   <div class="container"><a href="/" class="logo-tim"><img src="../../../images/logo_tim_2016.png"></a>
-    <ul class="menu-nav clearfix js-menu-nav">
-      <li>
-        <a href="#">PROMO
-      </a>
-      </li>
-      <li><a href="#">PACK</a></li>
-      <li class="hover_open">
-        <a href="#">ATTRIBUTI WEB</a>
-
-        <!--ng-class="{ 'active':
-        model.currentState === 'Attributi CS' ||
-        model.currentState === 'Attributi BF' ||
-        model.currentState === 'Attributi SIM' ||
-        model.currentState === 'Attributi Ricarica'}"
-        -->
-
-        <div class="sub-menu-nav">
-          <ul>
-            <li ng-repeat="item in model.attributes.menu">
-              <a href="#" ng-click="item.onClick()">
-                {{item.label}}
+    <md-menu-bar class="menu-nav clearfix js-menu-nav">
+      <md-menu>
+        <md-button aria-label="PROMO"
+                   ng-click="model.promo.onClick()">
+          PROMO
+        </md-button>
+        <md-menu-content/>
+      </md-menu>
+      <md-menu>
+        <md-button aria-label="PACK"
+                   ng-click="model.pack.onClick()">
+          PACK
+        </md-button>
+        <md-menu-content/>
+      </md-menu>
+      <md-menu class="sub-menu-nav">
+        <md-button aria-label="Attributi Web"
+                   ng-click="openMenu($mdOpenMenu, $event)">
+          ATTRIBUTI WEB
+        </md-button>
+        <md-menu-content>
+            <md-menu-item
+              ng-repeat="menu in model.attributes.menu">
+              <a href="#" ng-click="menu.onClick($event)">
+                {{menu.label}}
               </a>
-            </li>
-          </ul>
-        </div>
-      </li>
-    </ul>
+            </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </md-menu-bar>
+
+
+
   </div>
 </div>

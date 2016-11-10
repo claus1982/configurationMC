@@ -1,7 +1,20 @@
 {
-  "name": "fountain-inject",
-  "version": "0.0.1",
-  "ignore": [],
+  "name": "configuratoremc",
+  "description": "configuratoreMC dbss-web",
+  "main": "",
+  "authors": [
+    "Claudio Visco <claudio.a.visco@avanade.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
     "angular": "^1.4.8",
     "angular-ui-router": "1.0.0-beta.1",
@@ -11,22 +24,13 @@
     "angular-material-data-table": "^0.10.9",
     "angular-resource": "^1.5.8",
     "jquery": "^3.1.1",
-    "angular-bootstrap": "^2.2.0",
     "angular-material": "^1.1.1",
-    "angular-ui-notification": "^0.2.0"
-  },
-  "main": [
-    "angular-material.js",
-    "angular-material.css"
-  ],
-  "homepage": "https://github.com/angular/bower-material",
-  "_release": "1.1.1",
-  "_resolution": {
-    "type": "version",
-    "tag": "v1.1.1",
-    "commit": "ec9b476051eef167c9b1522e1943f10545119bbe"
-  },
-  "_source": "https://github.com/angular/bower-material.git",
-  "_target": "^1.0.0",
-  "_originalSource": "angular-material"
+    "angular-ui-notification": "^0.2.0",
+    "angular-breadcrumb": "^0.4.1",
+    "ngSticky": "^1.8.13",
+    "angular-loading": "^0.1.4",
+    "smDateTimeRangePicker": "^2.0.1",
+    "angular-moment": "^1.0.0",
+    "angular-moment-picker": "moment-picker#^0.6.8"
+  }
 }

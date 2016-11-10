@@ -1,6 +1,6 @@
 ( function () {
   "use strict";
-  angular.module('app').service('setWebService', function (GenericHttpService) {
+  angular.module("app").service("setWebService", function (GenericHttpService) {
     var serviceName = "setWeb";
 
 
@@ -8,32 +8,32 @@
       return {
         setWebRequest: {
           operation: inputData.operation,
-          nomeOfferta: inputData.nomeOfferta,
-          nomeProdotto: inputData.nomeProdotto,
-          codiceCartaServizi: inputData.codiceCartaServizi,
-          defaultFlag: inputData.defaultFlag,
-          parentDisplayName: inputData.parentDisplayName,
-          webDescription: inputData.webDescription,
-          longDescriptionWeb: inputData.longDescriptionWeb,
-          joinedSeniorityConstraintWeb: inputData.joinedSeniorityConstraintWeb,
-          isWebSellable: inputData.isWebSellable,
-          paymentMethodWeb: inputData.paymentMethodWeb,
-          NMU: inputData.NMU,
-          descrizioneModello: inputData.descrizioneModello,
-          price: inputData.price,
-          descrizioneBrand: inputData.descrizioneBrand,
-          NMUPadre: inputData.NMUPadre,
-          REGALABILE: inputData.REGALABILE,
-          pianoTariffarioWeb: inputData.pianoTariffarioWeb,
-          TIDweb: inputData.TIDweb,
-          priorityRecharge: inputData.priorityRecharge
+          nomeOfferta:inputData.nomeOfferta,
+          nomeProdotto:inputData.nomeProdotto,
+          nmu:inputData.nmu,
+          descrizioneModello:inputData.descrizioneModello,
+          prezzo:inputData.prezzo,
+          descrizioneBrand:inputData.descrizioneBrand,
+          nmuPadre:inputData.nmuPadre,
+          webDescription:inputData.webDescription,
+          longDescriptionWeb:inputData.longDescriptionWeb,
+          seniorityConstraintWeb:inputData.seniorityConstraintWeb,
+          isWebSellable:inputData.isWebSellable,
+          paymentMethodWeb:inputData.paymentMethodWeb,
+          regalabile:inputData.regalabile,
+          pianoTariffarioWeb:inputData.pianoTariffarioWeb,
+          tidWeb:inputData.tidWeb,
+          priorityRecharge:inputData.priorityRecharge,
+          codiceCartaServizi:inputData.codiceCartaServizi,
+          defaultFlag:inputData.defaultFlag,
+          parentDisplayName:inputData.parentDisplayName
         }
       }
     }
       ;
 
     this.setWeb = function (request) {
-      return GenericHttpService.doHttpRequest('/' + serviceName, request);
+      return GenericHttpService.doHttpRequest(serviceName, request);
     };
 
   })

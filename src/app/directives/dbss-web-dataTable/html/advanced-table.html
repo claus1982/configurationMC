@@ -1,160 +1,255 @@
-<div class="container"><h2 class="title-section">Ricerca</h2></div>
-<div class="container clearfix">
-  <form name="myForm" class="form-wrapper" ng-submit="submit()">
+<div
+  sticky class="whiteBackground"
+  ng-if="options.showFilters && searchParams">
+  <div
+    class="container">
+    <h2 class="title-section">Ricerca
+    </h2>
+  </div>
+  <div class="container clearfix">
+    <form
+      name="myForm"
+      class="form-wrapper"
+      ng-submit="submit()"
+      autocomplete="off">
 
-    <div class="form-fieldset" ng-repeat = "param in searchParams"
-         ng-class="{'has-error':myForm[param.name].$error.required}"
-         ng-messages="myForm[param.name].$error">
-      <label class="form-label">{{param.title}}</label>
-      <input name="{{param.name}}"
-             ng-model="param.model"
-             type="text"
-             class="form-control"
-             ng-required="isRequired()">
-      <div ng-messages-include="app/templates/partials/messages.html"></div>
-    </div>
+      <div
+        class="form-fieldset"
+        ng-repeat="param in searchParams"
+        ng-class="{'has-error':myForm[param.name].$error.required}"
+        ng-messages="myForm[param.name].$error">
+        <label class="form-label">{{param.title}}</label>
+        <input name="{{param.name}}"
+               ng-model="param.model"
+               ng-disabled="param.disabled"
+               type = "{{param.type}}"
+               class="form-control"
+               ng-required="isRequired()"
+               minlength="{{param.minlength}}"
+               maxlength="{{param.maxlength}}"
+        >
 
-    <div class="form-buttons">
-      <input type="submit"
-             class="btn-primary"
-             ng-disabled="myForm.$invalid">
-    </div>
-  </form>
+        <div ng-messages-include="app/templates/partials/messages.html"></div>
+      </div>
+
+      <div class="form-buttons">
+        <input type="submit"
+               class="btn-primary"
+               value="cerca"
+               ng-disabled="myForm.$invalid || searchLoading">
+      </div>
+    </form>
+  </div>
 </div>
 
-<div ng-if="loading"
+<div ng-if="searchLoading"
      layout="row"
      layout-sm="column"
      layout-align="space-around">
   <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </div>
 
-<div ng-if="items" class="container"><h1 class="title-section">{{title}}</h1>
+
+
+<div ng-if="items" ng-hide="searchLoading" class="container"><h1 class="title-section">{{title}}</h1>
+
   <div class="container margin-bottom-40">
     <div class="wrapper-app">
       <div class="datatable-wrap" layout="column">
         <md-card>
-          <!--<div ng-include="'app/templates/partials/advanced-table.html'"></div>-->
+          <md-toolbar class="md-table-toolbar md-default">
+            <div class="md-toolbar-tools">
+              <!-- pulsante "AGGIUNGI" per aggiungere un nuovo item mediante pop-up-->
+              <md-button ng-if="options.addMode" ng-hide="options.isEditing"
+                         ng-show="!options.rowSelection || !selected.length" class="md-primary"
+                         ng-click="addItem(addModeType,$event,columns, addItemClbk)"
+              >aggiungi
+              </md-button>
+              <md-button
+                ng-if="options.editMode"
+                ng-hide="options.isEditing"
+                ng-show="!options.rowSelection || !selected.length"
+                class="md-primary"
+                ng-click="enableisEditing()">
+                modifica
+              </md-button>
+              <div class="right-position">
+                <md-button class="md-icon-button">
+                  <md-icon>search</md-icon>
+                </md-button>
+                <input class="input-search" type="text" placeholder="Search" ng-model="query.filter">
+              </div>
+            </div>
+          </md-toolbar>
 
-<md-toolbar class="md-table-toolbar md-default">
-  <div class="md-toolbar-tools">
-    <md-button ng-if="options.addMode" ng-hide="options.editMode" ng-show="!options.rowSelection || !selected.length" class="md-primary" ng-click="addItem($event)">aggiungi</md-button>
-    <md-button ng-hide="options.editMode" ng-show="!options.rowSelection || !selected.length" class="md-primary" ng-click="enableEditMode()">modifica</md-button>
-    <div class="right-position">
-      <md-button class="md-icon-button">
-        <md-icon>search</md-icon>
-      </md-button>
-      <input class="input-search" type="text" placeholder="Search" ng-model="query.filter">
-    </div>
-  </div>
-</md-toolbar>
 
-<md-toolbar class="md-table-toolbar alternate" ng-show="options.editMode">
-  <div class="md-toolbar-tools">
+          <ng-include
+            ng-if="faToolbar"
+            src="'app/directives/dbss-web-dataTable/html/faToolbar.html'">
+          </ng-include>
+
+          <md-toolbar class="md-table-toolbar alternate" ng-show="options.isEditing">
+            <div class="md-toolbar-tools">
     <span class="label-modify">
       Desideri salvare le modifiche effettuate?
     </span>
-    <md-button class="md-button btn-secondary" ng-click="restoreSavedItems()">
-      annulla
-    </md-button>
-    <md-button class="md-button btn-primary" ng-click="saveItems()">
-      salva
-    </md-button>
-  </div>
-</md-toolbar>
+              <md-button class="md-button btn-secondary" ng-click="restoreSavedItems()">
+                annulla
+              </md-button>
+              <md-button class="md-button btn-primary" ng-click="saveItems()" ng-disabled="!isItemsModified()">
+                salva
+              </md-button>
+            </div>
+          </md-toolbar>
 
-<md-toolbar class="md-table-toolbar alternate"
-            ng-show="options.rowSelection && selected.length">
-  <div class="md-toolbar-tools">
-    <span>{{selected.length}} {{selected.length > 1 ? 'record selezionati' : 'record selezionato'}}</span>
-    <div class="right-position">
-      <md-button ng-if="options.copyMode"
-                 class="md-icon-button"
-                 title="Selezionare max un record"
-                 ng-disabled="options.rowSelection && selected.length>1"
-                 ng-click="copyItem(event,selected)">
-        <md-icon>content_copy</md-icon>
-      </md-button>
-      <md-button class="md-icon-button"
-                 ng-if="options.deleteMode">
-        <md-icon>delete</md-icon>
-      </md-button>
-    </div>
-  </div>
-</md-toolbar>
-
-<md-table-container>
-  <table ng-class="{'md-table-edit-mode':options.editMode}"
-         data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}"
-         data-ng-model="selected" md-progress="promise">
-    <thead md-head md-order="query.order">
-    <tr md-row>
-      <th md-column ng-repeat="column in columns" md-numeric="column.numeric" md-order-by="{{column.model}}">
-        <span>{{column.title}}</span>
-        <!--<span ng-if="column.unit">({{column.unit}})</span>-->
-      </th>
-    </tr>
-    </thead>
-    <tbody md-body>
-    <tr   md-row
-          md-select="item"
-          md-select-id="name"
-          data-md-on-select="log"
-          md-on-deselect="deselect"
-          x-md-auto-select=""
-          ng-disabled=""
-          data-ng-repeat="item in items | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
+          <md-toolbar class="md-table-toolbar alternate"
+                      ng-show="options.rowSelection && selected.length">
+            <div class="md-toolbar-tools">
+              <span>{{selected.length}} {{selected.length > 1 ? 'record selezionati' : 'record selezionato'}}</span>
 
 
-          <td ng-repeat="column in columns"
-             md-cell>
-            <span ng-if="!options.editMode && !isArray(item[column.model])">
+              <div
+                class="right-position">
+                <!--go back to details after selections -->
+                <md-button
+                  ng-if="options.confirmSearchSelectionMode"
+                  class="md-button btn-primary"
+                ng-click="confirmSearchSelection(event,selected)"
+                >conferma</md-button>
+
+                <!--forward to next view (details) -->
+                <md-button ng-if="options.forwardMode"
+                           class="md-icon-button"
+                           title="Vai al dettaglio"
+                           ng-disabled="options.rowSelection && selected.length>1"
+                           ng-click="goToItemDetails(event,selected)"
+                >
+                  <md-icon>forward</md-icon>
+                </md-button>
+
+                <md-button ng-if="options.copyMode"
+                           class="md-icon-button"
+                           title="Copia"
+                           ng-disabled="options.rowSelection && selected.length>1"
+                           ng-click="copyItem(event, columns, selected)">
+                  <md-icon>content_copy</md-icon>
+                </md-button>
+
+                <md-button
+                  ng-if="options.deleteMode"
+                  class="md-icon-button"
+                  title="Elimina"
+                  ng-click="deleteItem(event, selected)"
+                >
+                  <md-icon>delete</md-icon>
+                </md-button>
+            </div>
+      </div>
+          </md-toolbar>
+
+          <md-table-container>
+            <table ng-class="{'md-table-edit-mode':options.isEditing}"
+                   data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}"
+                   data-ng-model="selected" md-progress="promise">
+              <thead md-head md-order="query.order">
+              <tr md-row>
+                <th md-column md-desc  ng-repeat="column in columns"
+                    md-numeric="true"
+                    md-order-by="{{column.model}}"
+                    ng-class="{'text-green': column.color==='green',
+                               'text-orange': column.color==='orange'
+                             }"
+                >
+                  <span>{{column.title}}</span>
+                  <!--<span ng-if="column.unit">({{column.unit}})</span>-->
+                </th>
+              </tr>
+              </thead>
+              <tbody md-body>
+              <tr md-row
+                  md-auto-select ="options.rowSelection"
+                  md-select="item"
+                  md-select-id="name"
+                  data-md-on-select="log"
+                  md-on-deselect="deselect"
+                  data-ng-repeat="item in items | filter: query.filter |
+                                                  orderBy: query.sort():query.order.charAt(0) === '-'  |
+                                                  limitTo: query.limit : (query.page - 1) * query.limit">
+
+
+                <td ng-repeat="column in columns"
+                    md-cell
+                    ng-class="{'md-placeholder': !item[column.model]}"
+                >
+            <span ng-if="!options.isEditing && !isArray(item[column.model])">
               {{item[column.model]}}
             </span>
-             <span ng-if="!options.editMode && isArray(item[column.model])">
+             <span ng-if="!options.isEditing && isArray(item[column.model])">
              <span ng-repeat="value in item[column.model]">
                  {{value + ($last ? '' : ',')}}
              </span>
             </span>
-            <span ng-if="options.editMode && column.type==='text'"
+            <span ng-if="options.isEditing && column.type==='text'"
                   md-cell
-                  ng-click="editTextField(options.editMode && column.editable,$event, item,column.model,column.title,column.title)">
-              {{item[column.model]}}
+                  ng-class="column.editable ? 'field-editable' : 'field-disabled'"
+                  ng-click="editTextField(options.isEditing && column.editable,$event, item,column.model,column.title,column.title, column.validators)">
+               {{item[column.model] || "-"}}
             </span>
-            <span ng-if="options.editMode && column.type==='options' && !column.multiple">
-                  <md-select ng-model="item[column.model]" placeholder="Other"
-                  >
-                    <md-option ng-value="type" ng-repeat="type in column.options">{{type}}</md-option>
-                  </md-select>
-            </span>
-            <span ng-if="options.editMode && column.type==='options' && column.multiple">
-                  <md-select ng-model="item[column.model]" placeholder="Other" multiple
-                  >
-                    <md-option ng-value="type" ng-repeat="type in column.options">{{type}}</md-option>
-                  </md-select>
-            </span>
-    </td>
-    </tr>
-    </tbody>
-  </table>
-</md-table-container>
 
-<data-md-table-pagination md-limit="query.limit"
-                          md-limit-options="limitOptions"
-                          md-page="query.page"
-                          md-total="{{items.length}}"
-                          md-on-paginate="onPaginate"
-                          md-page-select="options.pageSelect"
-                          md-boundary-links="options.boundaryLinks">
-</data-md-table-pagination>
+                  <!-- picklist con selezione predefinita singola-->
+            <span ng-if="options.isEditing && column.type==='options' && !column.multiple"
+                  ng-class="column.editable ? 'field-editable' : 'field-disabled'"
+            >
+                  <md-select ng-model="item[column.model]"
+                             class="_md-container md-container"
+                             placeholder="Select"
+                  >
+                    <md-option ng-value="type" ng-repeat="type in column.options">{{type}}</md-option>
+                  </md-select>
+            </span>
+
+                  <!-- picklist in cui è selezionabile solo il contenuto arrivato-->
+             <span ng-if="options.isEditing && column.type==='selection' && column.multiple"
+                   ng-class="column.editable ? 'field-editable' : 'field-disabled'"
+             >
+                  <md-select ng-model="item[column.model]"
+                             placeholder="Select"
+                             ng-change="recordChange()"
+                             class="_md-container md-container"
+                             multiple>
+                    <md-option ng-repeat="type in savedItems[$parent.$parent.$index][column.model]" ng-value="type">{{ type }}</md-option>
+                  </md-select>
+            </span>
+                  <!-- picklist con selezione predefinita multipla-->
+            <span ng-if="options.isEditing && column.type==='options' && column.multiple"
+                  ng-class="column.editable ? 'field-editable' : 'field-disabled'">
+                  <md-select ng-model="item[column.model]"
+                             placeholder="Select"
+                             ng-change="recordChange()"
+                             class="_md-container md-container"
+                             multiple>
+                  <md-option ng-repeat="type in column.options" ng-value="type">{{ type }}</md-option>
+                  </md-select>
+            </span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </md-table-container>
+
+          <data-md-table-pagination md-limit="query.limit"
+                                    md-limit-options="limitOptions"
+                                    md-page="query.page"
+                                    md-total="{{items.length}}"
+                                    md-on-paginate="onPaginate"
+                                    md-page-select="options.pageSelect"
+                                    md-boundary-links="options.boundaryLinks">
+          </data-md-table-pagination>
         </md-card>
-        <!-- <br><br><br>
-         <md-content layout="column">
-           <div ng-include="'app/templates/partials/simple-table.html'"></div>
-         </md-content>-->
       </div>
     </div>
   </div>
 </div>
+
 
 

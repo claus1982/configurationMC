@@ -1,0 +1,172 @@
+md-dialog.fullscreen-dialog {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+.section > div.wrap{
+  clear:both;
+}
+
+.section > span.wrap{
+  clear:both;
+}
+
+#loading-bar {
+  pointer-events: all;
+  z-index: 99999;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: wait;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+md-dialog.fullscreen-dialog {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+
+div.whiteBackground {
+  background-color: white;
+}
+
+.scroller {
+  white-space: pre-line;
+  height: 500px;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.1); /*dim the background*/
+}
+
+
+
+.nav-wrap .menu-nav > md-menu {
+  height: 63px;
+  float: left;
+  position: relative
+}
+
+.nav-wrap .menu-nav > md-menu > button {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  height: 63px;
+  padding: 22.5px 30px 20px 15px;
+  color: #004990;
+  text-transform: uppercase;
+  border: 1px solid #f0f0f0;
+  border-bottom: none;
+  border-top: none;
+  transition: all .3s ease .15s
+}
+
+.nav-wrap .menu-nav > md-menu.hover_open > a {
+  background: url(https://img.tim.it/img/ico_freccia_dx.png) 90% 25px no-repeat
+}
+
+.nav-wrap .menu-nav > md-menu.active > a {
+  background: url(https://img.tim.it/img/ico_freccia_bottom.png) 90% 25px no-repeat #fff;
+  position: relative;
+  z-index: 101;
+  height: 63px;
+  border: 1px solid #d8d8d8;
+  border-bottom: none;
+  border-top: none
+}
+
+.nav-wrap .menu-nav > md-menu .sub-menu-nav {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #FFF;
+  z-index: 100;
+  width: 100%;
+  transition: all .3s ease .15s
+}
+
+.nav-wrap .menu-nav > md-menu .sub-menu-nav.opened {
+  transition: all .3s ease .15s;
+  top: 0;
+  overflow: hidden;
+  height: auto;
+  opacity: 1;
+  transform: translate(0, 63px)
+}
+
+.nav-wrap .menu-nav > md-menu .sub-menu-nav md-menu-content {
+  padding: 15px;
+  border: 1px solid #d8d8d8;
+  border-top: 0;
+  width: 100%
+}
+
+.nav-wrap .menu-nav > md-menu .sub-menu-nav  > md-menu-item {
+  margin-bottom: 10px
+}
+
+.nav-wrap .menu-nav > md-menu .sub-menu-nav > md-menu-item > a {
+  color: #004d91;
+  font-size: 30px
+}
+
+.nav-wrap .menu-nav > md-menu .sub-menu-nav > md-menu-item > a:hover {
+  color: #66CC44
+}
+
+
+th.white-on-blue {
+  background-color: #269091;
+  color: white;
+}
+th.white-on-orange {
+  background-color: #F39D17;
+  color: white;
+}
+
+.text-white {
+  color: white !important
+}
+
+
+md-input-container.md-default-theme:not(.md-input-focused):not(.md-input-invalid) label.md-required:after, md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-required:after {
+  color:red;
+}
+md-input-container:not(.md-input-has-value) md-select[required]:not(.md-no-asterisk) .md-select-value span:first-child:after, md-input-container:not(.md-input-has-value) md-select.ng-required:not(.md-no-asterisk) .md-select-value span:first-child:after {
+  content: ' *';
+  font-size: 13px;
+  vertical-align: top;
+  color: red;
+}
+.md-text{
+  position: relative;
+  color:red;
+  display: inline-block; !important
+}
+
+

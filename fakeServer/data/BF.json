@@ -10,12 +10,12 @@
       {"name":"Price","orderBy":"Price"},
       {"name":"webDescription","orderBy":"webDescription"},
       {"name":"longDescriptionWeb","orderBy":"longDescriptionWeb"},
-      {"name":"joinedSeniorityConstraintWeb","orderBy":"joinedSeniorityConstraintWeb"},
+      {"name":"seniorityConstraintWeb","orderBy":"seniorityConstraintWeb"},
       {"name":"isWebSellable","orderBy":"isWebSellable"},
       {"name":"paymentMethodWeb","orderBy":"paymentMethodWeb"},
-      {"name":"REGALABILE","orderBy":"REGALABILE"},
+      {"name":"regalabile","orderBy":"regalabile"},
       {"name":"pianoTariffarioWeb","orderBy":"pianoTariffarioWeb"},
-      {"name":"TIDweb","orderBy":"TIDweb"}
+      {"name":"tidWeb","orderBy":"tidWeb"}
     ],
     "data": [
       {
@@ -27,12 +27,12 @@
         "Price"                        :  "Price1"                       ,
         "webDescription"               :  "webDescription1"              ,
         "longDescriptionWeb"           :  "longDescriptionWeb1"          ,
-        "joinedSeniorityConstraintWeb" :  "joinedSeniorityConstraintWeb1",
+        "seniorityConstraintWeb" :  "seniorityConstraintWeb1",
         "isWebSellable"                :  "isWebSellable1"               ,
         "paymentMethodWeb"             :  "paymentMethodWeb1"            ,
-        "REGALABILE"                   :  "REGALABILE1"                  ,
+        "regalabile"                   :  "regalabile1"                  ,
         "pianoTariffarioWeb"           :  "pianoTariffarioWeb1"          ,
-        "TIDweb"                       :  "TIDweb1"
+        "tidWeb"                       :  "tidWeb1"
       },
       {
         "ProductName"                  :  "ProductName2"                 ,
@@ -43,12 +43,12 @@
         "Price"                        :  "Price2"                       ,
         "webDescription"               :  "webDescription2"              ,
         "longDescriptionWeb"           :  "longDescriptionWeb2"          ,
-        "joinedSeniorityConstraintWeb" :  "joinedSeniorityConstraintWeb2",
+        "seniorityConstraintWeb" :  "seniorityConstraintWeb2",
         "isWebSellable"                :  "isWebSellable2"               ,
         "paymentMethodWeb"             :  "paymentMethodWeb2"            ,
-        "REGALABILE"                   :  "REGALABILE2"                  ,
+        "regalabile"                   :  "regalabile2"                  ,
         "pianoTariffarioWeb"           :  "pianoTariffarioWeb2"          ,
-        "TIDweb"                       :  "TIDweb2"
+        "tidWeb"                       :  "tidWeb2"
       },
       {
         "ProductName"                  :  "ProductName3"                 ,
@@ -59,12 +59,12 @@
         "Price"                        :  "Price3"                       ,
         "webDescription"               :  "webDescription3"              ,
         "longDescriptionWeb"           :  "longDescriptionWeb3"          ,
-        "joinedSeniorityConstraintWeb" :  "joinedSeniorityConstraintWeb3",
+        "seniorityConstraintWeb" :  "seniorityConstraintWeb3",
         "isWebSellable"                :  "isWebSellable3"               ,
         "paymentMethodWeb"             :  "paymentMethodWeb3"            ,
-        "REGALABILE"                   :  "REGALABILE3"                  ,
+        "regalabile"                   :  "regalabile3"                  ,
         "pianoTariffarioWeb"           :  "pianoTariffarioWeb3"          ,
-        "TIDweb"                       :  "TIDweb3"
+        "tidWeb"                       :  "tidWeb3"
       }
     ]
   }]

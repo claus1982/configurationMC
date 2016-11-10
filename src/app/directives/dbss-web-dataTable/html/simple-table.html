@@ -1,0 +1,43 @@
+<div ng-if="loading"
+     layout="row"
+     layout-sm="column"
+     layout-align="space-around">
+  <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
+<div ng-if="items" class="container"><h1 class="title-section">{{title}}</h1>
+  <md-content layout="column">
+    <md-table-container>
+      <table data-md-table md-progress="promiseSimpleData" class="table-simple">
+        <thead md-head md-order="query.order">
+        <tr md-row>
+          <th md-column ng-repeat="column in columns" md-numeric="column.numeric" md-order-by="{{column.model}}">
+            <span>{{column.title}}</span>
+            <!--<span ng-if="column.unit">({{column.unit}})</span>-->
+          </th>
+        </tr>
+        </thead>
+        <tbody md-body>
+        <tr md-row md-select-id="name" ng-click="simpleTableRowClick(item)"
+            data-ng-repeat="item in items | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
+          <td md-cell class="name-promo" style="width:30%;">
+            <a href="#">{{item.promo}}</a>
+          </td>
+          <td md-cell class="description-promo" style="width:70%;">
+            <a href="#">{{item.description}}</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+
+    <data-md-table-pagination md-limit="query.limit"
+                              md-limit-options="limitOptions"
+                              md-page="query.page"
+                              md-total="{{items.length}}"
+                              md-on-paginate="onPaginate"
+                              md-page-select="options.pageSelect"
+                              md-boundary-links="options.boundaryLinks">
+    </data-md-table-pagination>
+  </md-content>
+</div>

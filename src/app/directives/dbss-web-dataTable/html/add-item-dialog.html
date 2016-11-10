@@ -1,36 +1,120 @@
 <md-dialog add-item-dialog>
-    <md-dialog-content class="md-dialog-content">
+  <md-content class="md-dialog-content" layout="column">
 
-        <h2 class="md-title">Aggiungi</h2>
+    <h2 layout-margin  layout-align="center center" class="md-title">Aggiungi</h2>
 
-        <p ng-if="item.form.$submitted && item.form.$invalid" class="md-warn" layout="row" layout-align="start center">
-            <i class="material-icons">error_outline</i>
-            <span>&nbsp; Tutti i campi sono obbligatori.</span>
-        </p>
+   <!-- <p ng-if="item.form.$submitted && item.form.$invalid" class="md-warn" layout="row" layout-align="start center">
+      <i class="material-icons">error_outline</i>
+      <span>&nbsp; Tutti i campi sono obbligatori.</span>
+    </p>-->
 
-        <form name="item.form" ng-submit="ctrl.addItem()">
-              <span ng-repeat="column in columns">
-                <div layout="row" class="input-row">
-                <md-input-container flex ng-if="column.type==='text'">
-                    <label>{{column.title}}</label>
-                    <input name="{{column.model}}" ng-model="item[column.model]" required>
-                </md-input-container>
+    <form autocomplete="off" layout-margin layout-align="center center" name="item.form" ng-submit="ctrl.addItem()">
+      <div ng-repeat="column in columns"
+           layout="row" ng-class-even="'input-row'"
+           ng-if="$even">
+        <md-input-container flex>
+          <label>{{columns[$index].title}}</label>
+          <md-select
+            ng-if="columns[$index].type==='options'"
+            ng-model="items[columns[$index].model]"
+            ng-hide="!columns[$index].editable"
+            ng-disabled="ctrl.isDisabled(columns[$index])"
+            ng-required="ctrl.isRequired(columns[$index])"
+            ng-change="ctrl.isChanged(columns[$index])"
+          >
+            <md-option ng-value="type" ng-repeat="type in columns[$index].options">{{type}}</md-option>
+          </md-select>
+          <input
+            ng-if="columns[$index].type==='text' || columns[$index].type==='number'"
+            name="{{columns[$index].model}}"
+            type="{{columns[$index].type}}"
+            ng-model="items[columns[$index].model]"
+            ng-hide="!columns[$index].editable"
+            ng-disabled="ctrl.isDisabled(columns[$index])"
+            ng-pattern="columns[$index].pattern"
+            step="{{columns[$index].step}}"
+            ng-maxlength="columns[$index].maxlength" maxlength-block
+            ng-required="ctrl.isRequired(columns[$index])"
+            ng-change="ctrl.isChanged(columns[$index])"
+          />
+          <input
+            ng-if="columns[$index].type==='date'"
+            locale="{{columns[$index]['locale']}}"
+            format="{{columns[$index]['format']}}"
+            min-date="ctrl.getMinDate(columns[$index])"
+            max-date="columns[$index]['max-date']"
+            autoclose="true"
+            moment-picker="items[columns[$index].model]"
+            name="{{columns[$index].model}}"
+            type="text"
+            ng-model="items[columns[$index].model]"
+            ng-hide="!columns[$index].editable"
+            ng-disabled="ctrl.isDisabled(columns[$index])"
+            ng-pattern="columns[$index].pattern"
+            ng-required="ctrl.isRequired(columns[$index])"
+            ng-change="ctrl.isChanged(columns[$index])"
+            ng-model-options="{ updateOn: 'blur' }"
+          />
+        </md-input-container>
+        <md-input-container flex>
+          <label>{{columns[$index+1].title}}</label>
+          <md-select
+            ng-if="columns[$index+1].type==='options'"
+            ng-model="items[columns[$index+1].model]"
+            ng-hide="!columns[$index+1].editable"
+            ng-disabled="ctrl.isDisabled(columns[$index+1])"
+            ng-required="ctrl.isRequired(columns[$index+1])"
+            ng-change="ctrl.isChanged(columns[$index+1])"
+          >
+            <md-option ng-value="type" ng-repeat="type in columns[$index+1].options">{{type}}</md-option>
+          </md-select>
+          <input
+            ng-if="columns[$index+1].type==='text' || columns[$index+1].type==='number'"
+            name="{{columns[$index+1].model}}"
+            type="{{columns[$index+1].type}}"
+            ng-model="items[columns[$index+1].model]"
+            ng-hide="!columns[$index+1].editable"
+            ng-disabled="ctrl.isDisabled(columns[$index+1])"
+            ng-pattern="columns[$index+1].pattern"
+            step="{{columns[$index+1].step}}"
+            ng-maxlength="columns[$index+1].maxlength" maxlength-block
+            ng-required="ctrl.isRequired(columns[$index+1])"
+            ng-change="ctrl.isChanged(columns[$index+1])"
+          />
+          <input
+            ng-if="columns[$index+1].type==='date'"
+            locale="{{columns[$index+1]['locale']}}"
+            format="{{columns[$index+1]['format']}}"
+            min-date="ctrl.getMinDate(columns[$index+1])"
+            max-date="columns[$index+1]['max-date']"
+            autoclose="true"
+            moment-picker="items[columns[$index+1].model]"
+            name="{{columns[$index+1].model}}"
+            type="text"
+            ng-model="items[columns[$index+1].model]"
+            ng-hide="!columns[$index+1].editable"
+            ng-disabled="ctrl.isDisabled(columns[$index+1])"
+            ng-pattern="columns[$index+1].pattern"
+            ng-required="ctrl.isRequired(columns[$index+1])"
+            ng-change="ctrl.isChanged(columns[$index+1])"
+            ng-model-options="{ updateOn: 'blur' }"
+          />
+        </md-input-container>
 
-                <md-input-container flex ng-if="column.type==='options'">
-                  <label>{{column.title}}</label>
-                  <md-select ng-model="item[column.model]">
-                    <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
-                  </md-select>
-                </md-input-container>
-                  </div>
-              </span>
-        </form>
 
-    </md-dialog-content>
-
-    <div class="md-actions">
-        <md-button class="md-primary" ng-click="ctrl.addItem()" ng-disabled="item.form.$invalid">Aggiungi</md-button>
-        <md-button class="md-primary" ng-click="ctrl.cancel()">Annulla</md-button>
+      </div>
+    </form>
+    <div ng-if="addLoading"
+         class="overlay"
+         layout="row"
+         layout-sm="column"
+         layout-align="center center">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
 
+    <div class="md-dialog-actions" layout-margin layout-align="center center" layout="row">
+      <md-button flex="50" class="md-primary" ng-click="ctrl.addItem()" ng-disabled="item.form.$invalid">Aggiungi</md-button>
+      <md-button flex="50" class="md-primary" ng-click="ctrl.cancel()">Annulla</md-button>
+    </div>
+  </md-content>
 </md-dialog>

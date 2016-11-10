@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="breadcrumb-container mb-10 mt-10 hidden-xs">
+    <span ng-repeat="step in steps"  ng-switch="$last || !!step.abstract">
+    <a
+       ng-class="{active: $last}"
+       ng-switch-when="false"
+       class="normal-text"
+       href="{{step.ncyBreadcrumbLink}}">{{step.ncyBreadcrumbLabel}}</a>
+    <span ng-switch-when="true">{{step.ncyBreadcrumbLabel}}</span>
+      </span>
+  </div>
+</div>
+
+
+
+
+

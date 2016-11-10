@@ -1,8 +1,7 @@
 angular.module('app')
   .controller('attributeCtrl', function ($scope, $state, dataTableResources, getWebService, setWebService) {
-    $scope.model = $scope.model || {};
+    $scope.attributeModel = $scope.attributeModel || {};
     //$scope.focusinControl = {};
-
 
     $scope.title = dataTableResources[$state.$current.name].title;
 
@@ -10,10 +9,26 @@ angular.module('app')
 
     $scope.columns = dataTableResources[$state.$current.name].columns;
 
-
-
+    $scope.options = {
+      addMode: false,  //add item with dialog
+      editMode: true,
+      forwardMode: false,
+      confirmSearchSelectionMode: false,
+      isEditing: false,
+      deleteMode: false,
+      copyMode: false,
+      showFilters: true,
+      rowSelection: false,
+      multiSelect: false,
+      autoSelect: false,
+      decapitate: false,
+      largeEditDialog: false,
+      boundaryLinks: false,
+      limitSelect: true,
+      pageSelect: true
+    };
     //callback richiamata nella direttiva
-    $scope.getWeb = function (params, promise) {
+    $scope.getWeb = function (promise, params) {
       console.log("callback getItemsClbk called from directive");
       console.log(params);
 
@@ -24,34 +39,33 @@ angular.module('app')
       input["operation"] = dataTableResources[$state.$current.name].getOperation;
 
       getWebService.getWeb(getWebService.getWebRequest(input)).then(
-        function (res) {
-          var response = res.data.getWebResponse;
+        function (response) {
 
+          if (response && response.payload) {
+            /*inizio trasformazione pipe | to array*/
+            response.payload = response.payload.map(function (obj) {
 
-          /*inizio trasformazione pipe | to array*/
-        response.payload = response.payload.map(function (obj) {
-
-          angular.forEach($scope.columns, function(column){
-            if (column.type === "options" && column.multiple) {
-              obj[column.model] = obj[column.model].split("|");
-            }
-          });
-            return obj;
-          });
-
-          /*fine trasformazione*/
-
-          promise(response.payload, response.header);
-
+              angular.forEach($scope.columns, function (column) {
+                if (column.multiple) {
+                  if (column.model && obj[column.model]) {
+                    obj[column.model] = obj[column.model].split("|");
+                  }
+                }
+              });
+              return obj;
+            });
+            /*fine trasformazione*/
+          }
+          promise(response);
         },
-        function (res) {
-          promise();
+        function (response) {
+          promise(response);
         }
       );
     };
 
     //callback richiamata nella direttiva
-    $scope.setWeb = function (params, promise) {
+    $scope.setWeb = function (promise, params) {
       console.log("callback setItemsClbk called from directive");
       console.log(params);
 
@@ -61,26 +75,28 @@ angular.module('app')
         var input = {};
         angular.forEach($scope.columns, function (column) {
           /*inizio trasformazione array to pipe*/
-          if (angular.isArray(item[column.model])) {
-
-            input[column.model] = item[column.model].join('|');
+          if (column.model && item[column.model] && angular.isArray(item[column.model].value)
+            && item[column.model].value.length && item[column.model].modified) {
+            input[column.model] = item[column.model].value.join('|');
           }
           /*fine trasformazione array to pipe*/
-          else {
-            input[column.model] = item[column.model];
+          else if (column.model && item[column.model] && item[column.model].value && item[column.model].modified){
+            input[column.model] = item[column.model].value;
           }
         });
 
-        input["operation"] = dataTableResources[$state.$current.name].getOperation;
+        if (item["nomeProdotto"] && item["nomeProdotto"].value)
+        input["nomeProdotto"] = item["nomeProdotto"].value;
+        if (item["nomeOfferta"] && item["nomeOfferta"].value)
+        input["nomeOfferta"] = item["nomeOfferta"].value;
+        input["operation"] = dataTableResources[$state.$current.name].setOperation;
 
         setWebService.setWeb(setWebService.setWebRequest(input)).then(
-          function (res) {
-            var response = res.data.setWebResponse;
-            promise(response.header);
-
+          function (response) {
+            promise(response);
           },
-          function (res) {
-            promise();
+          function (response) {
+            promise(response);
             // Message with custom delay
           }
         );

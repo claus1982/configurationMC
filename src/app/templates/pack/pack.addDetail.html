@@ -1,0 +1,142 @@
+<div class="container">
+  <div ng-if="loading"
+       class="overlay"
+       layout="row"
+       layout-sm="column"
+       layout-align="center center">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+
+  <md-toolbar layout="row"
+              class="md-table-toolbar alternate"
+              layout-align="center center"
+              ng-if="buttons.length"
+  >
+    <!--The left side-->
+    <span ng-repeat="button in buttons">
+    <md-button name="{{button.model}}"
+                 class="md-primary md-hue-1"
+               aria-label="{{button.model}}"
+               ng-click="openDialog(button)"
+               ng-disabled="buttonDisabled(button)"
+    > {{button.label}}
+
+    </md-button>
+    <!--The right side-->
+    </span>
+  </md-toolbar>
+
+
+  <form
+    name="forms.myForm"
+    class="form-wrapper"
+    ng-submit="submit()">
+      <div class="container" ng-repeat="item in items">
+        <div class="container clearfix">
+        <div layout="row" class="input-row" ng-repeat="column in columns" ng-if="$index%2===0">
+
+            <md-input-container flex>
+              <label>{{columns[$index].title}}</label>
+              <input
+                   ng-if="columns[$index].type==='text' ||columns[$index].type==='number'"
+                    name="{{columns[$index].model}}"
+                     type="{{columns[$index].type}}"
+                     ng-model="item[columns[$index].model]"
+                     ng-disabled="isDisabled(columns[$index], item)"
+                     ng-pattern="columns[$index].pattern"
+                     step="{{columns[$index].step}}"
+                     ng-maxlength="columns[$index].maxlength" maxlength-block
+                     ng-required="isRequired(columns[$index], item)">
+
+              <md-select
+                ng-if="columns[$index].type==='options' && !columns[$index].multiple"
+                ng-disabled="isDisabled(columns[$index], item)"
+                ng-required="isRequired(columns[$index], item)"
+                ng-model="item[columns[$index].model]"
+              >
+                <md-option ng-value="type" ng-repeat="type in columns[$index].options">{{type}}</md-option>
+              </md-select>
+
+              <md-select
+                ng-if="columns[$index].type==='options' && columns[$index].multiple"
+                ng-disabled="isDisabled(columns[$index], item)"
+                ng-required="isRequired(columns[$index], item)"
+                ng-model="item[columns[$index].model]"
+                multiple
+              >
+                <md-option ng-value="type" ng-repeat="type in columns[$index].options">{{type}}</md-option>
+              </md-select>
+            </md-input-container>
+
+
+          <md-input-container flex>
+            <label>{{columns[$index+1].title}}</label>
+
+            <input
+                   ng-if="columns[$index+1].type==='text' || columns[$index+1].type==='number'"
+                   name="{{columns[$index+1].model}}"
+                   type="{{columns[$index+1].type}}"
+                   ng-model="item[columns[$index+1].model]"
+                   ng-disabled="isDisabled(columns[$index+1], item)"
+                   ng-pattern="columns[$index+1].pattern"
+                   step="{{columns[$index+1].step}}"
+                   ng-maxlength="columns[$index+1].maxlength" maxlength-block
+                   ng-required="isRequired(columns[$index+1], item)">
+
+            <md-select
+              ng-if="columns[$index+1].type==='options' && !columns[$index+1].multiple"
+              ng-disabled="isDisabled(columns[$index+1], item)"
+              ng-required="isRequired(columns[$index+1], item)"
+              ng-model="item[columns[$index+1].model]"
+            >
+              <md-option ng-value="type" ng-repeat="type in columns[$index+1].options">{{type}}</md-option>
+            </md-select>
+
+            <md-select
+              ng-if="columns[$index+1].type==='options' && columns[$index+1].multiple"
+              ng-disabled="isDisabled(columns[$index+1], item)"
+              ng-required="isRequired(columns[$index+1], item)"
+              ng-model="item[columns[$index+1].model]"
+              multiple
+            >
+              <md-option ng-value="type" ng-repeat="type in columns[$index+1].options">{{type}}</md-option>
+            </md-select>
+          </md-input-container>
+
+
+        </div>
+        </div>
+   </div>
+
+<md-content layout-padding>
+    <md-grid-list
+      md-cols="5"
+      md-row-height="4:3"
+      md-gutter="8px">
+
+      <md-grid-tile
+        md-rowspan="1"
+        md-colspan="4">
+        <div class="container">
+          <md-button
+            class="btn-primary"
+            ng-click="reset()">RESET
+          </md-button>
+        </div>
+      </md-grid-tile>
+
+      <md-grid-tile
+        md-rowspan="1"
+        md-colspan="1">
+        <div class="container">
+          <md-button type="submit"
+                     class="btn-primary"
+                     ng-click="addPackCondition(newItem)"
+                     ng-disabled="forms.myForm.$invalid">CONFERMA
+          </md-button>
+        </div>
+      </md-grid-tile>
+    </md-grid-list>
+</md-content>
+  </form>
+</div>

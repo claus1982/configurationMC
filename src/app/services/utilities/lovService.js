@@ -4,20 +4,35 @@
 
     var factory = {};
 
-    factory.getBooleanTypes = function () {
-      return ['true', 'false'];
+    factory.getBooleanTypes = function (type) {
+      if (type===1)
+        return ['false', 'true'];
+      else if (type===2)
+        return ['no', 'yes'];
+
+      return ['N', 'Y'];
+
     };
 
-    //paymentMethodType type
+    /*//paymentMethodType type
     factory.getPaymentMethodType = function () {
-      return ['Carta di Credito', 'Pay Pal', 'Contanti'];
+      return ['Carta di Credito',  'Contrassegno', 'Contanti','Credito Residuo','Passepartout Offerte', 'PAY PAL'];
     };
-
+*/
     //constraint type
 
-    factory.getjoinedSeniorityConstraintWebType = function () {
-      return ['AL', 'MNP', 'CB'];
+    factory.getSeniorityConstraintWebType = function () {
+      return ['AL', 'CB','MNP'];
     };
+
+    factory.getRicaricaTypes = function () {
+        return ['RICARICA', 'RICARICA_OR_RICARICA_PLUS'];
+    };
+
+    factory.getVincoloTypes = function () {
+      return ['Soft', 'Group', 'Hard'];
+    };
+
 
 
     return factory;
