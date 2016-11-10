@@ -9,7 +9,7 @@
         deletePromoRequest: {
           codicePromo: inputData.codicePromo
         }
-      }
+      };
       return req;
     };
 

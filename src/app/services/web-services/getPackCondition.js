@@ -1,20 +1,20 @@
 ( function () {
   "use strict";
-  angular.module('app').service('getConditionService', function (GenericHttpService) {
-    var serviceName = "getCondition";
+  angular.module('app').service('getPackConditionService', function (GenericHttpService) {
+    var serviceName = "getPackCondition";
 
 
-    this.getConditionRequest = function (inputData) {
+    this.getPackConditionRequest = function (inputData) {
       var req = {
-        getConditionRequest: {
-          tipoPromo: inputData.tipoPromo,
-          codicePromo: inputData.codicePromo
+        getPackConditionRequest: {
+          tipoPack: inputData.tipoPack,
+          codicePack: inputData.codicePack
         }
       }
       return req;
     };
 
-    this.getCondition = function (request) {
+    this.getPackCondition = function (request) {
       return GenericHttpService.doHttpRequest(serviceName, request);
     };
 

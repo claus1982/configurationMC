@@ -4,23 +4,7 @@ angular.module('app')
     //$scope.focusinControl = {};
 
 
-    $scope.options = {
-      addMode: true,
-      editMode: false,
-      forwardMode: true,
-      isEditing: false,
-      deleteMode: true,
-      copyMode: true,
-      showFilters: false,
-      rowSelection: true,
-      multiSelect: true,
-      autoSelect: false,
-      decapitate: false,
-      largeEditDialog: false,
-      boundaryLinks: false,
-      limitSelect: true,
-      pageSelect: true
-    };
+
 
 
     //callback richiamata nella direttiva per recupero dati
@@ -125,6 +109,26 @@ angular.module('app')
       $scope.columns = dataTableResources[$scope.currentState][$scope.tipoPromo].columns;
 
       console.log("tipoPromo (promo.list)", $scope.tipoPromo);
+
+      $scope.options = {
+        addMode: true,
+        editMode: false,
+        forwardMode: true,
+        isEditing: false,
+        deleteMode: true,
+        copyMode: true,
+        showFilters: false,
+        rowSelection: true,
+        multiSelect: true,
+        autoSelect: false,
+        decapitate: false,
+        largeEditDialog: false,
+        boundaryLinks: false,
+        limitSelect: true,
+        pageSelect: true,
+        orderBy: "-"+dataTableResources[$scope.currentState][$scope.tipoPromo]
+                     .columns.find(function(col){return col.orderBy}).model
+    };
     }
 
     init();

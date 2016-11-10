@@ -1,16 +1,16 @@
 ( function () {
   "use strict";
-  angular.module('app').service('createPromoService', function (GenericHttpService) {
-    var serviceName = "createPromo";
+  angular.module('app').service('createPackService', function (GenericHttpService) {
+    var serviceName = "createPack";
 
 
-    this.createPromoRequest = function (inputData) {
+    this.createPackRequest = function (inputData) {
       var req = {
-        createPromoRequest: {
-          promoBatch: inputData.promoBatch,
-          codicePromo:inputData.codicePromo,
-          nomePromo:inputData.nomePromo,
-          descrizionePromo:inputData.descrizionePromo,
+        createPackRequest: {
+          packBatch: inputData.packBatch,
+          codicePack:inputData.codicePack,
+          nomePack:inputData.nomePack,
+          descrizionePack:inputData.descrizionePack,
           inizioValidita: inputData.inizioValidita,
           fineValidita:inputData.fineValidita,
           inizioGenerazione: inputData.inizioGenerazione,
@@ -25,7 +25,7 @@
       return req;
     };
 
-    this.createPromo = function (request) {
+    this.createPack = function (request) {
       return GenericHttpService.doHttpRequest(serviceName, request);
     };
 

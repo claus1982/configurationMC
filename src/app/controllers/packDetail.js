@@ -1,21 +1,19 @@
 angular.module('app')
-  .controller('promoDetailCtrl', function ($scope, $state, dataTableResources, getConditionService, deleteConditionService) {
+  .controller('packDetailCtrl', function ($scope, $state, dataTableResources, getPackConditionService, deletePackConditionService) {
     $scope.model = $scope.model || {};
     //$scope.focusinControl = {};
 
 
     //callback richiamata nella direttiva per recupero dati
-    $scope.getCondition = function (promise, params) {
+    $scope.getPackCondition = function (promise, params) {
       console.log("callback getItemsClbk called from directive");
       console.log(params);
 
       var input = {
-        tipoPromo:  $scope.tipoPromo,
-        codicePromo:  $scope.codicePromo
-
+        codicePack:  $scope.codicePack
       };
 
-      getConditionService.getCondition(getConditionService.getConditionRequest(input)).then(
+      getPackConditionService.getPackCondition(getPackConditionService.getPackConditionRequest(input)).then(
         function (response) {
           promise(response);
         },
@@ -25,29 +23,27 @@ angular.module('app')
       );
     };
 
-    $scope.addCondition = function(params)
+    $scope.addPackCondition = function(params)
     {
       console.log("params", params);
-      $state.go('promo.addDetail',{
-        'tipoPromo' : $scope.tipoPromo,
-        'codicePromo': $scope.codicePromo,
-        'isBatch':$scope.isBatch
+      $state.go('pack.addDetail',{
+        'codicePack': $scope.codicePack
       });
 
     };
 
-    $scope.deleteCondition = function(promise,params)
+    $scope.deletePackCondition = function(promise,params)
     {
       console.log("callback deleteItemsClbk called from directive");
       console.log(params);
 
       angular.forEach(params, function(item){
         var input = {
-          codicePromo:  $scope.codicePromo,
+          codicePack:  $scope.codicePack,
           idCondition:  item.idCondition
         };
 
-        deleteConditionService.deleteCondition(deleteConditionService.deleteConditionRequest(input)).then(
+        deletePackConditionService.deletePackCondition(deletePackConditionService.deletePackConditionRequest(input)).then(
           function (response) {
             promise(response);
           },
@@ -57,30 +53,20 @@ angular.module('app')
         );
 
       })
-
-
-
     };
 
     function init() {
-      $scope.tipoPromo = $state.params.tipoPromo;
-      $scope.codicePromo = $state.params.codicePromo;
-      $scope.isBatch = $state.params.isBatch;
-      console.log("tipoPromo", $scope.tipoPromo);
-      console.log("codicePromo", $scope.codicePromo);
+      $scope.codicePack = $state.params.codicePack;
+      console.log("codicePack", $scope.codicePack);
 
       $scope.currentState = $state.$current.name;
       console.log("current state:",$scope.currentState);
-      $scope.title = $scope.tipoPromo+" - "+$scope.codicePromo;
+      $scope.title = $scope.codicePack;
 
-      $scope.columns = dataTableResources[$scope.currentState][$scope.tipoPromo].columns;
-      var addEnabled =
-        $scope.isBatch == "true" && dataTableResources[$scope.currentState][$scope.tipoPromo].addDisabledIfBatch
-        ? false: true;
-
+      $scope.columns = dataTableResources[$scope.currentState].columns;
 
       $scope.options = {
-        addMode: addEnabled,
+        addMode: true,
         editMode: false,
         forwardMode: false,
         isEditing: false,

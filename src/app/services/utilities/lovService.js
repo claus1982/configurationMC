@@ -6,11 +6,11 @@
 
     factory.getBooleanTypes = function (type) {
       if (type===1)
-        return ['true', 'false'];
+        return ['false', 'true'];
       else if (type===2)
-        return ['yes', 'no'];
+        return ['no', 'yes'];
 
-      return ['Y', 'N'];
+      return ['N', 'Y'];
 
     };
 
@@ -22,12 +22,17 @@
     //constraint type
 
     factory.getSeniorityConstraintWebType = function () {
-      return ['AL', 'MNP', 'CB'];
+      return ['AL', 'CB','MNP'];
     };
 
     factory.getRicaricaTypes = function () {
         return ['RICARICA', 'RICARICA_OR_RICARICA_PLUS'];
     };
+
+    factory.getVincoloTypes = function () {
+      return ['Soft', 'Group', 'Hard'];
+    };
+
 
 
     return factory;

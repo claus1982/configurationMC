@@ -1,19 +1,18 @@
 ( function () {
   "use strict";
-  angular.module('app').service('getPromoService', function (GenericHttpService) {
-    var serviceName = "getPromo";
+  angular.module('app').service('getPackService', function (GenericHttpService) {
+    var serviceName = "getPack";
 
 
-    this.getPromoRequest = function (inputData) {
+    this.getPackRequest = function (inputData) {
     var req = {
-      getPromoRequest: {
-        tipoPromo: inputData.tipoPromo
+      getPackRequest: {
       }
     }
       return req;
     };
 
-    this.getPromo = function (request) {
+    this.getPack = function (request) {
       return GenericHttpService.doHttpRequest(serviceName, request);
     };
 

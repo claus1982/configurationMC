@@ -10,7 +10,8 @@
     <form
       name="myForm"
       class="form-wrapper"
-      ng-submit="submit()">
+      ng-submit="submit()"
+      autocomplete="off">
 
       <div
         class="form-fieldset"
@@ -152,11 +153,11 @@
                    data-ng-model="selected" md-progress="promise">
               <thead md-head md-order="query.order">
               <tr md-row>
-                <th md-column ng-repeat="column in columns"
-                    md-numeric="column.numeric"
+                <th md-column md-desc  ng-repeat="column in columns"
+                    md-numeric="true"
                     md-order-by="{{column.model}}"
-                    ng-class="{'text-green': options.editColor && !column.editable,
-                               'text-orange': options.editColor && column.editable
+                    ng-class="{'text-green': column.color==='green',
+                               'text-orange': column.color==='orange'
                              }"
                 >
                   <span>{{column.title}}</span>
@@ -166,13 +167,14 @@
               </thead>
               <tbody md-body>
               <tr md-row
+                  md-auto-select ="options.rowSelection"
                   md-select="item"
                   md-select-id="name"
                   data-md-on-select="log"
                   md-on-deselect="deselect"
-                  x-md-auto-select="autoSelect"
-                  ng-disabled=""
-                  data-ng-repeat="item in items | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page - 1) * query.limit">
+                  data-ng-repeat="item in items | filter: query.filter |
+                                                  orderBy: query.sort():query.order.charAt(0) === '-'  |
+                                                  limitTo: query.limit : (query.page - 1) * query.limit">
 
 
                 <td ng-repeat="column in columns"
@@ -198,7 +200,9 @@
             <span ng-if="options.isEditing && column.type==='options' && !column.multiple"
                   ng-class="column.editable ? 'field-editable' : 'field-disabled'"
             >
-                  <md-select ng-model="item[column.model]" placeholder="Select"
+                  <md-select ng-model="item[column.model]"
+                             class="_md-container md-container"
+                             placeholder="Select"
                   >
                     <md-option ng-value="type" ng-repeat="type in column.options">{{type}}</md-option>
                   </md-select>
@@ -211,6 +215,7 @@
                   <md-select ng-model="item[column.model]"
                              placeholder="Select"
                              ng-change="recordChange()"
+                             class="_md-container md-container"
                              multiple>
                     <md-option ng-repeat="type in savedItems[$parent.$parent.$index][column.model]" ng-value="type">{{ type }}</md-option>
                   </md-select>
@@ -221,6 +226,7 @@
                   <md-select ng-model="item[column.model]"
                              placeholder="Select"
                              ng-change="recordChange()"
+                             class="_md-container md-container"
                              multiple>
                   <md-option ng-repeat="type in column.options" ng-value="type">{{ type }}</md-option>
                   </md-select>

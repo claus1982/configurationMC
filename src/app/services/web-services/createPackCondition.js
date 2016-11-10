@@ -1,12 +1,12 @@
 ( function () {
   "use strict";
-  angular.module('app').service('createConditionService', function (GenericHttpService) {
-    var serviceName = "createCondition";
+  angular.module('app').service('createPackConditionService', function (GenericHttpService) {
+    var serviceName = "createPackCondition";
 
 
-    this.createConditionRequest = function (inputData) {
+    this.createPackConditionRequest = function (inputData) {
       return {
-        createConditionRequest: {
+        createPackConditionRequest: {
           scontoValore              :   inputData["scontoValore"],
           scontoPercentuale         :   inputData["scontoPercentuale"],
           priceActivation           :   inputData["priceActivation"],
@@ -25,12 +25,12 @@
           ricaricaMinApplicazione   :   inputData["ricaricaMinApplicazione"],
           importoRicaricaBonus      :   inputData["importoRicaricaBonus"],
           ricaricaTipoApplicazione  :   inputData["ricaricaTipoApplicazione"],
-          codicePromo               :   inputData["codicePromo"]
+          codicePack               :   inputData["codicePack"]
         }
       };
     };
 
-    this.createCondition = function (request) {
+    this.createPackCondition = function (request) {
       return GenericHttpService.doHttpRequest(serviceName, request);
     };
 

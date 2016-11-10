@@ -7,11 +7,14 @@
     this.createPromoRequest = function (inputData) {
       var req = {
         createPromoRequest: {
+          promoBatch: inputData.promoBatch,
           codicePromo:inputData.codicePromo,
           nomePromo:inputData.nomePromo,
           descrizionePromo:inputData.descrizionePromo,
-          periodoValidita: inputData.periodoValidita,
-          periodoGenerazione:inputData.periodoGenerazione,
+          inizioValidita: inputData.inizioValidita,
+          fineValidita:inputData.fineValidita,
+          inizioGenerazione: inputData.inizioGenerazione,
+          fineGenerazione:inputData.fineGenerazione,
           codiceTemplateSMS:inputData.codiceTemplateSMS,
           codiceTemplateMAIL:inputData.codiceTemplateMAIL,
           flagLinea:inputData.flagLinea,

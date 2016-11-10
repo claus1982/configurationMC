@@ -27,6 +27,7 @@ angular.module('app')
       $scope.model.promo.onClick = function()
         {
           console.log("promo selected");
+          $state.go('promo.categories');
           };
 
       $scope.model.pack.onClick = function()

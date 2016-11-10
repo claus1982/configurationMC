@@ -24,11 +24,13 @@
     "angular-material-data-table": "^0.10.9",
     "angular-resource": "^1.5.8",
     "jquery": "^3.1.1",
-    "angular-bootstrap": "^2.2.0",
     "angular-material": "^1.1.1",
     "angular-ui-notification": "^0.2.0",
     "angular-breadcrumb": "^0.4.1",
     "ngSticky": "^1.8.13",
-    "angular-loading": "^0.1.4"
+    "angular-loading": "^0.1.4",
+    "smDateTimeRangePicker": "^2.0.1",
+    "angular-moment": "^1.0.0",
+    "angular-moment-picker": "moment-picker#^0.6.8"
   }
 }

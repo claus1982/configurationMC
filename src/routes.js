@@ -24,7 +24,7 @@ angular
       templateUrl: 'app/templates/partials/breadcrumb-template.html'
     });
   })
-.config(function ($mdThemingProvider) {
+/*.config(function ($mdThemingProvider) {
   var customPrimary = {
     '50': '#43b6fe',
     '100': '#2aacfe',
@@ -110,7 +110,94 @@ angular
     .accentPalette('customAccent')
     .warnPalette('customWarn')
     .backgroundPalette('customBackground')
-});
+});*/
+  .config(function ($mdThemingProvider) {
+    var customPrimary = {
+      '50': '#8c8df9',
+      '100': '#7475f8',
+      '200': '#5c5df7',
+      '300': '#4445f5',
+      '400': '#2b2df4',
+      '500': '#1315F3',
+      '600': '#0b0de1',
+      '700': '#0a0cc9',
+      '800': '#090ab1',
+      '900': '#080998',
+      'A100': '#a5a5fa',
+      'A200': '#bdbdfc',
+      'A400': '#d5d5fd',
+      'A700': '#070880'
+    };
+    $mdThemingProvider
+      .definePalette('customPrimary',
+        customPrimary);
+
+    var customAccent = {
+      '50': '#660000',
+      '100': '#800000',
+      '200': '#990000',
+      '300': '#b30000',
+      '400': '#cc0000',
+      '500': '#e60000',
+      '600': '#ff1a1a',
+      '700': '#ff3333',
+      '800': '#ff4d4d',
+      '900': '#ff6666',
+      'A100': '#ff1a1a',
+      'A200': '#FF0000',
+      'A400': '#e60000',
+      'A700': '#ff8080'
+    };
+    $mdThemingProvider
+      .definePalette('customAccent',
+        customAccent);
+
+    var customWarn = {
+      '50': '#ffb280',
+      '100': '#ffa266',
+      '200': '#ff934d',
+      '300': '#ff8333',
+      '400': '#ff741a',
+      '500': '#ff6400',
+      '600': '#e65a00',
+      '700': '#cc5000',
+      '800': '#b34600',
+      '900': '#993c00',
+      'A100': '#ffc199',
+      'A200': '#ffd1b3',
+      'A400': '#ffe0cc',
+      'A700': '#803200'
+    };
+    $mdThemingProvider
+      .definePalette('customWarn',
+        customWarn);
+
+    var customBackground = {
+      '50': '#ffffff',
+      '100': '#ffffff',
+      '200': '#ffffff',
+      '300': '#ffffff',
+      '400': '#ffffff',
+      '500': '#F1F1F7',
+      '600': '#e1e1ee',
+      '700': '#d1d1e4',
+      '800': '#c0c0db',
+      '900': '#b0b0d2',
+      'A100': '#ffffff',
+      'A200': '#ffffff',
+      'A400': '#ffffff',
+      'A700': '#a0a0c9'
+    };
+    $mdThemingProvider
+      .definePalette('customBackground',
+        customBackground);
+
+    $mdThemingProvider.theme('default')
+      .primaryPalette('customPrimary')
+      .accentPalette('customAccent')
+      .warnPalette('customWarn')
+      .backgroundPalette('customBackground')
+  });
 
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -158,7 +245,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('attributi.BF', {
       ncyBreadcrumb: {
         label: 'Attributi BF',
-        parent: 'attributi'
+        parent: 'home'
       },
       url: '/BF',
       templateUrl: 'app/templates/attribute/attribute.html',
@@ -167,7 +254,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('attributi.SIM', {
       ncyBreadcrumb: {
         label: 'Attributi SIM',
-        parent: 'attributi'
+        parent: 'home'
       },
       url: '/SIM',
       templateUrl: 'app/templates/attribute/attribute.html',
@@ -176,7 +263,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('attributi.ricarica', {
       ncyBreadcrumb: {
         label: 'Attributi Ricarica',
-        parent: 'attributi'
+        parent: 'home'
       },
       url: '/Ricarica',
           templateUrl: 'app/templates/attribute/attribute.html',
@@ -248,81 +335,53 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl     : 'app/templates/promo/promo.addDetail.html',
       controller      : 'promoAddDetailCtrl'
     })
-  /*
-   .state('promoAddCondition', {
-   ncyBreadcrumb: {
-   label: 'Add Condition'
-   },
-   params:{
-   'tipoPromo' : null,
-   'codicePromo': null,
-   },
-   url: '/addCondition',
-   views: {
-   "main": {
-   templateUrl     : 'app/templates/promo/promo.search.html',
-   controller      : 'promoSearchCtrl'
-   },
-   "breadcrumb" : {
-   templateUrl     : "app/templates/partials/breadcrumb.html",
-   controller      : "breadcrumbCtrl"
-   },
-   "header" : {
-   templateUrl: 'app/templates/partials/header.html',
-   controller: 'headerCtrl'
-   }
-   }
-   })
-   .state('promoSearch', {
-   ncyBreadcrumb: {
-   label: 'Search'
-   },
-   params:{
-   'tipoPromo' : null,
-   'codicePromo': null,
-   'type': null,
-   'items': null
-   },
-   url: '/search',
-   views: {
-   "main": {
-   templateUrl     : 'app/templates/promo/promo.search.html',
-   controller      : 'promoSearchCtrl'
-   },
-   "breadcrumb" : {
-   templateUrl     : "app/templates/partials/breadcrumb.html",
-   controller      : "breadcrumbCtrl"
-   },
-   "header" : {
-   templateUrl: 'app/templates/partials/header.html',
-   controller: 'headerCtrl'
-   }
-   }
-   })
-   .state('promo.confirmed', {
-   ncyBreadcrumb: {
-   label: 'Search'
-   },
-   params:{
-   'tipoPromo' : null,
-   'codicePromo': null,
-   'type': null,
-   'items': null
-   },
-   url: '/confirm',
-   views: {
-   "main": {
-   templateUrl     : 'app/templates/promo/promo.confirmed.html',
-   controller      : 'promoConfirmedCtrl'
-   },
-   "breadcrumb" : {
-   templateUrl     : "app/templates/partials/breadcrumb.html",
-   controller      : "breadcrumbCtrl"
-   },
-   "header" : {
-   templateUrl: 'app/templates/partials/header.html',
-   controller: 'headerCtrl'
-   }
-   }
-   });*/
+    .state('pack', {
+      abstract: true,
+      views: {
+        "main": {
+          templateUrl     : 'app/templates/pack/pack.html'
+        },
+        "breadcrumb" : {
+          templateUrl     : "app/templates/partials/breadcrumb.html",
+          controller      : "breadcrumbCtrl"
+        },
+        "header" : {
+          templateUrl: 'app/templates/partials/header.html',
+          controller: 'headerCtrl'
+        }
+      }
+    })
+    .state('pack.list', {
+      ncyBreadcrumb: {
+        parent: 'home',
+        label: 'Pack'
+      },
+      url: '/pack',
+      templateUrl     : 'app/templates/pack/pack.list.html',
+      controller      : 'packListCtrl'
+    })
+    .state('pack.detail', {
+      ncyBreadcrumb: {
+        parent: 'pack.list',
+        label: '{{codicePack}}'
+      },
+      params:{
+        'codicePack': null
+      },
+      url: '/pack/:codicePack',
+      templateUrl     : 'app/templates/pack/pack.detail.html',
+      controller      : 'packDetailCtrl'
+    })
+    .state('pack.addDetail', {
+      ncyBreadcrumb: {
+        label: 'Aggiungi',
+        parent: 'pack.detail'
+      },
+      params:{
+        'codicePack': null
+      },
+      url: '/pack/:codicePack/add',
+      templateUrl     : 'app/templates/pack/pack.addDetail.html',
+      controller      : 'packAddDetailCtrl'
+    })
 }

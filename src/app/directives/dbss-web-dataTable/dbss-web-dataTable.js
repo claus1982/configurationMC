@@ -28,11 +28,12 @@
           'confirmSelectedClbk': '&',
           'addConditionClbk': '&',
           'faToolbar': '=?',//aggiunge una nuova toolbar
-          'selected': '=?' //record selezionati
+          'selected': '=?', //record selezionati
+          'orderBy': '=?'
 
         },
 
-        controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, Notification) {
+        controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, Notification,regexService) {
           'use strict';
 
           /*utilities*/
@@ -59,7 +60,6 @@
             forwardMode: false, //abilita il pulsante --> di avanzamento dopo aver selezionato un record
             confirmSearchSelectionMode: false,
             isEditing: false,
-            editColor: false,  //determina se colorare o meno l'intestazione della tabella se il campo è editabile
             deleteMode: false,
             copyMode: false,
             showFilters: true,
@@ -71,6 +71,7 @@
             boundaryLinks: false,
             limitSelect: true,
             pageSelect: true
+              //orderBy -->optionale, identifica il campo su cui effettuare l'ordinamento
           };
 
           if (!$scope.options) {
@@ -79,6 +80,26 @@
 
           //save initial options in order to reset the options
           initialOptions = JSON.parse(JSON.stringify($scope.options));
+
+          $scope.query = {
+            filter:  '',
+            //se non è indicato un campo di ordinamento, l'ordinamento di default è sul primo campo discendente
+            order: $scope.options.orderBy || $scope.orderBy || "-"+$scope.columns[0].model,
+            sort: function () {
+              return function (item) {
+                var o = $scope.query.order;
+                if (o.charAt(0) === '-') {
+                  o = o.substring(1);
+                }
+                if (regexService.date.test(item[o])) {
+                  return moment(item[o], 'DD/MM/YYYY');
+                }
+                return item[o];
+              }
+            },
+            limit: 10,
+            page: 1
+          };
 
           function resetOptions () {
             $scope.options = JSON.parse(JSON.stringify(initialOptions));;
@@ -100,18 +121,8 @@
               return $scope.items && $scope.items ? $scope.items.length : 0;
             }
           }];
-        /*  $scope.querySimpleData = {
-            filter: '',
-            order: 'name',
-            limit: 5,
-            page: 1
-          };*/
-          $scope.query = {
-            filter: '',
-            order: 'name',
-            limit: 10,
-            page: 1
-          };
+
+
 
 
           $scope.simpleTableRowClick = function(item){
@@ -240,14 +251,30 @@
               $mdDialog.show({
                 clickOutsideToClose: true,
                 controller: function ($mdDialog, $scope, columns, addItemClbk) {
-                  $scope.items = {};
-                  //se si sta copiando un altro item
-                  if (dataItems[0])
+
+                  //recupera il min-date per gli input di tipo "date"
+                  //eventualmente, se il campo ha un riferimento, assegna il min-date in funzione del valore del riferimento
+                  this.getMinDate = function(column)
                   {
-                    angular.copy(dataItems[0],$scope.items);
-                  }
+
+                    var colRef = $scope.columns.find(function(col){return col.model === column['min-date-ref-col']});
+                    var minDate = column['min-date'];
+                    if (!minDate && colRef)
+                    {
+                      minDate = $scope.items[column['min-date-ref-col']];
+                    }
+                    if (!minDate && colRef)
+                    {
+                      minDate = colRef['min-date'];
+                    }
+                    if (!minDate){return moment();}
+
+                    return minDate;
+
+                  };
+
                   this.cancel = $mdDialog.cancel;
-                  $scope.columns = columns.filter(function(column){return !!column.editable});
+
                   $scope.addItemClbk = addItemClbk;
 
                   function success(item) {
@@ -291,7 +318,7 @@
                     if (column["batchEnabler"]) {
                       angular.forEach($scope.columns, function (col) {
                         if (col.batchDisabled)
-                          delete $scope.items[col.model];
+                          $scope.items[col.model] = undefined;
                       });
                     }
                   };
@@ -300,6 +327,27 @@
                     return column.required && !this.isDisabled(column);
 
                   };
+
+                  function init(){
+                    $scope.items = {};
+                    $scope.columns = columns.filter(function(column){return !!column.editable});
+                    //se si sta copiando un altro item
+                    if (dataItems[0])
+                    {
+                      angular.copy(dataItems[0],$scope.items);
+                    }
+                    //si sta aggiungendo un nuovo item
+                    else {
+                      angular.forEach($scope.columns,function(column){
+                        //se è configurato un valore di default lo assegna
+                        if (column.value)
+                        {
+                          $scope.items[column.model] = column.value;
+                        }
+                      });
+                    }
+                  }
+                  init();
 
                 },
                 controllerAs: 'ctrl',
@@ -346,12 +394,10 @@
 
           function deleteItemsClbkHandler(response) {
             console.log("deleteItemsClbkHandler called");
-            $timeout(function(){
               if (response.error) {
                 Notification.error({message: response.error});
               }
               $mdDialog.hide();
-            },5000);
 
           }
 

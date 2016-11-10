@@ -1,19 +1,19 @@
 ( function () {
   "use strict";
-  angular.module('app').service('deletePromoService', function (GenericHttpService) {
-    var serviceName = "deletePromo";
+  angular.module('app').service('deletePackService', function (GenericHttpService) {
+    var serviceName = "deletePack";
 
 
-    this.deletePromoRequest = function (inputData) {
+    this.deletePackRequest = function (inputData) {
       var req = {
-        deletePromoRequest: {
-          codicePromo: inputData.codicePromo
+        deletePackRequest: {
+          codicePack: inputData.codicePack
         }
       };
       return req;
     };
 
-    this.deletePromo = function (request) {
+    this.deletePack = function (request) {
       return GenericHttpService.doHttpRequest(serviceName, request);
     };
 

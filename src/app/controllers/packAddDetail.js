@@ -1,6 +1,6 @@
 angular.module('app')
-  .controller('promoAddDetailCtrl',
-    function ($scope, $state, dataTableResources, $mdDialog, getWebService,createConditionService, Notification) {
+  .controller('packAddDetailCtrl',
+    function ($scope, $state, dataTableResources, $mdDialog, getWebService,createPackConditionService, Notification) {
     $scope.model = $scope.model || {};
     $scope.forms = {};
 
@@ -78,7 +78,7 @@ angular.module('app')
     };
 
     //TODO funzione di conferma aggiunta condizione
-    $scope.addCondition = function (item) {
+    $scope.addPackCondition = function (item) {
       $scope.loading = true;
 
       angular.forEach($scope.columns, function (column) {
@@ -101,15 +101,13 @@ angular.module('app')
 
       });
 
-      //aggiunge il codice Promo
-      input["codicePromo"] = $scope.codicePromo;
+      //aggiunge il codice Pack
+      input["codicePack"] = $scope.codicePack;
 
-      createConditionService.createCondition(createConditionService.createConditionRequest(input)).then(
+      createPackConditionService.createPackCondition(createPackConditionService.createPackConditionRequest(input)).then(
         function (response) {
-          $state.go('promo.detail', {
-            'tipoPromo': $scope.tipoPromo,
-            'codicePromo': $scope.codicePromo,
-            'isBatch':   $scope.isBatch
+          $state.go('pack.detail', {
+            'codicePack': $scope.codicePack
           });
           $scope.loading = false;
 
@@ -278,7 +276,7 @@ angular.module('app')
         controllerAs: 'ctrl',
         focusOnOpen: true,
         targetEvent: event,
-        templateUrl: 'app/templates/promo/partials/add-detail-dialog.html',
+        templateUrl: 'app/templates/pack/partials/add-detail-dialog.html',
         locals: {
           params: params
         }
@@ -309,35 +307,21 @@ angular.module('app')
 
     function init() {
       $scope.loading = false;
-      console.log("promoAddDetail started");
-      $scope.tipoPromo = $state.params.tipoPromo;
-      $scope.codicePromo = $state.params.codicePromo;
-      $scope.isBatch = $state.params.isBatch;
-      console.log("tipoPromo", $scope.tipoPromo);
-      console.log("codicePromo", $scope.codicePromo);
+      console.log("packAddDetail started");
+      $scope.codicePack = $state.params.codicePack;
+      console.log("codicePack", $scope.codicePack);
 
       $scope.currentState = $state.$current.name;
       console.log("current state:", $scope.currentState);
 
-      $scope.title = $scope.tipoPromo + " - " + $scope.codicePromo + ":Add Condition";
+      $scope.title = $scope.codicePack + ":Add Pack Condition";
 
 
 
-      if ($scope.isBatch == "false")
-      {
-        $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns;
-        $scope.buttons = dataTableResources["promo.detail"][$scope.tipoPromo].buttons;
-      }
-      //in caso sia batch esclude alcune colonne e pulsanti come da configurazione
-      else
-      {
-        $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns.filter(function(col){
-         return !col.batchDisabled;
-        });
-        $scope.buttons = dataTableResources["promo.detail"][$scope.tipoPromo].buttons.filter(function(col){
-          return !col.batchDisabled;
-        });
-      }
+
+        $scope.columns = dataTableResources["pack.detail"].columns;
+        $scope.buttons = dataTableResources["pack.detail"].buttons;
+
 
 
       //nuovo item

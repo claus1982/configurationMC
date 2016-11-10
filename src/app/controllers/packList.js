@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('promoListCtrl', function ($scope, $state, dataTableResources, getPromoService, createPromoService,deletePromoService) {
+  .controller('packListCtrl', function ($scope, $state, dataTableResources, getPackService, createPackService,deletePackService) {
     $scope.model = $scope.model || {};
     //$scope.focusinControl = {};
 
@@ -8,13 +8,13 @@ angular.module('app')
 
 
     //callback richiamata nella direttiva per recupero dati
-    $scope.getPromo = function (promise, params) {
+    $scope.getPack = function (promise, params) {
       console.log("callback getItemsClbk called from directive");
       console.log(params);
 
-      var input = {tipoPromo: $scope.tipoPromo};
+     // var input = {tipoPack: $scope.tipoPack};
 
-      getPromoService.getPromo(getPromoService.getPromoRequest(input)).then(
+      getPackService.getPack(getPackService.getPackRequest()).then(
         function (response) {
           promise(response);
         },
@@ -25,8 +25,8 @@ angular.module('app')
     };
 
 
-    //callback richiamata nella direttiva per aggiungere una nuova promo
-    $scope.addPromo = function (promise, params) {
+    //callback richiamata nella direttiva per aggiungere una nuova pack
+    $scope.addPack = function (promise, params) {
       console.log("callback addItemClbk called from directive");
       console.log(promise);
       console.log(params);
@@ -48,9 +48,8 @@ angular.module('app')
 
       });
 
-      // input["operation"] = dataTableResources[$state.$current.name].getOperation;
 
-      createPromoService.createPromo(createPromoService.createPromoRequest(input)).then(
+      createPackService.createPack(createPackService.createPackRequest(input)).then(
         function (response) {
           promise(response);
         },
@@ -65,30 +64,24 @@ angular.module('app')
 
 
     //move from list to Details
-    $scope.promoSelected = function (params) {
+    $scope.packSelected = function (params) {
       console.log("params", params);
 
-
-      var isBatchField = $scope.columns.find(function(col){return col.batchEnabler}),
-        isBatch = isBatchField && isBatchField.model && params[0][isBatchField.model] === 'Y' ? true: false;
-
-      $state.go('promo.detail', {
-        'tipoPromo': $scope.tipoPromo,
-        'codicePromo': params[0].codicePromo,
-        'isBatch':isBatch
+      $state.go('pack.detail', {
+        'codicePack': params[0].codicePack
       });
     };
 
-    $scope.deletePromo = function(promise,params) {
+    $scope.deletePack = function(promise,params) {
       console.log("callback deleteItemsClbk called from directive");
       console.log(params);
 
       angular.forEach(params, function (item) {
         var input = {
-          codicePromo: item.codicePromo
+          codicePack: item.codicePack
         };
 
-        deletePromoService.deletePromo(deletePromoService.deletePromoRequest(input)).then(
+        deletePackService.deletePack(deletePackService.deletePackRequest(input)).then(
           function (response) {
             promise(response);
           },
@@ -104,11 +97,8 @@ angular.module('app')
       $scope.currentState = $state.$current.name;
       console.log("current state:", $scope.currentState);
 
-      $scope.title = $scope.tipoPromo = $state.params.tipoPromo;
 
-      $scope.columns = dataTableResources[$scope.currentState][$scope.tipoPromo].columns;
-
-      console.log("tipoPromo (promo.list)", $scope.tipoPromo);
+      $scope.columns = dataTableResources[$scope.currentState].columns;
 
       $scope.options = {
         addMode: true,
@@ -126,7 +116,7 @@ angular.module('app')
         boundaryLinks: false,
         limitSelect: true,
         pageSelect: true,
-        orderBy: "-"+dataTableResources[$scope.currentState][$scope.tipoPromo]
+        orderBy: "-"+dataTableResources[$scope.currentState]
                      .columns.find(function(col){return col.orderBy}).model
     };
     }

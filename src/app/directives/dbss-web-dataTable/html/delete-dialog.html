@@ -1,14 +1,17 @@
 <md-dialog>
   <md-dialog-content>
-    <h2 class="md-title">Conferma Eliminazione</h2>
-    Confermi l'eliminazione dei record selezionati?
 
 
-  <div class="md-actions">
-    <md-button class="md-primary" ng-click="ctrl.confirm()">Conferma</md-button>
-    <md-button class="md-primary" ng-click="ctrl.cancel()">Annulla</md-button>
+    <h3
+      layout="column" layout-margin layout-padding layout-align="center center">
+      Confermi l'eliminazione dei record selezionati?
+    </h3>
+
+  <div class="md-dialog-actions" layout="row" layout-margin layout-padding layout-align="center center">
+    <md-button flex="50" class="md-primary" ng-click="ctrl.confirm()">Conferma</md-button>
+    <md-button flex="50" class="md-primary" ng-click="ctrl.cancel()">Annulla</md-button>
   </div>
-    </md-dialog-content>
+
   <div ng-if="ctrl.loading"
        class="overlay"
        layout="row"
@@ -16,4 +19,5 @@
        layout-align="center center">
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </div>
+  </md-dialog-content>
 </md-dialog>

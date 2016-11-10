@@ -2,7 +2,7 @@ angular.module('app')
   .controller('homeCtrl', function ($scope, $state) {
 
     function init() {
-      $scope.birthday = new Date();
+
       $scope.model = $scope.model || {};
       $scope.model.promo = {};
       $scope.model.pack = {};
@@ -17,7 +17,7 @@ angular.module('app')
       $scope.model.pack.onClick = function()
       {
         console.log("pack selected");
-        $state.go('pack');
+        $state.go('pack.list');
       };
 
       //menu Attributi

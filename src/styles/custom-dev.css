@@ -141,13 +141,18 @@ div.whiteBackground {
 
 
 th.white-on-blue {
-  background-color: #004d91;
+  background-color: #269091;
   color: white;
 }
 th.white-on-orange {
   background-color: #F39D17;
   color: white;
 }
+
+.text-white {
+  color: white !important
+}
+
 
 md-input-container.md-default-theme:not(.md-input-focused):not(.md-input-invalid) label.md-required:after, md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-required:after {
   color:red;
@@ -158,3 +163,10 @@ md-input-container:not(.md-input-has-value) md-select[required]:not(.md-no-aster
   vertical-align: top;
   color: red;
 }
+.md-text{
+  position: relative;
+  color:red;
+  display: inline-block; !important
+}
+
+

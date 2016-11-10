@@ -383,8 +383,10 @@ app.post('/getPromo', function(req, res) {
           "nomePromo":"nomePromo0",
           "promoBatch":"N",
           "descrizionePromo":"descrizionePromo0",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"10/07/2012",
+          "fineValidita":"10/07/2012",
+          "inizioGenerazione":"04/07/2020",
+          "fineGenerazione":"04/07/2020",
           "codiceTemplateSMS":"codiceTemplateSMS0",
           "codiceTemplateMAIL":"codiceTemplateMAIL0",
           "flagLinea":"Y",
@@ -396,8 +398,10 @@ app.post('/getPromo', function(req, res) {
           "nomePromo":"nomePromo1",
           "promoBatch":"Y",
           "descrizionePromo":"descrizionePromo1",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"10/07/2012",
+          "fineValidita":"10/07/2012",
+          "inizioGenerazione":"04/07/2021",
+          "fineGenerazione":"04/07/2020",
           "codiceTemplateSMS":"codiceTemplateSMS1",
           "codiceTemplateMAIL":"codiceTemplateMAIL1",
           "flagLinea":"Y",
@@ -409,8 +413,10 @@ app.post('/getPromo', function(req, res) {
           "nomePromo":"nomePromo2",
           "promoBatch":"N",
           "descrizionePromo":"descrizionePromo2",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"25/12/2007",
+          "fineValidita":"22/04/2012",
+          "inizioGenerazione":"04/12/2022",
+          "fineGenerazione":"04/07/2024",
           "codiceTemplateSMS":"codiceTemplateSMS2",
           "codiceTemplateMAIL":"codiceTemplateMAIL2",
           "flagLinea":"Y",
@@ -422,8 +428,10 @@ app.post('/getPromo', function(req, res) {
           "nomePromo":"nomePromo3",
           "promoBatch":"N",
           "descrizionePromo":"descrizionePromo3",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"10/07/2012",
+          "fineValidita":"10/07/2012",
+          "inizioGenerazione":"24/07/2023",
+          "fineGenerazione":"04/07/2025",
           "codiceTemplateSMS":"codiceTemplateSMS3",
           "codiceTemplateMAIL":"codiceTemplateMAIL3",
           "flagLinea":"Y",
@@ -431,12 +439,14 @@ app.post('/getPromo', function(req, res) {
           "sysdate":"10/07/2012 12:34"
         },
         {
-          "codicePromo":"codicePromo2",
+          "codicePromo":"codicePromo4",
           "nomePromo":"nomePromo2",
           "promoBatch":"N",
           "descrizionePromo":"descrizionePromo2",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"10/07/2012",
+          "fineValidita":"10/07/2012",
+          "inizioGenerazione":"04/07/2020",
+          "fineGenerazione":"04/07/2020",
           "codiceTemplateSMS":"codiceTemplateSMS2",
           "codiceTemplateMAIL":"codiceTemplateMAIL2",
           "flagLinea":"Y",
@@ -444,12 +454,14 @@ app.post('/getPromo', function(req, res) {
           "sysdate":"10/07/2012 12:34"
         },
         {
-          "codicePromo":"codicePromo3",
+          "codicePromo":"codicePromo5",
           "nomePromo":"nomePromo3",
           "promoBatch":"N",
           "descrizionePromo":"descrizionePromo3",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"09/07/2014",
+          "fineValidita":"11/07/2013",
+          "inizioGenerazione":"04/08/2020",
+          "fineGenerazione":"03/12/2020",
           "codiceTemplateSMS":"codiceTemplateSMS3",
           "codiceTemplateMAIL":"codiceTemplateMAIL3",
           "flagLinea":"Y",
@@ -457,12 +469,14 @@ app.post('/getPromo', function(req, res) {
           "sysdate":"10/07/2012 12:34"
         },
         {
-          "codicePromo":"codicePromo2",
+          "codicePromo":"codicePromo6",
           "nomePromo":"nomePromo2",
           "promoBatch":"N",
           "descrizionePromo":"descrizionePromo2",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"10/07/2012",
+          "fineValidita":"10/07/2012",
+          "inizioGenerazione":"04/07/2020",
+          "fineGenerazione":"04/07/2020",
           "codiceTemplateSMS":"codiceTemplateSMS2",
           "codiceTemplateMAIL":"codiceTemplateMAIL2",
           "flagLinea":"Y",
@@ -470,12 +484,14 @@ app.post('/getPromo', function(req, res) {
           "sysdate":"10/07/2012 12:34"
         },
         {
-          "codicePromo":"codicePromo3",
+          "codicePromo":"codicePromo7",
           "nomePromo":"nomePromo3",
           "promoBatch":"N",
           "descrizionePromo":"descrizionePromo3",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"10/07/2012",
+          "fineValidita":"10/07/2012",
+          "inizioGenerazione":"04/07/2020",
+          "fineGenerazione":"04/07/2020",
           "codiceTemplateSMS":"codiceTemplateSMS3",
           "codiceTemplateMAIL":"codiceTemplateMAIL3",
           "flagLinea":"Y",
@@ -483,12 +499,14 @@ app.post('/getPromo', function(req, res) {
           "sysdate":"10/07/2012 12:34"
         },
         {
-          "codicePromo":"codicePromo2",
+          "codicePromo":"codicePromo8",
           "nomePromo":"nomePromo2",
           "promoBatch":"N",
           "descrizionePromo":"descrizionePromo2",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"10/07/2012",
+          "fineValidita":"10/07/2012",
+          "inizioGenerazione":"04/07/2020",
+          "fineGenerazione":"04/07/2020",
           "codiceTemplateSMS":"codiceTemplateSMS2",
           "codiceTemplateMAIL":"codiceTemplateMAIL2",
           "flagLinea":"Y",
@@ -496,12 +514,14 @@ app.post('/getPromo', function(req, res) {
           "sysdate":"10/07/2012 12:34"
         },
         {
-          "codicePromo":"codicePromo3",
+          "codicePromo":"codicePromo9",
           "nomePromo":"nomePromo3",
           "promoBatch":"N",
           "descrizionePromo":"descrizionePromo3",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"10/07/2012",
+          "fineValidita":"10/07/2012",
+          "inizioGenerazione":"04/07/2020",
+          "fineGenerazione":"04/07/2020",
           "codiceTemplateSMS":"codiceTemplateSMS3",
           "codiceTemplateMAIL":"codiceTemplateMAIL3",
           "flagLinea":"Y",
@@ -509,12 +529,14 @@ app.post('/getPromo', function(req, res) {
           "sysdate":"10/07/2012 12:34"
         },
         {
-          "codicePromo":"codicePromo2",
+          "codicePromo":"codicePromo10",
           "nomePromo":"nomePromo2",
           "promoBatch":"N",
           "descrizionePromo":"descrizionePromo2",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"10/07/2012",
+          "fineValidita":"10/07/2012",
+          "inizioGenerazione":"01/01/2045",
+          "fineGenerazione":"04/04/2046",
           "codiceTemplateSMS":"codiceTemplateSMS2",
           "codiceTemplateMAIL":"codiceTemplateMAIL2",
           "flagLinea":"Y",
@@ -522,12 +544,14 @@ app.post('/getPromo', function(req, res) {
           "sysdate":"10/07/2012 12:34"
         },
         {
-          "codicePromo":"codicePromo3",
+          "codicePromo":"codicePromo1",
           "nomePromo":"nomePromo3",
           "promoBatch":"N",
           "descrizionePromo":"descrizionePromo3",
-          "periodoValidita":"10/07/2012 - 10/01/2020",
-          "periodoGenerazione":"10/07/2012 - 4/07/2020",
+          "inizioValidita":"10/07/2012",
+          "fineValidita":"10/07/2012",
+          "inizioGenerazione":"01/10/2024",
+          "fineGenerazione":"04/07/2030",
           "codiceTemplateSMS":"codiceTemplateSMS3",
           "codiceTemplateMAIL":"codiceTemplateMAIL3",
           "flagLinea":"Y",
@@ -540,8 +564,6 @@ app.post('/getPromo', function(req, res) {
 
   res.send(json); // send text response
 });
-
-
 app.post('/createPromo', function(req, res) {
 
   var json =
@@ -561,8 +583,6 @@ app.post('/createPromo', function(req, res) {
 
   res.send(json); // send text response
 });
-
-
 app.post('/getCondition', function(req, res) {
 
     var json =
@@ -754,7 +774,6 @@ app.post('/getCondition', function(req, res) {
 
   res.send(json); // send text response
 });
-
 app.post('/createCondition', function(req, res) {
 
   var json =
@@ -773,8 +792,6 @@ app.post('/createCondition', function(req, res) {
   };
   res.send(json); // send text response
 });
-
-
 app.post('/deletePromo', function(req, res) {
 
   var json =
@@ -789,8 +806,6 @@ app.post('/deletePromo', function(req, res) {
   };
   res.send(json); // send text response
 });
-
-
 app.post('/deleteCondition', function(req, res) {
 
   var json =
@@ -806,6 +821,150 @@ app.post('/deleteCondition', function(req, res) {
   res.send(json); // send text response
 });
 
+
+app.post('/getPack', function(req, res) {
+
+  var json =
+  {
+    "getPackResponse":{
+      "header":{
+        "result":"Fatal Error",
+        "code":"0",
+        "description":"operation failed"
+      },
+      "payload":[
+        {
+          "codicePack":"codicePack0",
+          "nomePack":"nomePack0",
+          "inizioValidita":"10/01/2012",
+          "fineValidita":"10/07/2013",
+          "descrizionePack":"descpack0"
+        },
+        {
+          "codicePack":"codicePack1",
+          "nomePack":"nomePack1",
+          "inizioValidita":"09/03/2013",
+          "fineValidita":"10/04/2015",
+          "descrizionePack":"descpack1"
+        },
+        {
+          "codicePack":"codicePack2",
+          "nomePack":"nomePack2",
+          "inizioValidita":"10/05/2014",
+          "fineValidita":"10/03/2015",
+          "descrizionePack":"descpack2"
+        },
+        {
+          "codicePack":"codicePack3",
+          "nomePack":"nomePack3",
+          "inizioValidita":"10/02/2015",
+          "fineValidita":"10/05/2016",
+          "descrizionePack":"descpack3"
+        }
+      ]
+    }
+  };
+
+  res.send(json); // send text response
+});
+app.post('/createPack', function(req, res) {
+
+  var json =
+  {
+    "createPackResponse":{
+      "header":{
+        "result":"Fatal Error",
+        "code":"0",
+        "description":"operation failed"
+      },
+      "payload":
+      {
+        "codicePack": "cod_001"
+      }
+    }
+  };
+
+  res.send(json); // send text response
+});
+app.post('/getPackCondition', function(req, res) {
+
+  var json =
+  {
+    "getPackConditionResponse":{
+      "header":{
+        "result":"Fatal Error",
+        "code":"0",
+        "description":"operation failed"
+      },
+      "payload":[
+        {
+          "offerta":"offerta0",
+          "CS2Purchase":"CS2Purchase0",
+          "BF2Purchase":"BF2Purchase0",
+          "codicePack":"codicePack0",
+          "IdPackCondition":"IdPackCondition0",
+          "vincolo":"Soft"
+        },
+        {
+          "offerta":"offerta1",
+          "CS2Purchase":"CS2Purchase1",
+          "BF2Purchase":"BF2Purchase1",
+          "codicePack":"codicePack1",
+          "IdPackCondition":"IdPackCondition1",
+          "vincolo":"Hard"
+        }
+      ]
+    }
+  };
+
+  res.send(json); // send text response
+});
+app.post('/createPackCondition', function(req, res) {
+
+  var json =
+  {
+    "createPackConditionResponse": {
+      "header": {
+        "result": "Fatal Error",
+        "code": "0",
+        "description": "operation failed"
+      },
+      "payload": {
+        "idPackCondition": "id_cod_001"
+
+      }
+    }
+  };
+  res.send(json); // send text response
+});
+app.post('/deletePack', function(req, res) {
+
+  var json =
+  {
+    "deletePackResponse": {
+      "header": {
+        "result": "Fatal Error",
+        "code": "0",
+        "description": "operation failed"
+      }
+    }
+  };
+  res.send(json); // send text response
+});
+app.post('/deletePackCondition', function(req, res) {
+
+  var json =
+  {
+    "deletePackConditionResponse": {
+      "header": {
+        "result": "Fatal Error",
+        "code": "0",
+        "description": "operation failed"
+      }
+    }
+  };
+  res.send(json); // send text response
+});
 
 
 

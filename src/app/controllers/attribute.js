@@ -15,11 +15,10 @@ angular.module('app')
       forwardMode: false,
       confirmSearchSelectionMode: false,
       isEditing: false,
-      editColor: true,  //determina se colorare o meno l'intestazione della tabella se il campo è editabile
       deleteMode: false,
       copyMode: false,
       showFilters: true,
-      rowSelection: true,
+      rowSelection: false,
       multiSelect: false,
       autoSelect: false,
       decapitate: false,

@@ -3,18 +3,14 @@
     <md-button ng-disabled = "!selected.length"
                class="btn-primary"
                flex
-               ng-click="ctrl.addItem(selected)"
-               ng-disabled="item.form.$invalid">Aggiungi
+               ng-click="ctrl.addItem(selected)">Aggiungi
     </md-button>
     <md-button class="btn-secondary"
                flex
                ng-click="ctrl.cancel()">Annulla
     </md-button>
   </div>
-
-
     <md-dialog-content class="md-dialog-content" layout="row">
-
       <dbss-web-data-table
         title = "params.title"
         columns = "params.columns"
@@ -24,7 +20,5 @@
         get-items-clbk = "getWeb(promise, params)"
       >
       </dbss-web-data-table>
-
-
     </md-dialog-content>
 </md-dialog>

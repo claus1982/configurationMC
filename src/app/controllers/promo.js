@@ -11,6 +11,8 @@ angular.module('app')
 
     $scope.columns = dataTableResources[$scope.currentState].columns;
 
+    $scope.orderBy = $scope.columns[0].model;
+
     $scope.items = dataTableResources[$scope.currentState].items;
 
 

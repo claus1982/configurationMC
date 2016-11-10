@@ -1,19 +1,19 @@
 ( function () {
   "use strict";
-  angular.module('app').service('deleteConditionService', function (GenericHttpService) {
-    var serviceName = "deleteCondition";
+  angular.module('app').service('deletePackConditionService', function (GenericHttpService) {
+    var serviceName = "deletePackCondition";
 
 
-    this.deleteConditionRequest = function (inputData) {
+    this.deletePackConditionRequest = function (inputData) {
       return {
-        deleteConditionRequest: {
-          idCondition              :   inputData["idCondition"],
-          codicePromo               :   inputData["codicePromo"]
+        deletePackConditionRequest: {
+          idPackCondition              :   inputData["idPackCondition"],
+          codicePack               :   inputData["codicePack"]
         }
       };
     };
 
-    this.deleteCondition = function (request) {
+    this.deletePackCondition = function (request) {
       return GenericHttpService.doHttpRequest(serviceName, request);
     };
 

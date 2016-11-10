@@ -8,5 +8,7 @@ angular
       'ncy-angular-breadcrumb',
       'ui-notification',
       'sticky',
-      'darthwade.dwLoading'
+      'smDateTimeRangePicker',
+      'angularMoment',
+      'moment-picker'
     ]);

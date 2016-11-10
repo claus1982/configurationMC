@@ -593,7 +593,7 @@ md-select.md-table-select > .md-select-value > span {
 }
 
 md-select.md-table-select > .md-select-value > span > .md-text {
-  display: inherit;
+  display: inline-block;
   height: inherit;
   transform: inherit
 }
