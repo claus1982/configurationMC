@@ -278,7 +278,7 @@ angular.module('app')
         controllerAs: 'ctrl',
         focusOnOpen: true,
         targetEvent: event,
-        templateUrl: 'app/templates/promo/partials/add-detail-dialog.html',
+        templateUrl: 'app/templates/commons/add-detail-dialog.html',
         locals: {
           params: params
         }

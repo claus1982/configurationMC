@@ -1,16 +1,16 @@
 <md-dialog class="fullscreen-dialog">
-  <div class="md-dialog-actions container" layout="row">
+  <div class="md-dialog-actions container" layout="row" layout-align="center center">
     <md-button ng-disabled = "!selected.length"
                class="btn-primary"
-               flex
+               flex="50"
                ng-click="ctrl.addItem(selected)">Aggiungi
     </md-button>
     <md-button class="btn-secondary"
-               flex
+               flex="50"
                ng-click="ctrl.cancel()">Annulla
     </md-button>
   </div>
-    <md-dialog-content class="md-dialog-content" layout="row">
+    <md-dialog-content class="md-dialog-content" layout="row" layout-align="center center">
       <dbss-web-data-table
         title = "params.title"
         columns = "params.columns"
