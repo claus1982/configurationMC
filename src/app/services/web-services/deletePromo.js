@@ -7,6 +7,7 @@
     this.deletePromoRequest = function (inputData) {
       var req = {
         deletePromoRequest: {
+          tipoPromo: inputData.tipoPromo,
           codicePromo: inputData.codicePromo
         }
       };

@@ -7,8 +7,10 @@
     this.deleteConditionRequest = function (inputData) {
       return {
         deleteConditionRequest: {
-          idCondition              :   inputData["idCondition"],
-          codicePromo               :   inputData["codicePromo"]
+          tipoPromo                 :   inputData["tipoPromo"],
+          codicePromo               :   inputData["codicePromo"],
+          idCondition              :   inputData["idCondition"]
+
         }
       };
     };

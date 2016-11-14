@@ -189,10 +189,10 @@
                  {{value + ($last ? '' : ',')}}
              </span>
             </span>
-            <span ng-if="options.isEditing && column.type==='text'"
+            <span ng-if="options.isEditing && (column.type==='text' || column.type==='number')"
                   md-cell
                   ng-class="column.editable ? 'field-editable' : 'field-disabled'"
-                  ng-click="editTextField(options.isEditing && column.editable,$event, item,column.model,column.title,column.title, column.validators)">
+                  ng-click="editTextField(options.isEditing && column.editable, $event, item, column)">
                {{item[column.model] || "-"}}
             </span>
 

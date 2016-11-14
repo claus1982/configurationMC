@@ -481,27 +481,29 @@
 
           });*/
 
-          $scope.editTextField = function (isEditable, event, obj, model, title, placeholder, validators) {
+          $scope.editTextField = function (isEditable, event, obj, column) {
             // if auto selection is enabled you will want to stop the event
             // from propagating and selecting the row
             event.stopPropagation();
             if (isEditable) {
-              model = model.split('.');
+              var model = column.model.split('.'),
+                  modelValue = model[1] ? obj[model[0]][model[1]] : obj[model[0]];
               var dialog = {
-                modelValue: model[1] ? obj[model[0]][model[1]] : obj[model[0]],
-                placeholder: placeholder,
+                modelValue: modelValue,
+                placeholder: column.title,
                 save: function (input) {
-                  if (model[1] && input.$modelValue.length && obj[model[0]][model[1]] !== input.$modelValue) {
+                  if (model[1] && input.$modelValue && obj[model[0]][model[1]] !== input.$modelValue) {
                     obj[model[0]][model[1]] = input.$modelValue;
                   } else
-                  if (model[0] && input.$modelValue.length && obj[model[0]] !== input.$modelValue)
+                  if (model[0] && input.$modelValue && obj[model[0]] !== input.$modelValue)
                   {
                     obj[model[0]] = input.$modelValue;
                   }
                 },
                 targetEvent: event,
-                title: title,
-                validators: validators
+                title: column.title,
+                type: column.type,
+                validators: column.validators
               };
 
               var promise = $scope.options.largeEditDialog ? $mdEditDialog.large(dialog) : $mdEditDialog.small(dialog);

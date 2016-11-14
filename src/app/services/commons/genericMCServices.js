@@ -20,8 +20,11 @@
 
       return $http.post(req.url, req.data, {timeout: req.timeout}).then(
         function(res){
-          var dataRes = res.data[urlEndpoint+"Response"],
-              header = dataRes.header;
+          var dataRes = res.data[urlEndpoint+"Response"];
+            if (dataRes)
+          {
+            var header = dataRes.header;
+          }
 
           if (dataRes && header && header.code !=1) {
             return $q.resolve(dataRes);
@@ -32,10 +35,11 @@
             dataRes.error = header.result ? header.result+":"+header.description: header.description;
             return $q.reject(dataRes);
           }
-          else {
+          else if(dataRes) {
             dataRes.error = "Errore: risposta inattesa dal server...";
             return $q.reject(dataRes);
           }
+            return $q.reject({error: "Errore: risposta inattesa dal server..."});
         },
         function(res){
           res.error = "Timeout o nessuna risposta dal server...";

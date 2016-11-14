@@ -7,21 +7,21 @@
     this.createPromoRequest = function (inputData) {
       var req = {
         createPromoRequest: {
-          promoBatch: inputData.promoBatch,
-          codicePromo:inputData.codicePromo,
+          tipoPromo: inputData.tipoPromo,
           nomePromo:inputData.nomePromo,
           descrizionePromo:inputData.descrizionePromo,
           inizioValidita: inputData.inizioValidita,
           fineValidita:inputData.fineValidita,
+          promoBatch: inputData.promoBatch,
           inizioGenerazione: inputData.inizioGenerazione,
           fineGenerazione:inputData.fineGenerazione,
           codiceTemplateSMS:inputData.codiceTemplateSMS,
           codiceTemplateMAIL:inputData.codiceTemplateMAIL,
           flagLinea:inputData.flagLinea,
-          limiteUtilizzoCoupon:inputData.limiteUtilizzoCoupon,
-          sysdate:new Date()
+          limiteUtilizzoCoupon:inputData.limiteUtilizzoCoupon
         }
-      }
+      };
+
       return req;
     };
 

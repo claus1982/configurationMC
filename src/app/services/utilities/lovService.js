@@ -30,7 +30,7 @@
     };
 
     factory.getVincoloTypes = function () {
-      return ['Soft', 'Group', 'Hard'];
+      return [ 'Configurable','Soft', 'Hard'];
     };
 
 

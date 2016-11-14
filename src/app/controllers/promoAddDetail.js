@@ -101,7 +101,8 @@ angular.module('app')
 
       });
 
-      //aggiunge il codice Promo
+      //aggiunge il tipo Promo e codice Promo
+      input["tipoPromo"] = $scope.tipoPromo;
       input["codicePromo"] = $scope.codicePromo;
 
       createConditionService.createCondition(createConditionService.createConditionRequest(input)).then(

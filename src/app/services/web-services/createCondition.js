@@ -7,16 +7,17 @@
     this.createConditionRequest = function (inputData) {
       return {
         createConditionRequest: {
+          tipoPromo                 :   inputData["tipoPromo"],
           scontoValore              :   inputData["scontoValore"],
           scontoPercentuale         :   inputData["scontoPercentuale"],
-          priceActivation           :   inputData["priceActivation"],
+          prezzoAttivazione           : inputData["prezzoAttivazione"],
           offerta                   :   inputData["offerta"],
           tipologiaVendita          :   inputData["tipologiaVendita"],
-          CS2Purchase               :   inputData["CS2Purchase"],
-          BF2Purchase               :   inputData["BF2Purchase"],
-          isPadreBF2Purchase        :   inputData["isPadreBF2Purchase"],
-          CSwithBonus               :   inputData["CSwithBonus"],
-          BFwithBonus               :   inputData["BFwithBonus"],
+          cs2purchase               :   inputData["cs2purchase"],
+          bf2purchase               :   inputData["bf2purchase"],
+          isPadreBf2purchase        :   inputData["isPadreBf2purchase"],
+          csWithBonus               :   inputData["csWithBonus"],
+          bfwithBonus               :   inputData["bfwithBonus"],
           taglioRicarica            :   inputData["taglioRicarica"],
           totaleCarrello            :   inputData["totaleCarrello"],
           ricaricaMinGenerazione    :   inputData["ricaricaMinGenerazione"],
@@ -29,6 +30,7 @@
         }
       };
     };
+
 
     this.createCondition = function (request) {
       return GenericHttpService.doHttpRequest(serviceName, request);

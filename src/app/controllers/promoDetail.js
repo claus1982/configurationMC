@@ -43,6 +43,7 @@ angular.module('app')
 
       angular.forEach(params, function(item){
         var input = {
+          tipoPromo  :  $scope.tipoPromo,
           codicePromo:  $scope.codicePromo,
           idCondition:  item.idCondition
         };

@@ -48,7 +48,7 @@ angular.module('app')
 
       });
 
-      // input["operation"] = dataTableResources[$state.$current.name].getOperation;
+      input["tipoPromo"] = $scope.tipoPromo;
 
       createPromoService.createPromo(createPromoService.createPromoRequest(input)).then(
         function (response) {
@@ -85,6 +85,7 @@ angular.module('app')
 
       angular.forEach(params, function (item) {
         var input = {
+          tipoPromo  : $scope.tipoPromo,
           codicePromo: item.codicePromo
         };
 
