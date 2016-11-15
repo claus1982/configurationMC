@@ -1,7 +1,8 @@
 ( function () {
   "use strict";
-  angular.module('app').service('deletePackService', function (GenericHttpService) {
-    var serviceName = "deletePack";
+  angular.module('app').service('deletePackService', function (GenericHttpService, myConfig) {
+    var baseUrl = myConfig.baseUrlPack,
+        serviceName = "deletePack";
 
 
     this.deletePackRequest = function (inputData) {
@@ -14,7 +15,7 @@
     };
 
     this.deletePack = function (request) {
-      return GenericHttpService.doHttpRequest(serviceName, request);
+      return GenericHttpService.doHttpRequest(baseUrl, serviceName, request);
     };
 
   })

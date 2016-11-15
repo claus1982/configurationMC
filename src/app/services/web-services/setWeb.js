@@ -1,7 +1,8 @@
 ( function () {
   "use strict";
-  angular.module("app").service("setWebService", function (GenericHttpService) {
-    var serviceName = "setWeb";
+  angular.module("app").service("setWebService", function (GenericHttpService, myConfig) {
+    var baseUrl = myConfig.baseUrlAttr,
+    serviceName = "setWeb";
 
 
     this.setWebRequest = function (inputData) {
@@ -33,7 +34,7 @@
       ;
 
     this.setWeb = function (request) {
-      return GenericHttpService.doHttpRequest(serviceName, request);
+      return GenericHttpService.doHttpRequest(baseUrl, serviceName, request);
     };
 
   })

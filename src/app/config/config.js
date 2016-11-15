@@ -2,11 +2,17 @@ angular.module('app')
   .constant("myConfig", {
 
    // dev
- // "baseUrl": "http://10.13.254.188:1212",
+ // "baseUrl": "http://10.13.254.188:1213",
+    baseUrlAttr:"http://10.13.254.188:1212",
+    baseUrlPromo:"http://10.13.254.188:1213",
+    baseUrlPack:"http://10.13.254.188:1213e",
   // local
-  "baseUrl": "http://localhost:4730",
+  //"baseUrlAttr": "http://localhost:4730",
+  //"baseUrlPromo": "http://localhost:4730",
+  //"baseUrlPack": "http://localhost:4730",
+
     //http services timeout
-    "timeout": 5000
+    "timeout": 60000
   });
 
 

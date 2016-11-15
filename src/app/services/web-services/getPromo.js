@@ -1,7 +1,8 @@
 ( function () {
   "use strict";
-  angular.module('app').service('getPromoService', function (GenericHttpService) {
-    var serviceName = "getPromo";
+  angular.module('app').service('getPromoService', function (GenericHttpService, myConfig) {
+    var baseUrl = myConfig.baseUrlPromo,
+      serviceName = "getPromo";
 
 
     this.getPromoRequest = function (inputData) {
@@ -14,7 +15,7 @@
     };
 
     this.getPromo = function (request) {
-      return GenericHttpService.doHttpRequest(serviceName, request);
+      return GenericHttpService.doHttpRequest(baseUrl, serviceName, request);
     };
 
   })

@@ -419,6 +419,7 @@
                 $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
               }
               else {
+                $scope.items = [];
                 Notification.error({message: "Risposta vuota dal server..."});
               }
             }

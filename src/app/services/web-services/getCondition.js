@@ -1,7 +1,8 @@
 ( function () {
   "use strict";
-  angular.module('app').service('getConditionService', function (GenericHttpService) {
-    var serviceName = "getCondition";
+  angular.module('app').service('getConditionService', function (GenericHttpService, myConfig) {
+    var baseUrl = myConfig.baseUrlPromo,
+        serviceName = "getCondition";
 
 
     this.getConditionRequest = function (inputData) {
@@ -15,7 +16,7 @@
     };
 
     this.getCondition = function (request) {
-      return GenericHttpService.doHttpRequest(serviceName, request);
+      return GenericHttpService.doHttpRequest(baseUrl, serviceName, request);
     };
 
   })

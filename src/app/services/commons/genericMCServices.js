@@ -2,18 +2,18 @@
   "use strict";
   angular.module('app').service('GenericHttpService', function
     ($http,
-     myConfig,
     toolsService,
-    $q) {
+    $q,
+    myConfig) {
 
 
-    this.doHttpRequest = function (urlEndpoint, data) {
+    this.doHttpRequest = function (baseUrl, urlEndpoint, data) {
 
       data = angular.copy(data) || {};
 
       //Request
       var req = {
-        "url": (myConfig.baseUrl || '') + '/'+urlEndpoint,
+        "url": (baseUrl || '') + '/'+urlEndpoint,
         "data": toolsService.cleanObject(data),
         "timeout": myConfig.timeout
       };

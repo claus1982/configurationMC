@@ -1,7 +1,8 @@
 ( function () {
   "use strict";
-  angular.module('app').service('createPackService', function (GenericHttpService) {
-    var serviceName = "createPack";
+  angular.module('app').service('createPackService', function (GenericHttpService, myConfig) {
+    var baseUrl = myConfig.baseUrlPack,
+        serviceName = "createPack";
 
 
     this.createPackRequest = function (inputData) {
@@ -26,7 +27,7 @@
     };
 
     this.createPack = function (request) {
-      return GenericHttpService.doHttpRequest(serviceName, request);
+      return GenericHttpService.doHttpRequest(baseUrl, serviceName, request);
     };
 
   })

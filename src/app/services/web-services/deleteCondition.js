@@ -1,7 +1,8 @@
 ( function () {
   "use strict";
-  angular.module('app').service('deleteConditionService', function (GenericHttpService) {
-    var serviceName = "deleteCondition";
+  angular.module('app').service('deleteConditionService', function (GenericHttpService, myConfig) {
+    var baseUrl = myConfig.baseUrlPromo,
+        serviceName = "deleteCondition";
 
 
     this.deleteConditionRequest = function (inputData) {
@@ -16,7 +17,7 @@
     };
 
     this.deleteCondition = function (request) {
-      return GenericHttpService.doHttpRequest(serviceName, request);
+      return GenericHttpService.doHttpRequest(baseUrl,serviceName, request);
     };
 
   })

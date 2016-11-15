@@ -1,7 +1,8 @@
 ( function () {
   "use strict";
-  angular.module('app').service('createPackConditionService', function (GenericHttpService) {
-    var serviceName = "createPackCondition";
+  angular.module('app').service('createPackConditionService', function (GenericHttpService, myConfig) {
+    var baseUrl = myConfig.baseUrlPack,
+        serviceName = "createPackCondition";
 
 
     this.createPackConditionRequest = function (inputData) {
@@ -31,7 +32,7 @@
     };
 
     this.createPackCondition = function (request) {
-      return GenericHttpService.doHttpRequest(serviceName, request);
+      return GenericHttpService.doHttpRequest(baseUrl, serviceName, request);
     };
 
   })
