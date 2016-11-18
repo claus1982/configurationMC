@@ -20,6 +20,7 @@ function isEqArrays(a1, a2) {
   }
   return true;
 }
+
     var factory = {};
 
     factory.isInArray = isInArray;

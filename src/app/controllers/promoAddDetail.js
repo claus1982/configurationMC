@@ -260,6 +260,7 @@ angular.module('app')
                       if (column.multiple) {
                         if (column.model && obj[column.model]) {
                           obj[column.model] = obj[column.model].split("|");
+                          obj[column.model] = obj[column.model].clean("").clean(undefined).clean(null);
                         }
                       }
                     });

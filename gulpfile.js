@@ -3,6 +3,7 @@ const HubRegistry = require('gulp-hub');
 const browserSync = require('browser-sync');
 
 const conf = require('./conf/gulp.conf');
+const $ = require('gulp-load-plugins')({lazy: true});
 
 // Load some files into the registry
 const hub = new HubRegistry([conf.path.tasks('*.js')]);
@@ -15,9 +16,21 @@ gulp.task('build', gulp.series('partials', gulp.parallel('inject', 'other'), 'bu
 gulp.task('test', gulp.series('scripts', 'karma:single-run'));
 gulp.task('test:auto', gulp.series('watch', 'karma:auto-run'));
 gulp.task('serve', gulp.series('inject', 'watch', 'browsersync'));
-gulp.task('serve:dist', gulp.series('default', 'browsersync:dist'));
+gulp.task('serve:dist', gulp.series('browsersync:dist'));
 gulp.task('default', gulp.series('clean', 'build'));
 gulp.task('watch', watch);
+gulp.task('war',gulp.series(warFn));
+
+function warFn () {
+  gulp.src(conf.path.dist('**/*.*'))
+    .pipe($.war({
+      welcome: 'index.html',
+      displayName: 'GUI MARKETING'
+    }))
+    .pipe($.zip('GUI_MKT.war'))
+    .pipe(gulp.dest(conf.path.war()));
+}
+
 
 function reloadBrowserSync(cb) {
   browserSync.reload();

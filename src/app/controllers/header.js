@@ -33,6 +33,7 @@ angular.module('app')
       $scope.model.pack.onClick = function()
       {
         console.log("pack selected");
+        $state.go('pack.list');
       };
 
       //menu Attributi
