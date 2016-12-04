@@ -1,5 +1,6 @@
 angular.module('app')
-  .controller('promoDetailCtrl', function ($scope, $state, dataTableResources, getConditionService, deleteConditionService) {
+  .controller('promoDetailCtrl',
+    function ($scope, $state, dataTableResources, getConditionService, deleteConditionService, promoParamsService) {
     $scope.model = $scope.model || {};
     //$scope.focusinControl = {};
 
@@ -29,9 +30,7 @@ angular.module('app')
     {
       console.log("params", params);
       $state.go('promo.addDetail',{
-        'tipoPromo' : $scope.tipoPromo,
-        'codicePromo': $scope.codicePromo,
-        'isBatch':$scope.isBatch
+        'tipoPromo' : $scope.tipoPromo
       });
 
     };
@@ -64,9 +63,12 @@ angular.module('app')
     };
 
     function init() {
+      $scope.promoParams = promoParamsService.getPromoParams();
       $scope.tipoPromo = $state.params.tipoPromo;
-      $scope.codicePromo = $state.params.codicePromo;
-      $scope.isBatch = $state.params.isBatch;
+      $scope.codicePromo = $scope.promoParams.codicePromo;
+      $scope.isBatch = $scope.promoParams.isBatch;
+
+
       console.log("tipoPromo", $scope.tipoPromo);
       console.log("codicePromo", $scope.codicePromo);
 
@@ -75,13 +77,14 @@ angular.module('app')
       $scope.title = $scope.tipoPromo+" - "+$scope.codicePromo;
 
       $scope.columns = dataTableResources[$scope.currentState][$scope.tipoPromo].columns;
-      var addEnabled =
-        $scope.isBatch == "true" && dataTableResources[$scope.currentState][$scope.tipoPromo].addDisabledIfBatch
+      var isAddEnabled =
+        $scope.isBatch == "Y" &&
+        dataTableResources[$scope.currentState][$scope.tipoPromo].addDisabledIfBatch
         ? false: true;
 
 
       $scope.options = {
-        addMode: addEnabled,
+        addMode: isAddEnabled,
         editMode: false,
         forwardMode: false,
         isEditing: false,

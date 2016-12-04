@@ -1,6 +1,6 @@
 angular.module('app')
   .controller('promoAddDetailCtrl',
-    function ($scope, $state, dataTableResources, $mdDialog, getWebService,createConditionService, Notification) {
+    function ($scope, $state, dataTableResources, $mdDialog, getWebService,createConditionService, Notification,promoParamsService) {
     $scope.model = $scope.model || {};
     $scope.forms = {};
 
@@ -103,14 +103,12 @@ angular.module('app')
 
       //aggiunge il tipo Promo e codice Promo
       input["tipoPromo"] = $scope.tipoPromo;
-      input["codicePromo"] = $scope.codicePromo;
+      angular.extend(input,$scope.promoParams);
 
       createConditionService.createCondition(createConditionService.createConditionRequest(input)).then(
         function (response) {
           $state.go('promo.detail', {
-            'tipoPromo': $scope.tipoPromo,
-            'codicePromo': $scope.codicePromo,
-            'isBatch':   $scope.isBatch
+            'tipoPromo': $scope.tipoPromo
           });
           $scope.loading = false;
 
@@ -311,12 +309,15 @@ angular.module('app')
 
     function init() {
       $scope.loading = false;
+      $scope.promoParams = promoParamsService.getPromoParams();
       console.log("promoAddDetail started");
       $scope.tipoPromo = $state.params.tipoPromo;
-      $scope.codicePromo = $state.params.codicePromo;
-      $scope.isBatch = $state.params.isBatch;
+      $scope.codicePromo = $scope.promoParams.codicePromo;
+      $scope.isBatch = $scope.promoParams.isBatch;
+
       console.log("tipoPromo", $scope.tipoPromo);
       console.log("codicePromo", $scope.codicePromo);
+      console.log("promoParams", $scope.promoParams);
 
       $scope.currentState = $state.$current.name;
       console.log("current state:", $scope.currentState);
@@ -325,7 +326,7 @@ angular.module('app')
 
 
 
-      if ($scope.isBatch == "false")
+      if ($scope.isBatch == "N")
       {
         $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns;
         $scope.buttons = dataTableResources["promo.detail"][$scope.tipoPromo].buttons;

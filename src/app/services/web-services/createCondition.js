@@ -27,7 +27,20 @@
           ricaricaMinApplicazione   :   inputData["ricaricaMinApplicazione"],
           importoRicaricaBonus      :   inputData["importoRicaricaBonus"],
           ricaricaTipoApplicazione  :   inputData["ricaricaTipoApplicazione"],
-          codicePromo               :   inputData["codicePromo"]
+          codicePromo               :   inputData["codicePromo"],
+
+          nomePromo                 :   inputData["nomePromo"],
+          descrizionePromo          :   inputData["descrizionePromo"],
+          inizioValidita            :   inputData["inizioValidita"],
+          fineValidita              :   inputData["fineValidita"],
+          promoBatch                :   inputData["promoBatch"],
+          inizioGenerazione         :   inputData["inizioGenerazione"],
+          fineGenerazione           :   inputData["fineGenerazione"],
+          codiceTemplateSMS         :   inputData["codiceTemplateSMS"],
+          codiceTemplateMAIL        :   inputData["codiceTemplateMAIL"],
+          flagLinea                 :   inputData["flagLinea"],
+          limiteUtilizzoCoupon      :   inputData["limiteUtilizzoCoupon"]
+
         }
       };
     };

@@ -16,7 +16,7 @@
       <div
         class="form-fieldset"
         ng-repeat="param in searchParams"
-        ng-class="{'has-error':myForm[param.name].$error.required}"
+        ng-class="{'has-error':myForm[param.name].$invalid && myForm[param.name].$touched}"
         ng-messages="myForm[param.name].$error">
         <label class="form-label">{{param.title}}</label>
         <input name="{{param.name}}"
@@ -28,8 +28,9 @@
                minlength="{{param.minlength}}"
                maxlength="{{param.maxlength}}"
         >
-
-        <div ng-messages-include="app/templates/partials/messages.html"></div>
+        <div
+          ng-if="myForm[param.name].$invalid && myForm[param.name].$touched"
+          ng-messages-include="app/directives/dbss-web-dataTable/html/messages.html"></div>
       </div>
 
       <div class="form-buttons">
@@ -182,20 +183,20 @@
                     ng-class="{'md-placeholder': !item[column.model]}"
                 >
             <span ng-if="!options.isEditing && !isArray(item[column.model])">
-              {{item[column.model]}}
+             <span>{{item[column.model]}}</span>
             </span>
              <span ng-if="!options.isEditing && isArray(item[column.model])">
              <span ng-repeat="value in item[column.model]">
                  {{value + ($last ? '' : ',')}}
              </span>
             </span>
+
             <span ng-if="options.isEditing && (column.type==='text' || column.type==='number')"
                   md-cell
                   ng-class="column.editable ? 'field-editable' : 'field-disabled'"
                   ng-click="editTextField(options.isEditing && column.editable, $event, item, column)">
                {{item[column.model] || "-"}}
             </span>
-
                   <!-- picklist con selezione predefinita singola-->
             <span ng-if="options.isEditing && column.type==='options' && !column.multiple"
                   ng-class="column.editable ? 'field-editable' : 'field-disabled'"
@@ -207,28 +208,25 @@
                     <md-option ng-value="type" ng-repeat="type in column.options">{{type}}</md-option>
                   </md-select>
             </span>
-
+                  <!-- picklist con selezione predefinita multipla-->
+            <span ng-if="options.isEditing && column.type==='options' && column.multiple"
+                  ng-class="column.editable ? 'field-editable' : 'field-disabled'">
+                  <md-select ng-model="item[column.model]"
+                             placeholder="Select"
+                             class="_md-container md-container"
+                             multiple>
+                    <md-option ng-repeat="type in column.options" ng-value="type">{{ type }}</md-option>
+                  </md-select>
+            </span>
                   <!-- picklist in cui è selezionabile solo il contenuto arrivato-->
              <span ng-if="options.isEditing && column.type==='selection' && column.multiple"
                    ng-class="column.editable ? 'field-editable' : 'field-disabled'"
              >
                   <md-select ng-model="item[column.model]"
                              placeholder="Select"
-                             ng-change="recordChange()"
                              class="_md-container md-container"
                              multiple>
-                    <md-option ng-repeat="type in savedItems[$parent.$parent.$index][column.model]" ng-value="type">{{ type }}</md-option>
-                  </md-select>
-            </span>
-                  <!-- picklist con selezione predefinita multipla-->
-            <span ng-if="options.isEditing && column.type==='options' && column.multiple"
-                  ng-class="column.editable ? 'field-editable' : 'field-disabled'">
-                  <md-select ng-model="item[column.model]"
-                             placeholder="Select"
-                             ng-change="recordChange()"
-                             class="_md-container md-container"
-                             multiple>
-                  <md-option ng-repeat="type in column.options" ng-value="type">{{ type }}</md-option>
+                    <md-option ng-repeat="type in item[column.model]" ng-value="type">{{ type }}</md-option>
                   </md-select>
             </span>
                 </td>

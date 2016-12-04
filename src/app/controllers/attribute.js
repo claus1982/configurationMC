@@ -46,8 +46,8 @@ angular.module('app')
             response.payload = response.payload.map(function (obj) {
 
               angular.forEach($scope.columns, function (column) {
-                if (column.multiple) {
-                  if (column.model && obj[column.model]) {
+               if (column.multiple) {
+                  if (column.model && obj[column.model] && obj[column.model]!=null) {
                     obj[column.model] = obj[column.model].split("|");
                     obj[column.model] = obj[column.model].clean("").clean(undefined).clean(null);
                   }
@@ -78,7 +78,7 @@ angular.module('app')
           /*inizio trasformazione array to pipe*/
           if (column.model && item[column.model] && angular.isArray(item[column.model].value)
             && item[column.model].value.length && item[column.model].modified) {
-            input[column.model] = '|'+item[column.model].value.join('|')+'|';
+            input[column.model] = item[column.model].value.join('|');
           }
           /*fine trasformazione array to pipe*/
           else if (column.model && item[column.model] && item[column.model].value && item[column.model].modified){

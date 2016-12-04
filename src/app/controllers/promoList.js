@@ -1,5 +1,6 @@
 angular.module('app')
-  .controller('promoListCtrl', function ($scope, $state, dataTableResources, getPromoService, createPromoService,deletePromoService) {
+  .controller('promoListCtrl',
+    function ($scope, $state, dataTableResources, getPromoService, createPromoService,deletePromoService, promoParamsService) {
     $scope.model = $scope.model || {};
     //$scope.focusinControl = {};
 
@@ -58,7 +59,6 @@ angular.module('app')
           promise(response);
           $scope.error = response.error;
           Notification.error({message: $scope.error});
-   y
         }
       );
     };
@@ -68,14 +68,11 @@ angular.module('app')
     $scope.promoSelected = function (params) {
       console.log("params", params);
 
-
-      var isBatchField = $scope.columns.find(function(col){return col.batchEnabler}),
-        isBatch = isBatchField && isBatchField.model && params[0][isBatchField.model] === 'Y' ? true: false;
+      //setta i parametri della promo
+      promoParamsService.setPromoParams(params[0]);
 
       $state.go('promo.detail', {
-        'tipoPromo': $scope.tipoPromo,
-        'codicePromo': params[0].codicePromo,
-        'isBatch':isBatch
+        'tipoPromo': $scope.tipoPromo
       });
     };
 

@@ -94,6 +94,7 @@
                 if (regexService.date.test(item[o])) {
                   return moment(item[o], 'DD/MM/YYYY');
                 }
+                else
                 return item[o];
               }
             },
@@ -144,9 +145,8 @@
 
           //determines if the search field is required
           $scope.isRequired = function(){
-            return !($scope.searchParams.filter(function(obj){
-              return (angular.isDefined(obj.model) && obj.model !== "");
-            }).length > 0);
+            return !($scope.searchParams.find(function(obj)
+            {return (angular.isDefined(obj.model) && obj.model !== "");}));
           };
 
 

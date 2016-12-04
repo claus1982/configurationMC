@@ -202,7 +202,7 @@ angular
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/GUI_MKT/home');
   $stateProvider
     .state('home', {
       ncyBreadcrumb: {
@@ -214,10 +214,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           controller: 'homeCtrl'
         }
       },
-      url: '/home'
+      url: '/GUI_MKT/home'
     })
     .state('attributi', {
-      url: '/attributi',
+      url: '/GUI_MKT/attributi',
       abstract: true,
       views: {
         'breadcrumb': {
@@ -291,7 +291,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         label: 'Promo',
         parent: 'home'
       },
-      url: '/promo',
+      url: '/GUI_MKT/promo',
       templateUrl     : 'app/templates/promo/promo.categories.html',
       controller      : 'promoCtrl'
     })
@@ -300,7 +300,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
      parent: 'promo.categories',
      label: '{{tipoPromo}}'
    },
-   url: '/promo/:tipoPromo',
+   url: '/GUI_MKT/promo/:tipoPromo',
    params:{
    'tipoPromo' : null
    },
@@ -309,15 +309,15 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
    })
    .state('promo.detail', {
    ncyBreadcrumb: {
+   label: '{{codicePromo}}',
    parent: 'promo.list',
-   label: '{{codicePromo}}'
    },
    params:{
    'tipoPromo' : null,
    'codicePromo': null,
-   'isBatch': null,
+   'isBatch': null
    },
-   url: '/promo/:tipoPromo/:isBatch/:codicePromo',
+   url: '/GUI_MKT/promo/:tipoPromo/dettaglio',
    templateUrl     : 'app/templates/promo/promo.detail.html',
    controller      : 'promoDetailCtrl'
    })
@@ -331,7 +331,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         'codicePromo': null,
         'isBatch': null
       },
-      url: '/promo/:tipoPromo/:isBatch/:codicePromo/add',
+      url: '/promo/:tipoPromo/dettaglio/aggiungi',
       templateUrl     : 'app/templates/promo/promo.addDetail.html',
       controller      : 'promoAddDetailCtrl'
     })
@@ -356,7 +356,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         parent: 'home',
         label: 'Pack'
       },
-      url: '/pack',
+      url: '/GUI_MKT/pack',
       templateUrl     : 'app/templates/pack/pack.list.html',
       controller      : 'packListCtrl'
     })
@@ -368,7 +368,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       params:{
         'codicePack': null
       },
-      url: '/pack/:codicePack',
+      url: '/GUI_MKT/pack/:codicePack',
       templateUrl     : 'app/templates/pack/pack.detail.html',
       controller      : 'packDetailCtrl'
     })
@@ -380,7 +380,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       params:{
         'codicePack': null
       },
-      url: '/pack/:codicePack/add',
+      url: '/GUI_MKT/pack/:codicePack/add',
       templateUrl     : 'app/templates/pack/pack.addDetail.html',
       controller      : 'packAddDetailCtrl'
     })
