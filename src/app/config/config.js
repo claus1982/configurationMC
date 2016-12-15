@@ -26,7 +26,7 @@ angular.module('app')
     baseUrlPack: "http://localhost:4730",
 
     //http services timeout
-    "timeout": 60000
+    "timeout": 120000
   });
 
 

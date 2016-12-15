@@ -1,7 +1,7 @@
 ( function () {
   "use strict";
 angular.module('app').service('promoParamsService',
-  function (getPromoService) {
+  function () {
    var promoParamsJson;
 
       this.getPromoParams = function()

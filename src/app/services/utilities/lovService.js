@@ -33,6 +33,10 @@
       return [ 'Configurable','Soft', 'Hard'];
     };
 
+    factory.getRicaricaPaymentMethod = function(){
+      return ['Carta di Credito','Pay Pal'];
+    }
+
 
 
     return factory;

@@ -1,15 +1,13 @@
 <md-dialog>
   <md-dialog-content>
-
-
     <h3
       layout="column" layout-margin layout-padding layout-align="center center">
       Confermi l'eliminazione dei record selezionati?
     </h3>
 
   <div class="md-dialog-actions" layout="row" layout-margin layout-padding layout-align="center center">
-    <md-button flex="50" class="md-primary" ng-click="ctrl.confirm()">Conferma</md-button>
-    <md-button flex="50" class="md-primary" ng-click="ctrl.cancel()">Annulla</md-button>
+    <md-button title="Conferma" flex="50" class="md-primary" ng-click="ctrl.confirm()">Conferma</md-button>
+    <md-button title="Annulla" flex="50" class="md-primary" ng-click="ctrl.cancel()">Annulla</md-button>
   </div>
 
   <div ng-if="ctrl.loading"

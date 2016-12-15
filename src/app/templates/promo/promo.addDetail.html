@@ -25,29 +25,30 @@
     </span>
   </md-toolbar>
 
-
   <form
     name="forms.myForm"
     class="form-wrapper"
     ng-submit="submit()">
       <div class="container" ng-repeat="item in items">
         <div class="container clearfix">
-        <div layout="row" class="input-row" ng-repeat="column in columns" ng-if="$index%2===0">
+        <div layout="row" class="input-row input-icon input-icon-right" ng-repeat="column in columns" ng-if="$index%2===0">
 
             <md-input-container flex>
               <label>{{columns[$index].title}}</label>
+              <i ng-if="columns[$index].icon" class="material-icons md-12 md-inactive">{{columns[$index].icon}}</i>
               <input
                    ng-if="columns[$index].type==='text' ||columns[$index].type==='number'"
-                    name="{{columns[$index].model}}"
+                     name="{{columns[$index].model}}"
                      type="{{columns[$index].type}}"
                      ng-model="item[columns[$index].model]"
+                     ng-value="item[columns[$index].model]"
                      ng-disabled="isDisabled(columns[$index], item)"
                      ng-pattern="columns[$index].pattern"
                      step="{{columns[$index].step}}"
                      ng-maxlength="columns[$index].maxlength" maxlength-block
                      ng-required="isRequired(columns[$index], item)">
-
               <md-select
+                class="add-detail"
                 ng-if="columns[$index].type==='options' && !columns[$index].multiple"
                 ng-disabled="isDisabled(columns[$index], item)"
                 ng-required="isRequired(columns[$index], item)"
@@ -57,6 +58,7 @@
               </md-select>
 
               <md-select
+                class="add-detail"
                 ng-if="columns[$index].type==='options' && columns[$index].multiple"
                 ng-disabled="isDisabled(columns[$index], item)"
                 ng-required="isRequired(columns[$index], item)"
@@ -70,7 +72,7 @@
 
           <md-input-container flex>
             <label>{{columns[$index+1].title}}</label>
-
+            <i ng-if="columns[$index+1].icon" class="material-icons md-12 md-inactive">{{columns[$index+1].icon}}</i>
             <input
                    ng-if="columns[$index+1].type==='text' || columns[$index+1].type==='number'"
                    name="{{columns[$index+1].model}}"

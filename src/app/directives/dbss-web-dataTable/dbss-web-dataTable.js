@@ -33,7 +33,7 @@
 
         },
 
-        controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, Notification,regexService) {
+        controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, Notification,regexService, $document) {
           'use strict';
 
           /*utilities*/
@@ -84,7 +84,7 @@
           $scope.query = {
             filter:  '',
             //se non è indicato un campo di ordinamento, l'ordinamento di default è sul primo campo discendente
-            order: $scope.options.orderBy || $scope.orderBy || "-"+$scope.columns[0].model,
+            order: $scope.options.orderBy || $scope.orderBy || "-"+($scope.columns)[0].model,
             sort: function () {
               return function (item) {
                 var o = $scope.query.order;
@@ -124,6 +124,10 @@
           }];
 
 
+          //funzione per determinare se mostrare o meno la tabella
+          $scope.showTable = function(){
+            return $scope.options.showTableAlways  || $scope.items;
+          }
 
 
           $scope.simpleTableRowClick = function(item){
@@ -164,11 +168,11 @@
          };
 
           $scope.isItemsModified = function(){
-            for (var i=0;i<$scope.items.length; i++)
-            {
-              if (!angular.equals($scope.items[i],$scope.savedItems[i]))
-              {
-                return true;
+            if ($scope.items && $scope.items.length > 0) {
+              for (var i = 0; i < $scope.items.length; i++) {
+                if (!angular.equals($scope.items[i], $scope.savedItems[i])) {
+                  return true;
+                }
               }
             }
             return false;
@@ -230,10 +234,14 @@
             });
           };
 
-          $scope.goToItemDetails = function(event, dataItem)
+          $scope.goToItemDetails = function(event, selectedItems)
           {
+            //wrap a single value in an array
+            if (!angular.isArray(selectedItems)) {
+              selectedItems = [selectedItems];
+            }
             $scope.goToDetailsClbk({
-              params: dataItem
+              params: selectedItems
             });
 
           };
@@ -420,7 +428,7 @@
               }
               else {
                 $scope.items = [];
-                Notification.error({message: "Risposta vuota dal server..."});
+              //  Notification.error({message: "Risposta vuota dal server..."});
               }
             }
             $scope.searchLoading = false;
@@ -490,6 +498,8 @@
               var model = column.model.split('.'),
                   modelValue = model[1] ? obj[model[0]][model[1]] : obj[model[0]];
               var dialog = {
+                disableScroll: true,
+                escToClose: true,
                 modelValue: modelValue,
                 placeholder: column.title,
                 save: function (input) {
@@ -500,6 +510,11 @@
                   {
                     obj[model[0]] = input.$modelValue;
                   }
+                  $document.find("body").removeClass("edit-modal-opened");
+                },
+                cancel: function()
+                {
+                  console.log("cancel chiamata");
                 },
                 targetEvent: event,
                 title: column.title,
@@ -507,14 +522,15 @@
                 validators: column.validators
               };
 
+              $document.find("body").addClass("edit-modal-opened");
               var promise = $scope.options.largeEditDialog ? $mdEditDialog.large(dialog) : $mdEditDialog.small(dialog);
-
               promise.then(function (ctrl) {
                 var input = ctrl.getInput();
 
                 input.$viewChangeListeners.push(function () {
                   input.$setValidity('test', input.$modelValue !== 'test');
                 });
+
               });
             }
           };

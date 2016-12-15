@@ -184,9 +184,9 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
         {
           'model': 'paymentMethodWeb',
           'title': 'paymentMethodWeb',
-          'type': 'selection',
+          'type': 'options',
+          'options': lovService.getRicaricaPaymentMethod(),
           'multiple': true,
-
           'editable': true
         },
         {
@@ -214,42 +214,42 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
       ],
       items: [
         {
-          "tipoPromo" :"promo id1",
+          "tipoPromo" :"PROMO_ID1",
           "promo":"PROMO ID1 Bene Fisico",
           "description": "Promo che sconta, da canale Web ed in un determinato periodo, un Bene Fisico in vendita diretta con uno sconto a valore assoluto o in percentuale"
         },
         {
-          "tipoPromo" :"promo id2",
+          "tipoPromo" :"PROMO_ID2",
           "promo":"PROMO ID2 Carta Servizi",
           "description": "Promo che sconta, da canale Web ed in un determinato periodo, il costo a pagare (attivazione + 1° canone) di una Carta Servizi con uno sconto a valore assoluto o in percentuale"
         },
         {
-          "tipoPromo" :"promo id3",
+          "tipoPromo" :"PROMO_ID3",
           "promo":"PROMO ID3 Combinazione Item",
           "description": "Promo che aggiunge a carrello, da canale Web ed in un determinato periodo, una Carta Servizi se presente un'altra nel carrello"
         },
         {
-          "tipoPromo" :"promo id4",
+          "tipoPromo" :"PROMO_ID4",
           "promo":"PROMO ID4 GiftWithPurchase",
           "description": "Promo che sconta, da canale Web ed in un determinato periodo, un Bene Fisico in vendita diretta con uno sconto a valore assoluto o in percentuale"
         },
         {
-          "tipoPromo" :"promo id5",
+          "tipoPromo" :"PROMO_ID5",
           "promo":"PROMO ID5 SIM CARD",
           "description": "Promo che sconta, da canale Web ed in un determinato periodo, la SIM Card con uno sconto a valore assoluto o a percentuale"
         },
         {
-          "tipoPromo" :"promo id6.1",
+          "tipoPromo" :"PROMO_ID6_1",
           "promo":"PROMO ID6.1 Coupon per BF/CS",
           "description": "Promo che fornisce in fase di vendita, da canale Web ed in un determinato periodo, un Coupon che elargirà uno sconto in una successiva post-vendita (su base BF/CS)"
         },
         {
-          "tipoPromo" :"promo id6.2",
+          "tipoPromo" :"PROMO_ID6_2",
           "promo":"PROMO ID6.2 Coupon carrello",
           "description": "Promo che fornisce in fase di vendita, da canale Web ed in un determinato periodo, un Coupon che elargirà uno sconto in una successiva post-vendita (su base totale a carrello)"
         },
         {
-          "tipoPromo" :"promo id7",
+          "tipoPromo" :"PROMO_ID7",
           "promo":"PROMO ID7 Ricarica",
           "description": "Promo che fornisce in fase di vendita, da canale Web ed in un determinato periodo, un Coupon che elargirà un bonus aggiuntivo di ricarica alla prossima ricarica. Il coupon verrà erogato solo se la ricarica è effettuata in un determinato periodo e con un determinato taglio; il bonus sarà erogato solo se la successiva ricarica sarà effettuata in un determinato periodo e con un determinato taglio"
         }
@@ -270,10 +270,10 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
       orderBy -->determina il campo su cui effettuare l'ordine
       maxLength-->valido per text e number, numero massimo caratteri
        */
-      "promo id1": {
+      "PROMO_ID1": {
         title:'ID 1',
         columns: [
-          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text'},
+          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text','link': true},
           {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text',editable:true, required:true, maxlength:"30"},
           {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text',editable:true, required:true,maxlength:"100"},
           {'model':'inizioValidita','title':'Inizio Validita','type':'date',editable:true,required:true,
@@ -282,10 +282,10 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
             'min-date-ref-col':'inizioValidita','max-date':'31/12/2050',locale:"it",format:"DD/MM/YYYY", orderBy:true}
         ]
       },
-      "promo id2": {
+      "PROMO_ID2": {
         title:'ID 2',
         columns: [
-          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text'},
+          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text','link': true},
           {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text',editable:true, required:true, maxlength:"30"},
           {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text',editable:true, required:true,maxlength:"100"},
           {'model':'inizioValidita','title':'Inizio Validita','type':'date',editable:true,required:true,
@@ -294,10 +294,10 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
             'min-date-ref-col':'inizioValidita','max-date':'31/12/2050',locale:"it",format:"DD/MM/YYYY", orderBy:true}
         ]
       },
-      "promo id3": {
+      "PROMO_ID3": {
         title:'ID 3',
         columns: [
-          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text'},
+          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text','link': true},
           {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text',editable:true, required:true, maxlength:"30"},
           {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text',editable:true, required:true,maxlength:"100"},
           {'model':'inizioValidita','title':'Inizio Validita','type':'date',editable:true,required:true,
@@ -306,10 +306,10 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
             'min-date-ref-col':'inizioValidita','max-date':'31/12/2050',locale:"it",format:"DD/MM/YYYY", orderBy:true}
         ]
       },
-      "promo id4": {
+      "PROMO_ID4": {
         title:'ID 4',
         columns: [
-          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text'},
+          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text','link': true},
           {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text',editable:true, required:true, maxlength:"30"},
           {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text',editable:true, required:true,maxlength:"100"},
           {'model':'inizioValidita','title':'Inizio Validita','type':'date',editable:true,required:true,
@@ -318,10 +318,10 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
             'min-date-ref-col':'inizioValidita','max-date':'31/12/2050',locale:"it",format:"DD/MM/YYYY", orderBy:true}
         ]
       },
-      "promo id5": {
+      "PROMO_ID5": {
         title:'ID 5',
         columns: [
-          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text'},
+          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text','link': true},
           {'model': 'nomePromo', 'title': 'Nome Promo', 'type': 'text',editable:true, required:true, maxlength:"30"},
           {'model': 'descrizionePromo', 'title': 'Descrizione Promo', 'type': 'text',editable:true, required:true,maxlength:"100"},
           {'model':'inizioValidita','title':'Inizio Validita','type':'date',editable:true,required:true,
@@ -330,10 +330,10 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
             'min-date-ref-col':'inizioValidita','max-date':'31/12/2050',locale:"it",format:"DD/MM/YYYY", orderBy:true}
         ]
       },
-      "promo id6.1": {
+      "PROMO_ID6_1": {
         title:'ID 6.1',
         columns: [
-          {'model':'codicePromo','title':'Codice promo','type':'text',color: 'green'},
+          {'model':'codicePromo','title':'Codice promo','type':'text',color: 'green','link': true},
           {'model':'promoBatch','title':'Promo Batch','type':'options', 'options': lovService.getBooleanTypes(),
             editable:true,required:true,'batchEnabler': true,color: 'green',value:lovService.getBooleanTypes()[0]},
           {'model':'descrizionePromo','title':'Descrizione promo','type':'text',editable:true, required:true,
@@ -359,10 +359,10 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
             'batchDisabled':true, color: 'orange',maxlength:"9"}
         ]
       },
-      "promo id6.2": {
+      "PROMO_ID6_2": {
         title:'ID 6.2',
         columns: [
-          {'model':'codicePromo','title':'Codice promo','type':'text',color: 'green'},
+          {'model':'codicePromo','title':'Codice promo','type':'text',color: 'green','link': true},
           {'model':'promoBatch','title':'Promo Batch','type':'options', 'options': lovService.getBooleanTypes(),
             editable:true,required:true,'batchEnabler': true,color: 'green',value:lovService.getBooleanTypes()[0]},
           {'model':'descrizionePromo','title':'Descrizione promo','type':'text',editable:true, required:true,
@@ -389,10 +389,10 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
     'batchDisabled':true, color: 'orange',maxlength:"9"}
   ]
 },
-  "promo id7": {
+  "PROMO_ID7": {
     title:'ID 7',
     columns: [
-      {'model':'codicePromo','title':'Codice promo','type':'text',color: 'green'},
+      {'model':'codicePromo','title':'Codice promo','type':'text',color: 'green', 'link': true},
       {'model':'promoBatch','title':'Promo Batch','type':'options', 'options': lovService.getBooleanTypes(),
         editable:true,required:true,'batchEnabler': true,color: 'green',value:lovService.getBooleanTypes()[0]},
       {'model':'descrizionePromo','title':'Descrizione promo','type':'text',editable:true, required:true,
@@ -421,7 +421,7 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
     },
     "promo.detail": {
       title: "Condition List",
-      "promo id1":
+      "PROMO_ID1":
       {
         title: "PROMO ID1",
         buttons:
@@ -430,23 +430,25 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               'label': 'Ricerca BF',
               'model': 'BF',
               'reference': 'attributi.BF',
-              'columns': [{model:'bf2purchase', 'refModel': 'nmu'}]
+              'columns': [{model:'bf2purchase', 'refModel': 'nomeProdotto'},
+                           {model:'prezzoAttivazione', 'refModel': 'prezzo', type:'number'}
+                         ]
             }
           ],
         columns: [
           {'model':'bf2purchase','title':'NMU','type':'text',required:true},
           {'model':'isPadreBf2purchase','title':'IsPadre','type':'options',
             'options': lovService.getBooleanTypes(),  editable:true,required:true},
-          {'model':'prezzoAttivazione','title':'Prezzo','type':'number', editable:true, required:true},
-          {'model':'scontoValore','title':'Sconto a Valore',
+          {'model':'prezzoAttivazione','title':'Prezzo','type':'number', required:true,'icon': 'euro_symbol'},
+          {'model':'scontoValore','title':'Sconto a Valore','icon': 'euro_symbol',
             'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
             editable:true, mutuallyExclusive: 'scontoPercentuale'},
-          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
+          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale','icon': '%',
             'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
             editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
-      "promo id2":
+      "PROMO_ID2":
       {
         title: "PROMO ID2",
         buttons:
@@ -457,21 +459,21 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               'reference': 'attributi.CS',
               'columns': [
                 {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-                {model:'cs2purchase', 'refModel': 'codiceCartaServizi'}]
+                {model:'cs2purchase', 'refModel': 'nomeProdotto'}]
             }
           ],
         columns: [
           {'model':'offerta','title':'Offerta','type':'text'},
           {'model':'cs2purchase','title':'Carta Servizi','type':'text'},
-          {'model':'scontoValore','title':'Sconto a Valore',
+          {'model':'scontoValore','title':'Sconto a Valore', 'icon': 'euro_symbol',
             'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
             editable:true, mutuallyExclusive: 'scontoPercentuale'},
-          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
+          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale', 'icon': '%',
             'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
             editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
-      "promo id3":
+      "PROMO_ID3":
       {
         title: "PROMO ID3",
         buttons:
@@ -483,8 +485,8 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               'multiple': true,
               'reference': 'attributi.CS',
               'columns': [
-                {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-                {model:'cs2purchase', 'refModel': 'codiceCartaServizi', append: true}]
+                {model: 'offerta', 'refModel': 'nomeProdotto', compare: true},
+                {model:'cs2purchase', 'refModel': 'nomeProdotto', append: true}]
             },
             {
               'label': 'Ricerca BF2P',
@@ -493,7 +495,7 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               'multiple': true,
               'reference': 'attributi.BF',
               'columns': [
-                {model:'bf2purchase', 'refModel': 'nmu',append: true}]
+                {model:'bf2purchase', 'refModel': 'nomeProdotto',append: true}]
             },
             {
               'label': 'Ricerca CSBonus',
@@ -501,8 +503,8 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               mutuallyExclusive: 'BFBonus',
               'reference': 'attributi.CS',
               'columns': [
-                {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-                {model:'csWithBonus', 'refModel': 'codiceCartaServizi'}]
+                {model: 'offerta', 'refModel': 'nomeProdotto', compare: true},
+                {model:'csWithBonus', 'refModel': 'nomeProdotto'}]
             },
             {
               'label': 'Ricerca BFBonus',
@@ -510,7 +512,7 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               mutuallyExclusive: 'CSBonus',
               'reference': 'attributi.BF',
               'columns': [
-                {model:'bfwithBonus', 'refModel': 'nmu'}]
+                {model:'bfwithBonus', 'refModel': 'nomeProdotto'}]
             }
           ],
         columns: [
@@ -527,15 +529,15 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
           {'model':'offerta','title':'Offerta','type':'text', color: 'orange'},
           {'model':'csWithBonus','title':'csWithBonus','type':'text', mutuallyExclusive: 'bfwithBonus', color: 'orange'},
           {'model':'bfwithBonus','title':'bfwithBonus','type':'text', mutuallyExclusive: 'csWithBonus', color: 'orange'},
-          {'model':'scontoValore','title':'Sconto a Valore',
+          {'model':'scontoValore','title':'Sconto a Valore', 'icon': 'euro_symbol',
             'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
             editable:true, mutuallyExclusive: 'scontoPercentuale', color: 'orange'},
-          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
+          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale', 'icon': '%',
             'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
             editable: true, mutuallyExclusive: 'scontoValore', color: 'orange'}
         ]
       },
-      "promo id4":
+      "PROMO_ID4":
       {
         title: "PROMO ID4",
         buttons:
@@ -546,8 +548,8 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               required: true,
               'reference': 'attributi.CS',
               'columns': [
-                {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-                {model:'cs2purchase', 'refModel': 'codiceCartaServizi'}]
+                {model: 'offerta', 'refModel': 'nomeProdotto', compare: true},
+                {model:'cs2purchase', 'refModel': 'nomeProdotto'}]
             },
             {
               'label': 'Ricerca CSBonus',
@@ -555,8 +557,8 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               required: true,
               'reference': 'attributi.CS',
               'columns': [
-                {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-                {model:'csWithBonus', 'refModel': 'codiceCartaServizi'}]
+                {model: 'offerta', 'refModel': 'nomeProdotto', compare: true},
+                {model:'csWithBonus', 'refModel': 'nomeProdotto'}]
             }
           ],
         columns: [
@@ -566,21 +568,21 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
           {'model':'csWithBonus','title':'csWithBonus','type':'text',required: true}
         ]
       },
-      "promo id5":
+      "PROMO_ID5":
       {
         title: "PROMO ID5",
         columns: [
           {'model':'tipologiaVendita','title':'Tipologia Vendita','type':'options',
             'options': lovService.getSeniorityConstraintWebType(), multiple: true, editable:true,required:true},
-          {'model':'scontoValore','title':'Sconto a Valore',
+          {'model':'scontoValore','title':'Sconto a Valore', 'icon': 'euro_symbol',
             'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
             editable:true, mutuallyExclusive: 'scontoPercentuale'},
-          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
+          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale','icon': '%',
             'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
             editable: true, mutuallyExclusive: 'scontoValore'}
         ]
       },
-      "promo id6.1":
+      "PROMO_ID6_1":
       {
         title: "PROMO ID6_1",
         buttons:
@@ -604,8 +606,8 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               //model: indica il nome del campo così come viene recuperato dagli attributi
               //refModel: indica il nome del campo mappato sulla condition
               'columns': [
-                {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-                {model:'cs2purchase', 'refModel': 'codiceCartaServizi'}],
+                {model: 'offerta', 'refModel': 'nomeProdotto', compare: true},
+                {model:'cs2purchase', 'refModel': 'nomeProdotto'}],
               'batchDisabled':true
             },
             {
@@ -614,7 +616,7 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               orRequired: 'CS2P',
               mutuallyExclusive: 'CS2P',
               'reference': 'attributi.BF',
-              'columns': [{model:'bf2purchase', 'refModel': 'nmu'}],
+              'columns': [{model:'bf2purchase', 'refModel': 'nomeProdotto'}],
               'batchDisabled':true
             },
             {
@@ -623,15 +625,15 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               mutuallyExclusive: 'BFBonus',
               'reference': 'attributi.CS',
               'columns': [
-                {model: 'offerta', 'refModel': 'nomeOfferta',compare: true},
-                {model:'csWithBonus','refModel': 'codiceCartaServizi'}]
+                {model: 'offerta', 'refModel': 'nomeProdotto',compare: true},
+                {model:'csWithBonus','refModel': 'nomeProdotto'}]
             },
             {
               'label': 'Ricerca BFBonus',
               'model': 'BFBonus',
               mutuallyExclusive: 'CSBonus',
               'reference': 'attributi.BF',
-              'columns': [{model:'bfwithBonus', 'refModel': 'nmu'}]
+              'columns': [{model:'bfwithBonus', 'refModel': 'nomeProdotto'}]
             }
           ],
         columns: [
@@ -645,16 +647,16 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
           {'model':'offerta','title':'Offerta','type':'text', color: 'orange'},
           {'model':'csWithBonus','title':'csWithBonus','type':'text',  mutuallyExclusive: 'bfwithBonus', color: 'orange'},
           {'model':'bfwithBonus','title':'bfwithBonus','type':'text', mutuallyExclusive: 'csWithBonus', color: 'orange'},
-          {'model':'scontoValore','title':'Sconto a Valore',
+          {'model':'scontoValore','title':'Sconto a Valore', 'icon': 'euro_symbol',
             'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
             editable:true, mutuallyExclusive: 'scontoPercentuale', color: 'orange'},
-          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
+          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale','icon': '%',
             'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
             editable: true, mutuallyExclusive: 'scontoValore', color: 'orange'}
 
         ]
       },
-      "promo id6.2":
+      "PROMO_ID6_2":
       {
         title: "PROMO ID6_2",
         buttons:
@@ -666,8 +668,8 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               orRequired: 'BFBonus',
               'reference': 'attributi.CS',
               'columns': [
-                {model: 'offerta', 'refModel': 'nomeOfferta',compare: true},
-                {model:'csWithBonus','refModel': 'codiceCartaServizi'}]
+                {model: 'offerta', 'refModel': 'nomeProdotto',compare: true},
+                {model:'csWithBonus','refModel': 'nomeProdotto'}]
 
             },
             {
@@ -677,8 +679,8 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
               orRequired: 'CSBonus',
               'reference': 'attributi.BF',
               'columns': [
-                {model: 'offerta', 'refModel': 'nomeOfferta',compare: true},
-                {model:'bfwithBonus','refModel': 'codiceCartaServizi'}]
+                {model: 'offerta', 'refModel': 'nomeProdotto',compare: true},
+                {model:'bfwithBonus','refModel': 'nomeProdotto'}]
 
             }
           ],
@@ -688,15 +690,15 @@ angular.module('app').factory('dataTableResources', ['lovService','regexService'
           {'model':'offerta','title':'Offerta','type':'text', color: 'orange'},
           {'model':'csWithBonus','title':'csWithBonus','type':'text', color: 'orange'},
           {'model':'bfwithBonus','title':'bfwithBonus','type':'text', color: 'orange'},
-          {'model':'scontoValore','title':'Sconto a Valore',
+          {'model':'scontoValore','title':'Sconto a Valore', 'icon': 'euro_symbol',
             'type':'number', 'step':'0.01', pattern:regexService.scontoValore,maxlength:"10",
             editable:true, mutuallyExclusive: 'scontoPercentuale', color: 'orange'},
-          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale',
+          {'model':'scontoPercentuale', 'title':'Sconto a Percentuale', 'icon': '%',
             'type':'number', 'step':'0.01', pattern:regexService.percentuale, maxlength:"5",
             editable: true, mutuallyExclusive: 'scontoValore', color: 'orange'}
         ]
       },
-      "promo id7":
+      "PROMO_ID7":
       {
         title: "PROMO ID7",
         addDisabledIfBatch:true,

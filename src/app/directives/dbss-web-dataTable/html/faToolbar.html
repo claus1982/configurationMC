@@ -1,18 +1,21 @@
-<md-fab-toolbar md-open="toolbarIsOpen"
-                md-direction="right">
-  <md-fab-trigger class="align-with-text">
-    <md-button aria-label="menu" class="md-primary">
-      <md-icon>menu</md-icon>
-    </md-button>
-  </md-fab-trigger>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="md-toolbar-tools">
+      <md-button  ng-repeat="button in faToolbar|filter:{align:'left'}"
 
-  <md-toolbar>
-    <md-fab-actions class="md-toolbar-tools">
-      <md-button
-                 ng-repeat="button in faToolbar"
-                 class="md-primary"
+                 ng-hide="button.hide()"
+                 title=""
+                 class="md-primary btn-toolbar"
                  ng-click="button.clbk($event)">{{button.name}}
+
       </md-button>
-    </md-fab-actions>
+      <span flex></span>
+      <md-button  ng-repeat="button in faToolbar|filter:{align:'right'}"
+
+                  ng-hide="button.hide()"
+                  title=""
+                  class="md-primary btn-toolbar"
+                  ng-click="button.clbk($event)">{{button.name}}
+      </md-button>
+      </div>
   </md-toolbar>
-</md-fab-toolbar>
+

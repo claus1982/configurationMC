@@ -25,6 +25,7 @@ var json =
         "paymentMethodWeb":null,
         "codiceCartaServizi":"FF056",
         "defaultFlag":"Y",
+        "prezzo": "100.5",
         "parentDisplayName":"Numero Amico per TIM YOUNG"
       },
       {
@@ -37,6 +38,7 @@ var json =
         "paymentMethodWeb":null,
         "codiceCartaServizi":"FF058",
         "defaultFlag":"Y",
+        "prezzo": 101.5,
         "parentDisplayName":"TIM Young Junior"
       },
       {
@@ -49,6 +51,7 @@ var json =
         "paymentMethodWeb":null,
         "codiceCartaServizi":"FF067",
         "defaultFlag":null,
+        "prezzo": 0,
         "parentDisplayName":null
       },
       {
@@ -61,6 +64,7 @@ var json =
         "paymentMethodWeb":null,
         "codiceCartaServizi":"FF068",
         "defaultFlag":null,
+        "prezzo": "0",
         "parentDisplayName":null
       },
       {
@@ -603,9 +607,9 @@ app.post('/getPromo', function(req, res) {
           "sysdate":"10/07/2012 12:34"
         },
         {
-          "codicePromo":"codicePromo1",
+          "codicePromo":"codicePromo11",
           "nomePromo":"nomePromo3",
-          "promoBatch":"N",
+          "promoBatch":"Y",
           "descrizionePromo":"descrizionePromo3",
           "inizioValidita":"10/07/2012",
           "fineValidita":"10/07/2012",

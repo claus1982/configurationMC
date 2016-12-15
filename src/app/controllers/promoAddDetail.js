@@ -21,7 +21,8 @@ angular.module('app')
       largeEditDialog: false,
       boundaryLinks: false,
       limitSelect: false,
-      pageSelect: false
+      pageSelect: false,
+      showTableAlways: true
     };
 
 
@@ -164,9 +165,15 @@ angular.module('app')
       $mdDialog.show({
         clickOutsideToClose: true,
         controller: function ($mdDialog, $scope, Notification,dataTableResources, params) {
-          this.cancel = $mdDialog.cancel;
+
+
           $scope.params = params;
           var isAlreadyComparingFieldValued = params.comparingField && params.comparingField.value ? true: false;
+
+          //dismiss the modal
+          function cancel(){
+            $mdDialog.cancel()
+          }
 
           function success(items) {
 
@@ -207,7 +214,8 @@ angular.module('app')
                           {
                             model: column.model,
                             value: item[column.refModel],
-                            append: column.append ? true: false
+                            append: column.append ? true: false,
+                            type: column.type
                           }
                         );
                     }
@@ -232,12 +240,23 @@ angular.module('app')
 
           }
 
-          this.addItem = function (items) {
-            success(items);
+          this.faToolbar = [
+            {
+              name: 'CONFERMA SELEZIONE',
+              clbk: function(){ success($scope.selected);},
+              align:'left',
+              hide: function(){return !$scope.selected.length;}
+            },
+            {
+              name: 'ANNULLA',
+              clbk: function(){ cancel()},
+              align:'right',
+              hide: function(){return false;}
+            }
+          ];
 
-          };
           //callback richiamata nella direttiva
-          $scope.getWeb = function (promise, params) {
+          this.getWeb = function (promise, params) {
             console.log("callback getItemsClbk called from directive");
             console.log(params);
 
@@ -289,7 +308,14 @@ angular.module('app')
 
           angular.forEach(fItem, function (field) {
             if (!field.append) {
-              $scope.newItem[field.model] = field.value;
+              if (field.type==="number")
+              {
+                $scope.newItem[field.model] = Number(field.value);
+              }
+              else
+              {
+                $scope.newItem[field.model] = field.value;
+              }
             }
             else
             {
@@ -308,45 +334,51 @@ angular.module('app')
 
 
     function init() {
-      $scope.loading = false;
-      $scope.promoParams = promoParamsService.getPromoParams();
-      console.log("promoAddDetail started");
-      $scope.tipoPromo = $state.params.tipoPromo;
-      $scope.codicePromo = $scope.promoParams.codicePromo;
-      $scope.isBatch = $scope.promoParams.isBatch;
-
-      console.log("tipoPromo", $scope.tipoPromo);
-      console.log("codicePromo", $scope.codicePromo);
-      console.log("promoParams", $scope.promoParams);
-
       $scope.currentState = $state.$current.name;
       console.log("current state:", $scope.currentState);
-
-      $scope.title = $scope.tipoPromo + " - " + $scope.codicePromo + ":Add Condition";
-
-
-
-      if ($scope.isBatch == "N")
+      if (!dataTableResources["promo.detail"][$state.params.tipoPromo])
       {
-        $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns;
-        $scope.buttons = dataTableResources["promo.detail"][$scope.tipoPromo].buttons;
+        $state.go('promo.categories');
       }
-      //in caso sia batch esclude alcune colonne e pulsanti come da configurazione
-      else
-      {
-        $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns.filter(function(col){
-         return !col.batchDisabled;
-        });
-        $scope.buttons = dataTableResources["promo.detail"][$scope.tipoPromo].buttons.filter(function(col){
-          return !col.batchDisabled;
-        });
-      }
+      else {
+        $scope.tipoPromo = $state.params.tipoPromo;
+        $scope.promoParams = promoParamsService.getPromoParams();
+
+        if (!$scope.promoParams || !$scope.promoParams.codicePromo) {
+          $state.go('promo.list', {
+            'tipoPromo': $scope.tipoPromo
+          });
+        }
+        else {
+          $scope.codicePromo = $scope.promoParams.codicePromo;
+          $scope.promoBatch = $scope.promoParams.promoBatch || 'N';
+
+          $scope.title = $scope.tipoPromo + " - " + $scope.codicePromo + ":Add Condition";
 
 
-      //nuovo item
-      $scope.items = [];
-      $scope.newItem = {};
-      $scope.items.push($scope.newItem);
+          if ($scope.promoBatch == "N") {
+            $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns;
+            $scope.buttons = dataTableResources["promo.detail"][$scope.tipoPromo].buttons;
+          }
+          //in caso sia batch esclude alcune colonne e pulsanti come da configurazione
+          else {
+            $scope.columns = dataTableResources["promo.detail"][$scope.tipoPromo].columns.filter(function (col) {
+              return !col.batchDisabled;
+            });
+            if (dataTableResources["promo.detail"][$scope.tipoPromo].buttons) {
+              $scope.buttons = dataTableResources["promo.detail"][$scope.tipoPromo].buttons.filter(function (col) {
+                return !col.batchDisabled;
+              });
+            }
+          }
+
+
+          //nuovo item
+          $scope.items = [];
+          $scope.newItem = {};
+          $scope.items.push($scope.newItem);
+        }
+      }
     }
 
     function reset() {

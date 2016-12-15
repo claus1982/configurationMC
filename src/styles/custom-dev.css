@@ -1,3 +1,50 @@
+/* Rules for sizing the icon. */
+
+.material-icons.md-12 { font-size: 12px; }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon  i {
+  position: absolute;
+  display: block;
+  transform: translate(0, -80%);
+  top: 35%;
+  pointer-events: none;
+  width: 25px;
+  text-align: center;
+  font-style: normal;
+}
+
+.input-icon i{
+  padding-left: 25px;
+  padding-right: 0;
+}
+
+
+.input-icon-right  i {
+  right: 0;
+  padding-left: 0;
+  padding-right: 25px;
+  text-align: right;
+}
+
+
+
 md-dialog.fullscreen-dialog {
   max-width: 100%;
   max-height: 100%;
@@ -119,7 +166,7 @@ div.whiteBackground {
   transform: translate(0, 63px)
 }
 
-.nav-wrap .menu-nav > md-menu .sub-menu-nav md-menu-content {
+.nav-wrap .menu-nav > md-menu .sub-menu-nav .md-menu-content {
   padding: 15px;
   border: 1px solid #d8d8d8;
   border-top: 0;
@@ -162,4 +209,59 @@ md-input-container:not(.md-input-has-value) md-select[required]:not(.md-no-aster
   font-size: 13px;
   vertical-align: top;
   color: red;
+}
+
+body.edit-modal-opened {
+  overflow: hidden;
+}
+
+.look-as-link {
+  background:none!important;
+  border:none;
+  padding:0!important;
+  font: inherit;
+  color: blue;
+  /*border is optional
+   border-bottom:1px solid #444;*/
+  cursor: pointer;
+}
+
+table > tbody > tr > td:first-child {
+  max-width: 30px; !important
+}
+
+
+.btn-toolbar {
+  color: #fff;
+  font-size: 16px;
+}
+
+.btn-toolbar:not([disabled]):hover {
+  color: #fff !important;
+  background-color: #004990;
+  border-color: #004990;
+}
+
+.btn-toolbar[disabled] {
+  color : rgb(187, 187, 187);
+  background-color: rgba(255, 255, 255, 1);
+}
+
+md-input-container .md-input {
+  font-size:15px !important;
+  font-weight: bold !important;
+
+}
+
+.md-select-value > span:not(.md-select-icon) .md-text
+{
+  font-size:15px !important;
+  font-weight: bold !important;
+  display: block;!important;
+
+}
+
+.md-input-has-value
+{
+  font-size:12px !important;
 }

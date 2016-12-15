@@ -6,10 +6,36 @@
     $q,
     myConfig) {
 
+    function getAppId() {
+      return 'AAAAAAAA';
+    }
 
-    this.doHttpRequest = function (baseUrl, urlEndpoint, data) {
+    function generateHexCode() {
+      var text = "";
+      var possible = "ABCDEF0123456789";
+      for (var i = 0; i < 8; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    }
 
-      data = angular.copy(data) || {};
+    function getRandomHex() {
+
+      var firstBlock = getAppId(),
+          secondBlock = new Date().getTime().toString().substr(-8),
+          thirdBlock = generateHexCode();
+      return firstBlock + secondBlock + thirdBlock;
+    };
+
+
+    this.doHttpRequest = function (baseUrl, urlEndpoint, requestData) {
+
+      //aggiunge un businessId ad ogni request in cima
+      var data = {};
+      data[Object.keys(requestData)[0]] = {};
+      data[Object.keys(requestData)[0]].businessId = getRandomHex();
+      angular.extend(data[Object.keys(requestData)[0]],requestData[Object.keys(requestData)[0]]);
+
 
       //Request
       var req = {

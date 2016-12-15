@@ -116,6 +116,7 @@ angular.module('app')
         boundaryLinks: false,
         limitSelect: true,
         pageSelect: true,
+        showTableAlways: true,
         orderBy: "-"+dataTableResources[$scope.currentState]
                      .columns.find(function(col){return col.orderBy}).model
     };

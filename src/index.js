@@ -8,7 +8,7 @@ angular
       'ncy-angular-breadcrumb',
       'ui-notification',
       'sticky',
-      'smDateTimeRangePicker',
       'angularMoment',
-      'moment-picker'
+      'moment-picker',
+      'ngStorage'
     ]);

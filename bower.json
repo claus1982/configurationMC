@@ -29,8 +29,8 @@
     "angular-breadcrumb": "^0.4.1",
     "ngSticky": "^1.8.13",
     "angular-loading": "^0.1.4",
-    "smDateTimeRangePicker": "^2.0.1",
     "angular-moment": "^1.0.0",
-    "angular-moment-picker": "moment-picker#^0.6.8"
+    "angular-moment-picker": "moment-picker#^0.6.8",
+    "ngstorage": "^0.3.11"
   }
 }

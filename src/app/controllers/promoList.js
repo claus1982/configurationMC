@@ -1,11 +1,7 @@
 angular.module('app')
   .controller('promoListCtrl',
-    function ($scope, $state, dataTableResources, getPromoService, createPromoService,deletePromoService, promoParamsService) {
-    $scope.model = $scope.model || {};
-    //$scope.focusinControl = {};
-
-
-
+    function ($scope, $state, dataTableResources, getPromoService,
+              createPromoService,deletePromoService, promoParamsService) {
 
 
     //callback richiamata nella direttiva per recupero dati
@@ -72,7 +68,8 @@ angular.module('app')
       promoParamsService.setPromoParams(params[0]);
 
       $state.go('promo.detail', {
-        'tipoPromo': $scope.tipoPromo
+        'tipoPromo': $scope.tipoPromo,
+        'codicePromo': params[0].codicePromo
       });
     };
 
@@ -99,13 +96,19 @@ angular.module('app')
 
     function init() {
 
+
       $scope.currentState = $state.$current.name;
       console.log("current state:", $scope.currentState);
 
-      $scope.title = $scope.tipoPromo = $state.params.tipoPromo;
 
-      $scope.columns = dataTableResources[$scope.currentState][$scope.tipoPromo].columns;
-
+      if (!dataTableResources[$scope.currentState][$state.params.tipoPromo])
+      {
+        $state.go('promo.categories');
+      }
+      else
+      {
+        $scope.tipoPromo = $state.params.tipoPromo;
+        $scope.columns = dataTableResources[$scope.currentState][$scope.tipoPromo].columns;
       console.log("tipoPromo (promo.list)", $scope.tipoPromo);
 
       $scope.options = {
@@ -124,9 +127,10 @@ angular.module('app')
         boundaryLinks: false,
         limitSelect: true,
         pageSelect: true,
+        showTableAlways: true,
         orderBy: "-"+dataTableResources[$scope.currentState][$scope.tipoPromo]
-                     .columns.find(function(col){return col.orderBy}).model
-    };
+                     .columns.find(function(col){return col.orderBy}).model};
+      }
     }
 
     init();

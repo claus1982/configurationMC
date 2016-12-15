@@ -157,7 +157,8 @@ angular.module('app')
         largeEditDialog: false,
         boundaryLinks: false,
         limitSelect: true,
-        pageSelect: true
+        pageSelect: true,
+        showTableAlways: true
       };
 
       $mdDialog.show({

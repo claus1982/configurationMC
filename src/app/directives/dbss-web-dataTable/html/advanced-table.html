@@ -13,31 +13,34 @@
       ng-submit="submit()"
       autocomplete="off">
 
+      <div layout="row" layout-wrap>
       <div
-        class="form-fieldset"
         ng-repeat="param in searchParams"
+        class="form-fieldset"
         ng-class="{'has-error':myForm[param.name].$invalid && myForm[param.name].$touched}"
         ng-messages="myForm[param.name].$error">
-        <label class="form-label">{{param.title}}</label>
-        <input name="{{param.name}}"
+        <label class="form-label" title="">{{param.title}}</label>
+        <input
+               name="{{param.name}}"
+               title=""
                ng-model="param.model"
                ng-disabled="param.disabled"
                type = "{{param.type}}"
                class="form-control"
                ng-required="isRequired()"
                minlength="{{param.minlength}}"
-               maxlength="{{param.maxlength}}"
-        >
-        <div
-          ng-if="myForm[param.name].$invalid && myForm[param.name].$touched"
-          ng-messages-include="app/directives/dbss-web-dataTable/html/messages.html"></div>
+               maxlength="{{param.maxlength}}"/>
+        <span
+          ng-messages-include="app/directives/dbss-web-dataTable/html/messages.html">
+        </span>
       </div>
-
-      <div class="form-buttons">
-        <input type="submit"
-               class="btn-primary"
-               value="cerca"
-               ng-disabled="myForm.$invalid || searchLoading">
+        <div class="form-buttons">
+          <input type="submit"
+                 class="btn-primary"
+                 value="cerca"
+                 title="Cerca"
+                 ng-disabled="myForm.$invalid || searchLoading">
+        </div>
       </div>
     </form>
   </div>
@@ -50,18 +53,22 @@
   <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </div>
 
-
-
-<div ng-if="items" ng-hide="searchLoading" class="container"><h1 class="title-section">{{title}}</h1>
-
+<div ng-if="showTable()" ng-hide="searchLoading" class="container"><h1 title="" class="title-section">{{title}}</h1>
   <div class="container margin-bottom-40">
     <div class="wrapper-app">
-      <div class="datatable-wrap" layout="column">
+      <div class="datatable-wrap margin-bottom-40" layout="column">
         <md-card>
-          <md-toolbar class="md-table-toolbar md-default">
+
+          <ng-include
+            ng-if="faToolbar"
+            src="'app/directives/dbss-web-dataTable/html/faToolbar.html'">
+          </ng-include>
+
+          <md-toolbar class="md-table-toolbar md-default" title="">
             <div class="md-toolbar-tools">
               <!-- pulsante "AGGIUNGI" per aggiungere un nuovo item mediante pop-up-->
               <md-button ng-if="options.addMode" ng-hide="options.isEditing"
+                         title ="Aggiungi"
                          ng-show="!options.rowSelection || !selected.length" class="md-primary"
                          ng-click="addItem(addModeType,$event,columns, addItemClbk)"
               >aggiungi
@@ -71,33 +78,35 @@
                 ng-hide="options.isEditing"
                 ng-show="!options.rowSelection || !selected.length"
                 class="md-primary"
+                title="Modifica"
                 ng-click="enableisEditing()">
                 modifica
               </md-button>
               <div class="right-position">
-                <md-button class="md-icon-button">
+                <md-button class="md-icon-button" title="Filtra">
                   <md-icon>search</md-icon>
                 </md-button>
-                <input class="input-search" type="text" placeholder="Search" ng-model="query.filter">
+                <input class="input-search" title ="Inserisci un valore di filtro" type="text" placeholder="Inserisci un valore di filtro..." ng-model="query.filter">
               </div>
             </div>
           </md-toolbar>
-
-
-          <ng-include
-            ng-if="faToolbar"
-            src="'app/directives/dbss-web-dataTable/html/faToolbar.html'">
-          </ng-include>
-
           <md-toolbar class="md-table-toolbar alternate" ng-show="options.isEditing">
             <div class="md-toolbar-tools">
     <span class="label-modify">
       Desideri salvare le modifiche effettuate?
     </span>
-              <md-button class="md-button btn-secondary" ng-click="restoreSavedItems()">
+              <md-button
+                title ="Annulla"
+                class="md-button btn-secondary"
+                ng-click="restoreSavedItems()">
                 annulla
               </md-button>
-              <md-button class="md-button btn-primary" ng-click="saveItems()" ng-disabled="!isItemsModified()">
+
+              <md-button
+                title ="Salva"
+                class="md-button btn-primary"
+                ng-click="saveItems()"
+                ng-disabled="!isItemsModified()">
                 salva
               </md-button>
             </div>
@@ -113,6 +122,7 @@
                 class="right-position">
                 <!--go back to details after selections -->
                 <md-button
+                  title ="Conferma"
                   ng-if="options.confirmSearchSelectionMode"
                   class="md-button btn-primary"
                 ng-click="confirmSearchSelection(event,selected)"
@@ -120,6 +130,7 @@
 
                 <!--forward to next view (details) -->
                 <md-button ng-if="options.forwardMode"
+                           title ="Avanti"
                            class="md-icon-button"
                            title="Vai al dettaglio"
                            ng-disabled="options.rowSelection && selected.length>1"
@@ -138,6 +149,7 @@
 
                 <md-button
                   ng-if="options.deleteMode"
+                  title ="Elimina"
                   class="md-icon-button"
                   title="Elimina"
                   ng-click="deleteItem(event, selected)"
@@ -183,7 +195,14 @@
                     ng-class="{'md-placeholder': !item[column.model]}"
                 >
             <span ng-if="!options.isEditing && !isArray(item[column.model])">
-             <span>{{item[column.model]}}</span>
+             <span ng-if="!column.link">{{item[column.model]}}</span>
+                 <button ng-if="column.link"
+                         title=""
+                         class="look-as-link"
+                         ng-click="goToItemDetails(event,item)"
+                 >
+                   {{item[column.model]}}
+                 </button>
             </span>
              <span ng-if="!options.isEditing && isArray(item[column.model])">
              <span ng-repeat="value in item[column.model]">
@@ -235,15 +254,17 @@
             </table>
           </md-table-container>
 
-          <data-md-table-pagination md-limit="query.limit"
+          <md-table-pagination
+                                    md-limit="query.limit"
                                     md-limit-options="limitOptions"
                                     md-page="query.page"
                                     md-total="{{items.length}}"
                                     md-on-paginate="onPaginate"
                                     md-page-select="options.pageSelect"
                                     md-boundary-links="options.boundaryLinks">
-          </data-md-table-pagination>
+          </md-table-pagination>
         </md-card>
+        <div class="clearfix margin-bottom-40"></div>
       </div>
     </div>
   </div>
