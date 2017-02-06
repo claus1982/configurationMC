@@ -10,5 +10,6 @@ angular
       'sticky',
       'angularMoment',
       'moment-picker',
-      'ngStorage'
+      'ngStorage',
+      'duScroll'
     ]);

@@ -3,9 +3,9 @@
   angular.module('app')
     .directive('dbssWebDataTable', function () {
       return {
-        restrict : 'E',
+        restrict: 'E',
 
-        templateUrl: function(element, attrs) {
+        templateUrl: function (element, attrs) {
           var template = attrs.template || "advanced-table";
           return "app/directives/dbss-web-dataTable/html/" + template + ".html";
         },
@@ -22,7 +22,7 @@
           'addItemClbk': '&', //aggiungere un nuovo item
           'deleteItemsClbk': '&', //rimuovere uno o più items
           'addModeType': '@', //determina il tipo di dialog da mostrare in "addMode": '0': simple dialog + callback
-                                                                      // '1' chiama dirrettamente external callback
+          // '1' chiama dirrettamente external callback
           'rowClickClbk': '&',
           'goToDetailsClbk': '&',
           'confirmSelectedClbk': '&',
@@ -33,46 +33,45 @@
 
         },
 
-        controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, Notification,regexService, $document) {
+        controller: function ($http, $mdDialog, $mdEditDialog, $q, $timeout, $scope, Notification, regexService, $document) {
           'use strict';
 
           /*utilities*/
           $scope.isArray = angular.isArray;
 
-          $scope.angularCopy = function(item) {
-           var copiedItem = {};
-            angular.copy(item,copiedItem);
+          $scope.angularCopy = function (item) {
+            var copiedItem = {};
+            angular.copy(item, copiedItem);
             return copiedItem;
           };
 
           /*end utilties*/
 
-          if (!$scope.addModeType)
-          {
+          if (!$scope.addModeType) {
             //simple dialog with columns copied from record
             $scope.addModeType = "0";
           }
 
           var initialOptions = {},
             defaultOptions = {
-            addMode: false,  //add item with dialog
-            editMode: true, //abilita la modalità di modifica
-            forwardMode: false, //abilita il pulsante --> di avanzamento dopo aver selezionato un record
-            confirmSearchSelectionMode: false,
-            isEditing: false,
-            deleteMode: false,
-            copyMode: false,
-            showFilters: true,
-            rowSelection: true,
-            multiSelect: false,
-            autoSelect: false,
-            decapitate: false,
-            largeEditDialog: false,
-            boundaryLinks: false,
-            limitSelect: true,
-            pageSelect: true
+              addMode: false,  //add item with dialog
+              editMode: true, //abilita la modalità di modifica
+              forwardMode: false, //abilita il pulsante --> di avanzamento dopo aver selezionato un record
+              confirmSearchSelectionMode: false,
+              isEditing: false,
+              deleteMode: false,
+              copyMode: false,
+              showFilters: true,
+              rowSelection: true,
+              multiSelect: false,
+              autoSelect: false,
+              decapitate: false,
+              largeEditDialog: false,
+              boundaryLinks: false,
+              limitSelect: true,
+              pageSelect: true
               //orderBy -->optionale, identifica il campo su cui effettuare l'ordinamento
-          };
+            };
 
           if (!$scope.options) {
             $scope.options = defaultOptions;
@@ -82,9 +81,9 @@
           initialOptions = JSON.parse(JSON.stringify($scope.options));
 
           $scope.query = {
-            filter:  '',
+            filter: '',
             //se non è indicato un campo di ordinamento, l'ordinamento di default è sul primo campo discendente
-            order: $scope.options.orderBy || $scope.orderBy || "-"+($scope.columns)[0].model,
+            order: $scope.options.orderBy || $scope.orderBy || "-" + ($scope.columns)[0].model,
             sort: function () {
               return function (item) {
                 var o = $scope.query.order;
@@ -95,26 +94,27 @@
                   return moment(item[o], 'DD/MM/YYYY');
                 }
                 else
-                return item[o];
+                  return item[o];
               }
             },
             limit: 10,
             page: 1
           };
 
-          function resetOptions () {
-            $scope.options = JSON.parse(JSON.stringify(initialOptions));;
+          function resetOptions() {
+            $scope.options = JSON.parse(JSON.stringify(initialOptions));
+            ;
           }
 
-          function resetTable(){
+          function resetTable() {
             delete $scope.items;
             delete $scope.savedItems;
             $scope.selected = [];
             delete $scope.error;
           }
 
-          console.log("columns:"+$scope.columns);
-        console.log("searchParams:"+$scope.searchParams);
+          console.log("columns:" + $scope.columns);
+          console.log("searchParams:" + $scope.searchParams);
           $scope.selected = [];
           $scope.limitOptions = [5, 10, 15, {
             label: 'All',
@@ -125,22 +125,22 @@
 
 
           //funzione per determinare se mostrare o meno la tabella
-          $scope.showTable = function(){
-            return $scope.options.showTableAlways  || $scope.items;
+          $scope.showTable = function () {
+            return $scope.options.showTableAlways || $scope.items;
           }
 
 
-          $scope.simpleTableRowClick = function(item){
+          $scope.simpleTableRowClick = function (item) {
             console.log("simple table row clicked");
             $scope.rowClickClbk({
-              params: item});
+              params: item
+            });
 
           };
 
 
           //TODO qui va richiamato il servizio di GET
-          $scope.submit = function()
-          {
+          $scope.submit = function () {
             console.log("form submitted...loading");
             $scope.getItems();
 
@@ -148,9 +148,10 @@
           };
 
           //determines if the search field is required
-          $scope.isRequired = function(){
-            return !($scope.searchParams.find(function(obj)
-            {return (angular.isDefined(obj.model) && obj.model !== "");}));
+          $scope.isRequired = function () {
+            return !($scope.searchParams.find(function (obj) {
+              return (angular.isDefined(obj.model) && obj.model !== "");
+            }));
           };
 
 
@@ -160,14 +161,14 @@
             $scope.items = JSON.parse(JSON.stringify($scope.savedItems));
           };
 
-         $scope.confirmSearchSelection = function(event,selected) {
-          console.log("confirm Search Selection selected",selected);
-           $scope.confirmSelectedClbk({
-             params: selected
-           });
-         };
+          $scope.confirmSearchSelection = function (event, selected) {
+            console.log("confirm Search Selection selected", selected);
+            $scope.confirmSelectedClbk({
+              params: selected
+            });
+          };
 
-          $scope.isItemsModified = function(){
+          $scope.isItemsModified = function () {
             if ($scope.items && $scope.items.length > 0) {
               for (var i = 0; i < $scope.items.length; i++) {
                 if (!angular.equals($scope.items[i], $scope.savedItems[i])) {
@@ -180,7 +181,7 @@
 
           function setItemsClbkHandler(response) {
             console.log("setItemsClbkHandler called");
-            console.log("header:",response.header);
+            console.log("header:", response.header);
             if (response.error) {
               $scope.error = response.error;
               Notification.error({message: $scope.error});
@@ -188,54 +189,51 @@
             }
             else {
               $scope.header = response.header;
-                $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
-                console.log("setWeb success");
-              }
+              $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
+              console.log("setWeb success");
+            }
 
             resetOptions();
             $scope.searchLoading = false;
           }
 
-          $scope.enableisEditing = function() {
-            $scope.options.isEditing=!$scope.options.isEditing;
-            $scope.options.rowSelection=false;
+          $scope.enableisEditing = function () {
+            $scope.options.isEditing = !$scope.options.isEditing;
+            $scope.options.rowSelection = false;
           };
 
-            $scope.saveItems = function () {
+          $scope.saveItems = function () {
 
-              $scope.searchLoading = true;
+            $scope.searchLoading = true;
             //TODO gestione setWeb
             var modifiedItems = [];
 
-              for (var i=0;i<$scope.items.length; i++)
-              {
-                if (!angular.equals($scope.items[i],$scope.savedItems[i]))
-                {
-                  modifiedItems[i] = [];
-                  angular.forEach($scope.items[i], function(value,key){
-                    if (!angular.equals(value,$scope.savedItems[i][key]) && key != "$$hashKey") {
-                      modifiedItems[i][key] = {
-                          value    : value,
-                          modified : true
-                        };
-                    }
-                    else if (key != "$$hashKey") {
-                      modifiedItems[i][key] = {value: value};
-                    }
-                  })
+            for (var i = 0; i < $scope.items.length; i++) {
+              if (!angular.equals($scope.items[i], $scope.savedItems[i])) {
+                modifiedItems[i] = [];
+                angular.forEach($scope.items[i], function (value, key) {
+                  if (!angular.equals(value, $scope.savedItems[i][key]) && key != "$$hashKey") {
+                    modifiedItems[i][key] = {
+                      value: value,
+                      modified: true
+                    };
+                  }
+                  else if (key != "$$hashKey") {
+                    modifiedItems[i][key] = {value: value};
+                  }
+                })
 
-                }
               }
+            }
             console.log("modified items:");
             console.log(modifiedItems);
-              $scope.setItemsClbk({
-                promise: setItemsClbkHandler,
-                params: modifiedItems
+            $scope.setItemsClbk({
+              promise: setItemsClbkHandler,
+              params: modifiedItems
             });
           };
 
-          $scope.goToItemDetails = function(event, selectedItems)
-          {
+          $scope.goToItemDetails = function (event, selectedItems) {
             //wrap a single value in an array
             if (!angular.isArray(selectedItems)) {
               selectedItems = [selectedItems];
@@ -249,33 +247,32 @@
           $scope.addItem = function (addModeType, event, columns, dataItems) {
 
             //modeType 1 non apre la modale ma determina un operazione in funzione della clbk
-            if (addModeType === "1")
-            {
+            if (addModeType === "1") {
               $scope.addItemClbk();
             }
             //operazione di default: apre la modale
-            else
-            {
+            else {
               $mdDialog.show({
                 clickOutsideToClose: true,
                 controller: function ($mdDialog, $scope, columns, addItemClbk) {
 
                   //recupera il min-date per gli input di tipo "date"
                   //eventualmente, se il campo ha un riferimento, assegna il min-date in funzione del valore del riferimento
-                  this.getMinDate = function(column)
-                  {
+                  this.getMinDate = function (column) {
 
-                    var colRef = $scope.columns.find(function(col){return col.model === column['min-date-ref-col']});
+                    var colRef = $scope.columns.find(function (col) {
+                      return col.model === column['min-date-ref-col']
+                    });
                     var minDate = column['min-date'];
-                    if (!minDate && colRef)
-                    {
+                    if (!minDate && colRef) {
                       minDate = $scope.items[column['min-date-ref-col']];
                     }
-                    if (!minDate && colRef)
-                    {
+                    if (!minDate && colRef) {
                       minDate = colRef['min-date'];
                     }
-                    if (!minDate){return moment();}
+                    if (!minDate) {
+                      return moment();
+                    }
 
                     return minDate;
 
@@ -296,8 +293,9 @@
                       $scope.addLoading = true;
                       //chiama funzione esterna che chiamerà il servizio di popolamento
                       $scope.addItemClbk(
-                        {promise: this.addItemClbkHandler,
-                         params: {columns:$scope.columns, items: $scope.items}
+                        {
+                          promise: this.addItemClbkHandler,
+                          params: {columns: $scope.columns, items: $scope.items}
                         });
                     }
                   };
@@ -311,18 +309,20 @@
                     }
                     else {
                       console.log("addItem: success");
-                          $mdDialog.hide();
-                      }
+                      $mdDialog.hide();
+                    }
                     $scope.addLoading = false;
                   };
 
-                  this.isDisabled = function(column){
+                  this.isDisabled = function (column) {
                     return !column.editable ||
                       (column["batchDisabled"] && $scope.items[
-                        $scope.columns.find(function(col){return col.batchEnabler}).model
-                        ]==='Y');
+                        $scope.columns.find(function (col) {
+                          return col.batchEnabler
+                        }).model
+                        ] === 'Y');
                   };
-                  this.isChanged = function(column){
+                  this.isChanged = function (column) {
                     if (column["batchEnabler"]) {
                       angular.forEach($scope.columns, function (col) {
                         if (col.batchDisabled)
@@ -331,30 +331,31 @@
                     }
                   };
 
-                  this.isRequired = function(column){
+                  this.isRequired = function (column) {
                     return column.required && !this.isDisabled(column);
 
                   };
 
-                  function init(){
+                  function init() {
                     $scope.items = {};
-                    $scope.columns = columns.filter(function(column){return !!column.editable});
+                    $scope.columns = columns.filter(function (column) {
+                      return !!column.editable
+                    });
                     //se si sta copiando un altro item
-                    if (dataItems[0])
-                    {
-                      angular.copy(dataItems[0],$scope.items);
+                    if (dataItems[0]) {
+                      angular.copy(dataItems[0], $scope.items);
                     }
                     //si sta aggiungendo un nuovo item
                     else {
-                      angular.forEach($scope.columns,function(column){
+                      angular.forEach($scope.columns, function (column) {
                         //se è configurato un valore di default lo assegna
-                        if (column.value)
-                        {
+                        if (column.value) {
                           $scope.items[column.model] = column.value;
                         }
                       });
                     }
                   }
+
                   init();
 
                 },
@@ -372,7 +373,7 @@
 
           $scope.copyItem = function (event, columns, dataItems) {
 
-            $scope.addItem(null, event,columns, dataItems)
+            $scope.addItem(null, event, columns, dataItems)
           };
 
           $scope.deleteItem = function (event, selected) {
@@ -402,22 +403,23 @@
 
           function deleteItemsClbkHandler(response) {
             console.log("deleteItemsClbkHandler called");
-              if (response.error) {
-                Notification.error({message: response.error});
-              }
-              $mdDialog.hide();
+            if (response.error) {
+              Notification.error({message: response.error});
+            }
+            $mdDialog.hide();
 
           }
 
           //TODO non utilizzato
-            $scope.internalControl = $scope.control || {};
+          $scope.internalControl = $scope.control || {};
 
           function getItemsClbkHandler(response) {
             console.log("getItemsClbkHandler called");
-            console.log("payload:",response.payload);
-            console.log("header:",response.header);
+            console.log("payload:", response.payload);
+            console.log("header:", response.header);
             if (response.error) {
               Notification.error({message: response.error});
+              $scope.searchLoading = false;
             }
             else {
               $scope.header = response.header;
@@ -428,11 +430,12 @@
               }
               else {
                 $scope.items = [];
-              //  Notification.error({message: "Risposta vuota dal server..."});
+                //  Notification.error({message: "Risposta vuota dal server..."});
               }
-            }
-            $scope.searchLoading = false;
+              //scrolla alla tabella
 
+              $scope.searchLoading = false;
+            }
           }
 
           $scope.getItems = function () {
@@ -442,9 +445,8 @@
             resetOptions();
             $scope.searchLoading = true;
 
-            $scope.getItemsClbk({promise: getItemsClbkHandler,params: $scope.searchParams});
+            $scope.getItemsClbk({promise: getItemsClbkHandler, params: $scope.searchParams});
           };
-
 
 
           $scope.removeFilter = function () {
@@ -469,26 +471,26 @@
             if (!newValue) {
               $scope.query.page = bookmark;
             }
-           // $scope.getItems();
+            // $scope.getItems();
             //$scope.getSimpleTableData();
 
           });
-        /*  $scope.$watch('querySimpleData.filter', function (newValue, oldValue) {
-            console.log('querySimpleData.filter', newValue, oldValue);
-            if (!oldValue) {
-              bookmark = $scope.querySimpleData.page;
-            }
+          /*  $scope.$watch('querySimpleData.filter', function (newValue, oldValue) {
+           console.log('querySimpleData.filter', newValue, oldValue);
+           if (!oldValue) {
+           bookmark = $scope.querySimpleData.page;
+           }
 
-            if (newValue !== oldValue) {
-              $scope.querySimpleData.page = 1;
-            }
+           if (newValue !== oldValue) {
+           $scope.querySimpleData.page = 1;
+           }
 
-            if (!newValue) {
-              $scope.querySimpleData.page = bookmark;
-            }
-            $scope.getSimpleTableData();
+           if (!newValue) {
+           $scope.querySimpleData.page = bookmark;
+           }
+           $scope.getSimpleTableData();
 
-          });*/
+           });*/
 
           $scope.editTextField = function (isEditable, event, obj, column) {
             // if auto selection is enabled you will want to stop the event
@@ -496,7 +498,7 @@
             event.stopPropagation();
             if (isEditable) {
               var model = column.model.split('.'),
-                  modelValue = model[1] ? obj[model[0]][model[1]] : obj[model[0]];
+                modelValue = model[1] ? obj[model[0]][model[1]] : obj[model[0]];
               var dialog = {
                 disableScroll: true,
                 escToClose: true,
@@ -505,15 +507,12 @@
                 save: function (input) {
                   if (model[1] && input.$modelValue && obj[model[0]][model[1]] !== input.$modelValue) {
                     obj[model[0]][model[1]] = input.$modelValue;
-                  } else
-                  if (model[0] && input.$modelValue && obj[model[0]] !== input.$modelValue)
-                  {
+                  } else if (model[0] && input.$modelValue && obj[model[0]] !== input.$modelValue) {
                     obj[model[0]] = input.$modelValue;
                   }
-                  $document.find("body").removeClass("edit-modal-opened");
+
                 },
-                cancel: function()
-                {
+                cancel: function () {
                   console.log("cancel chiamata");
                 },
                 targetEvent: event,
@@ -522,7 +521,7 @@
                 validators: column.validators
               };
 
-              $document.find("body").addClass("edit-modal-opened");
+
               var promise = $scope.options.largeEditDialog ? $mdEditDialog.large(dialog) : $mdEditDialog.small(dialog);
               promise.then(function (ctrl) {
                 var input = ctrl.getInput();
@@ -571,16 +570,15 @@
             }, 2000);
           };
 
-          function init ()
-          {
-            if ($scope.loadOnStart)
-            {
+          function init() {
+            if ($scope.loadOnStart) {
               $scope.getItems();
             }
 
           }
+
           init();
         }
       }
-})
+    })
 }());

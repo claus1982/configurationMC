@@ -16,12 +16,6 @@ body, button, html, input, select, textarea {
   margin: 0 auto
 }
 
-body, html {
-  height: auto;
-  min-height: inherit;
-  position: relative
-}
-
 body {
   font-weight: 400;
   padding: 0;

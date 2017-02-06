@@ -175,6 +175,8 @@ angular.module('app')
             $mdDialog.cancel()
           }
 
+          this.cancel = cancel;
+
           function success(items) {
 
             //variabile che determina se all'accesso alla pop-up vi era già un campo di paragone con un valore definito
@@ -246,13 +248,13 @@ angular.module('app')
               clbk: function(){ success($scope.selected);},
               align:'left',
               hide: function(){return !$scope.selected.length;}
-            },
-            {
+            }
+           /* ,{
               name: 'ANNULLA',
               clbk: function(){ cancel()},
               align:'right',
               hide: function(){return false;}
-            }
+            }*/
           ];
 
           //callback richiamata nella direttiva
