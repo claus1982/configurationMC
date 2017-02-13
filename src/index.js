@@ -8,7 +8,7 @@ angular
       'ncy-angular-breadcrumb',
       'ui-notification',
       'sticky',
-      'angularMoment',
       'moment-picker',
-      'ngStorage'
+      'ngStorage',
+      'duScroll'
     ]);

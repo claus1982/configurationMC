@@ -3,7 +3,7 @@
   ng-if="options.showFilters && searchParams">
   <div
     class="container">
-    <h2 class="title-section">Ricerca
+    <h2 class="title-section" title="">Ricerca
     </h2>
   </div>
   <div class="container clearfix">
@@ -160,7 +160,7 @@
       </div>
           </md-toolbar>
 
-          <md-table-container>
+          <md-table-container id="table-container">
             <table ng-class="{'md-table-edit-mode':options.isEditing}"
                    data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}"
                    data-ng-model="selected" md-progress="promise">
@@ -269,6 +269,8 @@
     </div>
   </div>
 </div>
+
+<div id="scroll-anchor"></div>
 
 
 

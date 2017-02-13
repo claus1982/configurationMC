@@ -106,6 +106,7 @@ angular.module('app')
       input["tipoPromo"] = $scope.tipoPromo;
       angular.extend(input,$scope.promoParams);
 
+      
       createConditionService.createCondition(createConditionService.createConditionRequest(input)).then(
         function (response) {
           $state.go('promo.detail', {
@@ -175,6 +176,8 @@ angular.module('app')
             $mdDialog.cancel()
           }
 
+          this.cancel = cancel;
+
           function success(items) {
 
             //variabile che determina se all'accesso alla pop-up vi era già un campo di paragone con un valore definito
@@ -214,7 +217,7 @@ angular.module('app')
                           {
                             model: column.model,
                             value: item[column.refModel],
-                            append: column.append ? true: false,
+                            append: !!column.append,
                             type: column.type
                           }
                         );
@@ -246,13 +249,13 @@ angular.module('app')
               clbk: function(){ success($scope.selected);},
               align:'left',
               hide: function(){return !$scope.selected.length;}
-            },
-            {
+            }
+           /* ,{
               name: 'ANNULLA',
               clbk: function(){ cancel()},
               align:'right',
               hide: function(){return false;}
-            }
+            }*/
           ];
 
           //callback richiamata nella direttiva
@@ -377,6 +380,14 @@ angular.module('app')
           $scope.items = [];
           $scope.newItem = {};
           $scope.items.push($scope.newItem);
+
+          //se è configurato un valore di default lo assegna
+          angular.forEach($scope.columns, function (column) {
+            if (column.value) {
+              $scope.newItem[column.model] = column.value;
+            }
+          });
+
         }
       }
     }

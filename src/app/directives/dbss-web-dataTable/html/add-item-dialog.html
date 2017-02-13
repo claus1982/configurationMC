@@ -42,15 +42,18 @@
           <input
             ng-if="columns[$index].type==='date'"
             title=""
+            today="true"
+            keyboard="true"
             locale="{{columns[$index]['locale']}}"
             format="{{columns[$index]['format']}}"
-            min-date="ctrl.getMinDate(columns[$index])"
+            min-date="columns[$index]['min-date']"
             max-date="columns[$index]['max-date']"
             autoclose="true"
+            validate="true"
             moment-picker="items[columns[$index].model]"
             name="{{columns[$index].model}}"
             type="text"
-            ng-model="items[columns[$index].model]"
+            ng-model="items[columns[$index]['rawModel']]"
             ng-hide="!columns[$index].editable"
             ng-disabled="ctrl.isDisabled(columns[$index])"
             ng-pattern="columns[$index].pattern"
@@ -75,6 +78,7 @@
           <input
             ng-if="columns[$index+1].type==='text' || columns[$index+1].type==='number'"
             title=""
+            validate="true"
             name="{{columns[$index+1].model}}"
             type="{{columns[$index+1].type}}"
             ng-model="items[columns[$index+1].model]"
@@ -89,15 +93,17 @@
           <input
             ng-if="columns[$index+1].type==='date'"
             title=""
+            today="true"
+            keyboard="true"
             locale="{{columns[$index+1]['locale']}}"
             format="{{columns[$index+1]['format']}}"
-            min-date="ctrl.getMinDate(columns[$index+1])"
+            min-date="columns[$index+1]['min-date']"
             max-date="columns[$index+1]['max-date']"
             autoclose="true"
             moment-picker="items[columns[$index+1].model]"
             name="{{columns[$index+1].model}}"
             type="text"
-            ng-model="items[columns[$index+1].model]"
+            ng-model="items[columns[$index+1]['rawModel']]"
             ng-hide="!columns[$index+1].editable"
             ng-disabled="ctrl.isDisabled(columns[$index+1])"
             ng-pattern="columns[$index+1].pattern"
@@ -119,8 +125,8 @@
     </div>
 
     <div class="md-dialog-actions" layout-margin layout-align="center center" layout="row">
-      <md-button flex="50" title="Aggiungi" class="md-primary" ng-click="ctrl.addItem()" ng-disabled="item.form.$invalid">Aggiungi</md-button>
       <md-button flex="50" title="Annulla" class="md-primary" ng-click="ctrl.cancel()">Annulla</md-button>
+      <md-button flex="50" title="Aggiungi" class="md-primary" ng-click="ctrl.addItem()" ng-disabled="item.form.$invalid">Aggiungi</md-button>
     </div>
   </md-content>
 </md-dialog>

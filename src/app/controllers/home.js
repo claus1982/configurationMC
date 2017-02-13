@@ -3,6 +3,8 @@ angular.module('app')
 
     function init() {
 
+      $scope.birthday = moment();
+
       $scope.model = $scope.model || {};
       $scope.model.promo = {};
       $scope.model.pack = {};

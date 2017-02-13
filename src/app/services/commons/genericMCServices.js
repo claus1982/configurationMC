@@ -44,8 +44,10 @@
         "timeout": myConfig.timeout
       };
 
+      console.log(urlEndpoint,"called");
       return $http.post(req.url, req.data, {timeout: req.timeout}).then(
         function(res){
+          console.log(urlEndpoint, "received OK");
           var dataRes = res.data[urlEndpoint+"Response"];
             if (dataRes)
           {
@@ -68,6 +70,7 @@
             return $q.reject({error: "Errore: risposta inattesa dal server..."});
         },
         function(res){
+          console.log(urlEndpoint, "received KO or timeout");
           res.error = "Timeout o nessuna risposta dal server...";
           return $q.reject(res);
         }

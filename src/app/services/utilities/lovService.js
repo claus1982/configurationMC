@@ -33,9 +33,28 @@
       return [ 'Configurable','Soft', 'Hard'];
     };
 
-    factory.getRicaricaPaymentMethod = function(){
-      return ['Carta di Credito','Pay Pal'];
-    }
+/*      Ricarica: Carta di Credito, PAY PAL , TimPersonal
+        SIM: Carta di Credito, PAY PAL , Contrassegno
+        BF: Carta di Credito, PAY PAL , Contrassegno
+        CS: Credito Residuo , Passepartout Offerte , Passepartout Offerte CC , PAY PAL*/
+
+
+    factory.getPaymentMethod = function(type){
+      switch(type) {
+       case "RICARICA":
+         return ['Carta di Credito','PAY PAL', 'TimPersonal'];
+        break;
+        case "SIM":
+        case "BF":
+          return ['Carta di Credito','Contrassegno', 'PAY PAL'];
+          break;
+        case "CS":
+          return ['Credito Residuo' , 'Passepartout Offerte' , 'Passepartout Offerte CC' , 'PAY PAL'];
+          break;
+        default:
+          return ['Credito Residuo' , 'Carta di Credito', 'Passepartout Offerte' , 'Passepartout Offerte CC' , 'PAY PAL',  'TimPersonal'];
+      }
+    };
 
 
 

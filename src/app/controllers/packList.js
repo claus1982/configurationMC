@@ -118,7 +118,7 @@ angular.module('app')
         pageSelect: true,
         showTableAlways: true,
         orderBy: "-"+dataTableResources[$scope.currentState]
-                     .columns.find(function(col){return col.orderBy}).model
+                     .columns.find(function(col){return col.orderBy}) || {}.model
     };
     }
 

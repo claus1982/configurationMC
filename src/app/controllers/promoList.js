@@ -1,7 +1,7 @@
 angular.module('app')
   .controller('promoListCtrl',
     function ($scope, $state, dataTableResources, getPromoService,
-              createPromoService,deletePromoService, promoParamsService) {
+              createPromoService,deletePromoService, promoParamsService, Notification) {
 
 
     //callback richiamata nella direttiva per recupero dati
@@ -40,7 +40,8 @@ angular.module('app')
           }
           /*fine trasformazione array to pipe*/
           else if (items[column.model]) {
-            input[column.model] = items[column.model];
+            //se il model è formattato inserisce il campo formattedModel
+            input[column.model] = items[column.formattedModel] ||items[column.model];
           }
 
       });
@@ -49,7 +50,7 @@ angular.module('app')
 
       createPromoService.createPromo(createPromoService.createPromoRequest(input)).then(
         function (response) {
-          promise(response);
+            promise(response);
         },
         function (response) {
           promise(response);
@@ -129,7 +130,7 @@ angular.module('app')
         pageSelect: true,
         showTableAlways: true,
         orderBy: "-"+dataTableResources[$scope.currentState][$scope.tipoPromo]
-                     .columns.find(function(col){return col.orderBy}).model};
+                     .columns.find(function(col){return col.orderBy})|| {}.model};
       }
     }
 

@@ -2,7 +2,7 @@
   'use strict';
   angular.module('app').factory('toolsService', function () {
 
-    var factory = {
+    return {
       'getObjPath': function (o, path) {
         if (path) {
           var logicPath = path.split("."),
@@ -118,7 +118,6 @@
         return dt;
       }
     };
-    return factory;
   });
 }());
 
