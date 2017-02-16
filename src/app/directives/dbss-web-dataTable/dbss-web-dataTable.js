@@ -151,9 +151,9 @@
 
           //determines if the search field is required
           $scope.isRequired = function () {
-            return !($scope.searchParams.find(function (obj) {
+            return !($scope.searchParams.filter(function (obj) {
               return (angular.isDefined(obj.model) && obj.model !== "");
-            }));
+            })[0]);
           };
 
 
@@ -261,10 +261,11 @@
 
 
 
+
                  function getRefCol (currentColumn, columns, refType) {
                     if (currentColumn[refType])
                     {
-                     var refCol = columns.find(function(col){return col.model === currentColumn[refType]});
+                     var refCol = columns.filter(function(col){return col.model === currentColumn[refType]})[0];
                      if (refCol)
                      {
                        return refCol;
@@ -274,22 +275,12 @@
                   }
 
 
-                  //recupera il min-date per gli input di tipo "date"
-                  //eventualmente, se il campo ha un riferimento, assegna il min-date in funzione del valore del riferimento
+                  this.closeDialog = function() {
+                    return $mdDialog.cancel();
+                  };
 
-
-
-                  //recupera il max-date per gli input di tipo "date"
-                  //eventualmente, se il campo ha un riferimento, assegna il max-date in funzione del valore del riferimento
-
-
-                  this.cancel = $mdDialog.cancel;
 
                   $scope.addItemClbk = addItemClbk;
-
-                  function success(item) {
-                    $mdDialog.hide(item);
-                  }
 
                   this.addItem = function () {
                     $scope.item.form.$setSubmitted();
@@ -323,9 +314,9 @@
                   this.isDisabled = function (column) {
                     return !column.editable ||
                       (column["batchDisabled"] && $scope.items[
-                        $scope.columns.find(function (col) {
+                        $scope.columns.filter(function (col) {
                           return col.batchEnabler
-                        }).model
+                        })[0].model
                         ] === 'Y') ||
                         !!$scope.items[column.mutuallyExclusiveCol];
                   };
@@ -335,6 +326,26 @@
                         if (col.batchDisabled)
                           $scope.items[col.model] = undefined;
                       });
+                    }
+
+                    var refCol;
+                    if (column['min-date-ref-col'] && $scope.items[column.rawModel])
+                    {
+                      refCol = getRefCol(column, $scope.columns, 'min-date-ref-col');
+                      //se la data minima per il campo d'inizio è maggiore del valore del campo di fine assegnato
+                      if (refCol && !refCol['_minDate'].isSame($scope.items[column.rawModel]))
+                      {
+                        refCol['_minDate'] = $scope.items[column.rawModel];
+                      }
+                    }
+                    if (column['max-date-ref-col'] && $scope.items[column.rawModel])
+                    {
+                      refCol = getRefCol(column, $scope.columns, 'max-date-ref-col');
+                      //se la data massima per il campo fine è maxore del valore del campo di inizio assegnato
+                      if (refCol && !refCol['_maxDate'].isSame($scope.items[column.rawModel]))
+                      {
+                        refCol['_maxDate'] = $scope.items[column.rawModel];
+                      }
                     }
                   };
 
@@ -347,9 +358,29 @@
 
                     var items = {};
 
+
                     $scope.columns = columns.filter(function (column) {
                       return !!column.editable
                     });
+
+                    //prepopolo i campi undefined
+                    angular.forEach($scope.columns,
+                      function(column){
+                      items[column.model] = undefined;
+                      //prepopolo le date minime con i valori di default indicati in configurazione
+                      if (column['min-date'])
+                        {
+                          column['_minDate'] = angular.copy(column['min-date']);
+                        }
+                        if (column['max-date'])
+                        {
+                          column['_maxDate'] = angular.copy(column['max-date']);
+                        }
+                      }
+                      );
+
+                    console.log("items: ", items);
+
                     //se si sta copiando un altro item
                     if (dataItems[0]) {
                       angular.copy(dataItems[0], items);
@@ -361,17 +392,18 @@
                         }
                       })
                     }
-                    //si sta aggiungendo un nuovo item
+                    //altrimenti se si sta aggiungendo un nuovo item
                     else {
                       angular.forEach($scope.columns, function (column) {
                         if (getRefCol(column, columns, 'min-date-ref-col')) {
                           console.log("column model: ", column.model);
-                          console.log("column ref model: ", getRefCol(column, columns, 'min-date-ref-col').model);
+                          console.log("items", items);
+                          console.log("column ref min-date: ", getRefCol(column, columns, 'min-date-ref-col')['_minDate']);
 
                         }
                         if (getRefCol(column, columns, 'max-date-ref-col')) {
                           console.log("column model: ", column.model);
-                          console.log("column ref model: ", getRefCol(column, columns, 'max-date-ref-col').model);
+                          console.log("column ref max-date: ", getRefCol(column, columns, 'max-date-ref-col')['_maxDate']);
 
                         }
                         //se è configurato un valore di default lo assegna
@@ -395,7 +427,8 @@
                   columns: columns,
                   addItemClbk: $scope.addItemClbk
                 }
-              }).then($scope.getItems);
+              }).then(
+                $scope.getItems, function(){console.log('add item cancelled')});
             }
           };
 
@@ -423,9 +456,10 @@
                 focusOnOpen: false,
                 targetEvent: event,
                 locals: {deleteItemsClbk: $scope.deleteItemsClbk},
-                templateUrl: 'app/directives/dbss-web-dataTable/html/delete-dialog.html',
-              }).then(
-                $scope.getItems);
+                templateUrl: 'app/directives/dbss-web-dataTable/html/delete-dialog.html'
+              }).
+              then(
+                $scope.getItems, function(){console.log('delete cancelled')});
             }
           };
 

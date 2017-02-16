@@ -21,8 +21,9 @@
 */
     //constraint type
 
-    factory.getSeniorityConstraintWebType = function () {
-      return ['AL', 'CB','MNP'];
+    factory.getSeniorityConstraintWebType = function (filterList) {
+      filterList = filterList || [];
+      return ['AL', 'CB','MNP'].filter(function(i) {return filterList.indexOf(i) < 0;});
     };
 
     factory.getRicaricaTypes = function () {
@@ -49,10 +50,10 @@
           return ['Carta di Credito','Contrassegno', 'PAY PAL'];
           break;
         case "CS":
-          return ['Credito Residuo' , 'Passepartout Offerte' , 'Passepartout Offerte CC' , 'PAY PAL'];
+          return ['Carta di Credito', 'Credito Residuo', 'Passepartout Offerte', 'PAY PAL'];
           break;
         default:
-          return ['Credito Residuo' , 'Carta di Credito', 'Passepartout Offerte' , 'Passepartout Offerte CC' , 'PAY PAL',  'TimPersonal'];
+          return ['Carta di Credito', 'Credito Residuo', 'Passepartout Offerte', 'PAY PAL',  'TimPersonal'];
       }
     };
 

@@ -1,7 +1,7 @@
 ( function () {
   "use strict";
   angular.module('app').service('createPromoService', function (GenericHttpService, myConfig) {
-    var baseUrl = myConfig.baseUrlPromo,
+    var baseUrl = myConfig.BASE_URL_PROMO,
       serviceName = "createPromo";
 
 

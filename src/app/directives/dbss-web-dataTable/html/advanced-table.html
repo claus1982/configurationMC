@@ -84,7 +84,8 @@
               </md-button>
               <div class="right-position">
                 <md-button class="md-icon-button" title="Filtra">
-                  <md-icon>search</md-icon>
+                  <i class="material-icons">search</i>
+                  <!--<md-icon>search</md-icon>-->
                 </md-button>
                 <input class="input-search" title ="Inserisci un valore di filtro" type="text" placeholder="Inserisci un valore di filtro..." ng-model="query.filter">
               </div>
@@ -136,7 +137,8 @@
                            ng-disabled="options.rowSelection && selected.length>1"
                            ng-click="goToItemDetails(event,selected)"
                 >
-                  <md-icon>forward</md-icon>
+                  <!--<md-icon>forward</md-icon>-->
+                  <i class="material-icons">forward</i>
                 </md-button>
 
                 <md-button ng-if="options.copyMode"
@@ -145,6 +147,7 @@
                            ng-disabled="options.rowSelection && selected.length>1"
                            ng-click="copyItem(event, columns, selected)">
                   <md-icon>content_copy</md-icon>
+                  <i class="material-icons">content_copy</i>
                 </md-button>
 
                 <md-button
@@ -154,7 +157,8 @@
                   title="Elimina"
                   ng-click="deleteItem(event, selected)"
                 >
-                  <md-icon>delete</md-icon>
+                  <!--<md-icon>delete</md-icon>-->
+                  <i class="material-icons">delete</i>
                 </md-button>
             </div>
       </div>

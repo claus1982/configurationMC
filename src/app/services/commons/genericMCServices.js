@@ -41,7 +41,7 @@
       var req = {
         "url": (baseUrl || '') + '/'+urlEndpoint,
         "data": toolsService.cleanObject(data),
-        "timeout": myConfig.timeout
+        "timeout": myConfig.TIMEOUT
       };
 
       console.log(urlEndpoint,"called");

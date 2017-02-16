@@ -1,7 +1,7 @@
 ( function () {
   "use strict";
   angular.module('app').service('getPackConditionService', function (GenericHttpService, myConfig) {
-    var baseUrl = myConfig.baseUrlPack,
+    var baseUrl = myConfig.BASE_URL_PACK,
         serviceName = "getPackCondition";
 
 

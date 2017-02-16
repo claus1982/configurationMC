@@ -1,5 +1,8 @@
 angular.module('app')
-  .controller('attributeCtrl', function ($scope, $state, dataTableResources, getWebService, setWebService) {
+  .controller('attributeCtrl', function ($scope, $state, dataTableResources, getWebService, setWebService, myConfig) {
+
+
+
     $scope.attributeModel = $scope.attributeModel || {};
     //$scope.focusinControl = {};
 
@@ -52,6 +55,20 @@ angular.module('app')
                     obj[column.model] = obj[column.model].clean("").clean(undefined).clean(null);
                   }
                 }
+                //filtra i valori dei campi che in modifica sono di tipo picklist
+                if (myConfig.ATTRIBUTE_FILTER && column.type === 'options')
+                 {
+                  if (angular.isArray(obj[column.model]))
+                  {
+                    obj[column.model] = $.map(obj[column.model], function(el){
+                      return $.inArray(el, column.options) < 0 ? null : el;
+                    });
+                  }
+                  else
+                  {
+                    obj[column.model] = $.inArray(obj[column.model],column.options) ? obj[column.model]: undefined;
+                  }
+                 }
               });
               return obj;
             });

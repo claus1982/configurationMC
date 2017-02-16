@@ -1,7 +1,7 @@
 ( function () {
   "use strict";
   angular.module("app").service("setWebService", function (GenericHttpService, myConfig) {
-    var baseUrl = myConfig.baseUrlAttr,
+    var baseUrl = myConfig.BASE_URL_ATTR,
     serviceName = "setWeb";
 
 

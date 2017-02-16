@@ -266,7 +266,7 @@ var json =
         "longDescriptionWeb":"ODS98 TIM YOUNG XL POWERED WEEK 200 min illimitato vs TIM 1000sms 2GB LTE250E ogni 7gg x 4 week poi 9E/28 ggTIMmusic incluso",
         "seniorityConstraintWeb":"AL|MNP|CB",
         "isWebSellable":"Y",
-        "paymentMethodWeb":"Credito Residuo|Carta di Credito|PAY PAL|Passepartout Offerte",
+        "paymentMethodWeb":"Credito Residuo|Carta di Credito|Contrassegno|PAY PAL|Passepartout Offerte",
         "codiceCartaServizi":"ODS98",
         "defaultFlag":"N",
         "parentDisplayName":"Default Product Servizio Mobile"

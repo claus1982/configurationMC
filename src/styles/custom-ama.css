@@ -233,11 +233,11 @@ ul {
 }
 
 .nav-wrap .menu-nav > li.hover_open > a {
-  background: url(https://img.tim.it/img/ico_freccia_dx.png) 90% 25px no-repeat
+  background: url(/src/images/icons/ico_freccia_dx.png) 90% 25px no-repeat
 }
 
 .nav-wrap .menu-nav > li.active > a {
-  background: url(https://img.tim.it/img/ico_freccia_bottom.png) 90% 25px no-repeat #fff;
+  background: url(/src/images/icons/ico_freccia_bottom.png) 90% 25px no-repeat #fff;
   position: relative;
   z-index: 101;
   height: 63px;

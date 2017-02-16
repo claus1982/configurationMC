@@ -1,28 +1,55 @@
-angular.module('app').factory('dataTableResources', ['lovService', 'regexService', function (lovService, regexService) {
+angular.module('app').factory('dataTableResources', ['lovService', 'regexService', function(lovService, regexService) {
   'use strict';
   var TODAY = moment();
-  var MAX_DAY = moment('31/12/2050','DD/MM/YYYY');
+  var MAX_DAY = moment('31/12/2050', 'DD/MM/YYYY');
   var attributi = {
     "attributi.CS": {
       title: "Attributi CS",
       getOperation: "getCSWeb",
       setOperation: "setCSWeb",
-      searchParams: [
-        {'name': 'nomeOfferta', 'title': 'Nome Gamma', 'type': 'text', minlength: '4'},
-        {'name': 'nomeProdotto', 'title': 'Nome Carta Servizi', 'type': 'text', minlength: '4'}],
+      searchParams: [{
+        'name': 'nomeOfferta',
+        'title': 'Nome Gamma',
+        'type': 'text',
+        minlength: '4'
+      },
+        {
+          'name': 'nomeProdotto',
+          'title': 'Nome Carta Servizi',
+          'type': 'text',
+          minlength: '4'
+        }
+      ],
 
-      columns: [
+      columns: [{
+        'model': 'nomeOfferta',
+        'title': 'Nome Gamma',
+        'type': 'text',
+        validators: {
+          'ng-required': true,
+          'ng-minlength': '1',
+          'md-maxlength': '40'
+        }
+      },
         {
-          'model': 'nomeOfferta', 'title': 'Nome Gamma', 'type': 'text',
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '40'}
+          'model': 'nomeProdotto',
+          'title': 'Nome Carta Servizi',
+          'type': 'text',
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '40'
+          }
         },
         {
-          'model': 'nomeProdotto', 'title': 'Nome Carta Servizi', 'type': 'text',
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '40'}
-        },
-        {
-          'model': 'codiceCartaServizi', 'title': 'Codice Carta Servizi', 'type': 'text',
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '5'}
+          'model': 'codiceCartaServizi',
+          'title': 'Codice Carta Servizi',
+          'type': 'text',
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '5'
+          }
         },
         {
           'model': 'defaultFlag',
@@ -32,16 +59,37 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           'editable': true
         },
         {
-          'model': 'parentDisplayName', 'title': 'parentDisplayName', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '100'}
+          'model': 'parentDisplayName',
+          'title': 'parentDisplayName',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '100'
+          }
         },
         {
-          'model': 'webDescription', 'title': 'webDescription', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '100'}
+          'model': 'webDescription',
+          'title': 'webDescription',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '100'
+          }
         },
         {
-          'model': 'longDescriptionWeb', 'title': 'longDescriptionWeb', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '1000'}
+          'model': 'longDescriptionWeb',
+          'title': 'longDescriptionWeb',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '1000'
+          }
         },
         {
           'model': 'seniorityConstraintWeb',
@@ -72,45 +120,121 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       title: "Attributi BF",
       getOperation: "getBFWeb",
       setOperation: "setBFWeb",
-      searchParams: [
-        {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text', minlength: '6'},
-        {'name': 'nmu', 'title': 'NMU', 'type': 'text', minlength: '6', maxlength: '6'},
-        {'name': 'descrizioneModello', 'title': 'Descrizione Modello', 'type': 'text', minlength: '2'},
-        {'name': 'descrizioneBrand', 'title': 'Descrizione Brand', 'type': 'text', minlength: '2'},
-        {'name': 'nmuPadre', 'title': 'NMU Padre', 'type': 'text', minlength: '6', maxlength: '6'}
+      searchParams: [{
+        'name': 'nomeProdotto',
+        'title': 'Nome Prodotto',
+        'type': 'text',
+        minlength: '6'
+      },
+        {
+          'name': 'nmu',
+          'title': 'NMU',
+          'type': 'text',
+          minlength: '6',
+          maxlength: '6'
+        },
+        {
+          'name': 'descrizioneModello',
+          'title': 'Descrizione Modello',
+          'type': 'text',
+          minlength: '2'
+        },
+        {
+          'name': 'descrizioneBrand',
+          'title': 'Descrizione Brand',
+          'type': 'text',
+          minlength: '2'
+        },
+        {
+          'name': 'nmuPadre',
+          'title': 'NMU Padre',
+          'type': 'text',
+          minlength: '6',
+          maxlength: '6'
+        }
       ],
-      columns: [
+      columns: [{
+        'model': 'nomeProdotto',
+        'title': 'Nome Prodotto',
+        'type': 'text',
+        validators: {
+          'ng-required': true,
+          'ng-minlength': '1',
+          'md-maxlength': '40'
+        }
+      },
         {
-          'model': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text',
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '40'}
+          'model': 'nmu',
+          'title': 'NMU',
+          'type': 'text',
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '6',
+            'md-maxlength': '6'
+          }
         },
         {
-          'model': 'nmu', 'title': 'NMU', 'type': 'text',
-          validators: {'ng-required': true, 'ng-minlength': '6', 'md-maxlength': '6'}
+          'model': 'descrizioneModello',
+          'title': 'Descrizione Modello',
+          'type': 'text',
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '100'
+          }
         },
         {
-          'model': 'descrizioneModello', 'title': 'Descrizione Modello', 'type': 'text',
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '100'}
+          'model': 'prezzo',
+          'title': 'Prezzo',
+          'type': 'number',
+          validators: {
+            'ng-required': true,
+            'min': '0',
+            'max': '999999999',
+            'maxlength': '9'
+          }
         },
         {
-          'model': 'prezzo', 'title': 'Prezzo', 'type': 'number',
-          validators: {'ng-required': true, 'min': '0', 'max': '999999999', 'maxlength': '9'}
+          'model': 'descrizioneBrand',
+          'title': 'Descrizione Brand',
+          'type': 'text',
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '100'
+          }
         },
         {
-          'model': 'descrizioneBrand', 'title': 'Descrizione Brand', 'type': 'text',
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '100'}
+          'model': 'nmuPadre',
+          'title': 'NMU Padre',
+          'type': 'text',
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '6',
+            'md-maxlength': '6'
+          }
         },
         {
-          'model': 'nmuPadre', 'title': 'NMU Padre', 'type': 'text',
-          validators: {'ng-required': true, 'ng-minlength': '6', 'md-maxlength': '6'}
+          'model': 'webDescription',
+          'title': 'webDescription',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '100'
+          }
         },
         {
-          'model': 'webDescription', 'title': 'webDescription', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '100'}
-        },
-        {
-          'model': 'longDescriptionWeb', 'title': 'longDescriptionWeb', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '1000'}
+          'model': 'longDescriptionWeb',
+          'title': 'longDescriptionWeb',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '1000'
+          }
         },
         {
           'model': 'seniorityConstraintWeb',
@@ -143,12 +267,26 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           'options': lovService.getBooleanTypes()
         },
         {
-          'model': 'pianoTariffarioWeb', 'title': 'pianoTariffarioWeb', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': 1, 'md-maxlength': 100}
+          'model': 'pianoTariffarioWeb',
+          'title': 'pianoTariffarioWeb',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': 1,
+            'md-maxlength': 100
+          }
         },
         {
-          'model': 'tidWeb', 'title': 'tidWeb', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': 1, 'md-maxlength': 100}
+          'model': 'tidWeb',
+          'title': 'tidWeb',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': 1,
+            'md-maxlength': 100
+          }
         }
       ]
     },
@@ -156,23 +294,46 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       title: "Attributi SIM",
       getOperation: "getSIMWeb",
       setOperation: "setSIMWeb",
-      searchParams: [
-        {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text', 'disabled': true, 'model': "SIM"}
-      ],
+      searchParams: [{
+        'name': 'nomeProdotto',
+        'title': 'Nome Prodotto',
+        'type': 'text',
+        'disabled': true,
+        'model': "SIM"
+      }],
 
 
-      columns: [
+      columns: [{
+        'model': 'nomeProdotto',
+        'title': 'Nome Prodotto',
+        'type': 'text',
+        validators: {
+          'ng-required': true,
+          'ng-minlength': '1',
+          'md-maxlength': '100'
+        }
+      },
         {
-          'model': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text',
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '100'}
+          'model': 'webDescription',
+          'title': 'webDescription',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '100'
+          }
         },
         {
-          'model': 'webDescription', 'title': 'webDescription', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '100'}
-        },
-        {
-          'model': 'longDescriptionWeb', 'title': 'longDescriptionWeb', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '1000'}
+          'model': 'longDescriptionWeb',
+          'title': 'longDescriptionWeb',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '1000'
+          }
         },
         {
           'model': 'seniorityConstraintWeb',
@@ -198,12 +359,26 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           'editable': true
         },
         {
-          'model': 'pianoTariffarioWeb', 'title': 'pianoTariffarioWeb', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '100'}
+          'model': 'pianoTariffarioWeb',
+          'title': 'pianoTariffarioWeb',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '100'
+          }
         },
         {
-          'model': 'tidWeb', 'title': 'tidWeb', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '100'}
+          'model': 'tidWeb',
+          'title': 'tidWeb',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '100'
+          }
         },
       ]
     },
@@ -211,23 +386,46 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       title: "Attributi Ricarica",
       getOperation: "getRicaricaWeb",
       setOperation: "setRicaricaWeb",
-      searchParams: [
-        {'name': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text', 'model': "Ricarica", minlength: '4'}
-      ],
+      searchParams: [{
+        'name': 'nomeProdotto',
+        'title': 'Nome Prodotto',
+        'type': 'text',
+        'model': "Ricarica",
+        minlength: '4'
+      }],
 
 
-      columns: [
+      columns: [{
+        'model': 'nomeProdotto',
+        'title': 'Nome Prodotto',
+        'type': 'text',
+        validators: {
+          'ng-required': true,
+          'ng-minlength': '1',
+          'md-maxlength': '40'
+        }
+      },
         {
-          'model': 'nomeProdotto', 'title': 'Nome Prodotto', 'type': 'text',
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '40'}
+          'model': 'webDescription',
+          'title': 'webDescription',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '100'
+          }
         },
         {
-          'model': 'webDescription', 'title': 'webDescription', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '100'}
-        },
-        {
-          'model': 'longDescriptionWeb', 'title': 'longDescriptionWeb', 'type': 'text', 'editable': true,
-          validators: {'ng-required': true, 'ng-minlength': '1', 'md-maxlength': '1000'}
+          'model': 'longDescriptionWeb',
+          'title': 'longDescriptionWeb',
+          'type': 'text',
+          'editable': true,
+          validators: {
+            'ng-required': true,
+            'ng-minlength': '1',
+            'md-maxlength': '1000'
+          }
         },
         {
           'model': 'isWebSellable',
@@ -262,16 +460,22 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
     "attributi.ricarica": attributi["attributi.ricarica"],
     "promo.categories": {
       title: "Promo",
-      columns: [
-        {'model': 'promo', 'title': 'Promo', 'type': 'text'},
-        {'model': 'description', 'title': 'Descrizione', 'type': 'text'}
-      ],
-      items: [
+      columns: [{
+        'model': 'promo',
+        'title': 'Promo',
+        'type': 'text'
+      },
         {
-          "tipoPromo": "PROMO_ID1",
-          "promo": "PROMO ID1 Bene Fisico",
-          "description": "Promo che sconta, da canale Web ed in un determinato periodo, un Bene Fisico in vendita diretta con uno sconto a valore assoluto o in percentuale"
-        },
+          'model': 'description',
+          'title': 'Descrizione',
+          'type': 'text'
+        }
+      ],
+      items: [{
+        "tipoPromo": "PROMO_ID1",
+        "promo": "PROMO ID1 Bene Fisico",
+        "description": "Promo che sconta, da canale Web ed in un determinato periodo, un Bene Fisico in vendita diretta con uno sconto a valore assoluto o in percentuale"
+      },
         {
           "tipoPromo": "PROMO_ID2",
           "promo": "PROMO ID2 Carta Servizi",
@@ -326,8 +530,12 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
        */
       "PROMO_ID1": {
         title: 'ID 1',
-        columns: [
-          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text', 'link': true},
+        columns: [{
+          'model': 'codicePromo',
+          'title': 'Codice Promo',
+          'type': 'text',
+          'link': true
+        },
           {
             'model': 'nomePromo',
             'title': 'Nome Promo',
@@ -343,209 +551,6 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             editable: true,
             required: true,
             maxlength: "100"
-          },
-          {
-            'model': 'inizioValidita', 'title': 'Inizio Validita', 'type': 'date', editable: true, required: true,
-            'min-date': TODAY, 'max-date':MAX_DAY, locale: "it", format: "DD/MM/YYYY", rawModel: 'inizioValiditaRaw'
-            ,'max-date-ref-col': 'fineValidita'
-          },
-          {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
-            editable: true,
-            required: true,
-            'min-date-ref-col': 'inizioValidita',
-            'max-date':MAX_DAY,
-            locale: "it",
-            format: "DD/MM/YYYY",
-            orderBy: true,
-            rawModel: 'fineValiditaRaw'
-          }
-        ]
-      },
-      "PROMO_ID2": {
-        title: 'ID 2',
-        columns: [
-          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text', 'link': true},
-          {
-            'model': 'nomePromo',
-            'title': 'Nome Promo',
-            'type': 'text',
-            editable: true,
-            required: true,
-            maxlength: "30"
-          },
-          {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione Promo',
-            'type': 'text',
-            editable: true,
-            required: true,
-            maxlength: "100"
-          },
-          {
-            'model': 'inizioValidita', 'title': 'Inizio Validita', 'type': 'date', editable: true, required: true,
-            'min-date': TODAY, 'max-date':MAX_DAY, locale: "it", format: "DD/MM/YYYY",rawModel: 'inizioValiditaRaw'
-            ,'max-date-ref-col': 'fineValidita'
-          },
-          {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
-            editable: true,
-            required: true,
-            'min-date-ref-col': 'inizioValidita',
-            'max-date':MAX_DAY,
-            locale: "it",
-            format: "DD/MM/YYYY",
-            orderBy: true,
-            rawModel: 'fineValiditaRaw'
-          }
-        ]
-      },
-      "PROMO_ID3": {
-        title: 'ID 3',
-        columns: [
-          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text', 'link': true},
-          {
-            'model': 'nomePromo',
-            'title': 'Nome Promo',
-            'type': 'text',
-            editable: true,
-            required: true,
-            maxlength: "30"
-          },
-          {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione Promo',
-            'type': 'text',
-            editable: true,
-            required: true,
-            maxlength: "100"
-          },
-          {
-            'model': 'inizioValidita', 'title': 'Inizio Validita', 'type': 'date', editable: true, required: true,
-            'min-date': TODAY, 'max-date':MAX_DAY, locale: "it", format: "DD/MM/YYYY",rawModel: 'inizioValiditaRaw'
-            ,'max-date-ref-col': 'fineValidita'
-          },
-          {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
-            editable: true,
-            required: true,
-            'min-date-ref-col': 'inizioValidita',
-            'max-date':MAX_DAY,
-            locale: "it",
-            format: "DD/MM/YYYY",
-            orderBy: true,
-            rawModel: 'fineValiditaRaw'
-          }
-        ]
-      },
-      "PROMO_ID4": {
-        title: 'ID 4',
-        columns: [
-          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text', 'link': true},
-          {
-            'model': 'nomePromo',
-            'title': 'Nome Promo',
-            'type': 'text',
-            editable: true,
-            required: true,
-            maxlength: "30"
-          },
-          {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione Promo',
-            'type': 'text',
-            editable: true,
-            required: true,
-            maxlength: "100"
-          },
-          {
-            'model': 'inizioValidita', 'title': 'Inizio Validita', 'type': 'date', editable: true, required: true,
-            'min-date': TODAY, 'max-date':MAX_DAY, locale: "it", format: "DD/MM/YYYY",rawModel: 'inizioValiditaRaw'
-            ,'max-date-ref-col': 'fineValidita'
-          },
-          {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
-            editable: true,
-            required: true,
-            'min-date-ref-col': 'inizioValidita',
-            'max-date':MAX_DAY,
-            locale: "it",
-            format: "DD/MM/YYYY",
-            orderBy: true,
-            rawModel: 'fineValiditaRaw'
-          }
-        ]
-      },
-      "PROMO_ID5": {
-        title: 'ID 5',
-        columns: [
-          {'model': 'codicePromo', 'title': 'Codice Promo', 'type': 'text', 'link': true},
-          {
-            'model': 'nomePromo',
-            'title': 'Nome Promo',
-            'type': 'text',
-            editable: true,
-            required: true,
-            maxlength: "30"
-          },
-          {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione Promo',
-            'type': 'text',
-            editable: true,
-            required: true,
-            maxlength: "100"
-          },
-          {
-            'model': 'inizioValidita', 'title': 'Inizio Validita', 'type': 'date', editable: true, required: true,
-            'min-date': TODAY, 'max-date':MAX_DAY, locale: "it", format: "DD/MM/YYYY", rawModel: 'inizioValiditaRaw'
-            ,'max-date-ref-col': 'fineValidita'
-          },
-          {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
-            editable: true,
-            required: true,
-            'min-date-ref-col': 'inizioValidita',
-            'max-date':MAX_DAY,
-            locale: "it",
-            format: "DD/MM/YYYY",
-            orderBy: true,
-            rawModel: 'fineValiditaRaw'
-          }
-        ]
-      },
-      "PROMO_ID6_1": {
-        title: 'ID 6.1',
-        columns: [
-          {'model': 'codicePromo', 'title': 'Codice promo', 'type': 'text', color: 'green', 'link': true},
-          {
-            'model': 'promoBatch', 'title': 'Promo Batch', 'type': 'options', 'options': lovService.getBooleanTypes(),
-            editable: true, required: true, 'batchEnabler': true, color: 'green', value: lovService.getBooleanTypes()[0]
-          },
-          {
-            'model': 'descrizionePromo', 'title': 'Descrizione promo', 'type': 'text', editable: true, required: true,
-            'batchDisabled': true, color: 'green', maxlength: "1000"
-          },
-          {
-            'model': 'inizioGenerazione', 'title': 'Inizio Generazione', 'type': 'date', editable: true, required: true,
-            'batchDisabled': true, 'min-date': TODAY, 'max-date':MAX_DAY,
-            locale: "it", format: "DD/MM/YYYY", color: 'green', rawModel: 'inizioGenerazioneRaw'
-            ,'max-date-ref-col': 'fineGenerazione'
-          },
-          {
-            'model': 'fineGenerazione', 'title': 'Fine Generazione', 'type': 'date', editable: true, required: true,
-            'batchDisabled': true, 'min-date-ref-col': 'inizioGenerazione', 'max-date':MAX_DAY,
-            locale: "it", format: "DD/MM/YYYY", color: 'green',  rawModel: 'fineGenerazioneRaw'
           },
           {
             'model': 'inizioValidita',
@@ -553,20 +558,324 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'type': 'date',
             editable: true,
             required: true,
-            'max-date-ref-col': 'fineValidita',
-            'batchDisabled': true,
             'min-date': TODAY,
-            'max-date':MAX_DAY,
+            'max-date': MAX_DAY,
             locale: "it",
             format: "DD/MM/YYYY",
-            color: 'orange',
-            rawModel: 'inizioValiditaRaw'
+            rawModel: 'inizioValiditaRaw',
+            'min-date-ref-col': 'fineValidita'
           },
           {
-            'model': 'fineValidita', 'title': 'Fine Validita', 'type': 'date', editable: true, required: true,
-            'batchDisabled': true, 'min-date-ref-col': 'inizioValidita', 'max-date':MAX_DAY, locale: "it",
-            format: "DD/MM/YYYY", color: 'orange', orderBy: true,  rawModel: 'fineValiditaRaw'
-
+            'model': 'fineValidita',
+            'title': 'Fine Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            orderBy: true,
+            rawModel: 'fineValiditaRaw',
+            'max-date-ref-col': 'inizioValidita'
+          }
+        ]
+      },
+      "PROMO_ID2": {
+        title: 'ID 2',
+        columns: [{
+          'model': 'codicePromo',
+          'title': 'Codice Promo',
+          'type': 'text',
+          'link': true
+        },
+          {
+            'model': 'nomePromo',
+            'title': 'Nome Promo',
+            'type': 'text',
+            editable: true,
+            required: true,
+            maxlength: "30"
+          },
+          {
+            'model': 'descrizionePromo',
+            'title': 'Descrizione Promo',
+            'type': 'text',
+            editable: true,
+            required: true,
+            maxlength: "100"
+          },
+          {
+            'model': 'inizioValidita',
+            'title': 'Inizio Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            rawModel: 'inizioValiditaRaw',
+            'min-date-ref-col': 'fineValidita'
+          },
+          {
+            'model': 'fineValidita',
+            'title': 'Fine Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            orderBy: true,
+            rawModel: 'fineValiditaRaw',
+            'max-date-ref-col': 'inizioValidita'
+          }
+        ]
+      },
+      "PROMO_ID3": {
+        title: 'ID 3',
+        columns: [{
+          'model': 'codicePromo',
+          'title': 'Codice Promo',
+          'type': 'text',
+          'link': true
+        },
+          {
+            'model': 'nomePromo',
+            'title': 'Nome Promo',
+            'type': 'text',
+            editable: true,
+            required: true,
+            maxlength: "30"
+          },
+          {
+            'model': 'descrizionePromo',
+            'title': 'Descrizione Promo',
+            'type': 'text',
+            editable: true,
+            required: true,
+            maxlength: "100"
+          },
+          {
+            'model': 'inizioValidita',
+            'title': 'Inizio Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            rawModel: 'inizioValiditaRaw',
+            'min-date-ref-col': 'fineValidita'
+          },
+          {
+            'model': 'fineValidita',
+            'title': 'Fine Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            orderBy: true,
+            rawModel: 'fineValiditaRaw',
+            'max-date-ref-col': 'inizioValidita'
+          }
+        ]
+      },
+      "PROMO_ID4": {
+        title: 'ID 4',
+        columns: [{
+          'model': 'codicePromo',
+          'title': 'Codice Promo',
+          'type': 'text',
+          'link': true
+        },
+          {
+            'model': 'nomePromo',
+            'title': 'Nome Promo',
+            'type': 'text',
+            editable: true,
+            required: true,
+            maxlength: "30"
+          },
+          {
+            'model': 'descrizionePromo',
+            'title': 'Descrizione Promo',
+            'type': 'text',
+            editable: true,
+            required: true,
+            maxlength: "100"
+          },
+          {
+            'model': 'inizioValidita',
+            'title': 'Inizio Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            rawModel: 'inizioValiditaRaw',
+            'min-date-ref-col': 'fineValidita'
+          },
+          {
+            'model': 'fineValidita',
+            'title': 'Fine Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            orderBy: true,
+            rawModel: 'fineValiditaRaw',
+            'max-date-ref-col': 'inizioValidita'
+          }
+        ]
+      },
+      "PROMO_ID5": {
+        title: 'ID 5',
+        columns: [{
+          'model': 'codicePromo',
+          'title': 'Codice Promo',
+          'type': 'text',
+          'link': true
+        },
+          {
+            'model': 'nomePromo',
+            'title': 'Nome Promo',
+            'type': 'text',
+            editable: true,
+            required: true,
+            maxlength: "30"
+          },
+          {
+            'model': 'descrizionePromo',
+            'title': 'Descrizione Promo',
+            'type': 'text',
+            editable: true,
+            required: true,
+            maxlength: "100"
+          },
+          {
+            'model': 'inizioValidita',
+            'title': 'Inizio Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            rawModel: 'inizioValiditaRaw',
+            'min-date-ref-col': 'fineValidita'
+          },
+          {
+            'model': 'fineValidita',
+            'title': 'Fine Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            orderBy: true,
+            rawModel: 'fineValiditaRaw',
+            'max-date-ref-col': 'inizioValidita'
+          }
+        ]
+      },
+      "PROMO_ID6_1": {
+        title: 'ID 6.1',
+        columns: [{
+          'model': 'codicePromo',
+          'title': 'Codice promo',
+          'type': 'text',
+          color: 'green',
+          'link': true
+        },
+          {
+            'model': 'promoBatch',
+            'title': 'Promo Batch',
+            'type': 'options',
+            'options': lovService.getBooleanTypes(),
+            editable: true,
+            required: true,
+            'batchEnabler': true,
+            color: 'green',
+            value: lovService.getBooleanTypes()[0]
+          },
+          {
+            'model': 'descrizionePromo',
+            'title': 'Descrizione promo',
+            'type': 'text',
+            editable: true,
+            required: true,
+            'batchDisabled': true,
+            color: 'green',
+            maxlength: "1000"
+          },
+          {
+            'model': 'inizioGenerazione',
+            'title': 'Inizio Generazione',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            rawModel: 'inizioGenerazioneRaw',
+            'min-date-ref-col': 'fineGenerazione'
+          },
+          {
+            'model': 'fineGenerazione',
+            'title': 'Fine Generazione',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            orderBy: true,
+            rawModel: 'fineGenerazioneRaw',
+            'max-date-ref-col': 'inizioGenerazione'
+          },
+          {
+            'model': 'inizioValidita',
+            'title': 'Inizio Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            rawModel: 'inizioValiditaRaw',
+            'min-date-ref-col': 'fineValidita'
+          },
+          {
+            'model': 'fineValidita',
+            'title': 'Fine Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            orderBy: true,
+            rawModel: 'fineValiditaRaw',
+            'max-date-ref-col': 'inizioValidita'
           },
           {
             'model': 'codiceTemplateSMS',
@@ -614,35 +923,87 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       },
       "PROMO_ID6_2": {
         title: 'ID 6.2',
-        columns: [
-          {'model': 'codicePromo', 'title': 'Codice promo', 'type': 'text', color: 'green', 'link': true},
+        columns: [{
+          'model': 'codicePromo',
+          'title': 'Codice promo',
+          'type': 'text',
+          color: 'green',
+          'link': true
+        },
           {
-            'model': 'promoBatch', 'title': 'Promo Batch', 'type': 'options', 'options': lovService.getBooleanTypes(),
-            editable: true, required: true, 'batchEnabler': true, color: 'green', value: lovService.getBooleanTypes()[0]
+            'model': 'promoBatch',
+            'title': 'Promo Batch',
+            'type': 'options',
+            'options': lovService.getBooleanTypes(),
+            editable: true,
+            required: true,
+            'batchEnabler': true,
+            color: 'green',
+            value: lovService.getBooleanTypes()[0]
           },
           {
-            'model': 'descrizionePromo', 'title': 'Descrizione promo', 'type': 'text', editable: true, required: true,
-            'batchDisabled': true, color: 'green', maxlength: "1000"
+            'model': 'descrizionePromo',
+            'title': 'Descrizione promo',
+            'type': 'text',
+            editable: true,
+            required: true,
+            'batchDisabled': true,
+            color: 'green',
+            maxlength: "1000"
           },
           {
-            'model': 'inizioGenerazione', 'title': 'Inizio Generazione', 'type': 'date', editable: true, required: true,
-            'batchDisabled': true, 'min-date': TODAY, 'max-date':MAX_DAY
-            , locale: "it", format: "DD/MM/YYYY", color: 'green', rawModel: 'inizioGenerazioneRaw' ,'max-date-ref-col': 'fineGenerazione'
+            'model': 'inizioGenerazione',
+            'title': 'Inizio Generazione',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            rawModel: 'inizioGenerazioneRaw',
+            'min-date-ref-col': 'fineGenerazione'
           },
           {
-            'model': 'fineGenerazione', 'title': 'Fine Generazione', 'type': 'date', editable: true, required: true,
-            'batchDisabled': true, 'min-date-ref-col': 'inizioGenerazione',
-            'max-date':MAX_DAY, locale: "it", format: "DD/MM/YYYY", color: 'green', rawModel: 'fineGenerazioneRaw'
+            'model': 'fineGenerazione',
+            'title': 'Fine Generazione',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            orderBy: true,
+            rawModel: 'fineGenerazioneRaw',
+            'max-date-ref-col': 'inizioGenerazione'
           },
           {
-            'model': 'inizioValidita', 'title': 'Inizio Validita', 'type': 'date', editable: true, required: true,
-            'batchDisabled': true, 'min-date': TODAY, 'max-date':MAX_DAY, locale: "it", format: "DD/MM/YYYY", color: 'orange',
-            rawModel: 'inizioValiditaRaw', 'max-date-ref-col': 'fineValidita'
+            'model': 'inizioValidita',
+            'title': 'Inizio Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            rawModel: 'inizioValiditaRaw',
+            'min-date-ref-col': 'fineValidita'
           },
           {
-            'model': 'fineValidita', 'title': 'Fine Validita', 'type': 'date', editable: true, required: true,
-            'batchDisabled': true,'max-date':MAX_DAY, locale: "it", format: "DD/MM/YYYY", color: 'orange', orderBy: true,
-            rawModel: 'fineValiditaRaw', 'min-date-ref-col': 'inizioValidita'
+            'model': 'fineValidita',
+            'title': 'Fine Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            orderBy: true,
+            rawModel: 'fineValiditaRaw',
+            'max-date-ref-col': 'inizioValidita'
           },
           {
             'model': 'codiceTemplateSMS',
@@ -667,8 +1028,14 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             mutuallyExclusiveCol: "codiceTemplateSMS"
           },
           {
-            'model': 'flagLinea', 'title': 'FlagLinea', 'type': 'options', 'options': lovService.getBooleanTypes()
-            , editable: true, required: true, 'batchDisabled': true, color: 'orange'
+            'model': 'flagLinea',
+            'title': 'FlagLinea',
+            'type': 'options',
+            'options': lovService.getBooleanTypes(),
+            editable: true,
+            required: true,
+            'batchDisabled': true,
+            color: 'orange'
           },
           {
             'model': 'limiteUtilizzoCoupon',
@@ -684,15 +1051,32 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       },
       "PROMO_ID7": {
         title: 'ID 7',
-        columns: [
-          {'model': 'codicePromo', 'title': 'Codice promo', 'type': 'text', color: 'green', 'link': true},
+        columns: [{
+          'model': 'codicePromo',
+          'title': 'Codice promo',
+          'type': 'text',
+          color: 'green',
+          'link': true
+        },
           {
-            'model': 'promoBatch', 'title': 'Promo Batch', 'type': 'options', 'options': lovService.getBooleanTypes(),
-            editable: true, required: true, 'batchEnabler': true, color: 'green', value: lovService.getBooleanTypes()[0]
+            'model': 'promoBatch',
+            'title': 'Promo Batch',
+            'type': 'options',
+            'options': lovService.getBooleanTypes(),
+            editable: true,
+            required: true,
+            'batchEnabler': true,
+            color: 'green',
+            value: lovService.getBooleanTypes()[0]
           },
           {
-            'model': 'descrizionePromo', 'title': 'Descrizione promo', 'type': 'text', editable: true, required: true,
-            'batchDisabled': true, color: 'green'
+            'model': 'descrizionePromo',
+            'title': 'Descrizione promo',
+            'type': 'text',
+            editable: true,
+            required: true,
+            'batchDisabled': true,
+            color: 'green'
           },
           {
             'model': 'inizioGenerazione',
@@ -700,29 +1084,53 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'type': 'date',
             editable: true,
             required: true,
-            'batchDisabled': true,
             'min-date': TODAY,
-            'max-date':MAX_DAY,
+            'max-date': MAX_DAY,
             locale: "it",
             format: "DD/MM/YYYY",
-            color: 'green', rawModel: 'inizioGenerazioneRaw'
-            ,'max-date-ref-col': 'fineGenerazione'
+            rawModel: 'inizioGenerazioneRaw',
+            'min-date-ref-col': 'fineGenerazione'
           },
           {
-            'model': 'fineGenerazione', 'title': 'Fine Generazione', 'type': 'date', editable: true, required: true,
-            'batchDisabled': true, 'min-date-ref-col': 'inizioGenerazione', 'max-date':MAX_DAY,
-            locale: "it", format: "DD/MM/YYYY", color: 'green', rawModel: 'fineGenerazioneRaw'
+            'model': 'fineGenerazione',
+            'title': 'Fine Generazione',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            orderBy: true,
+            rawModel: 'fineGenerazioneRaw',
+            'max-date-ref-col': 'inizioGenerazione'
           },
           {
-            'model': 'inizioValidita', 'title': 'Inizio Validita', 'type': 'date', editable: true, required: true,
-            'batchDisabled': true, 'min-date': TODAY, 'max-date':MAX_DAY, locale: "it",
-            format: "DD/MM/YYYY", color: 'orange', rawModel: 'inizioValiditaRaw', 'max-date-ref-col': 'fineValidita'
+            'model': 'inizioValidita',
+            'title': 'Inizio Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            rawModel: 'inizioValiditaRaw',
+            'min-date-ref-col': 'fineValidita'
           },
           {
-            'model': 'fineValidita', 'title': 'Fine Validita', 'type': 'date', editable: true, required: true,
-            'batchDisabled': true, 'min-date-ref-col': 'inizioValidita',
-            'max-date':MAX_DAY, locale: "it", format: "DD/MM/YYYY", color: 'orange', orderBy: true,
-            rawModel: 'fineValiditaRaw'
+            'model': 'fineValidita',
+            'title': 'Fine Validita',
+            'type': 'date',
+            editable: true,
+            required: true,
+            'min-date': TODAY,
+            'max-date': MAX_DAY,
+            locale: "it",
+            format: "DD/MM/YYYY",
+            orderBy: true,
+            rawModel: 'fineValiditaRaw',
+            'max-date-ref-col': 'inizioValidita'
           },
           {
             'model': 'codiceTemplateSMS',
@@ -747,8 +1155,14 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             mutuallyExclusiveCol: "codiceTemplateSMS"
           },
           {
-            'model': 'flagLinea', 'title': 'FlagLinea', 'type': 'options', 'options': lovService.getBooleanTypes()
-            , editable: true, required: true, 'batchDisabled': true, color: 'orange'
+            'model': 'flagLinea',
+            'title': 'FlagLinea',
+            'type': 'options',
+            'options': lovService.getBooleanTypes(),
+            editable: true,
+            required: true,
+            'batchDisabled': true,
+            color: 'orange'
           },
           {
             'model': 'limiteUtilizzoCoupon',
@@ -767,18 +1181,29 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       title: "Condition List",
       "PROMO_ID1": {
         title: "PROMO ID1",
-        buttons: [
-          {
-            'label': 'Ricerca BF',
-            'model': 'BF',
-            'reference': 'attributi.BF',
-            'columns': [{model: 'bf2purchase', 'refModel': 'nomeProdotto'},
-              {model: 'prezzoAttivazione', 'refModel': 'prezzo', type: 'number'}
-            ]
-          }
-        ],
-        columns: [
-          {'model': 'bf2purchase', 'title': 'NMU', 'type': 'text', required: true},
+        buttons: [{
+          'label': 'Ricerca BF',
+          'model': 'BF',
+          'reference': 'attributi.BF',
+          'multiple': true,
+          'columns': [{
+            model: 'bf2purchase',
+            'refModel': 'nomeProdotto',
+            append: true
+          },
+            {
+              model: 'prezzoAttivazione',
+              'refModel': 'prezzo',
+              type: 'number'
+            }
+          ]
+        }],
+        columns: [{
+          'model': 'bf2purchase',
+          'title': 'NMU',
+          'type': 'text',
+          required: true
+        },
           {
             'model': 'isPadreBf2purchase',
             'title': 'IsPadre',
@@ -788,99 +1213,185 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             required: true,
             value: lovService.getBooleanTypes()[0]
           },
-          {'model': 'prezzoAttivazione', 'title': 'Prezzo', 'type': 'number', required: true, 'icon': 'euro_symbol'},
           {
-            'model': 'scontoValore', 'title': 'Sconto a Valore', 'icon': 'euro_symbol',
-            'type': 'number', 'step': '0.01', pattern: regexService.scontoValore, maxlength: "10",
-            editable: true, mutuallyExclusive: 'scontoPercentuale'
+            'model': 'prezzoAttivazione',
+            'title': 'Prezzo',
+            'type': 'number',
+            required: true,
+            'icon': 'euro_symbol'
           },
           {
-            'model': 'scontoPercentuale', 'title': 'Sconto a Percentuale', 'icon': '%',
-            'type': 'number', 'step': '0.01', pattern: regexService.percentuale, maxlength: "5",
-            editable: true, mutuallyExclusive: 'scontoValore'
+            'model': 'scontoValore',
+            'title': 'Sconto a Valore',
+            'icon': 'euro_symbol',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.scontoValore,
+            maxlength: "10",
+            editable: true,
+            mutuallyExclusive: 'scontoPercentuale'
+          },
+          {
+            'model': 'scontoPercentuale',
+            'title': 'Sconto a Percentuale',
+            'icon': '%',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.percentuale,
+            maxlength: "5",
+            editable: true,
+            mutuallyExclusive: 'scontoValore'
           }
         ]
       },
       "PROMO_ID2": {
         title: "PROMO ID2",
-        buttons: [
+        buttons: [{
+          'label': 'Ricerca CS',
+          'model': 'CS',
+          'reference': 'attributi.CS',
+          'columns': [{
+            model: 'offerta',
+            'refModel': 'nomeOfferta',
+            compare: true
+          },
+            {
+              model: 'cs2purchase',
+              'refModel': 'nomeProdotto'
+            }
+          ]
+        }],
+        columns: [{
+          'model': 'offerta',
+          'title': 'Offerta',
+          'type': 'text'
+        },
           {
-            'label': 'Ricerca CS',
-            'model': 'CS',
-            'reference': 'attributi.CS',
-            'columns': [
-              {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-              {model: 'cs2purchase', 'refModel': 'nomeProdotto'}]
-          }
-        ],
-        columns: [
-          {'model': 'offerta', 'title': 'Offerta', 'type': 'text'},
-          {'model': 'cs2purchase', 'title': 'Carta Servizi', 'type': 'text'},
-          {
-            'model': 'scontoValore', 'title': 'Sconto a Valore', 'icon': 'euro_symbol',
-            'type': 'number', 'step': '0.01', pattern: regexService.scontoValore, maxlength: "10",
-            editable: true, mutuallyExclusive: 'scontoPercentuale'
+            'model': 'cs2purchase',
+            'title': 'Carta Servizi',
+            'type': 'text'
           },
           {
-            'model': 'scontoPercentuale', 'title': 'Sconto a Percentuale', 'icon': '%',
-            'type': 'number', 'step': '0.01', pattern: regexService.percentuale, maxlength: "5",
-            editable: true, mutuallyExclusive: 'scontoValore'
+            'model': 'scontoValore',
+            'title': 'Sconto a Valore',
+            'icon': 'euro_symbol',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.scontoValore,
+            maxlength: "10",
+            editable: true,
+            mutuallyExclusive: 'scontoPercentuale'
+          },
+          {
+            'model': 'scontoPercentuale',
+            'title': 'Sconto a Percentuale',
+            'icon': '%',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.percentuale,
+            maxlength: "5",
+            editable: true,
+            mutuallyExclusive: 'scontoValore'
           }
         ]
       },
       "PROMO_ID3": {
         title: "PROMO ID3",
-        buttons: [
-          {
-            'label': 'Ricerca CS2P',
-            'model': 'CS2P',
-            required: true,
-            'multiple': true,
-            'reference': 'attributi.CS',
-            'columns': [
-              {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-              {model: 'cs2purchase', 'refModel': 'nomeProdotto', append: true}]
+        buttons: [{
+          'label': 'Ricerca CS2P',
+          'model': 'CS2P',
+          required: true,
+          'multiple': true,
+          'reference': 'attributi.CS',
+          'columns': [{
+            model: 'offerta',
+            'refModel': 'nomeOfferta',
+            compare: true
           },
+            {
+              model: 'cs2purchase',
+              'refModel': 'nomeProdotto',
+              append: true
+            }
+          ]
+        },
           {
             'label': 'Ricerca BF2P',
             'model': 'BF2P',
             required: true,
             'multiple': true,
             'reference': 'attributi.BF',
-            'columns': [
-              {model: 'bf2purchase', 'refModel': 'nomeProdotto', append: true}]
+            'columns': [{
+              model: 'bf2purchase',
+              'refModel': 'nomeProdotto',
+              append: true
+            }]
           },
           {
             'label': 'Ricerca CSBonus',
             'model': 'CSBonus',
             mutuallyExclusive: 'BFBonus',
             'reference': 'attributi.CS',
-            'columns': [
-              {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-              {model: 'csWithBonus', 'refModel': 'nomeProdotto'}]
+            'columns': [{
+              model: 'offerta',
+              'refModel': 'nomeOfferta',
+              compare: true
+            },
+              {
+                model: 'csWithBonus',
+                'refModel': 'nomeProdotto'
+              }
+            ]
           },
           {
             'label': 'Ricerca BFBonus',
             'model': 'BFBonus',
             mutuallyExclusive: 'CSBonus',
             'reference': 'attributi.BF',
-            'columns': [
-              {model: 'bfwithBonus', 'refModel': 'nomeProdotto'}]
+            'columns': [{
+              model: 'bfwithBonus',
+              'refModel': 'nomeProdotto'
+            }]
           }
         ],
-        columns: [
+        columns: [{
+          'model': 'tipologiaVendita',
+          'title': 'Tipologia Vendita',
+          'type': 'options',
+          'options': lovService.getSeniorityConstraintWebType(),
+          multiple: true,
+          editable: true,
+          required: true,
+          color: 'green'
+        },
           {
-            'model': 'tipologiaVendita', 'title': 'Tipologia Vendita', 'type': 'options',
-            'options': lovService.getSeniorityConstraintWebType(), multiple: true,
-            editable: true, required: true, color: 'green'
+            'model': 'taglioRicarica',
+            'title': 'Taglio Ricarica',
+            'type': 'number',
+            editable: true,
+            required: true,
+            color: 'green'
           },
           {
-            'model': 'taglioRicarica', 'title': 'Taglio Ricarica', 'type': 'number', editable: true,
-            required: true, color: 'green'
+            'model': 'offerta',
+            'title': 'Offerta',
+            'type': 'text',
+            color: 'green'
           },
-          {'model': 'offerta', 'title': 'Offerta', 'type': 'text', color: 'green'},
-          {'model': 'cs2purchase', 'title': 'cs2purchase', 'type': 'text', orRequired: 'bf2purchase', color: 'green'},
-          {'model': 'bf2purchase', 'title': 'bf2purchase', 'type': 'text', orRequired: 'cs2purchase', color: 'green'},
+          {
+            'model': 'cs2purchase',
+            'title': 'cs2purchase',
+            'type': 'text',
+            orRequired: 'bf2purchase',
+            color: 'green'
+          },
+          {
+            'model': 'bf2purchase',
+            'title': 'bf2purchase',
+            'type': 'text',
+            orRequired: 'cs2purchase',
+            color: 'green'
+          },
           {
             'model': 'isPadreBf2purchase',
             'title': 'IsPadre',
@@ -891,7 +1402,12 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             color: 'green',
             value: lovService.getBooleanTypes()[0]
           },
-          {'model': 'offerta', 'title': 'Offerta', 'type': 'text', color: 'orange'},
+          {
+            'model': 'offerta',
+            'title': 'Offerta',
+            'type': 'text',
+            color: 'orange'
+          },
           {
             'model': 'csWithBonus',
             'title': 'csWithBonus',
@@ -907,62 +1423,124 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             color: 'orange'
           },
           {
-            'model': 'scontoValore', 'title': 'Sconto a Valore', 'icon': 'euro_symbol',
-            'type': 'number', 'step': '0.01', pattern: regexService.scontoValore, maxlength: "10",
-            editable: true, mutuallyExclusive: 'scontoPercentuale', color: 'orange'
+            'model': 'scontoValore',
+            'title': 'Sconto a Valore',
+            'icon': 'euro_symbol',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.scontoValore,
+            maxlength: "10",
+            editable: true,
+            mutuallyExclusive: 'scontoPercentuale',
+            color: 'orange'
           },
           {
-            'model': 'scontoPercentuale', 'title': 'Sconto a Percentuale', 'icon': '%',
-            'type': 'number', 'step': '0.01', pattern: regexService.percentuale, maxlength: "5",
-            editable: true, mutuallyExclusive: 'scontoValore', color: 'orange'
+            'model': 'scontoPercentuale',
+            'title': 'Sconto a Percentuale',
+            'icon': '%',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.percentuale,
+            maxlength: "5",
+            editable: true,
+            mutuallyExclusive: 'scontoValore',
+            color: 'orange'
           }
         ]
       },
       "PROMO_ID4": {
         title: "PROMO ID4",
-        buttons: [
-          {
-            'label': 'Ricerca CS2P',
-            'model': 'CS2P',
-            required: true,
-            'reference': 'attributi.CS',
-            'columns': [
-              {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-              {model: 'cs2purchase', 'refModel': 'nomeProdotto'}]
+        buttons: [{
+          'label': 'Ricerca CS2P',
+          'model': 'CS2P',
+          required: true,
+          'reference': 'attributi.CS',
+          'columns': [{
+            model: 'offerta',
+            'refModel': 'nomeOfferta',
+            compare: true
           },
+            {
+              model: 'cs2purchase',
+              'refModel': 'nomeProdotto'
+            }
+          ]
+        },
           {
             'label': 'Ricerca CSBonus',
             'model': 'CSBonus',
             required: true,
             'reference': 'attributi.CS',
-            'columns': [
-              {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-              {model: 'csWithBonus', 'refModel': 'nomeProdotto'}]
+            'columns': [{
+              model: 'offerta',
+              'refModel': 'nomeOfferta',
+              compare: true
+            },
+              {
+                model: 'csWithBonus',
+                'refModel': 'nomeProdotto'
+              }
+            ]
           }
         ],
-        columns: [
-          {'model': 'offerta', 'title': 'Offerta', 'type': 'text', required: true},
-          {'model': 'cs2purchase', 'title': 'cs2purchase', 'type': 'text', required: true},
-          {'model': 'offerta', 'title': 'Offerta', 'type': 'text', required: true},
-          {'model': 'csWithBonus', 'title': 'csWithBonus', 'type': 'text', required: true}
+        columns: [{
+          'model': 'offerta',
+          'title': 'Offerta',
+          'type': 'text',
+          required: true
+        },
+          {
+            'model': 'cs2purchase',
+            'title': 'cs2purchase',
+            'type': 'text',
+            required: true
+          },
+          {
+            'model': 'offerta',
+            'title': 'Offerta',
+            'type': 'text',
+            required: true
+          },
+          {
+            'model': 'csWithBonus',
+            'title': 'csWithBonus',
+            'type': 'text',
+            required: true
+          }
         ]
       },
       "PROMO_ID5": {
         title: "PROMO ID5",
-        columns: [
+        columns: [{
+          'model': 'tipologiaVendita',
+          'title': 'Tipologia Vendita',
+          'type': 'options',
+          'options': lovService.getSeniorityConstraintWebType(['CB']),
+          multiple: true,
+          editable: true,
+          required: true
+        },
           {
-            'model': 'tipologiaVendita', 'title': 'Tipologia Vendita', 'type': 'options',
-            'options': lovService.getSeniorityConstraintWebType(), multiple: true, editable: true, required: true
+            'model': 'scontoValore',
+            'title': 'Sconto a Valore',
+            'icon': 'euro_symbol',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.scontoValore,
+            maxlength: "10",
+            editable: true,
+            mutuallyExclusive: 'scontoPercentuale'
           },
           {
-            'model': 'scontoValore', 'title': 'Sconto a Valore', 'icon': 'euro_symbol',
-            'type': 'number', 'step': '0.01', pattern: regexService.scontoValore, maxlength: "10",
-            editable: true, mutuallyExclusive: 'scontoPercentuale'
-          },
-          {
-            'model': 'scontoPercentuale', 'title': 'Sconto a Percentuale', 'icon': '%',
-            'type': 'number', 'step': '0.01', pattern: regexService.percentuale, maxlength: "5",
-            editable: true, mutuallyExclusive: 'scontoValore'
+            'model': 'scontoPercentuale',
+            'title': 'Sconto a Percentuale',
+            'icon': '%',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.percentuale,
+            maxlength: "5",
+            editable: true,
+            mutuallyExclusive: 'scontoValore'
           }
         ]
       },
@@ -987,9 +1565,16 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             //append: indica se il campo va aggiunto in append al contenuto esistente
             //model: indica il nome del campo così come viene recuperato dagli attributi
             //refModel: indica il nome del campo mappato sulla condition
-            'columns': [
-              {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-              {model: 'cs2purchase', 'refModel': 'nomeProdotto'}],
+            'columns': [{
+              model: 'offerta',
+              'refModel': 'nomeOfferta',
+              compare: true
+            },
+              {
+                model: 'cs2purchase',
+                'refModel': 'nomeProdotto'
+              }
+            ],
             'batchDisabled': true
           },
           {
@@ -998,7 +1583,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             orRequired: 'CS2P',
             mutuallyExclusive: 'CS2P',
             'reference': 'attributi.BF',
-            'columns': [{model: 'bf2purchase', 'refModel': 'nomeProdotto'}],
+            'columns': [{
+              model: 'bf2purchase',
+              'refModel': 'nomeProdotto'
+            }],
             'batchDisabled': true
           },
           {
@@ -1006,34 +1594,51 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'model': 'CSBonus',
             mutuallyExclusive: 'BFBonus',
             'reference': 'attributi.CS',
-            'columns': [
-              {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-              {model: 'csWithBonus', 'refModel': 'nomeProdotto'}]
+            'columns': [{
+              model: 'offerta',
+              'refModel': 'nomeOfferta',
+              compare: true
+            },
+              {
+                model: 'csWithBonus',
+                'refModel': 'nomeProdotto'
+              }
+            ]
           },
           {
             'label': 'Ricerca BFBonus',
             'model': 'BFBonus',
             mutuallyExclusive: 'CSBonus',
             'reference': 'attributi.BF',
-            'columns': [{model: 'bfwithBonus', 'refModel': 'nomeProdotto'}]
+            'columns': [{
+              model: 'bfwithBonus',
+              'refModel': 'nomeProdotto'
+            }]
           }
         ],
-        columns: [
+        columns: [{
+          'model': 'offerta',
+          'title': 'Offerta',
+          'type': 'text',
+          required: true,
+          'batchDisabled': true,
+          color: 'green'
+        },
           {
-            'model': 'offerta',
-            'title': 'Offerta',
+            'model': 'cs2purchase',
+            'title': 'cs2purchase',
             'type': 'text',
-            required: true,
+            orRequired: 'bf2purchase',
             'batchDisabled': true,
             color: 'green'
           },
           {
-            'model': 'cs2purchase', 'title': 'cs2purchase', 'type': 'text', orRequired: 'bf2purchase',
-            'batchDisabled': true, color: 'green'
-          },
-          {
-            'model': 'bf2purchase', 'title': 'bf2purchase', 'type': 'text', orRequired: 'cs2purchase',
-            'batchDisabled': true, color: 'green'
+            'model': 'bf2purchase',
+            'title': 'bf2purchase',
+            'type': 'text',
+            orRequired: 'cs2purchase',
+            'batchDisabled': true,
+            color: 'green'
           },
           {
             'model': 'isPadreBf2purchase',
@@ -1046,7 +1651,12 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             color: 'green',
             value: lovService.getBooleanTypes()[0]
           },
-          {'model': 'offerta', 'title': 'Offerta', 'type': 'text', color: 'orange'},
+          {
+            'model': 'offerta',
+            'title': 'Offerta',
+            'type': 'text',
+            color: 'orange'
+          },
           {
             'model': 'csWithBonus',
             'title': 'csWithBonus',
@@ -1062,105 +1672,220 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             color: 'orange'
           },
           {
-            'model': 'scontoValore', 'title': 'Sconto a Valore', 'icon': 'euro_symbol',
-            'type': 'number', 'step': '0.01', pattern: regexService.scontoValore, maxlength: "10",
-            editable: true, mutuallyExclusive: 'scontoPercentuale', color: 'orange'
+            'model': 'scontoValore',
+            'title': 'Sconto a Valore',
+            'icon': 'euro_symbol',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.scontoValore,
+            maxlength: "10",
+            editable: true,
+            mutuallyExclusive: 'scontoPercentuale',
+            color: 'orange'
           },
           {
-            'model': 'scontoPercentuale', 'title': 'Sconto a Percentuale', 'icon': '%',
-            'type': 'number', 'step': '0.01', pattern: regexService.percentuale, maxlength: "5",
-            editable: true, mutuallyExclusive: 'scontoValore', color: 'orange'
+            'model': 'scontoPercentuale',
+            'title': 'Sconto a Percentuale',
+            'icon': '%',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.percentuale,
+            maxlength: "5",
+            editable: true,
+            mutuallyExclusive: 'scontoValore',
+            color: 'orange'
           }
 
         ]
       },
       "PROMO_ID6_2": {
         title: "PROMO ID6_2",
-        buttons: [
-          {
-            'label': 'Ricerca CSBonus',
-            'model': 'CSBonus',
-            mutuallyExclusive: 'BFBonus',
-            orRequired: 'BFBonus',
-            'reference': 'attributi.CS',
-            'columns': [
-              {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-              {model: 'csWithBonus', 'refModel': 'nomeProdotto'}]
-
+        buttons: [{
+          'label': 'Ricerca CSBonus',
+          'model': 'CSBonus',
+          mutuallyExclusive: 'BFBonus',
+          orRequired: 'BFBonus',
+          'reference': 'attributi.CS',
+          'columns': [{
+            model: 'offerta',
+            'refModel': 'nomeOfferta',
+            compare: true
           },
+            {
+              model: 'csWithBonus',
+              'refModel': 'nomeProdotto'
+            }
+          ]
+
+        },
           {
             'label': 'Ricerca BFBonus',
             'model': 'BFBonus',
             mutuallyExclusive: 'CSBonus',
             orRequired: 'CSBonus',
             'reference': 'attributi.BF',
-            'columns': [
-              {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-              {model: 'bfwithBonus', 'refModel': 'nomeProdotto'}]
+            'columns': [{
+              model: 'offerta',
+              'refModel': 'nomeOfferta',
+              compare: true
+            },
+              {
+                model: 'bfwithBonus',
+                'refModel': 'nomeProdotto'
+              }
+            ]
 
           }
         ],
-        columns: [
+        columns: [{
+          'model': 'totaleCarrello',
+          'title': 'Totale Carrello',
+          'type': 'number',
+          maxlength: "10",
+          editable: true,
+          required: true,
+          'batchDisabled': true,
+          color: 'green'
+        },
           {
-            'model': 'totaleCarrello', 'title': 'Totale Carrello', 'type': 'number',
-            maxlength: "10", editable: true, required: true, 'batchDisabled': true, color: 'green'
+            'model': 'offerta',
+            'title': 'Offerta',
+            'type': 'text',
+            color: 'orange'
           },
-          {'model': 'offerta', 'title': 'Offerta', 'type': 'text', color: 'orange'},
-          {'model': 'csWithBonus', 'title': 'csWithBonus', 'type': 'text', color: 'orange'},
-          {'model': 'bfwithBonus', 'title': 'bfwithBonus', 'type': 'text', color: 'orange'},
           {
-            'model': 'scontoValore', 'title': 'Sconto a Valore', 'icon': 'euro_symbol',
-            'type': 'number', 'step': '0.01', pattern: regexService.scontoValore, maxlength: "10",
-            editable: true, mutuallyExclusive: 'scontoPercentuale', color: 'orange'
+            'model': 'csWithBonus',
+            'title': 'csWithBonus',
+            'type': 'text',
+            color: 'orange'
           },
           {
-            'model': 'scontoPercentuale', 'title': 'Sconto a Percentuale', 'icon': '%',
-            'type': 'number', 'step': '0.01', pattern: regexService.percentuale, maxlength: "5",
-            editable: true, mutuallyExclusive: 'scontoValore', color: 'orange'
+            'model': 'bfwithBonus',
+            'title': 'bfwithBonus',
+            'type': 'text',
+            color: 'orange'
+          },
+          {
+            'model': 'scontoValore',
+            'title': 'Sconto a Valore',
+            'icon': 'euro_symbol',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.scontoValore,
+            maxlength: "10",
+            editable: true,
+            mutuallyExclusive: 'scontoPercentuale',
+            color: 'orange'
+          },
+          {
+            'model': 'scontoPercentuale',
+            'title': 'Sconto a Percentuale',
+            'icon': '%',
+            'type': 'number',
+            'step': '0.01',
+            pattern: regexService.percentuale,
+            maxlength: "5",
+            editable: true,
+            mutuallyExclusive: 'scontoValore',
+            color: 'orange'
           }
         ]
       },
       "PROMO_ID7": {
         title: "PROMO ID7",
         addDisabledIfBatch: true,
-        columns: [
+        columns: [{
+          'model': 'ricaricaMinGenerazione',
+          'title': 'Taglio Ricarica Min Generazione',
+          'type': 'number',
+          editable: true,
+          required: true,
+          maxlength: "10",
+          color: 'green'
+        },
           {
-            'model': 'ricaricaMinGenerazione', 'title': 'Taglio Ricarica Min Generazione', 'type': 'number',
-            editable: true, required: true, maxlength: "10", color: 'green'
+            'model': 'ricaricaMaxGenerazione',
+            'title': 'Taglio Ricarica Max Generazione',
+            'type': 'number',
+            editable: true,
+            required: true,
+            maxlength: "10",
+            color: 'green'
           },
           {
-            'model': 'ricaricaMaxGenerazione', 'title': 'Taglio Ricarica Max Generazione', 'type': 'number',
-            editable: true, required: true, maxlength: "10", color: 'green'
+            'model': 'ricaricaTipoGenerazione',
+            'title': 'Tipo Ricarica Generazione',
+            'type': 'options',
+            'options': lovService.getRicaricaTypes(),
+            editable: true,
+            required: true,
+            color: 'green'
           },
           {
-            'model': 'ricaricaTipoGenerazione', 'title': 'Tipo Ricarica Generazione', 'type': 'options',
-            'options': lovService.getRicaricaTypes(), editable: true, required: true, color: 'green'
+            'model': 'ricaricaMinApplicazione',
+            'title': 'Bonus',
+            'type': 'number',
+            editable: true,
+            required: true,
+            maxlength: "10",
+            color: 'orange'
           },
           {
-            'model': 'ricaricaMinApplicazione', 'title': 'Bonus', 'type': 'number',
-            editable: true, required: true, maxlength: "10", color: 'orange'
+            'model': 'importoRicaricaBonus',
+            'title': 'Taglio Ricarica Bonus',
+            'type': 'number',
+            editable: true,
+            required: true,
+            maxlength: "10",
+            color: 'orange'
           },
           {
-            'model': 'importoRicaricaBonus', 'title': 'Taglio Ricarica Bonus', 'type': 'number',
-            editable: true, required: true, maxlength: "10", color: 'orange'
-          },
-          {
-            'model': 'ricaricaTipoApplicazione', 'title': 'Tipo Ricarica Bonus', 'type': 'options',
-            'options': lovService.getRicaricaTypes(), editable: true, required: true, color: 'orange'
+            'model': 'ricaricaTipoApplicazione',
+            'title': 'Tipo Ricarica Bonus',
+            'type': 'options',
+            'options': lovService.getRicaricaTypes(),
+            editable: true,
+            required: true,
+            color: 'orange'
           }
         ]
       }
     },
     "pack.list": {
       title: "Pack List",
-      columns: [
-        {'model': 'codicePack', 'title': 'Codice Pack', 'type': 'text'},
-        {'model': 'nomePack', 'title': 'Nome Pack Breve', 'type': 'text', editable: true, required: true},
-        {'model': 'descrizionePack', 'title': 'Descrizione Pack', 'type': 'text', editable: true, required: true},
+      columns: [{
+        'model': 'codicePack',
+        'title': 'Codice Pack',
+        'type': 'text'
+      },
         {
-          'model': 'inizioValidita', 'title': 'Inizio Validita', 'type': 'date', editable: true, required: true,
-          'min-date': TODAY, 'max-date':MAX_DAY, locale: "it", format: "DD/MM/YYYY", rawModel: 'inizioValiditaRaw',
-          'max-date-ref-col': 'fineValidita'
+          'model': 'nomePack',
+          'title': 'Nome Pack Breve',
+          'type': 'text',
+          editable: true,
+          required: true
+        },
+        {
+          'model': 'descrizionePack',
+          'title': 'Descrizione Pack',
+          'type': 'text',
+          editable: true,
+          required: true
+        },
+        {
+          'model': 'inizioValidita',
+          'title': 'Inizio Validita',
+          'type': 'date',
+          editable: true,
+          required: true,
+          'batchDisabled': true,
+          'min-date': TODAY,
+          'max-date': MAX_DAY,
+          locale: "it",
+          format: "DD/MM/YYYY",
+          color: 'orange',
+          rawModel: 'inizioValiditaRaw',
+          'min-date-ref-col': 'fineValidita'
         },
         {
           'model': 'fineValidita',
@@ -1168,10 +1893,12 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           'type': 'date',
           editable: true,
           required: true,
-          'min-date-ref-col': 'inizioValidita',
-          'max-date':MAX_DAY,
+          'batchDisabled': true,
+          'max-date-ref-col': 'inizioValidita',
+          'max-date': MAX_DAY,
           locale: "it",
           format: "DD/MM/YYYY",
+          color: 'orange',
           orderBy: true,
           rawModel: 'fineValiditaRaw'
         }
@@ -1179,30 +1906,52 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
     },
     "pack.detail": {
       title: "Condition List",
-      buttons: [
-        {
-          'label': 'Ricerca BF',
-          'model': 'BF',
-          orRequired: 'CS',
-          mutuallyExclusive: 'CS',
-          'reference': 'attributi.BF',
-          'columns': [{model: 'bf2purchase', 'refModel': 'nmu'}]
-        },
+      buttons: [{
+        'label': 'Ricerca BF',
+        'model': 'BF',
+        orRequired: 'CS',
+        mutuallyExclusive: 'CS',
+        'reference': 'attributi.BF',
+        'columns': [{
+          model: 'bf2purchase',
+          'refModel': 'nmu'
+        }]
+      },
         {
           'label': 'Ricerca CS2P',
           'model': 'CS',
           orRequired: 'BF',
           mutuallyExclusive: 'BF',
           'reference': 'attributi.CS',
-          'columns': [
-            {model: 'offerta', 'refModel': 'nomeOfferta', compare: true},
-            {model: 'cs2purchase', 'refModel': 'codiceCartaServizi'}]
+          'columns': [{
+            model: 'offerta',
+            'refModel': 'nomeOfferta',
+            compare: true
+          },
+            {
+              model: 'cs2purchase',
+              'refModel': 'codiceCartaServizi'
+            }
+          ]
         }
       ],
-      columns: [
-        {'model': 'offerta', 'title': 'Offerta', 'type': 'text'},
-        {'model': 'cs2purchase', 'title': 'Carta Servizi', 'type': 'text', orRequired: 'bf2purchase'},
-        {'model': 'bf2purchase', 'title': 'NMU', 'type': 'text', orRequired: 'cs2purchase'},
+      columns: [{
+        'model': 'offerta',
+        'title': 'Offerta',
+        'type': 'text'
+      },
+        {
+          'model': 'cs2purchase',
+          'title': 'Carta Servizi',
+          'type': 'text',
+          orRequired: 'bf2purchase'
+        },
+        {
+          'model': 'bf2purchase',
+          'title': 'NMU',
+          'type': 'text',
+          orRequired: 'cs2purchase'
+        },
         {
           'model': 'vincolo',
           'title': 'Vincolo',

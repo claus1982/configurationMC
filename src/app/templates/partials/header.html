@@ -1,32 +1,31 @@
 <div class="nav-wrap clearfix">
   <div class="container"><a href="/" class="logo-tim"><img src="../../../images/logo_tim_2016.png"></a>
+
     <md-menu-bar class="menu-nav clearfix js-menu-nav">
       <md-menu>
         <md-button aria-label="PROMO"
                    ng-click="model.promo.onClick()">
           PROMO
         </md-button>
-        <md-menu-content/>
+        <md-menu-content></md-menu-content>
       </md-menu>
       <md-menu>
         <md-button aria-label="PACK"
                    ng-click="model.pack.onClick()">
           PACK
         </md-button>
-        <md-menu-content/>
+        <md-menu-content></md-menu-content>
       </md-menu>
       <md-menu class="sub-menu-nav">
-        <md-button aria-label="Attributi Web"
-                   ng-click="openMenu($mdOpenMenu, $event)">
+        <md-button ng-mouseenter="$mdMenu.open()">
           ATTRIBUTI WEB
         </md-button>
-        <md-menu-content>
-            <md-menu-item
-              ng-repeat="menu in model.attributes.menu">
-              <a href="#" ng-click="menu.onClick($event)">
-                {{menu.label}}
-              </a>
-            </md-menu-item>
+        <md-menu-content width="4" ng-mouseleave="$mdMenu.close()">
+          <md-menu-item ng-repeat="menu in model.attributes.menu">
+            <md-button ng-click="menu.onClick($event)">
+              {{menu.label}}
+            </md-button>
+          </md-menu-item>
         </md-menu-content>
       </md-menu>
     </md-menu-bar>

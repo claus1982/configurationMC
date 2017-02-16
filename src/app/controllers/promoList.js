@@ -130,7 +130,7 @@ angular.module('app')
         pageSelect: true,
         showTableAlways: true,
         orderBy: "-"+dataTableResources[$scope.currentState][$scope.tipoPromo]
-                     .columns.find(function(col){return col.orderBy})|| {}.model};
+                     .columns.filter(function(col){return col.orderBy})[0]|| {}.model};
       }
     }
 

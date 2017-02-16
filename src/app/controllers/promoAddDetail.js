@@ -67,9 +67,9 @@ angular.module('app')
       }
       disable = true;
       if (button.mutuallyExclusive) {
-        var mutualButton = $scope.buttons.find(function (mbutton) {
+        var mutualButton = $scope.buttons.filter(function (mbutton) {
           return mbutton.model === button.mutuallyExclusive;
-        });
+        })[0];
         angular.forEach(mutualButton.columns, function (column) {
           disable = disable && $scope.newItem[column.model];
         });
@@ -106,7 +106,7 @@ angular.module('app')
       input["tipoPromo"] = $scope.tipoPromo;
       angular.extend(input,$scope.promoParams);
 
-      
+
       createConditionService.createCondition(createConditionService.createConditionRequest(input)).then(
         function (response) {
           $state.go('promo.detail', {
@@ -131,9 +131,9 @@ angular.module('app')
 
 
       //verifica se c'è un campo su cui è necessario un confronto
-      var compareColumn = button.columns.find(function (column) {
+      var compareColumn = button.columns.filter(function (column) {
           return column.compare
-        });
+        })[0];
 
       //in caso ci sia setta il nome e il valore del campo (value eventualmente undefined)
       if (compareColumn && compareColumn.refModel) {
@@ -191,8 +191,8 @@ angular.module('app')
 
             if (params.comparingField && !params.comparingField.value) {
              //a.1)recupera il primo record selezionato che abbia quel campo valorizzato facendolo diventare il riferimento
-              params.comparingField.value = items.find
-              (function(item){return !!item[params.comparingField.model]})[params.comparingField.model];
+              params.comparingField.value = items.filter
+              (function(item){return !!item[params.comparingField.model]})[0][params.comparingField.model];
 
             console.log("comparingField", params.comparingField.model);
             console.log("comparingField Value", params.comparingField.value);
@@ -233,10 +233,10 @@ angular.module('app')
                 var error;
                 error = (isAlreadyComparingFieldValued)
                   ? "Attenzione: sono selezionabili solo i record che hanno "
-                    +dataTableResources[button.reference].columns.find(function(column){return column.model ===params.comparingField.model}).title+
+                    +dataTableResources[button.reference].columns.filter(function(column){return column.model ===params.comparingField.model})[0].title+
                     " pari a \""+params.comparingField.value+"\""
                   : "Attenzione: i record selezionati devono avere lo stesso "
-                    +dataTableResources[button.reference].columns.find(function(column){return column.model ===params.comparingField.model}).title;
+                    +dataTableResources[button.reference].columns.filter(function(column){return column.model ===params.comparingField.model})[0].title;
                 Notification.error({message: error});
 
               }

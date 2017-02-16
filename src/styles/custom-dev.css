@@ -1,3 +1,41 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/src/images/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+  local('MaterialIcons-Regular'),
+  url(/src/images/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+  url(/src/images/iconfont/MaterialIcons-Regular.woff) format('woff'),
+  url(/src/images/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
 /* Rules for sizing the icon. */
 
 .material-icons.md-12 { font-size: 12px; }
@@ -131,11 +169,11 @@ div.whiteBackground {
 }
 
 .nav-wrap .menu-nav > md-menu.hover_open > a {
-  background: url(https://img.tim.it/img/ico_freccia_dx.png) 90% 25px no-repeat
+  background: url(/src/images/icons/ico_freccia_dx.png) 90% 25px no-repeat
 }
 
 .nav-wrap .menu-nav > md-menu.active > a {
-  background: url(https://img.tim.it/img/ico_freccia_bottom.png) 90% 25px no-repeat #fff;
+  background: url(/src/images/icons/ico_freccia_bottom.png) 90% 25px no-repeat #fff;
   position: relative;
   z-index: 101;
   height: 63px;
