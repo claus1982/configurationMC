@@ -73,6 +73,10 @@
                          ng-click="addItem(addModeType,$event,columns, addItemClbk)"
               >aggiungi
               </md-button>
+            <!--  <md-button
+                         class="md-primary"
+                         ng-click="addEmptyRow()">aggiungi riga
+              </md-button>-->
               <md-button
                 ng-if="options.editMode"
                 ng-hide="options.isEditing"
@@ -169,21 +173,23 @@
                    data-md-table data-md-row-select="options.rowSelection" multiple="{{options.multiSelect}}"
                    data-ng-model="selected" md-progress="promise">
               <thead md-head md-order="query.order">
-              <tr md-row>
-                <th md-column md-desc  ng-repeat="column in columns"
+              <tr title="" md-row>
+                <th title=""
+                    md-column md-desc  ng-repeat="column in columns"
                     md-numeric="true"
                     md-order-by="{{column.model}}"
                     ng-class="{'text-green': column.color==='green',
                                'text-orange': column.color==='orange'
                              }"
                 >
-                  <span>{{column.title}}</span>
+                  <span title="">{{column.title}}</span>
                   <!--<span ng-if="column.unit">({{column.unit}})</span>-->
                 </th>
               </tr>
               </thead>
               <tbody md-body>
-              <tr md-row
+              <tr title=""
+                  md-row
                   md-auto-select ="options.rowSelection"
                   md-select="item"
                   md-select-id="name"
@@ -192,14 +198,12 @@
                   data-ng-repeat="item in items | filter: query.filter |
                                                   orderBy: query.sort():query.order.charAt(0) === '-'  |
                                                   limitTo: query.limit : (query.page - 1) * query.limit">
-
-
-                <td ng-repeat="column in columns"
+                <td title=""
+                    ng-repeat="column in columns"
                     md-cell
-                    ng-class="{'md-placeholder': !item[column.model]}"
-                >
-            <span ng-if="!options.isEditing && !isArray(item[column.model])">
-             <span ng-if="!column.link">{{item[column.model]}}</span>
+                    ng-class="{'md-placeholder': !item[column.model]}">
+            <span ng-if="!options.isEditing && !item.$$isNew && !isArray(item[column.model])">
+             <span title="" ng-if="!column.link">{{item[column.model]}}</span>
                  <button ng-if="column.link"
                          title=""
                          class="look-as-link"
@@ -208,20 +212,20 @@
                    {{item[column.model]}}
                  </button>
             </span>
-             <span ng-if="!options.isEditing && isArray(item[column.model])">
+             <span ng-if="!options.isEditing && !item.$$isNew && isArray(item[column.model])">
              <span ng-repeat="value in item[column.model]">
                  {{value + ($last ? '' : ',')}}
              </span>
             </span>
 
-            <span ng-if="options.isEditing && (column.type==='text' || column.type==='number')"
+            <span ng-if="(options.isEditing || item.$$isNew) && (column.type==='text' || column.type==='number')"
                   md-cell
                   ng-class="column.editable ? 'field-editable' : 'field-disabled'"
                   ng-click="editTextField(options.isEditing && column.editable, $event, item, column)">
                {{item[column.model] || "-"}}
             </span>
                   <!-- picklist con selezione predefinita singola-->
-            <span ng-if="options.isEditing && column.type==='options' && !column.multiple"
+            <span ng-if="(options.isEditing || item.$$isNew) && column.type==='options' && !column.multiple"
                   ng-class="column.editable ? 'field-editable' : 'field-disabled'"
             >
                   <md-select ng-model="item[column.model]"
@@ -232,7 +236,7 @@
                   </md-select>
             </span>
                   <!-- picklist con selezione predefinita multipla-->
-            <span ng-if="options.isEditing && column.type==='options' && column.multiple"
+            <span ng-if="(options.isEditing || item.$$isNew) && column.type==='options' && column.multiple"
                   ng-class="column.editable ? 'field-editable' : 'field-disabled'">
                   <md-select ng-model="item[column.model]"
                              placeholder="Select"
@@ -242,7 +246,7 @@
                   </md-select>
             </span>
                   <!-- picklist in cui è selezionabile solo il contenuto arrivato-->
-             <span ng-if="options.isEditing && column.type==='selection' && column.multiple"
+             <span ng-if="(options.isEditing || item.$$isNew) && column.type==='selection' && column.multiple"
                    ng-class="column.editable ? 'field-editable' : 'field-disabled'"
              >
                   <md-select ng-model="item[column.model]"
@@ -259,9 +263,11 @@
           </md-table-container>
 
           <md-table-pagination
+                                    title=""
                                     md-limit="query.limit"
                                     md-limit-options="limitOptions"
                                     md-page="query.page"
+                                    md-label="{'of':'di', 'rowsPerPage': 'Righe per pagina:', 'page':'Pagina:'}"
                                     md-total="{{items.length}}"
                                     md-on-paginate="onPaginate"
                                     md-page-select="options.pageSelect"

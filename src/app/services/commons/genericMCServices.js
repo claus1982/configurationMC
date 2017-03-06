@@ -37,17 +37,38 @@
       angular.extend(data[Object.keys(requestData)[0]],requestData[Object.keys(requestData)[0]]);
 
 
+    /*  config.removeNull = config.removeNull ? true:false;
+      //tratta le strighe vuote come undefined, default true
+      config.removeEmptyString = config.removeEmptyString ? true:false;
+      //elimina o pone undefined i campi undefined, stringa vuota(se abilitato) e null(se abilitato) Default: true
+      config.delete = config.delete  ? true: false;
+      //Default: true
+      config.keepEmptyObjects = config.keepEmptyObjects === true;
+      //Default: false
+      config.slimDownArray = config.slimDownArray ? true : false;
+      //Default: true
+      config.copySrc = config.copySrc === true;
+      //Default: false*/
+
+      var config = {
+        removeNull: false,
+        removeEmptyString: false,
+        delete: false,
+        keepEmptyObjects: true,
+        slimDownArray: true,
+        copySrc: false
+      };
+
       //Request
       var req = {
         "url": (baseUrl || '') + '/'+urlEndpoint,
-        "data": toolsService.cleanObject(data),
+        "data": toolsService.cleanObject(data, config),
         "timeout": myConfig.TIMEOUT
       };
 
-      console.log(urlEndpoint,"called");
+
       return $http.post(req.url, req.data, {timeout: req.timeout}).then(
         function(res){
-          console.log(urlEndpoint, "received OK");
           var dataRes = res.data[urlEndpoint+"Response"];
             if (dataRes)
           {
@@ -70,7 +91,6 @@
             return $q.reject({error: "Errore: risposta inattesa dal server..."});
         },
         function(res){
-          console.log(urlEndpoint, "received KO or timeout");
           res.error = "Timeout o nessuna risposta dal server...";
           return $q.reject(res);
         }

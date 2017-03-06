@@ -61,12 +61,12 @@ angular.module('app')
                   if (angular.isArray(obj[column.model]))
                   {
                     obj[column.model] = $.map(obj[column.model], function(el){
-                      return $.inArray(el, column.options) < 0 ? null : el;
+                      return $.inArray(el, column.options) < 0 ? undefined : el;
                     });
                   }
                   else
                   {
-                    obj[column.model] = $.inArray(obj[column.model],column.options) ? obj[column.model]: undefined;
+                    obj[column.model] = $.inArray(obj[column.model],column.options) < 0 ? undefined : obj[column.model];
                   }
                  }
               });
@@ -98,7 +98,8 @@ angular.module('app')
             input[column.model] = item[column.model].value.join('|');
           }
           /*fine trasformazione array to pipe*/
-          else if (column.model && item[column.model] && item[column.model].value && item[column.model].modified){
+          else if (column.model && angular.isDefined(item[column.model]) && angular.isDefined(item[column.model].value)
+                   && item[column.model].modified){
             input[column.model] = item[column.model].value;
           }
         });

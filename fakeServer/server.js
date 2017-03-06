@@ -16,33 +16,37 @@ var json =
     },
     "payload":[
       {
-        "nomeOfferta":"Tim Young",
+        "nomeOfferta":"Tim Young, Tim Old, Tim Adult",
         "nomeProdotto":"FF056 - NUMERO AMICO PER TIM YOUNG",
         "webDescription":null,
         "longDescriptionWeb":null,
-        "seniorityConstraintWeb":"AL|MNP|CB",
-        "isWebSellable":"Y",
+        "seniorityConstraintWeb":"AL|MNP||MAZZI|CB|CAZZI",
+        "isWebSellable":"N",
         "paymentMethodWeb":null,
         "codiceCartaServizi":"FF056",
         "defaultFlag":"Y",
-        "prezzo": "100.5",
-        "parentDisplayName":"Numero Amico per TIM YOUNG"
+        "prezzo": 100.5,
+        "parentDisplayName":"Numero Amico per TIM YOUNG",
+        "priorityRecharge" :100,
+        "regalabile": "N"
       },
       {
-        "nomeOfferta":"Tim Young Junior",
+        "nomeOfferta":"Tim Young Junior, Tim Bitch",
         "nomeProdotto":"FF058 - TIM YOUNG JR",
         "webDescription":null,
         "longDescriptionWeb":null,
         "seniorityConstraintWeb":"AL|MNP|CB",
-        "isWebSellable":"Y",
+        "isWebSellable":"n",
         "paymentMethodWeb":null,
         "codiceCartaServizi":"FF058",
         "defaultFlag":"Y",
         "prezzo": 101.5,
-        "parentDisplayName":"TIM Young Junior"
+        "parentDisplayName":"TIM Young Junior",
+        "priorityRecharge" :113,
+        "regalabile": "Y"
       },
       {
-        "nomeOfferta":"Tim Young Junior",
+        "nomeOfferta":"Tim Old, Tim Young XL",
         "nomeProdotto":"FF067 - TIM Young Junior Plus",
         "webDescription":null,
         "longDescriptionWeb":null,
@@ -52,10 +56,11 @@ var json =
         "codiceCartaServizi":"FF067",
         "defaultFlag":null,
         "prezzo": 0,
-        "parentDisplayName":null
+        "parentDisplayName":null,
+        "priorityRecharge" :1113
       },
       {
-        "nomeOfferta":"Tim Young Junior",
+        "nomeOfferta":"Tim Young Junior, Tim Bitch",
         "nomeProdotto":"FF068 - TIM Young Junior",
         "webDescription":null,
         "longDescriptionWeb":null,
@@ -64,11 +69,11 @@ var json =
         "paymentMethodWeb":null,
         "codiceCartaServizi":"FF068",
         "defaultFlag":null,
-        "prezzo": "0",
+        "prezzo": 5,
         "parentDisplayName":null
       },
       {
-        "nomeOfferta":"Offerte per te",
+        "nomeOfferta":"Tim Old, Tim Young",
         "nomeProdotto":"ODE60 - TIM YOUNG x TE",
         "webDescription":null,
         "longDescriptionWeb":null,
@@ -407,6 +412,143 @@ var json =
   }
 };
 
+/*var json = {
+  "getWebResponse":{
+    "header":{
+      "businessId":"AAAAAAAA63633851D903E4EF",
+      "result":"Success",
+      "code":"0",
+      "description":"operation completed"
+    },
+    "payload":[
+      {
+        "nomeProdotto":"RICARICA 10 EURO",
+        "webDescription":"RICARICA 10 EURO",
+        "longDescriptionWeb":"RICARICA 10 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal"
+      },
+      {
+        "nomeProdotto":"RICARICA 100 EURO",
+        "webDescription":"RICARICA 100 EURO",
+        "longDescriptionWeb":"RICARICA 100 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal"
+      },
+      {
+        "nomeProdotto":"RICARICA 120 EURO",
+        "webDescription":"RICARICA 120 EURO",
+        "longDescriptionWeb":"RICARICA 120 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal"
+      },
+      {
+        "nomeProdotto":"RICARICA 15 EURO",
+        "webDescription":"RICARICA 15 EURO",
+        "longDescriptionWeb":"RICARICA 15 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal"
+      },
+      {
+        "nomeProdotto":"RICARICA 150 EURO",
+        "webDescription":"RICARICA 150 EURO",
+        "longDescriptionWeb":"RICARICA 150 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal"
+      },
+      {
+        "nomeProdotto":"RICARICA 20 EURO",
+        "webDescription":"RICARICA 20 EURO",
+        "longDescriptionWeb":"RICARICA 20 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal"
+      },
+      {
+        "nomeProdotto":"RICARICA 200 EURO",
+        "webDescription":"RICARICA 200 EURO",
+        "longDescriptionWeb":null,
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal"
+      },
+      {
+        "nomeProdotto":"RICARICA 25 EURO",
+        "webDescription":"RICARICA 25 EURO",
+        "longDescriptionWeb":"RICARICA 25 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal"
+      },
+      {
+        "nomeProdotto":"RICARICA 30 EURO",
+        "webDescription":"RICARICA 30 EURO",
+        "longDescriptionWeb":"RICARICA 30 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal"
+      },
+      {
+        "nomeProdotto":"RICARICA 40 EURO",
+        "webDescription":"RICARICA 40 EURO",
+        "longDescriptionWeb":"RICARICA 40 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal"
+      },
+      {
+        "nomeProdotto":"RICARICA 5 EURO",
+        "webDescription":"RICARICA 5 EURO",
+        "longDescriptionWeb":"RICARICA 5 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal",
+        "priorityRecharge":25
+      },
+      {
+        "nomeProdotto":"RICARICA 50 EURO",
+        "webDescription":"RICARICA 50 EURO",
+        "longDescriptionWeb":"RICARICA 50 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal"
+      },
+      {
+        "nomeProdotto":"RICARICA 75 EURO",
+        "webDescription":"RICARICA 75 EURO",
+        "longDescriptionWeb":"RICARICA 75 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal",
+        "priorityRecharge":12
+      },
+      {
+        "nomeProdotto":"RICARICA PLUS 12 EURO",
+        "webDescription":"RICARICA PLUS 12 EURO",
+        "longDescriptionWeb":"RICARICA PLUS 12 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal",
+        "priorityRecharge":112
+      },
+      {
+        "nomeProdotto":"RICARICA PLUS 17 EURO",
+        "webDescription":"RICARICA PLUS 17 EURO",
+        "longDescriptionWeb":"RICARICA PLUS 17 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal",
+        "priorityRecharge":3
+      },
+      {
+        "nomeProdotto":"RICARICA PLUS 22 EURO",
+        "webDescription":"RICARICA PLUS 22 EURO",
+        "longDescriptionWeb":"RICARICA PLUS 22 EURO",
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal",
+        "priorityRecharge":2
+      },
+      {
+        "nomeProdotto":"RICARICA PLUS 6 EURO",
+        "webDescription":"RICARICA PLUS 6 EURO",
+        "longDescriptionWeb":null,
+        "isWebSellable":null,
+        "paymentMethodWeb":"Carta di Credito|Pay Pal|TimPersonal",
+        "priorityRecharge":3
+      }
+    ]
+  }
+}*/
 
 
 
@@ -433,197 +575,92 @@ app.post('/setWeb', function(req, res) {
 app.post('/getPromo', function(req, res) {
 
   var json =
-  {
-    "getPromoResponse":{
-      "header":{
-        "result":"Fatal Error",
-        "code":"0",
-        "description":"operation failed"
-      },
-      "payload":[
-        {
-          "codicePromo":"codicePromo0",
-          "nomePromo":"nomePromo0",
-          "promoBatch":"N",
-          "descrizionePromo":"descrizionePromo0",
-          "inizioValidita":"10/07/2017",
-          "fineValidita":"10/08/2017",
-          "inizioGenerazione":"04/07/2020",
-          "fineGenerazione":"04/08/2020",
-          "codiceTemplateSMS":"codiceTemplateSMS0",
-          "codiceTemplateMAIL":"codiceTemplateMAIL0",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":"0",
-          "sysdate":"10/07/2017 12:34"
+    {
+      "getPromoResponse":{
+        "header":{
+          "businessId":"AAAAAAAA6283408511E2E8B5",
+          "result":"Success",
+          "code":"0"
         },
-        {
-          "codicePromo":"codicePromo1",
-          "nomePromo":"nomePromo1",
-          "promoBatch":"Y",
-          "descrizionePromo":"descrizionePromo1",
-          "inizioValidita":"10/07/2017",
-          "fineValidita":"10/08/2017",
-          "inizioGenerazione":"04/07/2021",
-          "fineGenerazione":"04/07/2020",
-          "codiceTemplateSMS":"codiceTemplateSMS1",
-          "codiceTemplateMAIL":"codiceTemplateMAIL1",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":1,
-          "sysdate":"10/07/2017 12:34"
-        },
-        {
-          "codicePromo":"codicePromo2",
-          "nomePromo":"nomePromo2",
-          "promoBatch":"N",
-          "descrizionePromo":"descrizionePromo2",
-          "inizioValidita":"11/12/2017",
-          "fineValidita":"22/12/2017",
-          "inizioGenerazione":"04/12/2022",
-          "fineGenerazione":"04/07/2024",
-          "codiceTemplateSMS":"codiceTemplateSMS2",
-          "codiceTemplateMAIL":"codiceTemplateMAIL2",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":2,
-          "sysdate":"10/07/2017 12:34"
-        },
-        {
-          "codicePromo":"codicePromo3",
-          "nomePromo":"nomePromo3",
-          "promoBatch":"N",
-          "descrizionePromo":"descrizionePromo3",
-          "inizioValidita":"10/07/2016",
-          "fineValidita":"10/07/2017",
-          "inizioGenerazione":"24/07/2023",
-          "fineGenerazione":"04/07/2025",
-          "codiceTemplateSMS":"codiceTemplateSMS3",
-          "codiceTemplateMAIL":"codiceTemplateMAIL3",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":3,
-          "sysdate":"10/07/2017 12:34"
-        },
-        {
-          "codicePromo":"codicePromo4",
-          "nomePromo":"nomePromo2",
-          "promoBatch":"N",
-          "descrizionePromo":"descrizionePromo2",
-          "inizioValidita":"10/07/2017",
-          "fineValidita":"10/07/2017",
-          "inizioGenerazione":"04/07/2020",
-          "fineGenerazione":"04/07/2020",
-          "codiceTemplateSMS":"codiceTemplateSMS2",
-          "codiceTemplateMAIL":"codiceTemplateMAIL2",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":2,
-          "sysdate":"10/07/2017 12:34"
-        },
-        {
-          "codicePromo":"codicePromo5",
-          "nomePromo":"nomePromo3",
-          "promoBatch":"N",
-          "descrizionePromo":"descrizionePromo3",
-          "inizioValidita":"09/07/2017",
-          "fineValidita":"11/07/2017",
-          "inizioGenerazione":"04/08/2020",
-          "fineGenerazione":"03/12/2020",
-          "codiceTemplateSMS":"codiceTemplateSMS3",
-          "codiceTemplateMAIL":"codiceTemplateMAIL3",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":3,
-          "sysdate":"10/07/2017 12:34"
-        },
-        {
-          "codicePromo":"codicePromo6",
-          "nomePromo":"nomePromo2",
-          "promoBatch":"N",
-          "descrizionePromo":"descrizionePromo2",
-          "inizioValidita":"10/07/2017",
-          "fineValidita":"10/07/2017",
-          "inizioGenerazione":"04/07/2020",
-          "fineGenerazione":"04/07/2020",
-          "codiceTemplateSMS":"codiceTemplateSMS2",
-          "codiceTemplateMAIL":"codiceTemplateMAIL2",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":2,
-          "sysdate":"10/07/2017 12:34"
-        },
-        {
-          "codicePromo":"codicePromo7",
-          "nomePromo":"nomePromo3",
-          "promoBatch":"N",
-          "descrizionePromo":"descrizionePromo3",
-          "inizioValidita":"10/07/2017",
-          "fineValidita":"10/07/2017",
-          "inizioGenerazione":"04/07/2020",
-          "fineGenerazione":"04/07/2020",
-          "codiceTemplateSMS":"codiceTemplateSMS3",
-          "codiceTemplateMAIL":"codiceTemplateMAIL3",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":3,
-          "sysdate":"10/07/2017 12:34"
-        },
-        {
-          "codicePromo":"codicePromo8",
-          "nomePromo":"nomePromo2",
-          "promoBatch":"N",
-          "descrizionePromo":"descrizionePromo2",
-          "inizioValidita":"10/07/2017",
-          "fineValidita":"10/07/2017",
-          "inizioGenerazione":"04/07/2020",
-          "fineGenerazione":"04/07/2020",
-          "codiceTemplateSMS":"codiceTemplateSMS2",
-          "codiceTemplateMAIL":"codiceTemplateMAIL2",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":2,
-          "sysdate":"10/07/2017 12:34"
-        },
-        {
-          "codicePromo":"codicePromo9",
-          "nomePromo":"nomePromo3",
-          "promoBatch":"N",
-          "descrizionePromo":"descrizionePromo3",
-          "inizioValidita":"10/07/2017",
-          "fineValidita":"10/07/2017",
-          "inizioGenerazione":"04/07/2020",
-          "fineGenerazione":"04/07/2020",
-          "codiceTemplateSMS":"codiceTemplateSMS3",
-          "codiceTemplateMAIL":"codiceTemplateMAIL3",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":3,
-          "sysdate":"10/07/2017 12:34"
-        },
-        {
-          "codicePromo":"codicePromo10",
-          "nomePromo":"nomePromo2",
-          "promoBatch":"N",
-          "descrizionePromo":"descrizionePromo2",
-          "inizioValidita":"10/07/2017",
-          "fineValidita":"10/07/2017",
-          "inizioGenerazione":"01/01/2045",
-          "fineGenerazione":"04/04/2046",
-          "codiceTemplateSMS":"codiceTemplateSMS2",
-          "codiceTemplateMAIL":"codiceTemplateMAIL2",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":2,
-          "sysdate":"10/07/2017 12:34"
-        },
-        {
-          "codicePromo":"codicePromo11",
-          "nomePromo":"nomePromo3",
-          "promoBatch":"Y",
-          "descrizionePromo":"descrizionePromo3",
-          "inizioValidita":"10/07/2017",
-          "fineValidita":"10/07/2017",
-          "inizioGenerazione":"01/10/2024",
-          "fineGenerazione":"04/07/2030",
-          "codiceTemplateSMS":"codiceTemplateSMS3",
-          "codiceTemplateMAIL":"codiceTemplateMAIL3",
-          "flagLinea":"Y",
-          "limiteUtilizzoCoupon":3,
-          "sysdate":"10/07/2017 12:34"
-        }
-      ]
-    }
-  };
+        "payload":[
+          {
+            "tipoPromo":"PROMO_ID6_1",
+            "codicePromo":"PROMO_ID6_1_4",
+            "nomePromo":"",
+            "descrizionePromo":"PROMO61_B",
+            "inizioValidita":"21/02/2017",
+            "fineValidita":"25/02/2017",
+            "promoBatch":"N",
+            "inizioGenerazione":"20/02/2017",
+            "fineGenerazione":"21/02/2017",
+            "codiceTemplateSMS":"SMS",
+            "codiceTemplateMAIL":"MAIL",
+            "flagLinea":"N",
+            "limiteUtilizzoCoupon":"50"
+          },
+          {
+            "tipoPromo":"PROMO_ID6_1",
+            "codicePromo":"PROMO_ID6_1_7",
+            "nomePromo":"",
+            "descrizionePromo":"dada",
+            "inizioValidita":"20/06/2018",
+            "fineValidita":"26/07/2018",
+            "promoBatch":"N",
+            "inizioGenerazione":"20/02/2017",
+            "fineGenerazione":"22/02/2017",
+            "codiceTemplateSMS":"3123",
+            "codiceTemplateMAIL":"",
+            "flagLinea":"N",
+            "limiteUtilizzoCoupon":"312"
+          },
+          {
+            "tipoPromo":"PROMO_ID6_1",
+            "codicePromo":"PROMO_ID6_1_8",
+            "nomePromo":"",
+            "descrizionePromo":"3131231232",
+            "inizioValidita":"20/06/2017",
+            "fineValidita":"28/06/2017",
+            "promoBatch":"N",
+            "inizioGenerazione":"20/02/2017",
+            "fineGenerazione":"21/02/2017",
+            "codiceTemplateSMS":"31231",
+            "codiceTemplateMAIL":"",
+            "flagLinea":"N",
+            "limiteUtilizzoCoupon":"31232"
+          },
+          {
+            "tipoPromo":"PROMO_ID6_1",
+            "codicePromo":"PROMO_ID6_1_6",
+            "nomePromo":"",
+            "descrizionePromo":"Promo61_c",
+            "inizioValidita":"27/02/2017",
+            "fineValidita":"28/02/2017",
+            "promoBatch":"N",
+            "inizioGenerazione":"27/02/2017",
+            "fineGenerazione":"27/02/2017",
+            "codiceTemplateSMS":"SMS",
+            "codiceTemplateMAIL":"MAIL",
+            "flagLinea":"N",
+            "limiteUtilizzoCoupon":"10"
+          },
+          {
+            "tipoPromo":"PROMO_ID6_1",
+            "codicePromo":"PROMO_ID6_1_16",
+            "nomePromo":"promoBIT",
+            "descrizionePromo":"Promo61_c",
+            "inizioValidita":"27/02/2017",
+            "fineValidita":"28/02/2017",
+            "promoBatch":"Y",
+            "inizioGenerazione":"27/02/2017",
+            "fineGenerazione":"27/02/2017",
+            "codiceTemplateSMS":"SMS",
+            "codiceTemplateMAIL":"MAIL",
+            "flagLinea":"N",
+            "limiteUtilizzoCoupon":"10"
+          }
+        ]
+      }
+    };
 
   res.send(json); // send text response
 });
@@ -658,9 +695,9 @@ app.post('/getCondition', function(req, res) {
         },
         "payload":[
           {
-            "scontoValore":"100",
-            "scontoPercentuale":"10",
-            "prezzoAttivazione":"1000",
+            "scontoValore":100,
+            "scontoPercentuale":10,
+            "prezzoAttivazione":1000,
             "offerta":"offerta1",
             "tipologiaVendita":"tipologiaVendita1",
             "cs2purchase":"CS2Purchase1",
@@ -680,9 +717,9 @@ app.post('/getCondition', function(req, res) {
             "IdCondition":"IdCondition1"
           },
           {
-            "scontoValore":"200",
-            "scontoPercentuale":"20",
-            "prezzoAttivazione":"2000",
+            "scontoValore":200,
+            "scontoPercentuale":20,
+            "prezzoAttivazione":2000,
             "offerta":"offerta2",
             "tipologiaVendita":"tipologiaVendita2",
             "cs2purchase":"CS2Purchase2",
@@ -701,9 +738,9 @@ app.post('/getCondition', function(req, res) {
             "codicePromo":"codicePromo2",
             "IdCondition":"IdCondition2"
           }, {
-            "scontoValore":"300",
-            "scontoPercentuale":"30",
-            "prezzoAttivazione":"3000",
+            "scontoValore":300,
+            "scontoPercentuale":30,
+            "prezzoAttivazione":3000,
             "offerta":"offerta3",
             "tipologiaVendita":"tipologiaVendita3",
             "cs2purchase":"CS2Purchase3",
@@ -722,9 +759,9 @@ app.post('/getCondition', function(req, res) {
             "codicePromo":"codicePromo3",
             "IdCondition":"IdCondition3"
           }, {
-            "scontoValore":"400",
-            "scontoPercentuale":"40",
-            "prezzoAttivazione":"4000",
+            "scontoValore":400,
+            "scontoPercentuale":40,
+            "prezzoAttivazione":4000,
             "offerta":"offerta4",
             "tipologiaVendita":"tipologiaVendita4",
             "cs2purchase":"CS2Purchase4",
@@ -744,9 +781,9 @@ app.post('/getCondition', function(req, res) {
             "IdCondition":"IdCondition4"
           },
           {
-            "scontoValore":"500",
-            "scontoPercentuale":"50",
-            "prezzoAttivazione":"5000",
+            "scontoValore":500,
+            "scontoPercentuale":50,
+            "prezzoAttivazione":5000,
             "offerta":"offerta5",
             "tipologiaVendita":"tipologiaVendita5",
             "cs2purchase":"CS2Purchase5",
@@ -766,9 +803,9 @@ app.post('/getCondition', function(req, res) {
             "IdCondition":"IdCondition5"
           },
           {
-            "scontoValore":"600",
-            "scontoPercentuale":"60",
-            "prezzoAttivazione":"6000",
+            "scontoValore":600,
+            "scontoPercentuale":60,
+            "prezzoAttivazione":6000,
             "offerta":"offerta6",
             "tipologiaVendita":"tipologiaVendita6",
             "cs2purchase":"CS2Purchase6",
@@ -788,9 +825,9 @@ app.post('/getCondition', function(req, res) {
             "IdCondition":"IdCondition6"
           },
           {
-            "scontoValore":"600",
-            "scontoPercentuale":"60",
-            "prezzoAttivazione":"6000",
+            "scontoValore":600,
+            "scontoPercentuale":60,
+            "prezzoAttivazione":6000,
             "offerta":"offerta6",
             "tipologiaVendita":"tipologiaVendita6",
             "cs2purchase":"CS2Purchase6",
@@ -810,9 +847,9 @@ app.post('/getCondition', function(req, res) {
             "IdCondition":"IdCondition6"
           },
           {
-            "scontoValore":"700",
-            "scontoPercentuale":"70",
-            "prezzoAttivazione":"7000",
+            "scontoValore":1234,
+            "scontoPercentuale":5678,
+            "prezzoAttivazione":89010,
             "offerta":"offerta7",
             "tipologiaVendita":"tipologiaVendita7",
             "cs2purchase":"CS2Purchase7",
@@ -830,6 +867,72 @@ app.post('/getCondition', function(req, res) {
             "ricaricaTipoApplicazione":"RICARICA",
             "codicePromo":"codicePromo7",
             "IdCondition":"IdCondition7"
+          },
+          {
+            "scontoValore":12312,
+            "scontoPercentuale":562342,
+            "prezzoAttivazione":12,
+            "offerta":"offerta6",
+            "tipologiaVendita":"tipologiaVendita6",
+            "cs2purchase":"CS2Purchase6",
+            "bf2purchase":"BF2Purchase6",
+            "isPadreBf2purchase":"isPadreBF2Purchase6",
+            "csWithBonus":"CSwithBonus6",
+            "BFwithBonus":"BFwithBonus6",
+            "taglioRicarica":"taglioRicarica6",
+            "totaleCarrello":"totaleCarrello6",
+            "ricaricaMinGenerazione":"ricaricaMinGenerazione6",
+            "ricaricaMaxGenerazione":"ricaricaMaxGenerazione6",
+            "ricaricaTipoGenerazione":"ricaricaTipoGenerazione6",
+            "ricaricaMinApplicazione":"ricaricaMinApplicazione6",
+            "importoRicaricaBonus":"60000",
+            "ricaricaTipoApplicazione":"RICARICA",
+            "codicePromo":"codicePromo6",
+            "IdCondition":"IdCondition9"
+          },
+          {
+            "scontoValore":7000,
+            "scontoPercentuale":44,
+            "prezzoAttivazione":21314,
+            "offerta":"offerta7",
+            "tipologiaVendita":"tipologiaVendita7",
+            "cs2purchase":"CS2Purchase7",
+            "bf2purchase":"BF2Purchase7",
+            "isPadreBf2purchase":"isPadreBF2Purchase7",
+            "csWithBonus":"CSwithBonus7",
+            "BFwithBonus":"BFwithBonus7",
+            "taglioRicarica":"taglioRicarica7",
+            "totaleCarrello":"totaleCarrello7",
+            "ricaricaMinGenerazione":"ricaricaMinGenerazione7",
+            "ricaricaMaxGenerazione":"ricaricaMaxGenerazione7",
+            "ricaricaTipoGenerazione":"ricaricaTipoGenerazione7",
+            "ricaricaMinApplicazione":"ricaricaMinApplicazione7",
+            "importoRicaricaBonus":"70000",
+            "ricaricaTipoApplicazione":"RICARICA",
+            "codicePromo":"codicePromo7",
+            "IdCondition":"IdCondition8"
+          },
+          {
+            "scontoValore":123123,
+            "scontoPercentuale":5,
+            "prezzoAttivazione":7843,
+            "offerta":"offerta7",
+            "tipologiaVendita":"tipologiaVendita7",
+            "cs2purchase":"CS2Purchase7",
+            "bf2purchase":"BF2Purchase7",
+            "isPadreBf2purchase":"isPadreBF2Purchase7",
+            "csWithBonus":"CSwithBonus7",
+            "BFwithBonus":"BFwithBonus7",
+            "taglioRicarica":"taglioRicarica7",
+            "totaleCarrello":"totaleCarrello7",
+            "ricaricaMinGenerazione":"ricaricaMinGenerazione7",
+            "ricaricaMaxGenerazione":"ricaricaMaxGenerazione7",
+            "ricaricaTipoGenerazione":"ricaricaTipoGenerazione7",
+            "ricaricaMinApplicazione":"ricaricaMinApplicazione7",
+            "importoRicaricaBonus":"70000",
+            "ricaricaTipoApplicazione":"RICARICA",
+            "codicePromo":"codicePromo7",
+            "IdCondition":"IdCondition8"
           }
         ]
       }

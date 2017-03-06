@@ -63,23 +63,38 @@
       },
       'cleanObject': function (obj, config) {
         config = config || {};
-        config.delete = config.delete  ? true: false;
-        //Default: true
+
+
+        //tratta i null come undefined, default true
+        config.removeNull = config.removeNull === true;
+        //tratta le strighe vuote come undefined, default true
+        config.removeEmptyString = config.removeEmptyString === true;
+        //elimina o pone undefined i campi undefined, stringa vuota(se abilitato) e null(se abilitato) Default: true
+        config.delete = config.delete === true;
+
         config.keepEmptyObjects = config.keepEmptyObjects === true;
-        //Default: false
-        config.slimDownArray = config.slimDownArray ? true : false;
-        //Default: true
+
+        config.slimDownArray = config.slimDownArray === true;
+
         config.copySrc = config.copySrc === true;
-        //Default: false
+
 
         function _cleanUp(obj) {
           for (var p in obj) {
             if (obj.hasOwnProperty(p)) {
-              if (angular.isUndefined(obj[p]) || obj[p] === null || obj[p] === "") {
+              if (angular.isUndefined(obj[p])) {
                 if (config.delete) {
                   delete obj[p];
                 } else {
                   obj[p] = undefined;
+                }
+              }
+              if ((config.removeNull && obj[p] === null)
+                || (config.removeEmptyString && obj[p] === "")) {
+                if (config.delete) {
+                  delete obj[p];
+                } else {
+                  obj[p] = null;
                 }
               } else if (angular.isObject(obj[p]) && !angular.isDate(obj[p])) {
                 _cleanUp(obj[p]);

@@ -47,7 +47,31 @@
             return copiedItem;
           };
 
-          /*end utilties*/
+          /*end utilities*/
+
+
+          function toggleLimitOptions () {
+            var defOptions = [5, 10, 15];
+
+            defOptions = defOptions.filter(function(val){
+              return val < $scope.items.length;
+            });
+
+            if ($scope.items.length <= 5)
+            {
+              defOptions.push($scope.items.length);
+            }
+            else {
+              defOptions.push({
+                label: 'Tutte',
+                value: function () {
+                  return $scope.items && $scope.items ? $scope.items.length : 0;
+                }
+              });
+            }
+
+            $scope.limitOptions = $scope.limitOptions || defOptions;
+          }
 
           if (!$scope.addModeType) {
             //simple dialog with columns copied from record
@@ -71,7 +95,9 @@
               largeEditDialog: false,
               boundaryLinks: false,
               limitSelect: true,
-              pageSelect: true
+              pageSelect: true,
+              limit: 5,
+              page: 1
               //orderBy -->optionale, identifica il campo su cui effettuare l'ordinamento
             };
 
@@ -99,8 +125,8 @@
                   return item[o];
               }
             },
-            limit: 10,
-            page: 1
+            limit: $scope.options.limit || 5,
+            page: $scope.options.page || 1
           };
 
           function resetOptions() {
@@ -118,12 +144,6 @@
           console.log("columns:" + $scope.columns);
           console.log("searchParams:" + $scope.searchParams);
           $scope.selected = [];
-          $scope.limitOptions = [5, 10, 15, {
-            label: 'All',
-            value: function () {
-              return $scope.items && $scope.items ? $scope.items.length : 0;
-            }
-          }];
 
 
           //funzione per determinare se mostrare o meno la tabella
@@ -246,6 +266,18 @@
 
           };
 
+
+          //TODO versione draft di aggiunta righe direttamente sulla tabella
+          $scope.addEmptyRow = function(){
+            var newObj = {};
+            angular.forEach($scope.columns, function(column){
+            newObj[column.model] = "";
+            })
+            newObj.$$isNew = true;
+            $scope.items = $scope.items || [];
+            $scope.items.unshift(newObj);
+          };
+
           $scope.addItem = function (addModeType, event, columns, dataItems) {
 
             $scope.showForm = false;
@@ -315,7 +347,7 @@
                     return !column.editable ||
                       (column["batchDisabled"] && $scope.items[
                         $scope.columns.filter(function (col) {
-                          return col.batchEnabler
+                          return (col["batchEnabler"]|| {})
                         })[0].model
                         ] === 'Y') ||
                         !!$scope.items[column.mutuallyExclusiveCol];
@@ -323,8 +355,11 @@
                   this.isChanged = function (column) {
                     if (column["batchEnabler"]) {
                       angular.forEach($scope.columns, function (col) {
-                        if (col.batchDisabled)
+                        if (col.batchDisabled) {
                           $scope.items[col.model] = undefined;
+                          $scope.items[col.rawModel] = undefined;
+                        }
+
                       });
                     }
 
@@ -488,7 +523,9 @@
 
               if (response.payload) {
                 $scope.items = response.payload;
+                toggleLimitOptions();
                 $scope.savedItems = JSON.parse(JSON.stringify($scope.items));
+
               }
               else {
                 $scope.items = [];
@@ -567,12 +604,25 @@
                 modelValue: modelValue,
                 placeholder: column.title,
                 save: function (input) {
-                  if (model[1] && input.$modelValue && obj[model[0]][model[1]] !== input.$modelValue) {
-                    obj[model[0]][model[1]] = input.$modelValue;
-                  } else if (model[0] && input.$modelValue && obj[model[0]] !== input.$modelValue) {
-                    obj[model[0]] = input.$modelValue;
+                  //in generale non è permesso sbiancare un campo
+                  if (model[1] && model[0]) {
+                    if (input.$modelValue && obj[model[0]][model[1]] !== input.$modelValue) {
+                      obj[model[0]][model[1]] = input.$modelValue;
+                    }
+                    else
+                    {
+                      obj[model[0]][model[1]] = null;
+                    }
                   }
-
+                  else if (model[0]) {
+                    if (input.$modelValue && obj[model[0]] !== input.$modelValue) {
+                      obj[model[0]] = input.$modelValue;
+                    }
+                    else
+                    {
+                      obj[model[0]] = null;
+                    }
+                  }
                 },
                 cancel: function () {
                   console.log("cancel chiamata");
@@ -596,17 +646,6 @@
             }
           };
 
-          $scope.toggleLimitOptions = function () {
-            $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
-          };
-
-
-          $scope.onPaginate = function (page, limit) {
-
-            $scope.promise = $timeout(function () {
-
-            }, 300);
-          };
 
           $scope.deselect = function (item) {
             console.log(item, 'was deselected');

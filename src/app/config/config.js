@@ -3,9 +3,11 @@ angular.module('app')
 
   // dev
 
-   /* BASE_URL_ATTR:"http://10.13.254.188:1212",
+   /*
+    BASE_URL_ATTR:"http://10.13.254.188:1212",
     BASE_URL_PROMO:"http://10.13.254.188:1212",
-    BASE_URL_PACK:"http://10.13.254.188:1212",*/
+    BASE_URL_PACK:"http://10.13.254.188:1212",
+    */
 
     //CHT
 
@@ -26,8 +28,9 @@ angular.module('app')
     BASE_URL_PACK   : "http://localhost:4730",
 
     //http services timeout
-    TIMEOUT          :  120000,
-    //sezione ATTRIBUTI: determina se filtrare i campi di tipo picklist consentendo di visualizzare solo i valori selezionabili
+    TIMEOUT          :  6000000,
+    //sezione ATTRIBUTI: determina se filtrare i campi di tipo picklist consentendo di mostrare
+    // solo i valori corrispondenti a quelli configurati
     ATTRIBUTE_FILTER: true
   });
 

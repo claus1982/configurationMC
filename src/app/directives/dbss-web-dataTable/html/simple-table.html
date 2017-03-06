@@ -31,13 +31,16 @@
       </table>
     </md-table-container>
 
-    <data-md-table-pagination md-limit="query.limit"
-                              md-limit-options="limitOptions"
-                              md-page="query.page"
-                              md-total="{{items.length}}"
-                              md-on-paginate="onPaginate"
-                              md-page-select="options.pageSelect"
-                              md-boundary-links="options.boundaryLinks">
+    <data-md-table-pagination
+      title=""
+      md-limit="query.limit"
+      md-limit-options="limitOptions"
+      md-page="query.page"
+      md-label="{'of':'di', 'rowsPerPage': 'Righe per pagina:', 'page':'Pagina:'}"
+      md-total="{{items.length}}"
+      md-on-paginate="onPaginate"
+      md-page-select="options.pageSelect"
+      md-boundary-links="options.boundaryLinks">
     </data-md-table-pagination>
   </md-content>
 </div>

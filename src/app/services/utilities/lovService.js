@@ -30,6 +30,28 @@
         return ['RICARICA', 'RICARICA_OR_RICARICA_PLUS'];
     };
 
+    factory.getTaglioRicaricaTypes = function(){
+      return[
+        "RICARICA 5 EURO",
+        "RICARICA 10 EURO",
+        "RICARICA 15 EURO",
+        "RICARICA 20 EURO",
+        "RICARICA 25 EURO",
+        "RICARICA 30 EURO",
+        "RICARICA 40 EURO",
+        "RICARICA 50 EURO",
+        "RICARICA 75 EURO",
+        "RICARICA 100 EURO",
+        "RICARICA 120 EURO",
+        "RICARICA 150 EURO",
+        "RICARICA 200 EURO",
+        "RICARICA FREE",
+        "RICARICA PLUS 6 EURO",
+        "RICARICA PLUS 12 EURO",
+        "RICARICA PLUS 17 EURO"
+      ];
+    };
+
     factory.getVincoloTypes = function () {
       return [ 'Configurable','Soft', 'Hard'];
     };

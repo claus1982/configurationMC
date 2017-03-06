@@ -4,6 +4,26 @@ angular.module('app')
     //$scope.focusinControl = {};
 
 
+    $scope.options = {
+      addMode: false,
+      editMode: false,
+      forwardMode: false,
+      isEditing: false,
+      deleteMode: false,
+      copyMode: false,
+      showFilters: false,
+      rowSelection: false,
+      multiSelect: false,
+      autoSelect: false,
+      decapitate: false,
+      largeEditDialog: false,
+      boundaryLinks: false,
+      limitSelect: true,
+      pageSelect: true,
+      limit: 10,
+      page: 1,
+      showTableAlways: true
+    }
 
     $scope.currentState = $state.$current.name;
     console.log("current state:",$scope.currentState);

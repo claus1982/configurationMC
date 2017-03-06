@@ -8,23 +8,23 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       getOperation: "getCSWeb",
       setOperation: "setCSWeb",
       searchParams: [{
-        'name': 'nomeOfferta',
-        'title': 'Nome Gamma',
-        'type': 'text',
+        name: 'nomeOfferta',
+        title: 'Nome Gamma',
+        type: 'text',
         minlength: '4'
       },
         {
-          'name': 'nomeProdotto',
-          'title': 'Nome Carta Servizi',
-          'type': 'text',
+          name: 'nomeProdotto',
+          title: 'Nome Carta Servizi',
+          type: 'text',
           minlength: '4'
         }
       ],
 
       columns: [{
-        'model': 'nomeOfferta',
-        'title': 'Nome Gamma',
-        'type': 'text',
+        model: 'nomeOfferta',
+        title: 'Nome Gamma',
+        type: 'text',
         validators: {
           'ng-required': true,
           'ng-minlength': '1',
@@ -32,9 +32,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         }
       },
         {
-          'model': 'nomeProdotto',
-          'title': 'Nome Carta Servizi',
-          'type': 'text',
+          model: 'nomeProdotto',
+          title: 'Nome Carta Servizi',
+          type: 'text',
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -42,9 +42,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'codiceCartaServizi',
-          'title': 'Codice Carta Servizi',
-          'type': 'text',
+          model: 'codiceCartaServizi',
+          title: 'Codice Carta Servizi',
+          type: 'text',
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -52,17 +52,17 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'defaultFlag',
-          'title': 'defaultFlag',
-          'type': 'options',
-          'options': lovService.getBooleanTypes(),
-          'editable': true
+          model: 'defaultFlag',
+          title: 'defaultFlag',
+          type: 'options',
+          options: lovService.getBooleanTypes(),
+          editable: true
         },
         {
-          'model': 'parentDisplayName',
-          'title': 'parentDisplayName',
-          'type': 'text',
-          'editable': true,
+          model: 'parentDisplayName',
+          title: 'parentDisplayName',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -70,10 +70,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'webDescription',
-          'title': 'webDescription',
-          'type': 'text',
-          'editable': true,
+          model: 'webDescription',
+          title: 'webDescription',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -81,10 +81,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'longDescriptionWeb',
-          'title': 'longDescriptionWeb',
-          'type': 'text',
-          'editable': true,
+          model: 'longDescriptionWeb',
+          title: 'longDescriptionWeb',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -92,27 +92,27 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'seniorityConstraintWeb',
-          'title': 'seniorityConstraintWeb',
-          'type': 'options',
-          'options': lovService.getSeniorityConstraintWebType(),
-          'multiple': true,
-          'editable': true
+          model: 'seniorityConstraintWeb',
+          title: 'seniorityConstraintWeb',
+          type: 'options',
+          options: lovService.getSeniorityConstraintWebType(),
+          multiple: true,
+          editable: true
         },
         {
-          'model': 'isWebSellable',
-          'title': 'isWebSellable',
-          'type': 'options',
-          'options': lovService.getBooleanTypes(),
-          'editable': true
+          model: 'isWebSellable',
+          title: 'isWebSellable',
+          type: 'options',
+          options: lovService.getBooleanTypes(),
+          editable: true
         },
         {
-          'model': 'paymentMethodWeb',
-          'title': 'paymentMethodWeb',
-          'type': 'options',
-          'options': lovService.getPaymentMethod('CS'),
-          'multiple': true,
-          'editable': true
+          model: 'paymentMethodWeb',
+          title: 'paymentMethodWeb',
+          type: 'options',
+          options: lovService.getPaymentMethod('CS'),
+          multiple: true,
+          editable: true
         },
       ]
     },
@@ -121,42 +121,42 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       getOperation: "getBFWeb",
       setOperation: "setBFWeb",
       searchParams: [{
-        'name': 'nomeProdotto',
-        'title': 'Nome Prodotto',
-        'type': 'text',
+        name: 'nomeProdotto',
+        title: 'Nome Prodotto',
+        type: 'text',
         minlength: '6'
       },
         {
-          'name': 'nmu',
-          'title': 'NMU',
-          'type': 'text',
+          name: 'nmu',
+          title: 'NMU',
+          type: 'text',
           minlength: '6',
           maxlength: '6'
         },
         {
-          'name': 'descrizioneModello',
-          'title': 'Descrizione Modello',
-          'type': 'text',
+          name: 'descrizioneModello',
+          title: 'Descrizione Modello',
+          type: 'text',
           minlength: '2'
         },
         {
-          'name': 'descrizioneBrand',
-          'title': 'Descrizione Brand',
-          'type': 'text',
+          name: 'descrizioneBrand',
+          title: 'Descrizione Brand',
+          type: 'text',
           minlength: '2'
         },
         {
-          'name': 'nmuPadre',
-          'title': 'NMU Padre',
-          'type': 'text',
+          name: 'nmuPadre',
+          title: 'NMU Padre',
+          type: 'text',
           minlength: '6',
           maxlength: '6'
         }
       ],
       columns: [{
-        'model': 'nomeProdotto',
-        'title': 'Nome Prodotto',
-        'type': 'text',
+        model: 'nomeProdotto',
+        title: 'Nome Prodotto',
+        type: 'text',
         validators: {
           'ng-required': true,
           'ng-minlength': '1',
@@ -164,9 +164,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         }
       },
         {
-          'model': 'nmu',
-          'title': 'NMU',
-          'type': 'text',
+          model: 'nmu',
+          title: 'NMU',
+          type: 'text',
           validators: {
             'ng-required': true,
             'ng-minlength': '6',
@@ -174,9 +174,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'descrizioneModello',
-          'title': 'Descrizione Modello',
-          'type': 'text',
+          model: 'descrizioneModello',
+          title: 'Descrizione Modello',
+          type: 'text',
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -184,9 +184,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'prezzo',
-          'title': 'Prezzo',
-          'type': 'number',
+          model: 'prezzo',
+          title: 'Prezzo',
+          type: 'number',
           validators: {
             'ng-required': true,
             'min': '0',
@@ -195,9 +195,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'descrizioneBrand',
-          'title': 'Descrizione Brand',
-          'type': 'text',
+          model: 'descrizioneBrand',
+          title: 'Descrizione Brand',
+          type: 'text',
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -205,9 +205,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'nmuPadre',
-          'title': 'NMU Padre',
-          'type': 'text',
+          model: 'nmuPadre',
+          title: 'NMU Padre',
+          type: 'text',
           validators: {
             'ng-required': true,
             'ng-minlength': '6',
@@ -215,10 +215,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'webDescription',
-          'title': 'webDescription',
-          'type': 'text',
-          'editable': true,
+          model: 'webDescription',
+          title: 'webDescription',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -226,10 +226,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'longDescriptionWeb',
-          'title': 'longDescriptionWeb',
-          'type': 'text',
-          'editable': true,
+          model: 'longDescriptionWeb',
+          title: 'longDescriptionWeb',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -237,40 +237,40 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'seniorityConstraintWeb',
-          'title': 'seniorityConstraintWeb',
-          'type': 'options',
-          'options': lovService.getSeniorityConstraintWebType(),
-          'multiple': true,
-          'editable': true
+          model: 'seniorityConstraintWeb',
+          title: 'seniorityConstraintWeb',
+          type: 'options',
+          options: lovService.getSeniorityConstraintWebType(),
+          multiple: true,
+          editable: true
         },
         {
-          'model': 'isWebSellable',
-          'title': 'isWebSellable',
-          'type': 'options',
-          'options': lovService.getBooleanTypes(),
-          'editable': true
+          model: 'isWebSellable',
+          title: 'isWebSellable',
+          type: 'options',
+          options: lovService.getBooleanTypes(),
+          editable: true
         },
         {
-          'model': 'paymentMethodWeb',
-          'title': 'paymentMethodWeb',
-          'type': 'options',
-          'options': lovService.getPaymentMethod('BF'),
-          'multiple': true,
-          'editable': true
+          model: 'paymentMethodWeb',
+          title: 'paymentMethodWeb',
+          type: 'options',
+          options: lovService.getPaymentMethod('BF'),
+          multiple: true,
+          editable: true
         },
         {
-          'model': 'regalabile',
-          'title': 'regalabile',
-          'type': 'options',
-          'editable': true,
-          'options': lovService.getBooleanTypes()
+          model: 'regalabile',
+          title: 'regalabile',
+          type: 'options',
+          editable: true,
+          options: lovService.getBooleanTypes()
         },
         {
-          'model': 'pianoTariffarioWeb',
-          'title': 'pianoTariffarioWeb',
-          'type': 'text',
-          'editable': true,
+          model: 'pianoTariffarioWeb',
+          title: 'pianoTariffarioWeb',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': 1,
@@ -278,10 +278,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'tidWeb',
-          'title': 'tidWeb',
-          'type': 'text',
-          'editable': true,
+          model: 'tidWeb',
+          title: 'tidWeb',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': 1,
@@ -295,18 +295,18 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       getOperation: "getSIMWeb",
       setOperation: "setSIMWeb",
       searchParams: [{
-        'name': 'nomeProdotto',
-        'title': 'Nome Prodotto',
-        'type': 'text',
+        name: 'nomeProdotto',
+        title: 'Nome Prodotto',
+        type: 'text',
         'disabled': true,
-        'model': "SIM"
+        model: "SIM"
       }],
 
 
       columns: [{
-        'model': 'nomeProdotto',
-        'title': 'Nome Prodotto',
-        'type': 'text',
+        model: 'nomeProdotto',
+        title: 'Nome Prodotto',
+        type: 'text',
         validators: {
           'ng-required': true,
           'ng-minlength': '1',
@@ -314,10 +314,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         }
       },
         {
-          'model': 'webDescription',
-          'title': 'webDescription',
-          'type': 'text',
-          'editable': true,
+          model: 'webDescription',
+          title: 'webDescription',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -325,10 +325,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'longDescriptionWeb',
-          'title': 'longDescriptionWeb',
-          'type': 'text',
-          'editable': true,
+          model: 'longDescriptionWeb',
+          title: 'longDescriptionWeb',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -336,33 +336,33 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'seniorityConstraintWeb',
-          'title': 'seniorityConstraintWeb',
-          'type': 'options',
-          'options': lovService.getSeniorityConstraintWebType(),
-          'multiple': true,
-          'editable': true
+          model: 'seniorityConstraintWeb',
+          title: 'seniorityConstraintWeb',
+          type: 'options',
+          options: lovService.getSeniorityConstraintWebType(),
+          multiple: true,
+          editable: true
         },
         {
-          'model': 'isWebSellable',
-          'title': 'isWebSellable',
-          'type': 'options',
-          'options': lovService.getBooleanTypes(),
-          'editable': true
+          model: 'isWebSellable',
+          title: 'isWebSellable',
+          type: 'options',
+          options: lovService.getBooleanTypes(),
+          editable: true
         },
         {
-          'model': 'paymentMethodWeb',
-          'title': 'paymentMethodWeb',
-          'type': 'options',
-          'options': lovService.getPaymentMethod('SIM'),
-          'multiple': true,
-          'editable': true
+          model: 'paymentMethodWeb',
+          title: 'paymentMethodWeb',
+          type: 'options',
+          options: lovService.getPaymentMethod('SIM'),
+          multiple: true,
+          editable: true
         },
         {
-          'model': 'pianoTariffarioWeb',
-          'title': 'pianoTariffarioWeb',
-          'type': 'text',
-          'editable': true,
+          model: 'pianoTariffarioWeb',
+          title: 'pianoTariffarioWeb',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -370,10 +370,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'tidWeb',
-          'title': 'tidWeb',
-          'type': 'text',
-          'editable': true,
+          model: 'tidWeb',
+          title: 'tidWeb',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -387,18 +387,18 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       getOperation: "getRicaricaWeb",
       setOperation: "setRicaricaWeb",
       searchParams: [{
-        'name': 'nomeProdotto',
-        'title': 'Nome Prodotto',
-        'type': 'text',
-        'model': "Ricarica",
+        name: 'nomeProdotto',
+        title: 'Nome Prodotto',
+        type: 'text',
+        model: "Ricarica",
         minlength: '4'
       }],
 
 
       columns: [{
-        'model': 'nomeProdotto',
-        'title': 'Nome Prodotto',
-        'type': 'text',
+        model: 'nomeProdotto',
+        title: 'Nome Prodotto',
+        type: 'text',
         validators: {
           'ng-required': true,
           'ng-minlength': '1',
@@ -406,10 +406,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         }
       },
         {
-          'model': 'webDescription',
-          'title': 'webDescription',
-          'type': 'text',
-          'editable': true,
+          model: 'webDescription',
+          title: 'webDescription',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -417,10 +417,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'longDescriptionWeb',
-          'title': 'longDescriptionWeb',
-          'type': 'text',
-          'editable': true,
+          model: 'longDescriptionWeb',
+          title: 'longDescriptionWeb',
+          type: 'text',
+          editable: true,
           validators: {
             'ng-required': true,
             'ng-minlength': '1',
@@ -428,25 +428,25 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         },
         {
-          'model': 'isWebSellable',
-          'title': 'isWebSellable',
-          'type': 'options',
-          'options': lovService.getBooleanTypes(),
-          'editable': true
+          model: 'isWebSellable',
+          title: 'isWebSellable',
+          type: 'options',
+          options: lovService.getBooleanTypes(),
+          editable: true
         },
         {
-          'model': 'paymentMethodWeb',
-          'title': 'paymentMethodWeb',
-          'type': 'options',
-          'options': lovService.getPaymentMethod('RICARICA'),
-          'multiple': true,
-          'editable': true
+          model: 'paymentMethodWeb',
+          title: 'paymentMethodWeb',
+          type: 'options',
+          options: lovService.getPaymentMethod('RICARICA'),
+          multiple: true,
+          editable: true
         },
         {
-          'model': 'priorityRecharge',
-          'title': 'priorityRecharge',
-          'type': 'text',
-          'editable': true
+          model: 'priorityRecharge',
+          title: 'priorityRecharge',
+          type: 'number',
+          editable: true
         }
       ]
     }
@@ -461,14 +461,14 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
     "promo.categories": {
       title: "Promo",
       columns: [{
-        'model': 'promo',
-        'title': 'Promo',
-        'type': 'text'
+        model: 'promo',
+        title: 'Promo',
+        type: 'text'
       },
         {
-          'model': 'description',
-          'title': 'Descrizione',
-          'type': 'text'
+          model: 'description',
+          title: 'Descrizione',
+          type: 'text'
         }
       ],
       items: [{
@@ -531,31 +531,31 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       "PROMO_ID1": {
         title: 'ID 1',
         columns: [{
-          'model': 'codicePromo',
-          'title': 'Codice Promo',
-          'type': 'text',
+          model: 'codicePromo',
+          title: 'Codice Promo',
+          type: 'text',
           'link': true
         },
           {
-            'model': 'nomePromo',
-            'title': 'Nome Promo',
-            'type': 'text',
+            model: 'nomePromo',
+            title: 'Nome Promo',
+            type: 'text',
             editable: true,
             required: true,
             maxlength: "30"
           },
           {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione Promo',
-            'type': 'text',
+            model: 'descrizionePromo',
+            title: 'Descrizione Promo',
+            type: 'text',
             editable: true,
             required: true,
             maxlength: "100"
           },
           {
-            'model': 'inizioValidita',
-            'title': 'Inizio Validita',
-            'type': 'date',
+            model: 'inizioValidita',
+            title: 'Inizio Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
@@ -566,9 +566,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'min-date-ref-col': 'fineValidita'
           },
           {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
+            model: 'fineValidita',
+            title: 'Fine Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
@@ -584,31 +584,31 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       "PROMO_ID2": {
         title: 'ID 2',
         columns: [{
-          'model': 'codicePromo',
-          'title': 'Codice Promo',
-          'type': 'text',
+          model: 'codicePromo',
+          title: 'Codice Promo',
+          type: 'text',
           'link': true
         },
           {
-            'model': 'nomePromo',
-            'title': 'Nome Promo',
-            'type': 'text',
+            model: 'nomePromo',
+            title: 'Nome Promo',
+            type: 'text',
             editable: true,
             required: true,
             maxlength: "30"
           },
           {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione Promo',
-            'type': 'text',
+            model: 'descrizionePromo',
+            title: 'Descrizione Promo',
+            type: 'text',
             editable: true,
             required: true,
             maxlength: "100"
           },
           {
-            'model': 'inizioValidita',
-            'title': 'Inizio Validita',
-            'type': 'date',
+            model: 'inizioValidita',
+            title: 'Inizio Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
@@ -619,9 +619,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'min-date-ref-col': 'fineValidita'
           },
           {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
+            model: 'fineValidita',
+            title: 'Fine Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
@@ -637,31 +637,31 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       "PROMO_ID3": {
         title: 'ID 3',
         columns: [{
-          'model': 'codicePromo',
-          'title': 'Codice Promo',
-          'type': 'text',
+          model: 'codicePromo',
+          title: 'Codice Promo',
+          type: 'text',
           'link': true
         },
           {
-            'model': 'nomePromo',
-            'title': 'Nome Promo',
-            'type': 'text',
+            model: 'nomePromo',
+            title: 'Nome Promo',
+            type: 'text',
             editable: true,
             required: true,
             maxlength: "30"
           },
           {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione Promo',
-            'type': 'text',
+            model: 'descrizionePromo',
+            title: 'Descrizione Promo',
+            type: 'text',
             editable: true,
             required: true,
             maxlength: "100"
           },
           {
-            'model': 'inizioValidita',
-            'title': 'Inizio Validita',
-            'type': 'date',
+            model: 'inizioValidita',
+            title: 'Inizio Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
@@ -672,9 +672,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'min-date-ref-col': 'fineValidita'
           },
           {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
+            model: 'fineValidita',
+            title: 'Fine Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
@@ -690,31 +690,31 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       "PROMO_ID4": {
         title: 'ID 4',
         columns: [{
-          'model': 'codicePromo',
-          'title': 'Codice Promo',
-          'type': 'text',
+          model: 'codicePromo',
+          title: 'Codice Promo',
+          type: 'text',
           'link': true
         },
           {
-            'model': 'nomePromo',
-            'title': 'Nome Promo',
-            'type': 'text',
+            model: 'nomePromo',
+            title: 'Nome Promo',
+            type: 'text',
             editable: true,
             required: true,
             maxlength: "30"
           },
           {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione Promo',
-            'type': 'text',
+            model: 'descrizionePromo',
+            title: 'Descrizione Promo',
+            type: 'text',
             editable: true,
             required: true,
             maxlength: "100"
           },
           {
-            'model': 'inizioValidita',
-            'title': 'Inizio Validita',
-            'type': 'date',
+            model: 'inizioValidita',
+            title: 'Inizio Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
@@ -725,9 +725,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'min-date-ref-col': 'fineValidita'
           },
           {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
+            model: 'fineValidita',
+            title: 'Fine Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
@@ -743,31 +743,31 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       "PROMO_ID5": {
         title: 'ID 5',
         columns: [{
-          'model': 'codicePromo',
-          'title': 'Codice Promo',
-          'type': 'text',
+          model: 'codicePromo',
+          title: 'Codice Promo',
+          type: 'text',
           'link': true
         },
           {
-            'model': 'nomePromo',
-            'title': 'Nome Promo',
-            'type': 'text',
+            model: 'nomePromo',
+            title: 'Nome Promo',
+            type: 'text',
             editable: true,
             required: true,
             maxlength: "30"
           },
           {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione Promo',
-            'type': 'text',
+            model: 'descrizionePromo',
+            title: 'Descrizione Promo',
+            type: 'text',
             editable: true,
             required: true,
             maxlength: "100"
           },
           {
-            'model': 'inizioValidita',
-            'title': 'Inizio Validita',
-            'type': 'date',
+            model: 'inizioValidita',
+            title: 'Inizio Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
@@ -778,9 +778,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'min-date-ref-col': 'fineValidita'
           },
           {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
+            model: 'fineValidita',
+            title: 'Fine Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
@@ -796,17 +796,17 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       "PROMO_ID6_1": {
         title: 'ID 6.1',
         columns: [{
-          'model': 'codicePromo',
-          'title': 'Codice promo',
-          'type': 'text',
+          model: 'codicePromo',
+          title: 'Codice promo',
+          type: 'text',
           color: 'green',
           'link': true
         },
           {
-            'model': 'promoBatch',
-            'title': 'Promo Batch',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
+            model: 'promoBatch',
+            title: 'Promo Batch',
+            type: 'options',
+            options: lovService.getBooleanTypes(),
             editable: true,
             required: true,
             'batchEnabler': true,
@@ -814,9 +814,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             value: lovService.getBooleanTypes()[0]
           },
           {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione promo',
-            'type': 'text',
+            model: 'descrizionePromo',
+            title: 'Descrizione promo',
+            type: 'text',
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -824,26 +824,26 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             maxlength: "1000"
           },
           {
-            'model': 'inizioGenerazione',
-            'title': 'Inizio Generazione',
-            'type': 'date',
+            model: 'inizioGenerazione',
+            title: 'Inizio Generazione',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             rawModel: 'inizioGenerazioneRaw',
             'min-date-ref-col': 'fineGenerazione'
           },
           {
-            'model': 'fineGenerazione',
-            'title': 'Fine Generazione',
-            'type': 'date',
+            model: 'fineGenerazione',
+            title: 'Fine Generazione',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             orderBy: true,
@@ -851,26 +851,26 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'max-date-ref-col': 'inizioGenerazione'
           },
           {
-            'model': 'inizioValidita',
-            'title': 'Inizio Validita',
-            'type': 'date',
+            model: 'inizioValidita',
+            title: 'Inizio Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             rawModel: 'inizioValiditaRaw',
             'min-date-ref-col': 'fineValidita'
           },
           {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
+            model: 'fineValidita',
+            title: 'Fine Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             orderBy: true,
@@ -878,9 +878,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'max-date-ref-col': 'inizioValidita'
           },
           {
-            'model': 'codiceTemplateSMS',
-            'title': 'Codice Template SMS',
-            'type': 'text',
+            model: 'codiceTemplateSMS',
+            title: 'Codice Template SMS',
+            type: 'text',
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -889,9 +889,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             mutuallyExclusiveCol: "codiceTemplateMAIL"
           },
           {
-            'model': 'codiceTemplateMAIL',
-            'title': 'Codice Template Mail',
-            'type': 'text',
+            model: 'codiceTemplateMAIL',
+            title: 'Codice Template Mail',
+            type: 'text',
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -900,19 +900,19 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             mutuallyExclusiveCol: "codiceTemplateSMS"
           },
           {
-            'model': 'flagLinea',
-            'title': 'FlagLinea',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
+            model: 'flagLinea',
+            title: 'FlagLinea',
+            type: 'options',
+            options: lovService.getBooleanTypes(),
             editable: true,
             required: true,
             'batchDisabled': true,
             color: 'orange'
           },
           {
-            'model': 'limiteUtilizzoCoupon',
-            'title': 'Limite Utilizzo Coupon',
-            'type': 'number',
+            model: 'limiteUtilizzoCoupon',
+            title: 'Limite Utilizzo Coupon',
+            type: 'number',
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -924,17 +924,17 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       "PROMO_ID6_2": {
         title: 'ID 6.2',
         columns: [{
-          'model': 'codicePromo',
-          'title': 'Codice promo',
-          'type': 'text',
+          model: 'codicePromo',
+          title: 'Codice promo',
+          type: 'text',
           color: 'green',
           'link': true
         },
           {
-            'model': 'promoBatch',
-            'title': 'Promo Batch',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
+            model: 'promoBatch',
+            title: 'Promo Batch',
+            type: 'options',
+            options: lovService.getBooleanTypes(),
             editable: true,
             required: true,
             'batchEnabler': true,
@@ -942,9 +942,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             value: lovService.getBooleanTypes()[0]
           },
           {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione promo',
-            'type': 'text',
+            model: 'descrizionePromo',
+            title: 'Descrizione promo',
+            type: 'text',
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -952,26 +952,26 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             maxlength: "1000"
           },
           {
-            'model': 'inizioGenerazione',
-            'title': 'Inizio Generazione',
-            'type': 'date',
+            model: 'inizioGenerazione',
+            title: 'Inizio Generazione',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             rawModel: 'inizioGenerazioneRaw',
             'min-date-ref-col': 'fineGenerazione'
           },
           {
-            'model': 'fineGenerazione',
-            'title': 'Fine Generazione',
-            'type': 'date',
+            model: 'fineGenerazione',
+            title: 'Fine Generazione',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             orderBy: true,
@@ -979,26 +979,26 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'max-date-ref-col': 'inizioGenerazione'
           },
           {
-            'model': 'inizioValidita',
-            'title': 'Inizio Validita',
-            'type': 'date',
+            model: 'inizioValidita',
+            title: 'Inizio Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             rawModel: 'inizioValiditaRaw',
             'min-date-ref-col': 'fineValidita'
           },
           {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
+            model: 'fineValidita',
+            title: 'Fine Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             orderBy: true,
@@ -1006,9 +1006,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'max-date-ref-col': 'inizioValidita'
           },
           {
-            'model': 'codiceTemplateSMS',
-            'title': 'Codice Template SMS',
-            'type': 'text',
+            model: 'codiceTemplateSMS',
+            title: 'Codice Template SMS',
+            type: 'text',
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -1017,9 +1017,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             mutuallyExclusiveCol: "codiceTemplateMAIL"
           },
           {
-            'model': 'codiceTemplateMAIL',
-            'title': 'Codice Template Mail',
-            'type': 'text',
+            model: 'codiceTemplateMAIL',
+            title: 'Codice Template Mail',
+            type: 'text',
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -1028,19 +1028,19 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             mutuallyExclusiveCol: "codiceTemplateSMS"
           },
           {
-            'model': 'flagLinea',
-            'title': 'FlagLinea',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
+            model: 'flagLinea',
+            title: 'FlagLinea',
+            type: 'options',
+            options: lovService.getBooleanTypes(),
             editable: true,
             required: true,
             'batchDisabled': true,
             color: 'orange'
           },
           {
-            'model': 'limiteUtilizzoCoupon',
-            'title': 'Limite Utilizzo Coupon',
-            'type': 'number',
+            model: 'limiteUtilizzoCoupon',
+            title: 'Limite Utilizzo Coupon',
+            type: 'number',
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -1052,17 +1052,17 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       "PROMO_ID7": {
         title: 'ID 7',
         columns: [{
-          'model': 'codicePromo',
-          'title': 'Codice promo',
-          'type': 'text',
+          model: 'codicePromo',
+          title: 'Codice promo',
+          type: 'text',
           color: 'green',
           'link': true
         },
           {
-            'model': 'promoBatch',
-            'title': 'Promo Batch',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
+            model: 'promoBatch',
+            title: 'Promo Batch',
+            type: 'options',
+            options: lovService.getBooleanTypes(),
             editable: true,
             required: true,
             'batchEnabler': true,
@@ -1070,35 +1070,35 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             value: lovService.getBooleanTypes()[0]
           },
           {
-            'model': 'descrizionePromo',
-            'title': 'Descrizione promo',
-            'type': 'text',
+            model: 'descrizionePromo',
+            title: 'Descrizione promo',
+            type: 'text',
             editable: true,
             required: true,
             'batchDisabled': true,
             color: 'green'
           },
           {
-            'model': 'inizioGenerazione',
-            'title': 'Inizio Generazione',
-            'type': 'date',
+            model: 'inizioGenerazione',
+            title: 'Inizio Generazione',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             rawModel: 'inizioGenerazioneRaw',
             'min-date-ref-col': 'fineGenerazione'
           },
           {
-            'model': 'fineGenerazione',
-            'title': 'Fine Generazione',
-            'type': 'date',
+            model: 'fineGenerazione',
+            title: 'Fine Generazione',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             orderBy: true,
@@ -1106,26 +1106,26 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'max-date-ref-col': 'inizioGenerazione'
           },
           {
-            'model': 'inizioValidita',
-            'title': 'Inizio Validita',
-            'type': 'date',
+            model: 'inizioValidita',
+            title: 'Inizio Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             rawModel: 'inizioValiditaRaw',
             'min-date-ref-col': 'fineValidita'
           },
           {
-            'model': 'fineValidita',
-            'title': 'Fine Validita',
-            'type': 'date',
+            model: 'fineValidita',
+            title: 'Fine Validita',
+            type: 'date',
             editable: true,
             required: true,
             'min-date': TODAY,
-            'max-date': MAX_DAY,
+            'max-date': MAX_DAY, 'batchDisabled': true,
             locale: "it",
             format: "DD/MM/YYYY",
             orderBy: true,
@@ -1133,9 +1133,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             'max-date-ref-col': 'inizioValidita'
           },
           {
-            'model': 'codiceTemplateSMS',
-            'title': 'Codice Template SMS',
-            'type': 'text',
+            model: 'codiceTemplateSMS',
+            title: 'Codice Template SMS',
+            type: 'text',
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -1144,9 +1144,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             mutuallyExclusiveCol: "codiceTemplateMAIL"
           },
           {
-            'model': 'codiceTemplateMAIL',
-            'title': 'Codice Template Mail',
-            'type': 'text',
+            model: 'codiceTemplateMAIL',
+            title: 'Codice Template Mail',
+            type: 'text',
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -1155,19 +1155,19 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             mutuallyExclusiveCol: "codiceTemplateSMS"
           },
           {
-            'model': 'flagLinea',
-            'title': 'FlagLinea',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
+            model: 'flagLinea',
+            title: 'FlagLinea',
+            type: 'options',
+            options: lovService.getBooleanTypes(),
             editable: true,
             required: true,
             'batchDisabled': true,
             color: 'orange'
           },
           {
-            'model': 'limiteUtilizzoCoupon',
-            'title': 'Limite Utilizzo Coupon',
-            'type': 'number',
+            model: 'limiteUtilizzoCoupon',
+            title: 'Limite Utilizzo Coupon',
+            type: 'number',
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -1177,19 +1177,24 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         ]
       }
     },
+    //label: nome del pulsante da mostrare
+    //model: identificativo del button
+    //orRequired: indica se è obbligatorio in alternativa ad un altro pulsante
+    //mutuallyEsclusive: indica un pulsante per cui c'è mutua esclusività
+    //multiple: indica se è possibile una selezione multipla di record
+    //reference: indica quale ricerca di attributi deve essere richiamata quando si clicca il pulsante
+    //batchDisabled: indica se il pulsante va disabilitato in caso di promoBatch
     "promo.detail": {
       title: "Condition List",
       "PROMO_ID1": {
         title: "PROMO ID1",
         buttons: [{
           'label': 'Ricerca BF',
-          'model': 'BF',
-          'reference': 'attributi.BF',
-          'multiple': true,
+          model: 'BF',
+          reference: 'attributi.BF',
           'columns': [{
             model: 'bf2purchase',
-            'refModel': 'nomeProdotto',
-            append: true
+            'refModel': 'nomeProdotto'
           },
             {
               model: 'prezzoAttivazione',
@@ -1199,32 +1204,32 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           ]
         }],
         columns: [{
-          'model': 'bf2purchase',
-          'title': 'NMU',
-          'type': 'text',
+          model: 'bf2purchase',
+          title: 'NMU',
+          type: 'text',
           required: true
         },
           {
-            'model': 'isPadreBf2purchase',
-            'title': 'IsPadre',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
+            model: 'isPadreBf2purchase',
+            title: 'IsPadre',
+            type: 'options',
+            options: lovService.getBooleanTypes(),
             editable: true,
             required: true,
             value: lovService.getBooleanTypes()[0]
           },
           {
-            'model': 'prezzoAttivazione',
-            'title': 'Prezzo',
-            'type': 'number',
+            model: 'prezzoAttivazione',
+            title: 'Prezzo',
+            type: 'number',
             required: true,
             'icon': 'euro_symbol'
           },
           {
-            'model': 'scontoValore',
-            'title': 'Sconto a Valore',
+            model: 'scontoValore',
+            title: 'Sconto a Valore',
             'icon': 'euro_symbol',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.scontoValore,
             maxlength: "10",
@@ -1232,10 +1237,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             mutuallyExclusive: 'scontoPercentuale'
           },
           {
-            'model': 'scontoPercentuale',
-            'title': 'Sconto a Percentuale',
+            model: 'scontoPercentuale',
+            title: 'Sconto a Percentuale',
             'icon': '%',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.percentuale,
             maxlength: "5",
@@ -1248,8 +1253,8 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         title: "PROMO ID2",
         buttons: [{
           'label': 'Ricerca CS',
-          'model': 'CS',
-          'reference': 'attributi.CS',
+          model: 'CS',
+          reference: 'attributi.CS',
           'columns': [{
             model: 'offerta',
             'refModel': 'nomeOfferta',
@@ -1262,20 +1267,22 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           ]
         }],
         columns: [{
-          'model': 'offerta',
-          'title': 'Offerta',
-          'type': 'text'
+          model: 'offerta',
+          title: 'Offerta',
+          type: 'text',
+          required: true
         },
           {
-            'model': 'cs2purchase',
-            'title': 'Carta Servizi',
-            'type': 'text'
+            model: 'cs2purchase',
+            title: 'Carta Servizi',
+            required: true,
+            type: 'text'
           },
           {
-            'model': 'scontoValore',
-            'title': 'Sconto a Valore',
+            model: 'scontoValore',
+            title: 'Sconto a Valore',
             'icon': 'euro_symbol',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.scontoValore,
             maxlength: "10",
@@ -1283,10 +1290,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             mutuallyExclusive: 'scontoPercentuale'
           },
           {
-            'model': 'scontoPercentuale',
-            'title': 'Sconto a Percentuale',
+            model: 'scontoPercentuale',
+            title: 'Sconto a Percentuale',
             'icon': '%',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.percentuale,
             maxlength: "5",
@@ -1299,10 +1306,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         title: "PROMO ID3",
         buttons: [{
           'label': 'Ricerca CS2P',
-          'model': 'CS2P',
+          mutuallyExclusive: 'CS2P',
+          model: 'CS2P',
           required: true,
-          'multiple': true,
-          'reference': 'attributi.CS',
+          reference: 'attributi.CS',
           'columns': [{
             model: 'offerta',
             'refModel': 'nomeOfferta',
@@ -1310,28 +1317,26 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           },
             {
               model: 'cs2purchase',
-              'refModel': 'nomeProdotto',
-              append: true
+              'refModel': 'nomeProdotto'
             }
           ]
         },
           {
             'label': 'Ricerca BF2P',
-            'model': 'BF2P',
+            mutuallyExclusive: 'CS2P',
+            model: 'BF2P',
             required: true,
-            'multiple': true,
-            'reference': 'attributi.BF',
+            reference: 'attributi.BF',
             'columns': [{
               model: 'bf2purchase',
-              'refModel': 'nomeProdotto',
-              append: true
+              'refModel': 'nomeProdotto'
             }]
           },
           {
             'label': 'Ricerca CSBonus',
-            'model': 'CSBonus',
+            model: 'CSBonus',
             mutuallyExclusive: 'BFBonus',
-            'reference': 'attributi.CS',
+            reference: 'attributi.CS',
             'columns': [{
               model: 'offerta',
               'refModel': 'nomeOfferta',
@@ -1345,9 +1350,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           },
           {
             'label': 'Ricerca BFBonus',
-            'model': 'BFBonus',
+            model: 'BFBonus',
             mutuallyExclusive: 'CSBonus',
-            'reference': 'attributi.BF',
+            reference: 'attributi.BF',
             'columns': [{
               model: 'bfwithBonus',
               'refModel': 'nomeProdotto'
@@ -1355,78 +1360,78 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         ],
         columns: [{
-          'model': 'tipologiaVendita',
-          'title': 'Tipologia Vendita',
-          'type': 'options',
-          'options': lovService.getSeniorityConstraintWebType(),
+          model: 'tipologiaVendita',
+          title: 'Tipologia Vendita',
+          type: 'options',
+          options: lovService.getSeniorityConstraintWebType(),
           multiple: true,
           editable: true,
           required: true,
           color: 'green'
         },
           {
-            'model': 'taglioRicarica',
-            'title': 'Taglio Ricarica',
-            'type': 'number',
-            editable: true,
-            required: true,
+            model: 'taglioRicarica',
+            title: 'Taglio Ricarica',
+            type: 'options',
+            options: lovService.getTaglioRicaricaTypes(),
+            editable:true,
             color: 'green'
           },
           {
-            'model': 'offerta',
-            'title': 'Offerta',
-            'type': 'text',
+            model: 'offerta',
+            title: 'Offerta',
+            type: 'text',
             color: 'green'
           },
           {
-            'model': 'cs2purchase',
-            'title': 'cs2purchase',
-            'type': 'text',
+            model: 'cs2purchase',
+            title: 'cs2purchase',
+            type: 'text',
             orRequired: 'bf2purchase',
             color: 'green'
           },
           {
-            'model': 'bf2purchase',
-            'title': 'bf2purchase',
-            'type': 'text',
+            model: 'bf2purchase',
+            title: 'bf2purchase',
+            type: 'text',
             orRequired: 'cs2purchase',
             color: 'green'
           },
           {
-            'model': 'isPadreBf2purchase',
-            'title': 'IsPadre',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
+            model: 'isPadreBf2purchase',
+            title: 'IsPadre',
+            type: 'options',
+            options: lovService.getBooleanTypes(),
             editable: true,
             required: true,
             color: 'green',
             value: lovService.getBooleanTypes()[0]
           },
           {
-            'model': 'offerta',
-            'title': 'Offerta',
-            'type': 'text',
+            model: 'offerta',
+            title: 'Offerta',
+            type: 'text',
             color: 'orange'
           },
           {
-            'model': 'csWithBonus',
-            'title': 'csWithBonus',
-            'type': 'text',
+            model: 'csWithBonus',
+            title: 'csWithBonus',
+            type: 'text',
             mutuallyExclusive: 'bfwithBonus',
             color: 'orange'
           },
           {
-            'model': 'bfwithBonus',
-            'title': 'bfwithBonus',
-            'type': 'text',
+            model: 'bfwithBonus',
+            title: 'bfwithBonus',
+            type: 'text',
             mutuallyExclusive: 'csWithBonus',
             color: 'orange'
           },
           {
-            'model': 'scontoValore',
-            'title': 'Sconto a Valore',
+            model: 'scontoValore',
+            title: 'Sconto a Valore',
             'icon': 'euro_symbol',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.scontoValore,
             maxlength: "10",
@@ -1435,10 +1440,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             color: 'orange'
           },
           {
-            'model': 'scontoPercentuale',
-            'title': 'Sconto a Percentuale',
+            model: 'scontoPercentuale',
+            title: 'Sconto a Percentuale',
             'icon': '%',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.percentuale,
             maxlength: "5",
@@ -1452,9 +1457,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         title: "PROMO ID4",
         buttons: [{
           'label': 'Ricerca CS2P',
-          'model': 'CS2P',
+          model: 'CS2P',
           required: true,
-          'reference': 'attributi.CS',
+          reference: 'attributi.CS',
           'columns': [{
             model: 'offerta',
             'refModel': 'nomeOfferta',
@@ -1468,9 +1473,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         },
           {
             'label': 'Ricerca CSBonus',
-            'model': 'CSBonus',
+            model: 'CSBonus',
             required: true,
-            'reference': 'attributi.CS',
+            reference: 'attributi.CS',
             'columns': [{
               model: 'offerta',
               'refModel': 'nomeOfferta',
@@ -1484,27 +1489,27 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         ],
         columns: [{
-          'model': 'offerta',
-          'title': 'Offerta',
-          'type': 'text',
+          model: 'offerta',
+          title: 'Offerta',
+          type: 'text',
           required: true
         },
           {
-            'model': 'cs2purchase',
-            'title': 'cs2purchase',
-            'type': 'text',
+            model: 'cs2purchase',
+            title: 'cs2purchase',
+            type: 'text',
             required: true
           },
           {
-            'model': 'offerta',
-            'title': 'Offerta',
-            'type': 'text',
+            model: 'offerta',
+            title: 'Offerta',
+            type: 'text',
             required: true
           },
           {
-            'model': 'csWithBonus',
-            'title': 'csWithBonus',
-            'type': 'text',
+            model: 'csWithBonus',
+            title: 'csWithBonus',
+            type: 'text',
             required: true
           }
         ]
@@ -1512,19 +1517,18 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       "PROMO_ID5": {
         title: "PROMO ID5",
         columns: [{
-          'model': 'tipologiaVendita',
-          'title': 'Tipologia Vendita',
-          'type': 'options',
-          'options': lovService.getSeniorityConstraintWebType(['CB']),
-          multiple: true,
+          model: 'tipologiaVendita',
+          title: 'Tipologia Vendita',
+          type: 'options',
+          options: lovService.getSeniorityConstraintWebType(['CB']),
           editable: true,
           required: true
         },
           {
-            'model': 'scontoValore',
-            'title': 'Sconto a Valore',
+            model: 'scontoValore',
+            title: 'Sconto a Valore',
             'icon': 'euro_symbol',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.scontoValore,
             maxlength: "10",
@@ -1532,10 +1536,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             mutuallyExclusive: 'scontoPercentuale'
           },
           {
-            'model': 'scontoPercentuale',
-            'title': 'Sconto a Percentuale',
+            model: 'scontoPercentuale',
+            title: 'Sconto a Percentuale',
             'icon': '%',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.percentuale,
             maxlength: "5",
@@ -1557,10 +1561,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
 
           {
             'label': 'Ricerca CS2P',
-            'model': 'CS2P',
+            model: 'CS2P',
             orRequired: 'BF2P',
             mutuallyExclusive: 'BF2P',
-            'reference': 'attributi.CS',
+            reference: 'attributi.CS',
             //compare: in caso di selezioni multiple si verifica che abbiano tutti lo stesso campo
             //append: indica se il campo va aggiunto in append al contenuto esistente
             //model: indica il nome del campo così come viene recuperato dagli attributi
@@ -1579,10 +1583,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           },
           {
             'label': 'Ricerca BF2P',
-            'model': 'BF2P',
+            model: 'BF2P',
             orRequired: 'CS2P',
             mutuallyExclusive: 'CS2P',
-            'reference': 'attributi.BF',
+            reference: 'attributi.BF',
             'columns': [{
               model: 'bf2purchase',
               'refModel': 'nomeProdotto'
@@ -1591,9 +1595,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           },
           {
             'label': 'Ricerca CSBonus',
-            'model': 'CSBonus',
+            model: 'CSBonus',
             mutuallyExclusive: 'BFBonus',
-            'reference': 'attributi.CS',
+            reference: 'attributi.CS',
             'columns': [{
               model: 'offerta',
               'refModel': 'nomeOfferta',
@@ -1607,9 +1611,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           },
           {
             'label': 'Ricerca BFBonus',
-            'model': 'BFBonus',
+            model: 'BFBonus',
             mutuallyExclusive: 'CSBonus',
-            'reference': 'attributi.BF',
+            reference: 'attributi.BF',
             'columns': [{
               model: 'bfwithBonus',
               'refModel': 'nomeProdotto'
@@ -1617,34 +1621,33 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         ],
         columns: [{
-          'model': 'offerta',
-          'title': 'Offerta',
-          'type': 'text',
-          required: true,
+          model: 'offerta',
+          title: 'Offerta',
+          type: 'text',
           'batchDisabled': true,
           color: 'green'
         },
           {
-            'model': 'cs2purchase',
-            'title': 'cs2purchase',
-            'type': 'text',
+            model: 'cs2purchase',
+            title: 'cs2purchase',
+            type: 'text',
             orRequired: 'bf2purchase',
             'batchDisabled': true,
             color: 'green'
           },
           {
-            'model': 'bf2purchase',
-            'title': 'bf2purchase',
-            'type': 'text',
+            model: 'bf2purchase',
+            title: 'bf2purchase',
+            type: 'text',
             orRequired: 'cs2purchase',
             'batchDisabled': true,
             color: 'green'
           },
           {
-            'model': 'isPadreBf2purchase',
-            'title': 'IsPadre',
-            'type': 'options',
-            'options': lovService.getBooleanTypes(),
+            model: 'isPadreBf2purchase',
+            title: 'IsPadre',
+            type: 'options',
+            options: lovService.getBooleanTypes(),
             editable: true,
             required: true,
             'batchDisabled': true,
@@ -1652,30 +1655,30 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             value: lovService.getBooleanTypes()[0]
           },
           {
-            'model': 'offerta',
-            'title': 'Offerta',
-            'type': 'text',
+            model: 'offerta',
+            title: 'Offerta',
+            type: 'text',
             color: 'orange'
           },
           {
-            'model': 'csWithBonus',
-            'title': 'csWithBonus',
-            'type': 'text',
+            model: 'csWithBonus',
+            title: 'csWithBonus',
+            type: 'text',
             mutuallyExclusive: 'bfwithBonus',
             color: 'orange'
           },
           {
-            'model': 'bfwithBonus',
-            'title': 'bfwithBonus',
-            'type': 'text',
+            model: 'bfwithBonus',
+            title: 'bfwithBonus',
+            type: 'text',
             mutuallyExclusive: 'csWithBonus',
             color: 'orange'
           },
           {
-            'model': 'scontoValore',
-            'title': 'Sconto a Valore',
+            model: 'scontoValore',
+            title: 'Sconto a Valore',
             'icon': 'euro_symbol',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.scontoValore,
             maxlength: "10",
@@ -1684,10 +1687,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             color: 'orange'
           },
           {
-            'model': 'scontoPercentuale',
-            'title': 'Sconto a Percentuale',
+            model: 'scontoPercentuale',
+            title: 'Sconto a Percentuale',
             'icon': '%',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.percentuale,
             maxlength: "5",
@@ -1702,14 +1705,13 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         title: "PROMO ID6_2",
         buttons: [{
           'label': 'Ricerca CSBonus',
-          'model': 'CSBonus',
+          model: 'CSBonus',
           mutuallyExclusive: 'BFBonus',
           orRequired: 'BFBonus',
-          'reference': 'attributi.CS',
+          reference: 'attributi.CS',
           'columns': [{
             model: 'offerta',
-            'refModel': 'nomeOfferta',
-            compare: true
+            'refModel': 'nomeOfferta'
           },
             {
               model: 'csWithBonus',
@@ -1720,15 +1722,11 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         },
           {
             'label': 'Ricerca BFBonus',
-            'model': 'BFBonus',
+            model: 'BFBonus',
             mutuallyExclusive: 'CSBonus',
             orRequired: 'CSBonus',
-            'reference': 'attributi.BF',
-            'columns': [{
-              model: 'offerta',
-              'refModel': 'nomeOfferta',
-              compare: true
-            },
+            reference: 'attributi.BF',
+            'columns': [
               {
                 model: 'bfwithBonus',
                 'refModel': 'nomeProdotto'
@@ -1738,9 +1736,9 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           }
         ],
         columns: [{
-          'model': 'totaleCarrello',
-          'title': 'Totale Carrello',
-          'type': 'number',
+          model: 'totaleCarrello',
+          title: 'Totale Carrello',
+          type: 'number',
           maxlength: "10",
           editable: true,
           required: true,
@@ -1748,28 +1746,30 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           color: 'green'
         },
           {
-            'model': 'offerta',
-            'title': 'Offerta',
-            'type': 'text',
+            model: 'offerta',
+            title: 'Offerta',
+            type: 'text',
             color: 'orange'
           },
           {
-            'model': 'csWithBonus',
-            'title': 'csWithBonus',
-            'type': 'text',
+            model: 'csWithBonus',
+            title: 'csWithBonus',
+            type: 'text',
+            mutuallyExclusive: 'bfwithBonus',
             color: 'orange'
           },
           {
-            'model': 'bfwithBonus',
-            'title': 'bfwithBonus',
-            'type': 'text',
+            model: 'bfwithBonus',
+            title: 'bfwithBonus',
+            type: 'text',
+            mutuallyExclusive: 'csWithBonus',
             color: 'orange'
           },
           {
-            'model': 'scontoValore',
-            'title': 'Sconto a Valore',
+            model: 'scontoValore',
+            title: 'Sconto a Valore',
             'icon': 'euro_symbol',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.scontoValore,
             maxlength: "10",
@@ -1778,10 +1778,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
             color: 'orange'
           },
           {
-            'model': 'scontoPercentuale',
-            'title': 'Sconto a Percentuale',
+            model: 'scontoPercentuale',
+            title: 'Sconto a Percentuale',
             'icon': '%',
-            'type': 'number',
+            type: 'number',
             'step': '0.01',
             pattern: regexService.percentuale,
             maxlength: "5",
@@ -1795,55 +1795,57 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         title: "PROMO ID7",
         addDisabledIfBatch: true,
         columns: [{
-          'model': 'ricaricaMinGenerazione',
-          'title': 'Taglio Ricarica Min Generazione',
-          'type': 'number',
+          model: 'ricaricaMinGenerazione',
+          title: 'Taglio Ricarica Min Generazione',
+          type: 'options',
+          options: lovService.getTaglioRicaricaTypes(),
           editable: true,
           required: true,
-          maxlength: "10",
           color: 'green'
         },
           {
-            'model': 'ricaricaMaxGenerazione',
-            'title': 'Taglio Ricarica Max Generazione',
-            'type': 'number',
+            model: 'ricaricaMaxGenerazione',
+            title: 'Taglio Ricarica Max Generazione',
+            type: 'options',
+            options: lovService.getTaglioRicaricaTypes(),
             editable: true,
             required: true,
+            color: 'green'
+          },
+          {
+            model: 'ricaricaTipoGenerazione',
+            title: 'Tipo Ricarica Generazione',
+            type: 'options',
+            options: lovService.getRicaricaTypes(),
+            editable: true,
+            required: true,
+            color: 'green'
+          },
+          {
+            model: 'ricaricaMinApplicazione',
+            title: 'Bonus',
+            type: 'number',
+            editable: true,
+            required: true,
+            'icon': 'euro_symbol',
             maxlength: "10",
-            color: 'green'
+            color: 'orange'
           },
           {
-            'model': 'ricaricaTipoGenerazione',
-            'title': 'Tipo Ricarica Generazione',
-            'type': 'options',
-            'options': lovService.getRicaricaTypes(),
-            editable: true,
-            required: true,
-            color: 'green'
-          },
-          {
-            'model': 'ricaricaMinApplicazione',
-            'title': 'Bonus',
-            'type': 'number',
+            model: 'importoRicaricaBonus',
+            title: 'Taglio Ricarica Bonus',
+            type: 'options',
+            options: lovService.getTaglioRicaricaTypes(),
             editable: true,
             required: true,
             maxlength: "10",
             color: 'orange'
           },
           {
-            'model': 'importoRicaricaBonus',
-            'title': 'Taglio Ricarica Bonus',
-            'type': 'number',
-            editable: true,
-            required: true,
-            maxlength: "10",
-            color: 'orange'
-          },
-          {
-            'model': 'ricaricaTipoApplicazione',
-            'title': 'Tipo Ricarica Bonus',
-            'type': 'options',
-            'options': lovService.getRicaricaTypes(),
+            model: 'ricaricaTipoApplicazione',
+            title: 'Tipo Ricarica Bonus',
+            type: 'options',
+            options: lovService.getRicaricaTypes(),
             editable: true,
             required: true,
             color: 'orange'
@@ -1854,33 +1856,32 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
     "pack.list": {
       title: "Pack List",
       columns: [{
-        'model': 'codicePack',
-        'title': 'Codice Pack',
-        'type': 'text'
+        model: 'codicePack',
+        title: 'Codice Pack',
+        type: 'text'
       },
         {
-          'model': 'nomePack',
-          'title': 'Nome Pack Breve',
-          'type': 'text',
+          model: 'nomePack',
+          title: 'Nome Pack Breve',
+          type: 'text',
           editable: true,
           required: true
         },
         {
-          'model': 'descrizionePack',
-          'title': 'Descrizione Pack',
-          'type': 'text',
+          model: 'descrizionePack',
+          title: 'Descrizione Pack',
+          type: 'text',
           editable: true,
           required: true
         },
         {
-          'model': 'inizioValidita',
-          'title': 'Inizio Validita',
-          'type': 'date',
+          model: 'inizioValidita',
+          title: 'Inizio Validita',
+          type: 'date',
           editable: true,
           required: true,
-          'batchDisabled': true,
           'min-date': TODAY,
-          'max-date': MAX_DAY,
+          'max-date': MAX_DAY, 'batchDisabled': true,
           locale: "it",
           format: "DD/MM/YYYY",
           color: 'orange',
@@ -1888,14 +1889,13 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
           'min-date-ref-col': 'fineValidita'
         },
         {
-          'model': 'fineValidita',
-          'title': 'Fine Validita',
-          'type': 'date',
+          model: 'fineValidita',
+          title: 'Fine Validita',
+          type: 'date',
           editable: true,
           required: true,
-          'batchDisabled': true,
           'max-date-ref-col': 'inizioValidita',
-          'max-date': MAX_DAY,
+          'max-date': MAX_DAY, 'batchDisabled': true,
           locale: "it",
           format: "DD/MM/YYYY",
           color: 'orange',
@@ -1908,10 +1908,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       title: "Condition List",
       buttons: [{
         'label': 'Ricerca BF',
-        'model': 'BF',
+        model: 'BF',
         orRequired: 'CS',
         mutuallyExclusive: 'CS',
-        'reference': 'attributi.BF',
+        reference: 'attributi.BF',
         'columns': [{
           model: 'bf2purchase',
           'refModel': 'nmu'
@@ -1919,10 +1919,10 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
       },
         {
           'label': 'Ricerca CS2P',
-          'model': 'CS',
+          model: 'CS',
           orRequired: 'BF',
           mutuallyExclusive: 'BF',
-          'reference': 'attributi.CS',
+          reference: 'attributi.CS',
           'columns': [{
             model: 'offerta',
             'refModel': 'nomeOfferta',
@@ -1936,27 +1936,27 @@ angular.module('app').factory('dataTableResources', ['lovService', 'regexService
         }
       ],
       columns: [{
-        'model': 'offerta',
-        'title': 'Offerta',
-        'type': 'text'
+        model: 'offerta',
+        title: 'Offerta',
+        type: 'text'
       },
         {
-          'model': 'cs2purchase',
-          'title': 'Carta Servizi',
-          'type': 'text',
+          model: 'cs2purchase',
+          title: 'Carta Servizi',
+          type: 'text',
           orRequired: 'bf2purchase'
         },
         {
-          'model': 'bf2purchase',
-          'title': 'NMU',
-          'type': 'text',
+          model: 'bf2purchase',
+          title: 'NMU',
+          type: 'text',
           orRequired: 'cs2purchase'
         },
         {
-          'model': 'vincolo',
-          'title': 'Vincolo',
-          'type': 'options',
-          'options': lovService.getVincoloTypes(),
+          model: 'vincolo',
+          title: 'Vincolo',
+          type: 'options',
+          options: lovService.getVincoloTypes(),
           editable: true,
           required: true,
           value: lovService.getVincoloTypes()[0]

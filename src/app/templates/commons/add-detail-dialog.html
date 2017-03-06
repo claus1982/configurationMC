@@ -1,20 +1,20 @@
 <md-dialog class="fullscreen-dialog">
   <div
-    class="md-dialog-actions container"
-    layout="row" layout-align="end start">
+    layout="row" layout-align="end end">
     <!--   <md-button ng-disabled = "!selected.length"
                   class="btn-primary"
                   flex="50"
                   ng-click="ctrl.addItem(selected)">Aggiungi
        </md-button>-->
-    <md-button class="btn-primary btn-toolbar" flex="50"
-               ng-click="ctrl.cancel()">Annulla
+    <md-button class="md-icon-button"
+               ng-click="ctrl.cancel()">
+      <i class="material-icons">close</i>
     </md-button>
   </div>
 
     <md-dialog-content class="md-dialog-content" layout="row" layout-align="center center">
       <dbss-web-data-table
-        title = "params.title"
+        title = ""
         columns = "params.columns"
         search-params="params.searchParams"
         options = "params.options"
